@@ -1,0 +1,28 @@
+{"roles":[
+    {
+        "role":"ADMIN",
+        "id":""
+    },
+    {
+        "role":"DDO",
+        "id":""
+    },
+    {
+        "role":"MAKER",
+        "id":""
+    },
+    {
+        "role":"CHECKER",
+        "id":""
+    },
+    {
+        "role":"VENDOR-1",
+        "id":""
+    },
+    {
+        "role":"VENDOR-2",
+        "id":""
+    }
+]
+   
+}

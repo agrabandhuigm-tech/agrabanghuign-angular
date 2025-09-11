@@ -1,0 +1,166 @@
+<div class="container-fluid" style="background-color: #edf0f2;">
+    <div class="row">
+      <div class="col-12">
+        <div class="registration-card">         
+        
+          
+        
+
+
+              <mat-card>
+                <mat-tab-group animationDuration="0ms" color="primary" class="big-btn-padding">
+                  <mat-tab label="Profile Details">
+                    <div class="tab-container mt-4">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-lg-12 mt-3">
+                            
+                            <form [formGroup]="PersonalDetailsForm" >
+
+                             
+                              <div class="row">  
+                                 <div class="row">
+                                
+
+                                  <div class="col-lg-3 mt-3"  >  
+                                    <mat-form-field class="w-100" appearance="outline">   
+                                      <mat-label >{{family}}Pensioner Name</mat-label>                                                  
+                                      <input matInput placeholder="{{family}}Pensioner Name" formControlName="employeeName"  [readonly]="true" >
+                                    </mat-form-field>  
+                                  </div> 
+                                  <div class="col-lg-3 mt-3"  >  
+                                    <mat-form-field class="w-100" appearance="outline">  
+                                      <mat-label >Pensioner Id</mat-label>                                      
+                                      <input matInput placeholder="Pensioner ID" formControlName="pensionerId"   [readonly]="true">
+                                    </mat-form-field>  
+                                  </div>
+                              
+                                  <div class="col-lg-3 mt-3"  *ngIf="!isFamilyPensioner">  
+                                    <mat-form-field class="w-100" appearance="outline">     
+                                      <mat-label >Gender</mat-label>                                     
+                                      <input matInput placeholder="Gender" formControlName="gender"   [readonly]="true">
+                                    </mat-form-field>  
+                                  </div>
+                                  <div class="col-lg-3 mt-3">
+                                  
+                                    <mat-form-field class="w-100" appearance="outline" >  
+                                      <mat-label > Janadhaar Number</mat-label>                                     
+                                      <input matInput placeholder="Janadhaar Number" formControlName="janAdharId" [readonly]="true" >
+                                    </mat-form-field>  
+                                  </div>
+                                  
+                                  <div class="col-lg-3 mt-3" *ngIf="isFamilyPensioner">
+                                  
+                                   
+                                  </div>
+                                  
+                                  <div class="col-lg-3 mt-3"  *ngIf="!isFamilyPensioner">  
+                                    <mat-form-field class="w-100" appearance="outline">   
+                                      <mat-label >Father's Name</mat-label>                                         
+                                      <input matInput placeholder="Father's Name" formControlName="fatherName" [readonly]="true"  >
+                                    </mat-form-field>  
+                                  </div>
+                                  <div class="col-lg-3 mt-3" *ngIf="!isFamilyPensioner">  
+                                    <mat-form-field class="w-100" appearance="outline">   
+                                      <mat-label >Mother's Name</mat-label>                                         
+                                      <input matInput placeholder="Mother's Name" formControlName="motherName"  [readonly]="true" >
+                                    </mat-form-field>  
+                                  </div>
+
+                                  <div class="col-lg-3 mt-3"  *ngIf="!isFamilyPensioner">  
+                                    <mat-form-field class="w-100" appearance="outline">  
+                                      <mat-label >Martial Status</mat-label>                                               
+                                      <input matInput placeholder="Martial Status" formControlName="maritalStatus"  [readonly]="true" >
+                                    </mat-form-field>  
+                                  </div>
+                                  
+                                  <div class="col-lg-3 mt-3"  *ngIf="!isFamilyPensioner">  
+                                    <mat-form-field class="w-100" appearance="outline">  
+                                      <mat-label >Religion</mat-label>                                               
+                                      <input matInput placeholder="Religion" formControlName="religion"  [readonly]="true" >
+                                    </mat-form-field>  
+                                  </div>
+                                  
+                                  <div class="col-lg-3 mt-3"  >  
+                                    <mat-form-field class="w-100" appearance="outline">  
+                                      <mat-label >Email Id</mat-label>                                       
+                                      <input matInput placeholder="Email Id" formControlName="email"  [readonly]="isEmail" >
+                                      
+                                    </mat-form-field>  
+                                   
+                                  </div>
+                                  <div class="col-lg-1 mt-3">
+                                    <mat-checkbox   (change)="onChange($event,1)" ></mat-checkbox>
+                                  </div>
+
+                                  <div class="col-lg-3 mt-3"  >  
+                                    <mat-form-field class="w-100" appearance="outline">      
+                                      <mat-label >Mobile No</mat-label>                                     
+                                      <input matInput placeholder="Mobile No" formControlName="mobileNumber"   [readonly]="isMobile">
+                                    </mat-form-field>  
+                                  </div>
+                                  <div class="col-lg-1 mt-3">
+                                    <mat-checkbox   (change)="onChange($event,2)" ></mat-checkbox>
+                                  </div>
+                                   <div class="col-lg-3 mt-3"  >  
+                                      <mat-form-field class="w-100" appearance="outline">   
+                                        <mat-label >Aadhaar Number</mat-label>                                      
+                                        <input matInput placeholder="Aadhaar Number" formControlName="aadhaarNumber"  [readonly]="isAddhar" >
+                                      </mat-form-field>                              
+                                   </div>
+                                   <div class="col-lg-1 mt-3" >
+                                    <mat-checkbox   (change)="onChange($event,3)" ></mat-checkbox>
+                                  </div>
+                                  <div class="col-lg-3 mt-3" *ngIf="!isFamilyPensioner" >  
+                                    <mat-form-field class="w-100" appearance="outline">   
+                                      <mat-label >Pan Number</mat-label>                                      
+                                      <input matInput placeholder="Pan Number" formControlName="pan"   [readonly]="isPan">
+                                    </mat-form-field>  
+                                  </div>
+                                  <div class="col-lg-1 mt-3" *ngIf="!isFamilyPensioner">
+                                    <mat-checkbox   (change)="onChange($event,4)" ></mat-checkbox>
+                                  </div>
+                                  <h3 class="mt-4">Document</h3>
+                                  <div class="col-12 col-sm-6 col-md-6 col-xl-4 file-uploder-container mt-4" *ngIf=" docId==null">
+                                    <div class="d-flex flex-column mt-1">
+                                        <div class="upload-lable-text btn">
+                                            <label for="inputGroupFile">Drag & drop or <span class="file-browse">
+                                                    browse</span></label>
+                          
+                                        </div>
+                                        <div class="input-group custom-file-button">
+                                            <input type="file" class="form-control file-upload-input hidden"
+                                                id="inputGroupFile" hidden multiple="true" (change)="uploadFile($event)"
+                                                >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-6 col-xl-4 file-uploder-container mt-4" *ngIf=" docId>1">
+                                  <mat-icon style="color: rgb(139, 185, 245);" (click)="common.Previewbydocid(docId,'');">remove_red_eye</mat-icon>
+                                  <mat-icon style="color: rgb(139, 185, 245);" (click)="removeDoc()">delete</mat-icon>
+                              </div>
+
+
+                                </div>
+                              </div>
+                            </form>  
+
+                          </div>
+                        </div>                       
+
+                      
+  
+                      </div>
+                    </div>
+                  </mat-tab>
+                </mat-tab-group>
+              </mat-card>
+
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  

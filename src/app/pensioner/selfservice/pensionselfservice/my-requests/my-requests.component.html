@@ -1,0 +1,704 @@
+<div class="container-fluid">
+  <div class="PensionManagement">
+    <!-- <div>     
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">IFMS-DASHBOARD</a></li>
+              <li class="breadcrumb-item"><a href="#">DE dashboard</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Pension Management</li>
+            </ol>
+        </nav>    
+    </div> -->
+
+
+    <div class="row">
+      <!-- <div class="col-lg-2">
+     
+      
+  
+        <mat-card class="side_card mt-2" >
+            <mat-card-content>
+              <p class="w-100 mat-h3 font-weight-600 font-18 my-2 mb-3 text-white text-center heading_with_bg " color="primary">Disbursement Engine</p>
+          
+              <mat-nav-list class="list_item font-14 mb-4">
+                <a mat-list-item href="" class="active"> <img src="assets/images/Management_icon.svg"> Payee Management <span> > </span></a>
+                <a mat-list-item href="" class="pl-0"> <img src="assets/images/Management_icon.svg"> Employee Management <span> > </span></a>              
+                <a mat-list-item href=""> <img src="assets/images/Management_icon.svg"> Pension Management <span> > </span></a>
+                <a mat-list-item href=""> <img src="assets/images/Management_icon.svg"> Bill Processing <span> > </span></a>
+                <a mat-list-item href=""> <img src="assets/images/Management_icon.svg"> Treasury <span> > </span></a>
+                <a mat-list-item > <img src="assets/images/Management_icon.svg"> WAM <span> > </span></a>
+               
+              </mat-nav-list>
+          
+          
+              <mat-menu #belowMenu="matMenu" yPosition="below" xPosition="after">
+                <button mat-menu-item >View</button>
+                <button mat-menu-item >Edit</button>
+                <button mat-menu-item >Remarks</button>
+            </mat-menu>
+              <div class="card help border-0 mt-4">
+                <div class="card-header border-bottom-0 bg-transparent d-flex justify-content-between">
+                  <h3>Need Help ?</h3> <img src="assets/dashbord/vendor/support.png" class="helpimg" />
+                </div>
+                <div class="card-body">
+                  <p>Have questions or concerns regarding your profile? Our experts are here to help!</p>
+                  <button class="btn btn-primary">Chat with Us</button>
+                </div>
+              </div>
+          
+          
+          
+            </mat-card-content>
+          </mat-card>
+      
+    </div> -->
+      
+
+
+        <div class="w-100 p-2">
+          <div class="row">
+
+
+
+
+            <div class="row mt-0">
+              <div class="col-lg-5 ">
+                <div class="row my-2 mt-0">
+                  <div class="col-lg-6">
+                    <div class="four_section p-3 text-white">
+                      <div class="row">
+                        <div class="col-lg-7">
+                          <p>Pending<br> Request</p>
+                          <!-- <img src="assets/images/arrow-small-left.svg"> -->
+                          <img src="assets/images/arrow-small-left.svg">
+                        </div>
+                        <div class="col-lg-5 text-center">
+                          <h2 class="text-white p-3 font-48">10</h2>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="four_section p-3 text-white">
+                      <div class="row">
+                        <div class="col-lg-7">
+                          <p>Approved<br>Requests</p>
+                          <!-- <img src="assets/images/arrow-small-left.svg"> -->
+                          <img src="assets/images/arrow-small-left.svg">
+                        </div>
+                        <div class="col-lg-5 text-center">
+                          <h2 class="text-white p-3 font-48">20</h2>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <mat-card>
+                  <div class="row">
+                    <mat-label class="fs-6 d-block fw-bold mb-4">Raise New</mat-label>
+
+                    <section class="example-section">
+                      <mat-radio-group>
+                        <mat-radio-button class="example-margin me-3" value="after">Request</mat-radio-button>
+                        <mat-radio-button class="example-margin" value="before">Grievances</mat-radio-button>
+                      </mat-radio-group>
+                    </section>
+                    <div class="col-lg-12">
+
+                      <div class="overview my-3 p-3">
+                        <div class="">
+                          <h3>Select Request Type & Sub -Type</h3>
+                          <div class="col-lg-12 my-2">
+                            <mat-form-field class="w-100" appearance="outline">
+                              <select matNativeControl required>
+                                <option value="Selec">Selec Type</option>
+                                <option value="Sub">Sub Type</option>
+                              </select>
+                            </mat-form-field>
+                          </div>
+
+                          <div class="col-lg-12 my-2">
+                            <mat-form-field class="w-100" appearance="outline">
+                              <select matNativeControl required>
+                                <option value="Selec">Selec Type</option>
+                                <option value="Sub">Sub Type</option>
+                              </select>
+                            </mat-form-field>
+                          </div>
+
+                          <button mat-raised-button color="primary" class="btn w-100">Raise Request</button>
+
+                        </div>
+                      </div>
+
+                      <div class="status p-3">
+                        <div class="">
+                          <h3>Request Status</h3>
+                          <div class="col-lg-12 my-2">
+                            <mat-form-field appearance="outline" class="w-100">
+                              <mat-label>Enter your ticket number to view status</mat-label>
+                              <input type="text" matInput placeholder="Enter your ticket number to view status..">
+                              <mat-icon matPrefix>search</mat-icon>
+                            </mat-form-field>
+                          </div>
+
+                          <button mat-raised-button color="primary" class="btn w-100">View Status</button>
+                        </div>
+
+                      </div>
+                    </div>
+
+
+                  </div>
+                </mat-card>
+              </div>
+              <div class="col-lg-7">
+                <div class="row my-2 mt-0">
+                  <div class="col-lg-4">
+                    <div class="four_section p-3 text-white">
+                      <div class="row">
+                        <div class="col-lg-7">
+                          <p>Rejected<br>Requests</p>
+                          <!-- <img src="assets/images/arrow-small-left.svg"> -->
+                          <img src="assets/images/arrow-small-left.svg">
+                        </div>
+                        <div class="col-lg-5 text-center">
+                          <h2 class="text-white p-3 font-48">5</h2>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="four_section p-3 text-white">
+                      <div class="row">
+                        <div class="col-lg-7">
+                          <p> Total Inbox<br> Request</p>
+                          <!-- <img src="assets/images/arrow-small-left.svg"> -->
+                          <img src="assets/images/arrow-small-left.svg">
+                        </div>
+                        <div class="col-lg-5 text-center">
+                          <h2 class="text-white p-3 font-48">100</h2>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="four_section p-3 text-white">
+                      <div class="row">
+                        <div class="col-lg-7">
+                          <p>Total Outbox<br> Request</p>
+                          <!-- <img src="assets/images/arrow-small-left.svg"> -->
+                          <img src="assets/images/arrow-small-left.svg">
+                        </div>
+                        <div class="col-lg-5 text-center">
+                          <h2 class="text-white p-3 font-48">60</h2>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <mat-card>
+                  <div class="row">
+                    <div class="col-lg-8">
+                      <mat-label class="fs-6 d-block fw-bold mb-4">My Requests</mat-label>
+                    </div>
+                    <div class="col-lg-4 text-end">
+                      <a href="#">My Requests</a>
+                    </div>
+                  </div>
+
+                  <button mat-stroked-button class="rounded-pill">All Requests</button>
+                  <button mat-stroked-button class="rounded-pill mx-1">Rejected Requests</button>
+                  <button mat-stroked-button class="rounded-pill mx-1">Pending Requests</button>
+                  <button mat-stroked-button class="rounded-pill">Approved Requests</button>
+
+                  <mat-form-field class="float-end">
+                    <mat-label>Search Something</mat-label>
+                    <input type="text" matInput placeholder="Type something..">
+                    <mat-icon matSuffix>search</mat-icon>
+                  </mat-form-field>
+
+
+                  <table cellpadding="0" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>No.</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><label>Request_01</label></td>
+                        <td><button class="btn btn-success btn-sm">Paid</button></td>
+                        <td>
+                          <button mat-stroked-button class="mx-2 mw-45px"><img src="assets/images/eye_icon.svg"></button>                                    
+                          <button mat-stroked-button class="mw-45px"><img src="assets/images/download.svg"></button>
+                        </td>
+                        
+                      </tr>
+                      <tr>
+                        <td> <label>Request_02</label> </td>
+                        <td><button class="btn btn-warning btn-sm">Pending</button></td>
+                        <td>
+                          <button mat-stroked-button class="mx-2 mw-45px"><img src="assets/images/eye_icon.svg"></button>                                    
+                          <button mat-stroked-button class="mw-45px"><img src="assets/images/download.svg"></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td> <label>Request_03</label> </td>
+                        <td><button class="btn btn-success btn-sm">Paid</button></td>
+                        <td>
+                          <button mat-stroked-button class="mx-2 mw-45px"><img src="assets/images/eye_icon.svg"></button>                                    
+                          <button mat-stroked-button class="mw-45px"><img src="assets/images/download.svg"></button>
+                        </td>
+                        
+                      </tr>
+                      <tr>
+                        <td> <label>Request_04</label> </td>
+                        <td><button class="btn btn-success btn-sm">Paid</button></td>
+                        <td>
+                          <button mat-stroked-button class="mx-2 mw-45px"><img src="assets/images/eye_icon.svg"></button>                                    
+                          <button mat-stroked-button class="mw-45px"><img src="assets/images/download.svg"></button>
+                        </td>
+                        
+                      </tr>
+                      <tr>
+                        <td> <label>Request_05</label> </td>
+                        <td><button class="btn btn-success btn-sm">Paid</button></td>
+                        <td>
+                          <button mat-stroked-button class="mx-2 mw-45px"><img src="assets/images/eye_icon.svg"></button>                                    
+                          <button mat-stroked-button class="mw-45px"><img src="assets/images/download.svg"></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td> <label>Request_06</label> </td>
+                        <td><button class="btn btn-success btn-sm">Paid</button></td>
+                        <td>
+                          <button mat-stroked-button class="mx-2 mw-45px"><img src="assets/images/eye_icon.svg"></button>                                    
+                          <button mat-stroked-button class="mw-45px"><img src="assets/images/download.svg"></button>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+                </mat-card>
+
+
+
+
+
+                <div class="card-body min-height">
+                  <div class="card payment shadow-none mb-3 p-0">                 
+                    <div class="card-body p-0">
+                      
+
+                      <div class="">
+                        
+                      </div>
+                    </div>
+                  </div>
+
+                  
+                </div>
+
+
+              </div>
+            </div>
+
+            <!-- <div class="col-lg-4">
+                  <div class="card">
+                      <div class="card-header p-0 border-bottom-0 bg-transparent d-flex justify-content-between">
+                          <h3 class="font-18">Request Statistics</h3>
+                      </div>
+                      <div class="card-body min-height ">
+                        <div class="text-center">
+                              <img src="assets/images/pie_chart.svg">
+                          </div>
+                          <div class="row mt-5 m-0">
+                              <div class="col-lg-5 mt-4">
+                                  <img class="mx-2" src="assets/images/p-case.png">
+                                  <p class="font-14 d-inline mb-5">Pending Cases</p> 
+                                  <br><br>
+                                  <img class="mx-2" src="assets/images/c-case.png">
+                                  <p class="font-14 d-inline mt-2">Complete Cases</p>
+    
+                              </div>
+                              <div class="col-lg-7">
+                                  <p class="font-14 d-inline-flex mb-0">Pending from past<br> 6 days</p>
+                                  <img class="mx-4" src="assets/images/panding.png">
+                                  <br>
+                                  <p class="font-14 d-inline-flex">Total complete cases<br> in past 10 days</p>
+                                  <img class="mx-3" src="assets/images/panding.png">
+                              </div>
+                          </div>
+    
+                        
+                      </div>
+                  </div>
+              </div> -->
+            <!-- <div class="col-lg-4">
+                  <div class="card">
+                      <div class="card-header p-0 border-bottom-0 bg-transparent d-flex justify-content-between">
+                          <h3 class="font-18">Quick Links</h3> <a href="">View all</a>
+                      </div>
+                      <div class="card-body min-height ">
+                        <div class="card payment shadow-none mb-1 py-0">                 
+                          <div class="card-body p-0 border-bottom p-2">
+                            
+                            <div class="row">
+                              <div class="col-md-2 text-center pt-1">
+                                <img src="assets/images/Q_01.png">
+                              </div>
+                              <div class="col-md-10 payment_id mt-2">
+                                <label>Pension User Manual</label>
+                              </div>                        
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="card payment shadow-none mb-1 py-0">                 
+                          <div class="card-body p-0 border-bottom p-2">
+                            
+                            <div class="row">
+                              <div class="col-md-2 text-center pt-1">
+                                <img src="assets/images/Q_02.png">
+                              </div>
+                              <div class="col-md-10 payment_id mt-2">
+                                <label>Life Certificate User Manual</label>
+                              </div>                        
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="card payment shadow-none mb-1 py-0">                 
+                          <div class="card-body p-0 border-bottom p-2">
+                            
+                            <div class="row">
+                              <div class="col-md-2 text-center pt-1">
+                                <img src="assets/images/Q_03.png">
+                              </div>
+                              <div class="col-md-10 payment_id mt-2">
+                                <label>Finance Department of Rajasthan</label>
+                              </div>                        
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="card payment shadow-none mb-1 py-0">                 
+                          <div class="card-body p-0 border-bottom p-2">
+                            
+                            <div class="row">
+                              <div class="col-md-2 text-center pt-1">
+                                <img src="assets/images/Q_04.png">
+                              </div>
+                              <div class="col-md-10 payment_id mt-2">
+                                <label>Pension Rules</label>
+                              </div>                        
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="card payment shadow-none mb-1 py-0">                 
+                          <div class="card-body p-0 border-bottom p-2">
+                            
+                            <div class="row">
+                              <div class="col-md-2 text-center pt-1">
+                                <img src="assets/images/Q_05.png">
+                              </div>
+                              <div class="col-md-10 payment_id mt-2">
+                                <label>Pension Calculator</label>
+                              </div>                        
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="card payment shadow-none mb-1 py-0">                 
+                          <div class="card-body p-0 border-bottom p-2">
+                            
+                            <div class="row">
+                              <div class="col-md-2 text-center pt-1">
+                                <img src="assets/images/Q_06.png">
+                              </div>
+                              <div class="col-md-10 payment_id mt-2">
+                                <label>Monthly Pension</label>
+                              </div>                        
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="card payment shadow-none mb-1 py-0">                 
+                          <div class="card-body p-0 border-bottom p-2">
+                            
+                            <div class="row">
+                              <div class="col-md-2 text-center pt-1">
+                                <img src="assets/images/Q_01.png">
+                              </div>
+                              <div class="col-md-10 payment_id mt-2">
+                                <label>Press Release</label>
+                              </div>                        
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="card payment shadow-none mb-1 py-0">                 
+                          <div class="card-body p-0 border-bottom p-2">
+                            
+                            <div class="row">
+                              <div class="col-md-2 text-center pt-1">
+                                <img src="assets/images/Q_02.png">
+                              </div>
+                              <div class="col-md-10 payment_id mt-2">
+                                <label>Pension User Manual</label>
+                              </div>                        
+                            </div>
+                          </div>
+                        </div>
+  
+                      </div>
+                  </div>
+              </div> -->
+            <!-- <div class="col-lg-4">
+                  <div class="card">
+                      <div class="card-header p-0 border-bottom-0 bg-transparent d-flex justify-content-between">
+                          <h3 class="font-18">Updates & Announcements</h3> <a href="">View all</a>
+                      </div>
+                      <div class="card-body min-height ">
+                        <div class="card payment shadow-none mb-3 py-0 mt-3">                 
+                          <div class="card-body p-0 border-bottom pt-2">
+                            <div class="row">
+                              <div class="col-md-1 text-center pt-1">
+                                <img src="assets/images/update_icon.png">
+                              </div>
+                              <div class="col-md-10 payment_id">
+                                <label>Ex-gratia grant to the family of volunteer home guard…</label>
+                                <span><mark></mark>12 Jan 2023 | 2:00 pm</span>
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="card payment shadow-none mb-3 py-0 mt-3">                 
+                          <div class="card-body p-0 border-bottom pt-2">
+                            <div class="row">
+                              <div class="col-md-1 text-center pt-1">
+                                <img src="assets/images/update_icon.png">
+                              </div>
+                              <div class="col-md-10 payment_id">
+                                <label>Service Book Not Mandatory for New Pension in IFPMS New</label>
+                                <span><mark></mark>12 Jan 2023 | 2:00 pm</span>
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="card payment shadow-none mb-3 py-0 mt-3">                 
+                          <div class="card-body p-0 border-bottom pt-2">
+                            <div class="row">
+                              <div class="col-md-1 text-center pt-1">
+                                <img src="assets/images/update_icon.png">
+                              </div>
+                              <div class="col-md-10 payment_id">
+                                <label>NewLife Certificate Submission Date Extended</label>
+                                <span><mark></mark>12 Jan 2023 | 2:00 pm</span>
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="card payment shadow-none mb-3 py-0 mt-3">                 
+                          <div class="card-body p-0 border-bottom pt-2">
+                            <div class="row">
+                              <div class="col-md-1 text-center pt-1">
+                                <img src="assets/images/update_icon.png">
+                              </div>
+                              <div class="col-md-10 payment_id">
+                                <label>Interest paid on Delayed Payment of TDS is Not Business</label>
+                                <span><mark></mark>12 Jan 2023 | 2:00 pm</span>
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="card payment shadow-none mb-3 py-0 mt-3">                 
+                          <div class="card-body p-0 border-bottom pt-2">
+                            <div class="row">
+                              <div class="col-md-1 text-center pt-1">
+                                <img src="assets/images/update_icon.png">
+                              </div>
+                              <div class="col-md-10 payment_id">
+                                <label>Ex-gratia grant to the family of volunteer home guard…</label>
+                                <span><mark></mark>12 Jan 2023 | 2:00 pm</span>
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="card payment shadow-none mb-3 py-0 mt-3">                 
+                          <div class="card-body p-0 border-bottom pt-2">
+                            <div class="row">
+                              <div class="col-md-1 text-center pt-1">
+                                <img src="assets/images/update_icon.png">
+                              </div>
+                              <div class="col-md-10 payment_id">
+                                <label>Service Book Not Mandatory for New Pension in IFPMS New</label>
+                                <span><mark></mark>12 Jan 2023 | 2:00 pm</span>
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </div>
+    
+    
+                        
+                      </div>
+                  </div>
+              </div> -->
+            <!-- <div class="col-lg-8">
+                <div class="card bg-light">
+                    <div class="card-header p-0 border-bottom-0 bg-transparent d-flex justify-content-between">
+                        <h3 class="font-18">Pension Management FAQ’s</h3>
+                    </div>
+    
+                    <div class="card-body min-height p-3">
+                      <mat-accordion>
+                        <mat-expansion-panel>
+                          <mat-expansion-panel-header class="border-bottom">
+                            <mat-panel-title>
+                              <b>Are the employees who joined pensionable establishments of Govt. of India after 31/12/2003 eligible for any benefits under these rules ?</b>
+                            </mat-panel-title>
+                            
+                          </mat-expansion-panel-header>
+                          <p class="font-18 p-2 pt-3">As per the Department of Pension & PW O.M. No.38/41/06 –P&PW(A) dated 5.5.2009 (available on website) the benefits under the CCS(Pension) Rules has been provisionally extended to the families of deceased employees covered under NPS. Family Pension/gratuity in terms of O.M. dated 5.5.2009 shall be payable to the family of the deceased employee if the deceased employee was covered under NPS and fulfils the conditions. These payments are provisional and will be adjusted as per the final provisions. As per Para 7 of the O.M., the accumulations in pension wealth of deceased employee under NPS will not be paid during the period provisional benefits under the aforementioned O.M. are payable. The Head of Office will prepare the pension papers as per provisions of the relevant rules and proceed as per the procedure for making the provisional payments to eligible Government servants’ families explained in Ministry of Finance O.M. No.1(7)/DCPS(NPS)/2009/TA/221 dated 2.7.2009 read with corrigendum dated 29.9.2009.</p>
+                        </mat-expansion-panel>
+    
+                        <mat-expansion-panel class="mt-4">
+                          <mat-expansion-panel-header class="border-bottom">
+                            <mat-panel-title>
+                              <b>What are the guidelines/orders in regard to settlement of dues of the deceased Government employees covered under NPS ?</b>
+                            </mat-panel-title>
+                          </mat-expansion-panel-header>
+                          <p class="font-18 p-2 pt-3">As per the Department of Pension & PW O.M. No.38/41/06 –P&PW(A) dated 5.5.2009 (available on website) the benefits under the CCS(Pension) Rules has been provisionally extended to the families of deceased employees covered under NPS. Family Pension/gratuity in terms of O.M. dated 5.5.2009 shall be payable to the family of the deceased employee if the deceased employee was covered under NPS and fulfils the conditions. These payments are provisional and will be adjusted as per the final provisions. As per Para 7 of the O.M., the accumulations in pension wealth of deceased employee under NPS will not be paid during the period provisional benefits under the aforementioned O.M. are payable. The Head of Office will prepare the pension papers as per provisions of the relevant rules and proceed as per the procedure for making the provisional payments to eligible Government servants’ families explained in Ministry of Finance O.M. No.1(7)/DCPS(NPS)/2009/TA/221 dated 2.7.2009 read with corrigendum dated 29.9.2009.</p>
+                        </mat-expansion-panel>
+    
+                        <mat-expansion-panel class="mt-4">
+                          <mat-expansion-panel-header class="border-bottom">
+                            <mat-panel-title>
+                              <b>Are the employees who joined pensionable establishments of Govt. of India after 31/12/2003 eligible for any benefits under these rules ?</b>
+                            </mat-panel-title>
+                            
+                          </mat-expansion-panel-header>
+                          <p class="font-18 p-2 pt-3">As per the Department of Pension & PW O.M. No.38/41/06 –P&PW(A) dated 5.5.2009 (available on website) the benefits under the CCS(Pension) Rules has been provisionally extended to the families of deceased employees covered under NPS. Family Pension/gratuity in terms of O.M. dated 5.5.2009 shall be payable to the family of the deceased employee if the deceased employee was covered under NPS and fulfils the conditions. These payments are provisional and will be adjusted as per the final provisions. As per Para 7 of the O.M., the accumulations in pension wealth of deceased employee under NPS will not be paid during the period provisional benefits under the aforementioned O.M. are payable. The Head of Office will prepare the pension papers as per provisions of the relevant rules and proceed as per the procedure for making the provisional payments to eligible Government servants’ families explained in Ministry of Finance O.M. No.1(7)/DCPS(NPS)/2009/TA/221 dated 2.7.2009 read with corrigendum dated 29.9.2009.</p>
+                        </mat-expansion-panel>
+    
+                        <mat-expansion-panel class="mt-4">
+                          <mat-expansion-panel-header class="border-bottom">
+                            <mat-panel-title>
+                              <b>What are the guidelines/orders in regard to settlement of dues of the deceased Government employees covered under NPS ?</b>
+                            </mat-panel-title>
+                          </mat-expansion-panel-header>
+                          <p class="font-18 p-2 pt-3">As per the Department of Pension & PW O.M. No.38/41/06 –P&PW(A) dated 5.5.2009 (available on website) the benefits under the CCS(Pension) Rules has been provisionally extended to the families of deceased employees covered under NPS. Family Pension/gratuity in terms of O.M. dated 5.5.2009 shall be payable to the family of the deceased employee if the deceased employee was covered under NPS and fulfils the conditions. These payments are provisional and will be adjusted as per the final provisions. As per Para 7 of the O.M., the accumulations in pension wealth of deceased employee under NPS will not be paid during the period provisional benefits under the aforementioned O.M. are payable. The Head of Office will prepare the pension papers as per provisions of the relevant rules and proceed as per the procedure for making the provisional payments to eligible Government servants’ families explained in Ministry of Finance O.M. No.1(7)/DCPS(NPS)/2009/TA/221 dated 2.7.2009 read with corrigendum dated 29.9.2009.</p>
+                        </mat-expansion-panel>
+    
+                        <mat-expansion-panel class="mt-4">
+                          <mat-expansion-panel-header class="border-bottom">
+                            <mat-panel-title>
+                              <b>Are the employees who joined pensionable establishments of Govt. of India after 31/12/2003 eligible for any benefits under these rules ?</b>
+                            </mat-panel-title>
+                            
+                          </mat-expansion-panel-header>
+                          <p class="font-18 p-2 pt-3">As per the Department of Pension & PW O.M. No.38/41/06 –P&PW(A) dated 5.5.2009 (available on website) the benefits under the CCS(Pension) Rules has been provisionally extended to the families of deceased employees covered under NPS. Family Pension/gratuity in terms of O.M. dated 5.5.2009 shall be payable to the family of the deceased employee if the deceased employee was covered under NPS and fulfils the conditions. These payments are provisional and will be adjusted as per the final provisions. As per Para 7 of the O.M., the accumulations in pension wealth of deceased employee under NPS will not be paid during the period provisional benefits under the aforementioned O.M. are payable. The Head of Office will prepare the pension papers as per provisions of the relevant rules and proceed as per the procedure for making the provisional payments to eligible Government servants’ families explained in Ministry of Finance O.M. No.1(7)/DCPS(NPS)/2009/TA/221 dated 2.7.2009 read with corrigendum dated 29.9.2009.</p>
+                        </mat-expansion-panel>
+    
+                        <mat-expansion-panel class="mt-4">
+                          <mat-expansion-panel-header class="border-bottom">
+                            <mat-panel-title>
+                              <b>What are the guidelines/orders in regard to settlement of dues of the deceased Government employees covered under NPS ?</b>
+                            </mat-panel-title>
+                          </mat-expansion-panel-header>
+                          <p class="font-18 p-2 pt-3">As per the Department of Pension & PW O.M. No.38/41/06 –P&PW(A) dated 5.5.2009 (available on website) the benefits under the CCS(Pension) Rules has been provisionally extended to the families of deceased employees covered under NPS. Family Pension/gratuity in terms of O.M. dated 5.5.2009 shall be payable to the family of the deceased employee if the deceased employee was covered under NPS and fulfils the conditions. These payments are provisional and will be adjusted as per the final provisions. As per Para 7 of the O.M., the accumulations in pension wealth of deceased employee under NPS will not be paid during the period provisional benefits under the aforementioned O.M. are payable. The Head of Office will prepare the pension papers as per provisions of the relevant rules and proceed as per the procedure for making the provisional payments to eligible Government servants’ families explained in Ministry of Finance O.M. No.1(7)/DCPS(NPS)/2009/TA/221 dated 2.7.2009 read with corrigendum dated 29.9.2009.</p>
+                        </mat-expansion-panel>
+    
+                        <mat-expansion-panel class="mt-4">
+                          <mat-expansion-panel-header class="border-bottom">
+                            <mat-panel-title>
+                              <b>Are the employees who joined pensionable establishments of Govt. of India after 31/12/2003 eligible for any benefits under these rules ?</b>
+                            </mat-panel-title>
+                            
+                          </mat-expansion-panel-header>
+                          <p class="font-18 p-2 pt-3">As per the Department of Pension & PW O.M. No.38/41/06 –P&PW(A) dated 5.5.2009 (available on website) the benefits under the CCS(Pension) Rules has been provisionally extended to the families of deceased employees covered under NPS. Family Pension/gratuity in terms of O.M. dated 5.5.2009 shall be payable to the family of the deceased employee if the deceased employee was covered under NPS and fulfils the conditions. These payments are provisional and will be adjusted as per the final provisions. As per Para 7 of the O.M., the accumulations in pension wealth of deceased employee under NPS will not be paid during the period provisional benefits under the aforementioned O.M. are payable. The Head of Office will prepare the pension papers as per provisions of the relevant rules and proceed as per the procedure for making the provisional payments to eligible Government servants’ families explained in Ministry of Finance O.M. No.1(7)/DCPS(NPS)/2009/TA/221 dated 2.7.2009 read with corrigendum dated 29.9.2009.</p>
+                        </mat-expansion-panel>
+    
+                        <mat-expansion-panel class="mt-4">
+                          <mat-expansion-panel-header class="border-bottom">
+                            <mat-panel-title>
+                              <b>What are the guidelines/orders in regard to settlement of dues of the deceased Government employees covered under NPS ?</b>
+                            </mat-panel-title>
+                          </mat-expansion-panel-header>
+                          <p class="font-18 p-2 pt-3">As per the Department of Pension & PW O.M. No.38/41/06 –P&PW(A) dated 5.5.2009 (available on website) the benefits under the CCS(Pension) Rules has been provisionally extended to the families of deceased employees covered under NPS. Family Pension/gratuity in terms of O.M. dated 5.5.2009 shall be payable to the family of the deceased employee if the deceased employee was covered under NPS and fulfils the conditions. These payments are provisional and will be adjusted as per the final provisions. As per Para 7 of the O.M., the accumulations in pension wealth of deceased employee under NPS will not be paid during the period provisional benefits under the aforementioned O.M. are payable. The Head of Office will prepare the pension papers as per provisions of the relevant rules and proceed as per the procedure for making the provisional payments to eligible Government servants’ families explained in Ministry of Finance O.M. No.1(7)/DCPS(NPS)/2009/TA/221 dated 2.7.2009 read with corrigendum dated 29.9.2009.</p>
+                        </mat-expansion-panel>
+    
+    
+                      </mat-accordion>
+    
+                    </div>
+                  
+                </div>
+            </div> -->
+            <!-- <div class="col-lg-4">
+              <div class="card">
+                  <div class="card-header p-0 border-bottom-0 bg-transparent d-flex justify-content-between">
+                      <h3 class="font-18">Latest News</h3> <a href="">View all</a>
+                  </div>
+                  <div class="card-body min-height ">
+                    <div class="card payment shadow-none mb-3 py-0 mt-3">                 
+                      <div class="card-body p-0 pt-2">
+                        <div class="row">
+                          <div class="col-md-1 text-center pt-1">
+                            <img src="assets/images/update_icon.png">
+                          </div>
+                          <div class="col-md-10 payment_id">
+                            <label>Rajasthan government announces 4 per cent hike in DA of state employees, pensioners</label>
+                            <img class="my-3" src="assets/images/latest_news.png">
+                            <p>The Rajasthan government on Saturday announced a 4 per cent increase in the…</p>
+                            <span><mark></mark>12 Jan 2023 | 2:00 pm <img src="assets/images/new.png"></span>
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+    
+                    
+                  </div>
+              </div>
+          </div> -->
+  
+
+
+
+          </div>
+        </div>
+      
+    </div>
+
+
+
+
+
+
+  </div>
+</div>

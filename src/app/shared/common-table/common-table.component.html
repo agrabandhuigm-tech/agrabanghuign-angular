@@ -1,0 +1,58 @@
+<!-- <div class="">
+    <table mat-table [dataSource]="dataSource" matSort class="w-100">
+      <ng-container matColumnDef="applicationNo" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="headerTable">Application No</th>
+        <td mat-cell *matCellDef="let row" class="dataText"> {{row.applicationNo}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="category" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="headerTable">Category</th>
+        <td mat-cell *matCellDef="let row" class="dataText"> {{row.category}} </td>
+      </ng-container>
+      <ng-container matColumnDef="subCategory" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="headerTable">Sub-Category</th>
+        <td mat-cell *matCellDef="let row" class="dataText"> {{row.subCategory}} </td>
+      </ng-container>
+                
+     
+      <ng-container matColumnDef="FName" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="headerTable">Firm/Organisation Name</th>
+        <td mat-cell *matCellDef="let row" class="dataText"> {{row.firmName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Name" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="headerTable">Name</th>
+        <td mat-cell *matCellDef="let row" class="dataText"> {{row.firstName}} </td>
+      </ng-container>
+      
+     
+      <ng-container matColumnDef="MOBILE_NO" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="headerTable" >Mobile<br>No</th>
+        <td mat-cell *matCellDef="let row" class="dataText"> {{row.mobileNo}} </td>
+      </ng-container>
+  
+      
+      <ng-container matColumnDef="EMAIL_ID" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="headerTable">Email<br>ID</th>
+        <td mat-cell *matCellDef="let row" class="dataText"> {{row.emailId}} </td>
+      </ng-container>
+     
+  
+      
+      <ng-container matColumnDef="View">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="headerTable">View</th>
+        <td mat-cell *matCellDef="let row" >
+          <button mat-button class="text-dark-2" (click)="openViewVendor(row)"><mat-icon>remove_red_eye</mat-icon> </button>
+        </td>
+      </ng-container>
+      
+     
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell"  colspan="6">No data Found </td>
+      </tr>
+    </table>                      
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div> -->

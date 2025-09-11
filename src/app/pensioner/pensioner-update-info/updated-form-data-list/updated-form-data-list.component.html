@@ -1,0 +1,415 @@
+
+
+<!-- .....................  INSERTED DATA SHOWN IN THE TABLE ...................... -->
+
+
+
+ <!-- <div class="mt-1 mb-8 container-fluid full" *ngIf="isSubmitted"> -->
+ <div class="mt-1 mb-8 container-fluid full">
+
+
+  <div class="tab-content" id="nav-tabContent">
+      <section>
+          <div class="content-wrapper">
+              <nav aria-label="breadcrumb">
+              </nav>
+          </div>
+      </section>
+      <mat-card class="p-0 mb-5 mt-3">
+        <div class="row">
+            <!-- <div class="col-lg-6"><h2 class="p-3">Pensioners Info Details List </h2></div> -->
+            <div class="col-lg-6"><h2 class="p-3">Pensioners Details List </h2></div>
+            <div class="col-lg-6 text-end">
+                <!-- <div class="p-3">
+                    <button mat-flat-button color="primary" (click)="redirectToForm()">Back</button>
+                </div> -->
+            </div>
+        </div>
+          <div class="content-wrapper w-100 p-3">
+
+
+          
+
+              <div class="container-fluid scroll-container align-items-left table-responsive"
+                  ngClass="example-container">
+                  <!-- <div class="col-lg-6 text-end">
+                    <button mat-flat-button color="primary " class="px-8 "> Back </button>
+                  </div> -->
+          
+
+                  <!-- <div class="col-3">
+                    <mat-form-field class="w-100 float-end">
+                        <mat-label><mat-icon>search</mat-icon> Filter</mat-label>
+                        <input matInput placeholder="Ex. ium" (keyup)="applyFilter($event)" #input>
+                    </mat-form-field>
+                </div> -->
+
+
+                <div *ngIf="this.dataSource.data.length > 0">
+
+                <div class="col-lg-6"><h2 class="p-3">Personal Details List </h2></div>
+
+
+                  <table mat-table [dataSource]="dataSource" matSort class="w-100 custome_table">
+
+
+                    <ng-container matColumnDef="srNo">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Sr. No.</th>
+                      <td mat-cell *matCellDef="let row , index as i" matTooltip={{row.srNo}}>
+                         
+                          <!-- <a>{{row.srNo}}{{(paginator.pageIndex * paginator.pageSize) + (i + 1)}}</a> -->
+                          <a>{{row.srNo}}</a>
+                      </td>
+                  </ng-container>
+
+                      <ng-container matColumnDef="currentAddress">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Current Address</th>
+                          <td mat-cell *matCellDef="let row , index as i">
+                              <a>{{row.v_dept_name}}</a>
+                              <!-- <a>{{  row?.addressDetails?.employeeAddresses[0]?.currentAddress?.currentHouseNo?    row?.addressDetails?.employeeAddresses[0]?.currentAddress?.currentHouseNo : ''  + ','+
+                                 row?.addressDetails?.employeeAddresses[0]?.currentAddress?.currentArea?  row?.addressDetails?.employeeAddresses[0]?.currentAddress?.currentArea : '' + ','+
+                                 row?.addressDetails?.employeeAddresses[0]?.currentAddress?.currentDistrict?  row?.addressDetails?.employeeAddresses[0]?.currentAddress?.currentDistrict : '' 
+                                }}</a> -->
+                          </td>
+                      </ng-container>
+
+                   
+
+                      <ng-container matColumnDef="pensionerId">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Pensioner Id </th>
+                          <td mat-cell *matCellDef="let row , index as i" matTooltip={{row.pensionerId}}>
+                              <a>{{row.pensionerId}}</a>
+                          </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="bankTreasuryDetails">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Bank Details</th>
+                          <td mat-cell *matCellDef="let row , index as i" >
+                              <a>{{row?.bankTreasuryDetails?.accountNo}}</a>
+                          </td>
+                      </ng-container>
+
+                      
+
+                    <ng-container matColumnDef="ifscCode">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>IFSC Code</th>
+                      <td mat-cell *matCellDef="let row , index as i">
+                          <a>{{row?.bankTreasuryDetails?.ifscCode}}</a>
+                      </td>
+                  </ng-container>
+                  
+
+                  <ng-container matColumnDef="mobileNumber">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Mobile No.</th>
+                    <td mat-cell *matCellDef="let row , index as i">
+                        <a>{{row?.personalDetails?.mobileNumber}}</a>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="panNo">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Pan No</th>
+                  <td mat-cell *matCellDef="let row , index as i">
+                      <a>{{row?.personalDetails?.panNo}}</a>
+                  </td>
+              </ng-container>
+
+              <ng-container matColumnDef="bankName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Bank Name</th>
+                <td mat-cell *matCellDef="let row , index as i" >
+                    <a>{{row?.bankTreasuryDetails?.bankName}}</a>
+                </td>
+            </ng-container>
+
+              
+              <ng-container matColumnDef="mobileNo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Mobile No.</th>
+                <td mat-cell *matCellDef="let row , index as i" matTooltip={{row.mobileNo}}>
+                    <a>{{row.mobileNo}}</a>
+                </td>
+            </ng-container>
+
+            
+            <ng-container matColumnDef="createdDate">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Created Date</th>
+              <td mat-cell *matCellDef="let row , index as i" matTooltip={{row.createdDate}}>
+                  <a>{{row.createdDate}}</a>
+              </td>
+          </ng-container>
+
+          <ng-container matColumnDef="closingDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Closing Date</th>
+            <td mat-cell *matCellDef="let row , index as i" matTooltip={{row.closingDate}}>
+                <a>{{row.closingDate}}</a>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="zoneName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Zone</th>
+          <td mat-cell *matCellDef="let row , index as i" matTooltip={{row.zoneName}}>
+              <a>{{row.zoneName}}</a>
+          </td>
+      </ng-container>
+
+      <ng-container matColumnDef="distName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>District</th>
+        <td mat-cell *matCellDef="let row , index as i" matTooltip={{row.distName}}>
+            <a>{{row.distName}}</a>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let row , index as i" matTooltip={{row.status}}>
+          <a>{{row.status}}</a>
+      </td>
+  </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+      <td mat-cell *matCellDef="let row , index as i" matTooltip={{row.category}}>
+          <a>{{row.category}}</a>
+      </td>
+  </ng-container>
+
+  
+
+  <!-- <ng-container matColumnDef="trail">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Trail</th>
+    <td mat-cell *matCellDef="let row , index as i" matTooltip={{row.trail}}>
+      
+        <mat-icon   style="color: rgb(58, 137, 240);" >remove_red_eye</mat-icon> 
+    </td>
+</ng-container> -->
+
+                      
+
+                 
+
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                      <tr class="mat-row" *matNoDataRow>
+                      </tr>
+                  </table>
+
+                </div>
+
+
+
+
+                  
+                  <!-- /////////////////////////////////////////////// -->
+
+                  <div *ngIf="this.currentaddressSource.data.length >0">
+
+                  <div class="col-lg-6"><h2 class="p-3">Current Address Details List </h2></div>
+
+                  <table mat-table [dataSource]="dataSource" matSort class="w-100 custome_table">
+
+
+                    <ng-container matColumnDef="srNo">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Sr. No.</th>
+                      <td mat-cell *matCellDef="let row , index as i" matTooltip={{row.srNo}}>
+                         
+                          <!-- <a>{{row.srNo}}{{(pageIndex *pageSize) + (i + 1)}}</a> -->
+                          <a>{{(i + 1)}}</a>
+                      </td>
+                  </ng-container>
+
+                 
+
+                   
+
+                      <ng-container matColumnDef="pensionerId">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Pensioner Id </th>
+                          <td mat-cell *matCellDef="let row , index as i" matTooltip={{row.pensionerId}}>
+                              <a>{{row.pensionerId}}</a>
+                          </td>
+                      </ng-container>
+
+               
+                  
+
+                  <ng-container matColumnDef="currentAddress">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Current Address.</th>
+                    <td mat-cell *matCellDef="let row , index as i">
+                        <!-- <a>{{row?.currentAddress?.currentHouseNo}}</a> -->
+                        <a>{{row?.currentAddress?.currentHouseNo + ','+
+                             row?.currentAddress?.currentAreaName + ','+ 
+                             row?.currentAddress?.currentMunicipalName + ','+ 
+                             row?.currentAddress?.currentDistrictName}}</a>
+                        <!-- row?.addressDetails?.employeeAddresses[0]?.currentAddress?.currentHouseNo?    row?.addressDetails?.employeeAddresses[0]?.currentAddress?.currentHouseNo : ''  + ','+ -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="panNo">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Pan No</th>
+                  <td mat-cell *matCellDef="let row , index as i">
+                      <a>{{row?.personalDetails?.panNo}}</a>
+                  </td>
+              </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+
+                      <tr class="mat-row" *matNoDataRow>
+                      </tr>
+                  </table>
+
+                  </div>
+
+
+
+                  <!-- ////////////////////////////////////////////////////// -->
+
+                   <!-- /////////////////////////////////////////////// -->
+
+                   <div *ngIf="this.permanentaddressSource.data.length >0">
+
+                   <div class="col-lg-6"><h2 class="p-3">Permanent Address Details List </h2></div>
+
+                   <table mat-table [dataSource]="dataSource" matSort class="w-100 custome_table">
+ 
+ 
+                     <ng-container matColumnDef="srNo">
+                       <th mat-header-cell *matHeaderCellDef mat-sort-header>Sr. No.</th>
+                       <td mat-cell *matCellDef="let row , index as i" matTooltip={{row.srNo}}>
+                          
+                           <!-- <a>{{row.srNo}}{{(pageIndex *pageSize) + (i + 1)}}</a> -->
+                           <a>{{(i + 1)}}</a>
+                       </td>
+                   </ng-container>
+ 
+                  
+ 
+                    
+ 
+                       <ng-container matColumnDef="pensionerId">
+                           <th mat-header-cell *matHeaderCellDef mat-sort-header>Pensioner Id </th>
+                           <td mat-cell *matCellDef="let row , index as i" matTooltip={{row.pensionerId}}>
+                               <a>{{row.pensionerId}}</a>
+                           </td>
+                       </ng-container>
+ 
+                
+                   
+ 
+                       <ng-container matColumnDef="permanentAddress">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Permanent Address.</th>
+                        <td mat-cell *matCellDef="let row , index as i">
+                            <!-- <a>{{row?.currentAddress?.currentHouseNo}}</a> -->
+                            <a>{{row?.permanentAddress?.permanentHouseNo + ','+
+                                row?.permanentAddress?.permanetAreaName + ','+
+                                 row?.permanentAddress?.permanentMuncipalName + ','+ 
+                                 row?.permanentAddress?.permanentDistrictName}}</a>
+                            <!-- row?.addressDetails?.employeeAddresses[0]?.currentAddress?.currentHouseNo?    row?.addressDetails?.employeeAddresses[0]?.currentAddress?.currentHouseNo : ''  + ','+ -->
+                        </td>
+                    </ng-container>
+    
+ 
+                 <ng-container matColumnDef="panNo">
+                   <th mat-header-cell *matHeaderCellDef mat-sort-header>Pan No</th>
+                   <td mat-cell *matCellDef="let row , index as i">
+                       <a>{{row?.personalDetails?.panNo}}</a>
+                   </td>
+               </ng-container>
+ 
+                       <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                       <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+ 
+                       <tr class="mat-row" *matNoDataRow>
+                       </tr>
+                   </table>
+ 
+                </div>
+ 
+ 
+                   <!-- ////////////////////////////////////////////////////// -->
+
+                        <!-- /////////////////////////////////////////////// -->
+
+                        <div *ngIf="this.bankdataSource.data.length >0">
+
+                  <div class="col-lg-6"><h2 class="p-3">Bank Details List </h2></div>
+
+                  <table mat-table [dataSource]="bankdataSource" matSort class="w-100 custome_table">
+
+
+                    <ng-container matColumnDef="srNo">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Sr. No.</th>
+                      <td mat-cell *matCellDef="let row , index as i" matTooltip={{row.srNo}}>
+                         
+                          <a>{{(i + 1)}}</a>
+                          <!-- <a>{{row.srNo}}</a> -->
+                      </td>
+                  </ng-container>
+
+                 
+                      <ng-container matColumnDef="pensionerId">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Pensioner Id </th>
+                          <td mat-cell *matCellDef="let row , index as i" matTooltip={{row.pensionerId}}>
+                              <a>{{row.pensionerId}}</a>
+                          </td>
+                      </ng-container>
+
+               
+                  
+
+                      <ng-container matColumnDef="bankTreasuryDetails">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Bank Details</th>
+                        <td mat-cell *matCellDef="let row , index as i" >
+                            <a>{{row?.accountNo}}</a>
+                        </td>
+                    </ng-container>
+
+                    
+
+                  <ng-container matColumnDef="ifscCode">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>IFSC Code</th>
+                    <td mat-cell *matCellDef="let row , index as i">
+                        <a>{{row?.ifscCode}}</a>
+                    </td>
+                </ng-container>
+
+                
+              <ng-container matColumnDef="bankName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Bank Name</th>
+                <td mat-cell *matCellDef="let row , index as i" >
+                    <a>{{row?.bankName}}</a>
+                </td>
+            </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+
+                      <tr class="mat-row" *matNoDataRow>
+                      </tr>
+                  </table>
+                  
+ 
+                        </div>
+
+
+
+                  <!-- ////////////////////////////////////////////////////// -->
+
+
+
+
+
+                  <mat-paginator hidden = "true" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"
+                      showFirstLastButtons></mat-paginator>
+              </div>
+
+          </div>
+
+      </mat-card>
+
+
+  </div>
+
+
+
+
+</div> 

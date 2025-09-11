@@ -1,0 +1,772 @@
+<div class="container-fluid" style="background-color: #edf0f2;">
+  <div class="row">
+      <div class="col-12 mb-5">
+          <div class="registration-card">     
+              <div>
+                  <form >
+                      <!-- [formGroup]="searchEmployeeForm" -->
+                      <div class="tab-container mt-4">
+                          <div class="container-fluid">    
+                              <mat-card class="mt-3 card">
+                                  <div class="">
+                                      <div class="card-header p-0 border-bottom-0 bg-transparent d-flex justify-content-between">
+                                          <h3 class="font-18">PSS Related Reports </h3>
+                                      </div>
+                      
+                                      <div class="card-body p-3">
+                                          <mat-accordion>
+                                              <mat-expansion-panel>
+                                                  <mat-expansion-panel-header class="border-bottom">
+                                                  <mat-panel-title><b>Personal Details</b></mat-panel-title></mat-expansion-panel-header>                                                   
+                                                  
+                                                  <div class="container-fluid">
+                                                      <div class="row">
+                                
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div class="avatar-upload">
+                                                            <span>Joint Photograph</span>
+                                                            <div class="avatar-edit">
+                                                              <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                                                                 />
+                                                                 <!-- (change)="uploadFile($event)" -->
+                                                            </div>
+                                                            <div class="avatar-preview">                              
+                                                              <div id="imagePreview" [style.backgroundImage]="'url('+ jointImageUrl +')'"> <i
+                                                                  class="fa fa-edit"></i>
+                                                              </div>
+                                                            </div>
+                                                            <!-- <button class="editbutton" (click)="fileInput.click()"><mat-icon>edit</mat-icon></button> -->
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div class="avatar-upload">
+                                                            <span>Employee Photograph</span>
+                                                            <div class="avatar-edit">
+                                                              <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                                                                 />
+                                                                 <!-- (change)="uploadFile($event)" -->
+                                                            </div>
+                                                            <div class="avatar-preview">
+                                                              <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'" >
+                                                                  <!-- *ngIf="picData==''" -->
+                                                                  <i class="fa fa-edit" ></i>
+                                                              </div>
+                                                              <img [src]="picData" style=" width: auto;  height: 100%;"/>
+                                                            </div>
+                                                            <!-- <button class="editbutton" (click)="fileInput.click()"><mat-icon>edit</mat-icon></button> -->
+                                                          </div>
+                                                        </div>
+                                                        
+                                                      </div>
+                                                      
+                                                      <div class="row" >
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Janadhaar Number</span>   
+                                                            {{Personaldetail?Personaldetail.janAdharId :"N/A" }}
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Employee Name</span>
+                                                            <label>{{Personaldetail?Personaldetail.employeeName:"N/A"}}</label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Employee ID</span>
+                                                            <label>{{Personaldetail?Personaldetail.employeeId:"N/A"}}</label>
+                                                          </div>
+                                                        </div>
+                                                   
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>SSO ID </span>
+                                                            <label>{{Personaldetail?Personaldetail.ssoId:"N/A"}}</label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Gender</span>
+                                                            <label>{{Personaldetail?Personaldetail.gender:"N/A"}}</label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Date of Birth</span>
+                                                            <label>{{Personaldetail?Personaldetail.dateOfBirth:"N/A"}}</label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Height</span>
+                                                            <label>{{Personaldetail?Personaldetail.height:"N/A"}}</label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Identification Mark</span>
+                                                            <label>{{Personaldetail?Personaldetail.identificationMarks:"N/A"}}</label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Father's Name</span>
+                                                            <label>{{Personaldetail?Personaldetail.fatherName:""}}</label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Mother's Name</span>
+                                                            <label>{{Personaldetail?Personaldetail?.motherName:""}}</label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3"
+                                                          >
+                                                          <!-- *ngIf="userDetails.roleid!=='1'" -->
+                                                          <div>
+                                                            <span>Martial Status</span>
+                                                            <label>{{Personaldetail?Personaldetail?.maritalStatus:""}}
+                                                            </label>
+                                                          </div>
+                                                        </div>
+                                
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Spouse name</span>
+                                                            <label>{{Personaldetail?Personaldetail.spouseName:""}}</label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3"
+                                                         >
+                                                         <!-- *ngIf="userDetails.roleid!=='1'" -->
+                                                          <div>
+                                                            <span>Disabled</span>
+                                                            <label>{{(Personaldetail?.disable=='0' ||Personaldetail?.disable=='N') ?'No':'Yes'}}
+                                                            </label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                     
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Type of Disability</span>
+                                                            <label>{{Personaldetail?Personaldetail.disable:""}}</label>
+                                                          </div>
+                                                        </div>
+                                
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Percentage of Disability</span>
+                                                            <label>{{Personaldetail?Personaldetail?.percentageOfDisability:""}}</label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Blood Group</span>
+                                                            <label>{{Personaldetail?Personaldetail?.bloodGroup:""}}</label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Email Id</span>
+                                                            <label>{{Personaldetail?Personaldetail.email:""}}</label>
+                                                          </div>
+                                                        </div>
+                                
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                
+                                                          <div>
+                                                            <span>Mobile No</span>
+                                                            <label>{{Personaldetail?Personaldetail?.mobileNumber:""}}</label>
+                                                          </div>
+                                
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Nationality</span>
+                                                            <label>{{Personaldetail?Personaldetail.nationality:""}}</label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Religion</span> 
+                                                            <label>{{Personaldetail?Personaldetail.religion:""}}</label>
+                                                          </div>
+                                                        </div>
+                                
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Pan Number</span>
+                                                            <label>{{Personaldetail?Personaldetail.pan:""}}</label>                             
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <div>
+                                                            <span>Adhaar Number</span>
+                                                            <label>{{Personaldetail?Personaldetail.janAdharId:""}}</label>  
+                                                            
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                          <!-- *ngIf="userDetails.roleid=='1'" -->
+                                                           <!-- <div >
+                                                             <span> Marriage/ReMarriage Certificate   
+                                                              <button  *ngIf="Personaldetail.maritalStatus!='Married'"  mat-stroked-button class="mx-2" color="primary" (click)="downloadPdfFile()"><mat-icon>cloud_download</mat-icon></button>
+                                                            </span>
+                                                             <label>{{Personaldetail?Personaldetail?.maritalStatus:""}}                                                     
+                                                               <a matTooltip="View Marriage Certificate" href="JavaScript:Void(0);">View Marriage  Certificate</a>
+                                                             </label>
+                                                             
+                                                             <input   type="file" id="imageUpload" accept=".pdf" (change)="UploadReMartialStatus($event)" #fileInput>
+                                                           </div> -->
+                                                           
+                                                           <!-- <div >  
+                                                            
+                                                    
+                                                            <div class="uploaddoc" >                                                                   
+                                                              <label for="fileDropRef"   ><a (click)="previewFiles()" download >Download certificate</a>
+                                                              
+                                                              </label>
+                                                             
+                                                            </div>
+                                                          
+                                                          </div>  -->
+                                                         </div> 
+                                                                                    
+                                                      </div>
+                                                      
+                                                     
+
+                                
+                                                    </div>
+
+                                              </mat-expansion-panel>
+                          
+                                              <mat-expansion-panel class="mt-4">
+                                                  <mat-expansion-panel-header class="border-bottom">
+                                                  <mat-panel-title> <b>Service Details</b> </mat-panel-title> </mat-expansion-panel-header>
+
+                                                  <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>Service Category </span>
+                                                        <label>{{Personaldetail?Personaldetail.categoryOfPension:""}}</label>  
+                                                        <!-- <label>{{ServiceDetails?.serviceCatName}}</label> -->
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>Category of Pension </span> 
+                                                        <label>{{Personaldetail?Personaldetail.categoryOfPension:""}}</label>  
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>Office Name </span> 
+                                                        <label>{{Personaldetail?Personaldetail.officeId:""}}</label>  
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>Gazetted</span> 
+                                                        <label>{{Personaldetail?Personaldetail.gazetted:""}}</label>  
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>Admin Department</span> 
+                                                        <label>{{Personaldetail?Personaldetail.parentDepartment:""}}</label>                           
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>Current Department</span>
+                                                        <label>{{Personaldetail?Personaldetail.currentDepartment:""}}</label> 
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>Current Designation</span>
+                                                         <label>{{Personaldetail?Personaldetail.currentDesignation:""}}</label> 
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>Current Office Address</span>
+                                                        <label>{{Personaldetail?Personaldetail.currentOfficeAddress:""}}</label> 
+                                                        <!-- <div  *ngFor="let field of officeArray">
+                                                          <label> {{field.officeNameEn+','+field.officeId+','+field.officeNameEn}}</label>
+                                                        </div> -->
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>Appointment Order No </span> 
+                                                        <label>{{Personaldetail?Personaldetail.appoinmentOrderNO:""}}</label> 
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>Appointment Order Date </span>
+                                                        <label>{{Personaldetail?Personaldetail.appoinmentOrderDate:""}}</label> 
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>Order Issuing Authority/Office </span>
+                                                        <label>{{Personaldetail?Personaldetail.orderIssueAuthorityOffice:""}}</label> 
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>Appointment Authority </span> 
+                                                        <label>{{Personaldetail?Personaldetail.appoinmentAuthority:""}}</label> 
+                                                        <!-- <label>{{Personaldetail?.appointAuthority}}</label> -->
+                                                      </div>
+                                                    </div>
+                              
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <!-- New changes -->
+                                                        <span>Date of Joining Regular Service </span>
+                                                        <label>{{Personaldetail?Personaldetail.dateOfJoining:""}}</label> 
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <!-- New changes --> 
+                                                        <span>Date of Joining Current Designation</span> 
+                                                        <label>{{Personaldetail?Personaldetail.dateOfCurrentDesignation:""}}</label> 
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <!-- New changes -->
+                                                        <span>Date of Joining Present DDO</span>
+                                                        <label>{{Personaldetail?Personaldetail.dateOfJoiningPresentddo:""}}</label>                            
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <!-- New changes -->
+                                                        <span>Joining Date</span>
+                                                        <label>{{Personaldetail?Personaldetail.dateOfJoining:""}}</label>  
+                                                      </div>
+                                                    </div>
+                              
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>Date of Retirement</span>
+                                                        <label>{{Personaldetail?Personaldetail.dateOfRetirement:""}}</label>  
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3"
+                                                     >
+                                                     <!-- *ngIf="userDetails.roleid!=='1'" -->
+                                                      <div>
+                                                        <span>Retirement Order, Sanction</span>
+                                                        <label>{{Personaldetail?Personaldetail.dateOfRetirement:""}}</label> 
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3"
+                                                      >
+                                                      <!-- *ngIf="userDetails.roleid==='1'" -->
+                                                      <!-- <div>
+                                                        <span>Retirement Order, Sanction</span>
+                                                        <label>{{Personaldetail?.disable}}
+                                                          <div *ngFor="let file of document_id">
+                                                            <a *ngIf="file.id==15" matTooltip="Download" href="JavaScript:Void(0);"
+                                                              (click)="get_Detail_Document('Retirement_Certificate',15)">download certificate</a>
+                                                          </div>
+                                                          <div  *ngIf="userDetails.roleid==='1'">
+                                                          
+                                                            <div class="uploaddoc" *ngIf="!Retirementfile && !isRe" >
+                                                              
+                                                              <input type="file" id="fileDropRef" class="inputd" #Rfile (change)="onRetirement(Rfile)" />
+                                                              <input type="file" id="fileDropRef" accept=".pdf" class="inputd"
+                                                                (change)="onRetirement($event)">
+                                                              <label for="fileDropRef">
+                                                                <a matTooltip="View Details" href="JavaScript:Void(0);" >
+                                                                  Upload certificate</a>
+                                                              </label>
+                                                            </div>
+                                                            <div class="uploaddoc" *ngIf="isRe">
+                                                               
+                                                              
+                                                              <label for="fileDropRef">
+                              
+                              
+                                                                <a matTooltip="View Details" href="JavaScript:Void(0);" (click)="previewFiles2('Retirement Order Sanction')">
+                                                                  Download certificate</a>
+                                                              </label>
+                                                              <mat-icon (click)="removeUploadDoc2('Retirement Order Sanction')">delete</mat-icon>
+                                                            </div>
+                                                         
+                              
+                                                          </div>
+                                                        </label>
+                                                      </div> -->
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>PRAN No.</span>
+                                                        <label>{{Personaldetail?Personaldetail.pran:""}}</label> 
+                                                        
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>GPF No.</span>
+                                                        <label>{{Personaldetail?Personaldetail.gpfNo:""}}</label>
+                                                       
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>State Insurance Number</span>
+                                                        <label>{{Personaldetail?Personaldetail.gpfNo:""}}</label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>I.A.S CPNF Number</span>
+                                                        <label>{{Personaldetail?Personaldetail.lascpnfNo:""}}</label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <!-- New Changes -->
+                                                        <span>PPO Number</span>
+                                                        <label>{{Personaldetail?.ppoNo=='null'?'':Personaldetail?.ppoNo}}</label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>Foreign Services</span>
+                                                        <label>{{Personaldetail?Personaldetail.lascpnfNo:""}}</label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>Foreign Empolyer</span> 
+                                                        <label>{{Personaldetail?Personaldetail.foreignEmployeer:""}}</label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <span>Foreign Services From-To Date</span>
+                                                        <label>{{Personaldetail?.from_Date}} - {{Personaldetail?.to_Date}}</label>
+                                                      </div>
+                                                    </div>
+                              
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3" >
+                                                        <!-- *ngIf="userDetails.roleid!='1'" -->
+                                                      <div>
+                                                        
+                                                        <span>Opt for Commutation</span>
+                                                        <label>{{Personaldetail?Personaldetail.optForCommutation:""}}</label>
+                                                      </div>
+                                                    </div>
+                                                    <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3"*ngIf="userDetails.roleid=='1'" >
+                                                       
+                                                      <span>Opt for Commutation</span>
+                                                      <div appearance="outline" class="border border-radius-5 p-2 rounded">                          
+                                                        <mat-select panelClass="myPanelClass" [(ngModel)]="ServiceDetails.optForCommutation" (selectionChange)="value()">
+                                                          <mat-option  value="Yes">Yes</mat-option>
+                                                          <mat-option  value="No">No</mat-option>
+                                                      </mat-select>                     
+                              
+                                                     
+                                                      </div>
+                                                    </div> -->
+                                                    
+                                                   
+                                                    <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3" *ngIf="ServiceDetails.optForCommutation=='Yes' && userDetails.roleid=='1'" >
+                                                      
+                                                      <span>Commutation Precentage</span>
+                                                      <div class="border border-radius-5 p-2 rounded">
+                                                       
+                                                        
+                                                       
+                                                        <input matInput type="number" placeholder="Commutation Precentage" min="0" oninput="this.value = Math.abs(this.value)"  [(ngModel)]="ServiceDetails.commuationPercentage" (change)="numberValidation()">
+                                                      </div>
+                                                    </div> -->
+                                                    <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3" *ngIf="ServiceDetails.optForCommutation=='Yes' && userDetails.roleid!='1'" >
+                                                       
+                                                      <span>Commutation Precentage</span>
+                                                      <label>{{ServiceDetails?.commuationPercentage}}</label>
+                                                    </div> -->
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3"  >
+                                                        <!-- *ngIf="ServiceDetails.optForCommutation=='No'" -->
+                                                      <div>
+                                                        <!-- New changes -->
+                                                        <span>Commutation Precentage</span> 
+                                                        <label>{{Personaldetail?Personaldetail.commutationPercentage:""}}</label>
+                                                       
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                        <!-- New changes -->
+                                                        <span>Income Tax Regime</span> 
+                                                        <label>{{Personaldetail?Personaldetail.IncomeTaxRegime:""}}</label>
+                                                      </div>
+                                                    </div>
+                                                    <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                         New Changes
+                                                        <span>Are you A Ex-Service Man ?</span>
+                                                         <label>{{Personaldetail?.exService}}</label> 
+                                                        <label>No</label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                         New Changes 
+                                                        <span>Are You Getting Pension From The Previous Military
+                                                          Service?</span>
+                                                        <label>No</label>
+                                                         <label>{{Personaldetail?.previousAsignee}}</label> 
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                      <div>
+                                                         New Changes 
+                                                        <span>Are You Getting Civil Service Pension?</span>
+                                                         <label>{{Personaldetail?.previousAsignee}}</label> 
+                                                        <label>No</label>
+                                                      </div>
+                                                    </div>-->
+                                                  </div>                                                                                                 
+
+
+                                              </mat-expansion-panel>
+
+                          
+                                              <mat-expansion-panel class="mt-4">
+                                                  <mat-expansion-panel-header class="border-bottom">
+                                                  <mat-panel-title><b>Address Details</b></mat-panel-title>                                                    
+                                                  </mat-expansion-panel-header> 
+                                                  <div class="container-fluid ">
+                                                    
+                                                    <div class="row">
+                                                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mt-3 allRadious"  >
+                                                        <!-- *ngFor="let field of Personaldetail" -->
+                                                        <mat-card class="p-0 lh-lg">
+                                                          <mat-card-content class="p-3">
+                                                            <div class="address-card">
+                                                              <!-- <mat-icon>{{iconCA}}</mat-icon> -->
+                                                              <mat-icon>person_pin_circle</mat-icon>
+                                                            </div>
+                                                            <span>Current Address</span> 
+                                                            <p style="max-width: 100%;">                                  
+                                                              {{Personaldetail?Personaldetail.currentAddress:""}}
+                                                              <!-- {{field.houseAddress+','+field.homeTown +','+field.districtNameEn+','+field.stateNameEn+','+field.pinCode+','+field.officeNameEn}} -->
+                                                            </p>
+                                                          </mat-card-content>
+                                                        </mat-card>
+                                                      </div>
+                                                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mt-3 allRadious">
+                                                        <!-- *ngFor="let field of DepartmentAddress" -->
+                                                        <mat-card class="p-0 lh-lg">
+                                                          <mat-card-content class="p-3">
+                                                            <div class="address-card">
+                                                              <span class="material-symbols-outlined">
+                                                                <!-- <mat-icon>{{iconPA}}</mat-icon> -->
+                                                                <mat-icon>account_box</mat-icon>                                  
+                                                              </span>
+                                                            </div>
+                                                            <span>Permanent Address</span>
+                                                            <!-- <p style="max-width: 100%;">{{field.houseAddress+','+field.homeTown +','+field.districtNameEn+','+field.stateNameEn+','+field.pinCode+','+field.officeNameEn}}</p> -->
+                                                            <p style="max-width: 100%;">{{Personaldetail?Personaldetail.currentAddress:""}}</p>
+                                                          </mat-card-content>
+                                                        </mat-card>
+                                                      </div>
+                                                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mt-3 allRadious">
+                                                        
+                                                        <!-- *ngFor="let field of officeArray" -->
+                                                        <mat-card class="p-0 lh-lg">
+                                                          <mat-card-content class="p-3">
+                                                            <div class="address-card">
+                                                              <!-- <mat-icon>{{iconOA}}</mat-icon> -->
+                                                              <mat-icon>apartment</mat-icon>
+                                                            </div>
+                                                            <span>Office Address</span>
+                                                            <p style="max-width: 100%;">
+                                                              {{Personaldetail?Personaldetail.currentOfficeAddress:""}}
+                                                              <!-- {{field.officeNameEn+','+field.officeId+','+field.officeNameEn}} -->
+                                                            </p>
+                                                          </mat-card-content>
+                                                        </mat-card>
+                                                      </div>
+                                                    </div>
+
+                                                  </div>
+                                              </mat-expansion-panel>
+                                              
+                                              <mat-expansion-panel class="mt-4">
+                                                  <mat-expansion-panel-header class="border-bottom">
+                                                  <mat-panel-title><b>Family Details And Nominations </b></mat-panel-title>                                                    
+                                                  </mat-expansion-panel-header>
+                                                  <div class="container-fluid">
+
+
+                                                    <div class="row">
+                                                      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 allRadious mt-4" *ngFor="let field of FamilydetailsView" >  
+                                                        <!-- *ngFor="let field of familyDetails"                           -->
+                                                        <!-- *ngFor="let field of familyDetails" -->
+                                                        <div class="family-details-card-container">
+                                                          <div class="family-card-header m-1 p-2 d-flex justify-content-between align-items-center">
+                                                            <div class="member-base-details d-flex justify-content-start align-items-center">
+                                                              <div class="member-image">
+                                                                <img src="./assets/images/sonImg.jfif" alt="member-image">
+                                                              </div>
+                                                              <div class="member-name heading-2 ms-2 mt-2">{{field.familyMemberName}}</div>
+                                                              <!-- {{field.nameEn}} -->
+                                                            </div>
+                                                            <div class="name-birth-details ms-1">
+                                                              <span class="relation-tag py-1 px-2">{{field.relation}}</span>
+                                                              <!-- {{field.relationshipTypeEn}} -->
+                                                              </div>
+                                                          </div>
+                                                          <div class="family-card-body">
+                                                            <div class="d-flex justify-content-between align-items-center mt-4 mx-3">
+                                                              <div class="pan-number-box me-5 fw-bold">
+                                                                <p class="m-0 f-12">Gender</p>
+                                                                <p class="subtitle-2">{{field.gender}}</p>
+                                                                <!-- {{field.genderEn}} -->
+                                                              </div>
+                                                              <div class="aadhar-number-box fw-bold">
+                                                                <p class="m-0 f-12">Date Of Birth</p>
+                                                                <p class="subtitle-2">{{field.dateOfBirth}}</p>
+                                                                <!-- {{field.dob}} -->
+                                                              </div>
+                                                              <div class="aadhar-number-box ms-4 fw-bold">
+                                                                <p class="m-0 f-12">Marital Status</p>
+                                                                <p class="subtitle-2">{{field.maritalStatus}}</p>
+                                                                <!-- {{field.maritalStatusName}} -->
+                                                              </div>
+                                                            </div>
+                                                            <div class="pan-aadhar-number-container d-flex justify-content-start align-items-center  mx-3">
+                                                              <div class="pan-number-box me-5 fw-bold">
+                                                                <p class="m-0 f-12">PanCard Number</p>
+                                                                <p class="subtitle-2">{{field.pan}} </p>
+                                                              </div>
+                                                              <div class="aadhar-number-box ms-4 fw-bold">
+                                                                <p class="m-0 f-12">Aadhaar Number</p>
+                                                                <p class="subtitle-2">{{field.adharNo}} </p>
+                                                              </div>
+                                                            
+
+
+                                                            </div>
+                                                          </div>
+                                                               <!-- View Div  Remove-->
+                                                        </div>
+                                                      </div>
+                              
+                                                    </div>
+                                                      
+                                                  </div>
+                                              </mat-expansion-panel>
+
+
+
+                                              <mat-expansion-panel class="mt-4">
+                                                  <mat-expansion-panel-header class="border-bottom">
+                                                  <mat-panel-title><b>Bank Details</b></mat-panel-title>
+                                                  </mat-expansion-panel-header>
+                                                  <div class="container-fluid">
+                                                   
+                                                    <div class="row">
+                                                      <div class="col-lg-12 mt-3">
+                                                        <form >
+                                                          <div class="row">                             
+                            
+                                                             <div class="row">
+                                                              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                                <div>
+                                                                  <span>Account Type</span>
+                                                                  <label>{{getbankaccountdetls?getbankaccountdetls.accountType:""}}</label>                                                                    
+                                                                </div>
+                                                              </div>
+                                                              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                                <div>
+                                                                  <span>Account Number</span>  
+                                                                  <label>{{getbankaccountdetls?getbankaccountdetls.accountNo:""}}</label>                                                                    
+                                                                </div>
+                                                              </div>
+
+                                                              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                                <div>
+                                                                  <span>IFSC Code</span>
+                                                                  <label>{{getbankaccountdetls?getbankaccountdetls.ifscCode:""}}</label>                                                                    
+                                                                </div>
+                                                              </div>
+
+                                                              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                                <div>
+                                                                  <span>Bank Name</span>
+                                                                  <label>{{getbankaccountdetls?getbankaccountdetls.bankName:""}}</label>                                                                    
+                                                                </div>
+                                                              </div>
+
+                                                              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                                <div>
+                                                                  <span>Branch Name</span>
+                                                                  <label>{{getbankaccountdetls?getbankaccountdetls.bankBranchName:""}}</label>                                                                    
+                                                                </div>
+                                                              </div>
+
+                                                              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                                                <div>
+                                                                  <span>Document Type</span> 
+                                                                  <label>{{getbankaccountdetls?getbankaccountdetls.documentType:""}}</label>                                                                    
+                                                                </div>
+                                                              </div>
+
+
+
+
+
+                                                            </div>
+                                                          </div>
+                                                        </form>
+                              
+                                                      </div>
+                                                    </div>
+                                                   
+                              
+                              
+                                                      
+                              
+                                                  </div>
+                                              </mat-expansion-panel>
+
+                                          
+
+                      
+                                          </mat-accordion>
+                      
+                                      </div>
+                                      
+                                  </div>                                    
+                              </mat-card>
+
+                              <!-- <mat-card class="mt-3" *ngIf="loading">
+                                  <mat-spinner class="myspinner m-auto"></mat-spinner>
+                              </mat-card> -->
+
+                          </div>
+                      </div>
+                  </form>
+                  
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+

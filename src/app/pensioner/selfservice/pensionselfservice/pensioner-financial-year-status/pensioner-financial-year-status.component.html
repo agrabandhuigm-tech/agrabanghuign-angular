@@ -1,0 +1,127 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                            <div class="col-lg-12 col-12">
+                                <div class="row mb-3">
+                                    <h3>Complete Financial year report</h3>
+                                    <div class="col-lg-4 month-dropdown" >
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Select Year</mat-label>
+                                            <mat-select [(ngModel)]="reportYear">
+                                                <mat-option *ngFor="let item of yearList" [value]="item.psnYear">{{item.psnYear}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <button mat-raised-button color="primary" class="btn custom-btn mt-1" (click)="getCompleteFinancialYearDetails()">Search</button>
+                                    </div>
+                                  </div>
+                                <!-- Year pensioner slip -->
+                                <div class="mt-4 py-4 border border-secondary rounded"  *ngIf="yearlyPensionData?.length > 0">
+                                    <div class="px-2 financial_year_table" #YearlyPensionSlipToExport >
+                                        <h2 class="text-center">Government of Rajasthan</h2>
+                                        <h4 class="text-center">Directorate of Pension and Pensioners Welfare</h4>
+                                        <h4 class="text-center">Jyoti Nagar, Jaipur, Rajasthan 302005</h4>
+                                        <h4 class="text-center">Financial Year {{yearlyPensionData[0]?.['billYear']}}-{{yearlyPensionData[0]?.['billToYear']}}  Pension Payment</h4>
+                                        <div class="row fw-bold">
+                                            <div class="col-4"><span>Name:- {{yearlyPensionData[0]?.['Name']}}</span></div>
+                                            <div class="col-4 text-center"><span>TANNo:- -</span></div>
+                                            <div class="col-4 text-end"><span>PPONo:- {{yearlyPensionData[0]?.['ppoNo']}}</span></div>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table align-middle table-nowrap table-centered mb-4 basic-detail-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>MonthYear</th>
+                                                        <th>UTR No.</th>
+                                                        <th>Basic (B)</th>
+                                                        <th>Commut (C)</th>
+                                                        <th>Red Pension (B-C)</th>
+                                                        <th>DA</th>
+                                                        <th>IR</th>
+                                                        <th>AdlPen</th>
+                                                        <th>AdlAlw</th>
+                                                        <th>MedAllw</th>
+                                                        <th>DHAllw</th>
+                                                        <th>OtherAllw</th>
+                                                        <th>Arrear</th>
+                                                        <th>TDS</th>
+                                                        <th>Recovery</th>
+                                                        <th>Total Allowance (TA)</th>
+                                                        <th>Total Deduction (TD)</th>
+                                                        <th>Net Amount (TA-TD)</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let yearlyReport of yearlyPensionData; let i= index">
+                                                        <td>{{i+1}}</td>
+                                                        <td>{{yearlyReport?.['billMonthName']}}-{{yearlyReport?.['billYear']}}</td>
+                                                        <td>{{yearlyReport?.['utrNo']}}</td>
+                                                        <td>{{yearlyReport?.['penAmt']}}</td>
+                                                        <td>{{yearlyReport?.['commutAmt']}}</td>
+                                                        <td>{{yearlyReport?.['RedAmt']}}</td>
+                                                        <td>{{yearlyReport?.['drPen']}}</td>
+                                                        <td>{{yearlyReport?.['ir']}}</td>
+                                                        <td>{{yearlyReport?.['adlPen']}}</td>
+                                                        <td>{{yearlyReport?.['adlAlw']}}</td>
+                                                        <td>{{yearlyReport?.['medAlw']}}</td>
+                                                        <td>{{yearlyReport?.['dhaAlw']}}</td>
+                                                        <td>{{yearlyReport?.['otheAlw']}}</td>
+                                                        <td>{{yearlyReport?.['arrearAmt']}}</td>
+                                                        <td>{{yearlyReport?.['itTax']}}</td>
+                                                        <td>{{yearlyReport?.['recovery']}}</td>
+                                                        <td>{{yearlyReport?.['grossAmt']}}</td>
+                                                        <td>{{yearlyReport?.['deduction']}}</td>
+                                                        <td class="fw-bold">{{yearlyReport?.['netAmt']}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold" colspan="3">Total</td>
+                                                        <td class="fw-bold" [ngClass]="{'text-green' : total == 'netAmt'}" *ngFor="let total of Object.keys(financialYearTotal)">{{financialYearTotal[total] ? financialYearTotal[total] : 0}}</td>
+                                                        <!-- <td class="fw-bold text-success" >{{netAmt}}</td> -->
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="row fw-bold">
+                                            <div class="col-6"><span>Note : This is a system generated statement and signature is not required.</span></div>
+                                            <div class="col-6 text-end"><span>{{yearlyPensionData[0]?.['billDate']}}</span></div>
+                                        </div>
+                                        <div class="row fw-bold">
+                                            <div class="col-6"><span>https://www.pension.rajasthan.gov.in/</span></div>
+                                            <div class="col-6 text-end"><span>NIC-Pension, Jaipur, Rajasthan</span></div>
+                                        </div>
+                                  </div>
+                                  <div class="px-2 mt-4 text-center">
+                                    <button type="button" class="btn custom-btn" mat-raised-button (click)="openFinancialYearPDF()">Complete Financial Year Status</button>
+                                  </div>
+                                </div>
+
+                                <div class="text-center border border-primary mt-4" *ngIf="yearlyPensionData?.length == 0 && isError">
+                                    <div class="py-4">
+                                        <span class="text-primary">No Record Available</span>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- <div class="col-lg-4 col-12">
+                            <div class="card mx-4 life-certificate-card">
+                                <div class="card-body">
+                                    <h2 class="text-center">Life Certificate: <span class="text-green">Yes</span></h2>
+                                    <div class="row">
+                                        <div class="col-12 fw-bold"><span>Submitted On</span> <span class="fw-bold float-end">:10-11-2023</span></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 fw-bold"><span>Valid Upto</span> <span class="fw-bold float-end">:30-11-2024</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

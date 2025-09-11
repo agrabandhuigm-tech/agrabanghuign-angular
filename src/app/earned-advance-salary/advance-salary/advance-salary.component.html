@@ -1,0 +1,384 @@
+<div class="container-fluid">
+    <mat-card>
+        <p class="heading-2 mb-4">Earned Pension Advance</p>
+        <div class="row g-2">
+            <div class="col-lg-6 col-xl-4 m-0">
+                <mat-card class="overview-advance-card card-shadow">
+                    <p class="m-0 subtitle-1">Overview of My Advances (CFY)</p>
+                    <!-- <div class="pie-chart-container mt-3 d-flex justify-content-center">
+                        <app-pie-chart></app-pie-chart>
+                    </div> -->
+                    <div>
+                        <app-pie-chart *ngIf="showChart" [configChart]="pieChartData"></app-pie-chart>
+                    </div>
+                    <div class="chart-points-container d-sm-flex align-items-center justify-content-around mt-4">
+                        <div class="point-two ms-4 ms-sm-0">
+                            <p class="m-0">Total Advance Withdrawn</p>
+                        </div>
+                        <div class="point-one ms-4 ms-sm-0">
+                            <p class="m-0">Total Payable Pension</p>
+                        </div>
+
+                    </div>
+                </mat-card>
+                <mat-card class="need-help-card mt-2 card-shadow">
+                    <p class="m-0 subtitle-1 mb-3">Need Help ?</p>
+                    <div class="need-help-content d-flex align-items-center bg-white p-2 mb-2" (click)="faqDialog()">
+                        <img src="./assets/images/icon-af-note.svg" alt="icon">
+                        <p class="m-0 subtitle-1 ms-3">FAQ’s</p>
+                    </div>
+                    <div class="need-help-content d-flex align-items-center bg-white p-2 mb-2">
+                        <img src="./assets/images/icon-revenue-note.svg" alt="icon">
+                        <p class="m-0 subtitle-1 ms-3">Instructions</p>
+                    </div>
+                    <button class="w-100 mt-2" mat-raised-button color="primary">Chat with us</button>
+                </mat-card>
+            </div>
+            <div class="col-lg-6 col-xl-4 order-xl-3 mt-2 mt-lg-0">
+                <mat-card class="track-advance-card card-shadow">
+                    <p class="m-0 subtitle-1">Track Advance Status</p>
+                    <div class="search-input-track mt-2">
+                        <mat-form-field class="w-100" appearance="fill">
+                            <input matInput placeholder="Enter UTR Number">
+                            <mat-icon matSuffix>search</mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <p class="f-12 medium-font mt-2">Enter your ticket number to view the status</p>
+                </mat-card>
+                <mat-card class="mt-2 card-shadow">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <p class="m-0 subtitle-1">Chosen Service Provider</p>
+                            <div class="service-provider-name-logo mt-3 d-flex align-items-center">
+                                <img src="./assets/images/arrow-circle-green.png" alt="icon">
+                                <p class="medium-font bodytext-color m-0 ms-2">
+                                    {{empConsentDetails?.consentDtl?.agentName}}</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <a class="primary float-end medium-font" href="#">Know more</a>
+                        </div>
+                    </div>
+
+                    <div class="actions-service-provider my-3 container">
+                        <div class="d-flex pointer-cursor change-provider-action action py-3 px-2 justify-content-between align-items-center"
+                            (click)="requestAdvance()">
+                            <div class="d-flex align-items-center">
+                                <div class="action-icon text-center">
+                                    <img src="./assets/images/new-advance-icon.svg" alt="iocn">
+                                </div>
+                                <div class="ms-2">
+                                    <p class="m-0 primary medium-font">Request a new advance</p>
+                                </div>
+                            </div>
+                            <div>
+                                <mat-icon class="float-end" color="primary">keyboard_arrow_right</mat-icon>
+                            </div>
+                        </div>
+                        <div
+                            class="d-flex pointer-cursor change-provider-action action py-3 py-3 px-2 justify-content-between align-items-center mt-4">
+                            <div class="d-flex align-items-center">
+                                <div class=" action-icon text-center">
+                                    <img src="./assets/images/change-service-provider-image.svg" alt="iocn">
+                                </div>
+                                <div class="ms-2">
+                                    <p class="m-0 primary medium-font">Change service provider</p>
+                                </div>
+                            </div>
+                            <div>
+                                <mat-icon class="float-end" color="primary">keyboard_arrow_right</mat-icon>
+                            </div>
+                        </div>
+                        <!-- <div class="row pointer-cursor change-provider-action action py-3 align-items-center mt-4"
+                            (click)="discontinueService()">
+                            <div class="col-2 action-icon text-center">
+                                <img src="./assets/images/discontinue-service-image.svg" alt="iocn">
+                            </div>
+                            <div class="col-10">
+                                <p class="m-0 primary d-inline medium-font">Discontinue service</p>
+                                <mat-icon class="float-end" color="primary">keyboard_arrow_right</mat-icon>
+                            </div>
+                        </div> -->
+                    </div>
+                </mat-card>
+            </div>
+
+
+
+            <div class="col-lg-12 order-xl-2 col-xl-4 my-2 my-xl-0">
+                <mat-card class="card-shadow">
+                    <h3>What’s Due</h3>
+                    <div class="d-flex align-items-center gap-2 overflow-auto">
+                        <div class="amount-box-container rounded p-2 d-flex align-items-end justify-content-between mb-2"
+                            *ngFor="let dueDetail of duesDetails">
+                            <div class="amount-text">
+                                <p class="m-0 primary heading-2">{{dueDetail.dueAmnt | currency : 'INR'}}</p>
+                                <p class="m-0 bodytext-color opacity-50 medium-font">Payable upto</p>
+                                <p class="m-0 f-12 warn mt-2">{{dueDetail.dueDt | date}}</p>
+                            </div>
+                            <div class="amount-icon-box">
+                                <img src="./assets/images/arrow-small-left.svg" alt="arrowIcon">
+                            </div>
+                        </div>
+                        <!-- <div class="amount-box-container rounded p-2 d-flex align-items-end justify-content-between mb-2">
+                            <div class="amount-text">
+                                <p class="m-0 primary heading-2">₹ 40’000</p>
+                                <p class="m-0 bodytext-color opacity-50 medium-font">Total Due</p>
+                                <p class="m-0 f-12 warn mt-2">3h May, 2023</p>
+                            </div>
+                            <div class="amount-icon-box">
+                                <img src="./assets/images/arrow-small-left.svg" alt="arrowIcon">
+                            </div>
+                        </div>
+                        <div class="amount-box-container rounded p-2 d-flex align-items-end justify-content-between mb-2">
+                            <div class="amount-text">
+                                <p class="m-0 primary heading-2">₹ 40’000</p>
+                                <p class="m-0 bodytext-color opacity-50 medium-font">Total Due</p>
+                                <p class="m-0 f-12 warn mt-2">3h May, 2023</p>
+                            </div>
+                            <div class="amount-icon-box">
+                                <img src="./assets/images/arrow-small-left.svg" alt="arrowIcon">
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="amount-tabs-container">
+                        <mat-tab-group animationDuration="500ms" color="primary" class="mt-2">
+                            <mat-tab label="Last 10 Transactions">
+                                <div class="container">
+                                    <div class="row align-items-center mt-3">
+                                        <div class="col-9">
+                                            <p class="subtitle-1 m-0 opacity-75">Summary of Transactions</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <img class="float-end" src="./assets/images/transaction-summry-icon.svg"
+                                                alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="date-range-container container mt-3">
+                                    <mat-form-field class="w-100" appearance="outline">
+                                        <mat-date-range-input [rangePicker]="picker">
+                                            <input matStartDate placeholder="Start date">
+                                            <input matEndDate placeholder="End date">
+                                        </mat-date-range-input>
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-date-range-picker #picker></mat-date-range-picker>
+                                    </mat-form-field>
+                                </div>
+                                <div class="min-height">
+                                    <!-- <div class="payment shadow-none mt-3 py-0 container">
+                                        <div class="card-body border-top pt-2">
+                                            <span class="tran_type">Payment trasnsactions</span>
+                                            <div class="row align-items-center">
+                                                <div class="col-12 col-sm-8">
+                                                    <div class="d-flex align-items-start">
+                                                        <div class="me-2"><img src="./assets/images/arrow-circle-red.png" /></div>
+                                                        <div>
+                                                            <p class="medium-font bodytext-color m-0">Salary withdrawal</p>
+                                                            <p class="m-0 date-time">12 Jan 2023 | 2:00 pm</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-4 pe-0" >
+                                                    <div class="amount-container float-sm-end mt-2 mt-sm-0 float-start">
+                                                        <p class="m-0 amount-dabited-text">Amount debited</p>
+                                                        <p class="m-0 subtitle-1 amount-dabited ps-3 ps-sm-0"> ₹ 200 </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="payment shadow-none my-3 py-0 container"
+                                        *ngFor="let transItem of tranDtl">
+                                        <div class="card-body  border-top pt-2">
+                                            <div class="row align-items-center mb-2">
+                                                <div class="col-12 col-sm-8">
+                                                    <div class="d-flex align-items-start">
+                                                        <div class="me-2"><img
+                                                                [src]="transItem.type=='CR' ? './assets/images/arrow-circle-green.png' : './assets/images/arrow-circle-red.png'" />
+                                                        </div>
+                                                        <div>
+                                                            <p
+                                                                [ngClass]="{'m-0 medium-font bodytext-color': transItem.type=='CR', 'medium-font bodytext-color m-0': transItem.type=='DR'}">
+
+
+                                                                {{ transItem.type=='CR' ? 'Advance received': 'Dues
+                                                                paid' }}
+
+                                                            </p>
+                                                            <p class="m-0 date-time">{{ transItem.tranDt | date }} </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-4 pe-0">
+                                                    <div class="amount-container float-sm-end mt-2 mt-sm-0 float-start">
+                                                        <p [ngClass]="{'m-0 amount-dabited-text': transItem.type == 'DR', 'm-0 amount-cradited-text': transItem.type=='CR'}"
+                                                            class="">
+                                                            {{ transItem.type=='CR' ? 'Amount': 'Amount deducted' }}
+
+                                                        </p>
+                                                        <p
+                                                            [ngClass]="{'m-0 subtitle-1 amount-dabited ps-3 ps-sm-0': transItem.type == 'DR', 'm-0 amount-cradited subtitle-1 ps-3 ps-sm-0': transItem.type=='CR'}">
+                                                            {{ transItem.amnt | currency : 'INR' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="payment shadow-none my-3 py-0 container">
+                                        <div class="card-body border-top pt-3">
+                                            <span class="tran_type">Refunds</span>
+                                            <div class="row align-items-center mb-2">
+                                                <div class="col-12 col-sm-8">
+                                                    <div class="d-flex align-items-start">
+                                                        <div class="me-2"><img src="./assets/images/arrow-circle-green.png" /></div>
+                                                        <div>
+                                                            <p class="m-0 medium-font bodytext-color">Refund request id</p>
+                                                            <p class="m-0 date-time">12 Jan 2023 | 2:00 pm</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-4 pe-0">
+                                                    <div class="amount-container float-sm-end mt-2 mt-sm-0 float-start">
+                                                        <p class="m-0 amount-cradited-text">Amount credited</p>
+                                                        <p class="m-0 amount-cradited subtitle-1 ps-3 ps-sm-0">₹ 55,000</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- <div class=" payment shadow-none my-3 py-0 container">
+                                        <div class="card-body  border-top pt-3">
+                                            <div class="row align-items-center mb-2">
+                                                <div class="col-12 col-sm-8">
+                                                    <div class="d-flex align-items-start">
+                                                        <div class="me-2"><img src="./assets/images/arrow-circle-green.png" /></div>
+                                                        <div>
+                                                            <p class="m-0 medium-font bodytext-color">Repayment received</p>
+                                                            <p class="m-0 date-time">12 Jan 2023 | 2:00 pm</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-4 pe-0">
+                                                    <div class="amount-container float-sm-end mt-2 mt-sm-0 float-start">
+                                                        <p class="m-0 amount-cradited-text">Amount credited</p>
+                                                        <p class="m-0 amount-cradited subtitle-1 ps-3 ps-sm-0">₹ 55,000</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- <div class="payment shadow-none my-3 py-0 container">
+                                        <div class="card-body  border-top pt-3">
+                                            <div class="row align-items-center mb-2">
+                                                <div class="col-12 col-sm-8">
+                                                    <div class="d-flex align-items-start">
+                                                        <div class="me-2"><img src="./assets/images/arrow-circle-green.png" /></div>
+                                                        <div>
+                                                            <p class="m-0 medium-font bodytext-color">Repayment received</p>
+                                                            <p class="m-0 date-time">12 Jan 2023 | 2:00 pm</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-4 pe-0">
+                                                    <div class="amount-container float-sm-end mt-2 mt-sm-0 float-start">
+                                                        <p class="m-0 amount-cradited-text">Amount credited</p>
+                                                        <p class="m-0 amount-cradited subtitle-1 ps-3 ps-sm-0">₹ 55,000</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- <div class="payment shadow-none my-3 py-0 container">
+                                        <div class="card-body  border-top pt-3">
+                                            <div class="row align-items-center mb-2">
+                                                <div class="col-12 col-sm-8">
+                                                    <div class="d-flex align-items-start">
+                                                        <div class="me-2"><img src="./assets/images/arrow-circle-green.png" /></div>
+                                                        <div>
+                                                            <p class="m-0 medium-font bodytext-color">Repayment received</p>
+                                                            <p class="m-0 date-time">12 Jan 2023 | 2:00 pm</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-4 pe-0">
+                                                    <div class="amount-container float-sm-end mt-2 mt-sm-0 float-start">
+                                                        <p class="m-0 amount-cradited-text">Amount credited</p>
+                                                        <p class="m-0 amount-cradited subtitle-1 ps-3 ps-sm-0">₹ 55,000</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <div class="view-all-link py-4">
+                                    <a class="float-end primary medium-font"
+                                        [routerLink]="['../track-transaction']">View all</a>
+                                </div>
+                            </mat-tab>
+                            <mat-tab label="Detailed statement">
+                                <mat-radio-group aria-label="Select an option" color="primary">
+                                    <div class="container">
+                                        <p class="m-0 f-12 opacity-75 bodytext-color mt-3">For which period do you need
+                                            a statment</p>
+                                        <div class="row mt-3">
+                                            <div class="col-6">
+                                                <mat-radio-button value="1"
+                                                    class="radio-border component-border me-4">Last
+                                                    Month</mat-radio-button>
+                                            </div>
+                                            <div class="col-6">
+                                                <mat-radio-button value="2"
+                                                    class="radio-border component-border me-4">Last 3
+                                                    Months</mat-radio-button>
+                                            </div>
+                                            <div class="col-6 mt-3">
+                                                <mat-radio-button value="3"
+                                                    class="radio-border component-border me-4">Last 6
+                                                    Months</mat-radio-button>
+                                            </div>
+                                            <div class="col-6 mt-3">
+                                                <mat-radio-button value="4"
+                                                    class="radio-border component-border me-4">Last 1
+                                                    Year</mat-radio-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </mat-radio-group>
+                                <div class="container">
+                                    <p class="m-0 f-12 opacity-75 bodytext-color mt-3">Or Select a custom date of your
+                                        choice</p>
+                                    <div class="row mt-2">
+                                        <div class="col-6">
+                                            <mat-form-field appearance="outline" class="w-100"
+                                                (click)="startpicker.open()">
+                                                <mat-label>Start Date</mat-label>
+                                                <input matInput [matDatepicker]="startpicker"
+                                                    formControlName="policy_start_date">
+                                                <mat-datepicker-toggle matSuffix
+                                                    [for]="startpicker"></mat-datepicker-toggle>
+                                                <mat-datepicker #startpicker></mat-datepicker>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-6">
+                                            <mat-form-field appearance="outline" class="w-100"
+                                                (click)="endpicker.open()">
+                                                <mat-label>End Date</mat-label>
+                                                <input matInput [matDatepicker]="endpicker"
+                                                    formControlName="policy_start_date">
+                                                <mat-datepicker-toggle matSuffix
+                                                    [for]="endpicker"></mat-datepicker-toggle>
+                                                <mat-datepicker #endpicker></mat-datepicker>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="w-100" mat-raised-button color="primary">Proceed</button>
+                            </mat-tab>
+                        </mat-tab-group>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </mat-card>
+</div>

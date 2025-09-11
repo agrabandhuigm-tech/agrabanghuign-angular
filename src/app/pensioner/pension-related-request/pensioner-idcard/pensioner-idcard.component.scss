@@ -1,0 +1,156 @@
+// // .heading-bold label{
+// //     color: #000
+// // }
+// // .dot-border{
+// //     border:#000;
+// //     //  border-width:3px; 
+// //      border-style:dotted;
+// //      border-radius: 10px;
+// // }
+
+
+// // .barcode_outer{ border: 3px solid #1842a7 !important; width: 126px; text-align: center !important; border-radius: 5px; padding:2px 0 0px 0;}
+// // // .barcode_outer qrcode canvas{ border:2px solid #f00 !important;}
+// // .bg-white{ background-color: #fff !important;}
+// // .details{ font-size: 17px;}
+// .container-fluid {
+//     .responsive-card {
+//       margin: 0 auto;
+//       max-width: 100%;
+//       padding: 1rem;
+  
+//       .responsive-logo {
+//         max-width: 100%;
+//         height: auto;
+//       }
+  
+//       .responsive-thumbnail {
+//         max-width: 100%;
+//         height: auto;
+//         border-radius: 8px;
+//       }
+  
+//       .valid-from-label {
+//         font-size: 1rem;
+//         padding: 0.5rem;
+//         border: 2px solid #f00;
+//       }
+//     }
+//   }
+  
+//   @media (max-width: 768px) {
+//     .responsive-card {
+//       .details {
+//         font-size: 0.875rem;
+//       }
+//       .valid-from-label {
+//         font-size: 0.875rem;
+//       }
+//     }
+//   }
+  
+//   @media (max-width: 576px) {
+//     .responsive-card {
+//       padding: 0.5rem;
+  
+//       .details {
+//         font-size: 0.75rem;
+//       }
+//       .valid-from-label {
+//         font-size: 0.75rem;
+//       }
+//     }
+//   }
+//   img {
+//     max-width: 100%;  /* Ensures the image is never larger than its container */
+//     height: auto;     /* Maintains aspect ratio */
+//     display: block;   /* Removes extra spacing below the image */
+//     margin: 0 auto;   /* Centers image horizontally */
+//   }
+  
+//   /* For smaller screens (Mobile) */
+//   @media screen and (max-width: 768px) {
+//     img {
+//       width: 80%;  /* Reduce width to 80% of the screen */
+//     }
+//   }
+  
+//   /* For larger screens (Web/Desktop) */
+//   @media screen and (min-width: 769px) {
+//     img {
+//       width: 50%;  /* Set width to 50% of the screen */
+//     }
+//   }
+  /* Ensure the mat-card is centered and responsive */
+mat-card {
+  max-width: 800px; /* Adjust width as needed */
+  width: 100%;
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Centering the header image */
+.text-center img {
+  max-width: 150px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Ensuring the ID Card is flexible */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Image Thumbnail */
+.img-thumbnail {
+  width: 180px !important;
+  height: 180px !important;
+  object-fit: cover; /* Ensures the image fits without distortion */
+  border-radius: 10px;
+}
+
+/* QR Code styling */
+.barcode_outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  mat-card {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .img-thumbnail {
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  .text-center img {
+    max-width: 120px;
+  }
+
+  label.details {
+    font-size: 14px;
+  }
+
+  .row .col-lg-4 {
+    width: 100%; /* Stack labels on small screens */
+  }
+
+  .row .col-lg-8 {
+    width: 100%;
+  }
+
+  .barcode_outer qrcode {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}

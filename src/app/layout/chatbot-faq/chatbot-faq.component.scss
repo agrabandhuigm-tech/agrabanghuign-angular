@@ -1,0 +1,235 @@
+.aligner {
+  position: relative;
+  &:hover{
+    .drag-handler{
+      width: 90px;
+      animation: moveCircle .4s ease-in-out forwards alternate;
+      -webkit-animation: moveCircle .4s ease-in-out forwards alternate;
+}
+  }
+}
+
+.drag-handler{
+  position: absolute;
+  cursor: move;
+  right: 0px;
+  bottom: 0px;
+  width: 0px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #B6C8DE;
+}
+
+@keyframes moveCircle {
+  0% {
+      transform: translate(-50%, -50%);
+  }
+  100% {
+      transform: translate(0%, 0%);
+  }
+}
+
+.chatbot-toggler {
+  position: absolute;
+  cursor: pointer;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+  filter: drop-shadow(0px 2px 6px var(--primary));
+}
+
+::ng-deep .chatbot {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  width: 360px;
+  background: #EDEFF6;
+  border-radius: 5px;
+  box-shadow: 0px 0px 42px #41414166;
+  z-index: 3;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 20px;
+  }
+
+  ::-webkit-scrollbar-track:vertical {
+    background: #E4EAF2;
+    border-left: 0px solid rgba(255, 255, 255, 0) !important;
+    border-right: 0px solid rgba(255, 255, 255, 0) !important;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb:vertical {
+    background: #B6C8DE;
+    border-left: 0px solid rgba(255, 255, 255, 0) !important;
+    border-right: 0px solid rgba(255, 255, 255, 0) !important;
+    border-radius: 8px;
+  }
+
+}
+
+.chatbot-header {
+  background-color: var(--primary);
+  color: white;
+}
+
+.bot-blue-icon {
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: move;
+}
+
+::ng-deep .chatbox {
+  padding: 10px;
+  max-height: 40vh;
+  overflow: auto;
+  text-align: center;
+  .menu-button-container {
+    div {
+      background-color: white !important;
+      font-size: 1.4rem;
+      padding: 8px 16px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      position: relative;
+      cursor: pointer;
+      text-align: left;
+
+      &:hover{
+        color: var(--primary);
+      }
+
+      &::after{
+        position: absolute;
+        content: '>';
+        right: 10px;
+        top: 10%;
+        font-size: 2.2rem;
+      }
+    }
+  }
+
+  .question-button-container{
+    button{
+      box-shadow: 0px 6px 20px #41414112;
+      background-color: rgba(255, 255, 255, 0.486);
+      padding: 8px 16px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      color: var(--bodytext-color);
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: .5s;
+      text-align: left;
+      border: 1px solid white;
+      width: 98%;
+
+      &:hover{
+        border-color: var(--primary);
+      }
+    }
+  }
+}
+
+.tab-container {
+  display: flex;
+  justify-content: center;
+}
+
+.tab {
+  cursor: pointer;
+  border: none;
+  background-color: white;
+  color: var(--bodytext-color);
+  padding: 10px;
+  transition: 0.3s;
+  width: 50%;
+}
+
+.tab-active {
+  background-color: #EAF3FF;
+  color: var(--primary);
+  font-weight: bold;
+  border-bottom: 1px solid var(--primary);
+}
+
+::ng-deep .chatbot-button{
+  background-color: white;
+  color: var(--primary);
+  padding: 8px 16px;
+  border: 1px solid var(--primary);
+  margin: 0px 6px;
+  border-radius: 4px;
+
+  &:hover{
+    background-color: var(--primary);
+    color: white;
+  }
+}
+
+::ng-deep .singleQuestionContainer{
+  background-color: white;
+  padding: 10px;
+  border-radius: 0px 10px 10px 10px;
+  font-size: 1.4rem;
+  width: 98%;
+  margin: auto;
+  text-align: left;
+  margin-top: 3%;
+}
+
+::ng-deep .singleAnswerContainer{
+  background-color: var(--primary);
+  padding: 10px;
+  border-radius: 10px 10px 0px 10px;
+  width: 84%;
+  margin: 3% 12% 3% 2%;
+  color: white;
+  font-size: 1.4rem;
+  position: relative;
+  text-align: left;
+  word-break: break-word;
+  &::before{
+    background-image: url('../../../assets/images/chatBot/primary-bg-bot.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    content:"";
+    position: absolute;
+    top: 0px;
+    right: -46px;
+  }
+}
+
+::ng-deep .questionClicked{
+  background-color: #b6c8de2a !important;
+  border: 1px solid var(--primary) !important;
+  color: var(--primary) !important;
+}
+
+.chatbot {
+  /* other properties ... */
+  display: none;
+}
+
+.chatbot.open {
+  display: block;
+}
+
+
+@media screen and (max-width: 576px){
+  ::ng-deep .chatbot{
+    width: 320px;
+  }
+
+  .aligner {
+    .drag-handler{
+      width: 90px;
+    }
+  }
+}

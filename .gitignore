@@ -1,0 +1,7 @@
+# Default ignored files
+/node_modules
+/.angular
+/package-lock.json
+/dist
+/.svn
+

@@ -1,0 +1,94 @@
+{"admin":[
+    {"name": "ALL",
+    "url":"1"
+    },
+    {"name": "Approved",
+    "url":"2"
+    },
+    {"name": "Pending",
+     "url":"3" 
+    },
+    {"name": "Revert",
+        "url":"4" 
+    },
+    {"name": "Reject",
+        "url":"5"
+    }
+   
+],
+"maker":[
+    {"name": "ALL",
+    "url":"1"
+    },
+    {"name": "Approved",
+    "url":"2"
+    },
+    {"name": "Pending",
+     "url":"3" 
+    },
+    {"name": "Revert",
+        "url":"4" 
+    },
+    {"name": "Reject",
+        "url":"5"
+    }
+],
+"approver":[
+    {"name": "ALL",
+    "url":"1"
+    },
+    {"name": "Approved",
+    "url":"2"
+    },
+    {"name": "Pending",
+     "url":"6" 
+    },
+    {"name": "Revert",
+        "url":"4" 
+    },
+    {"name": "Reject",
+        "url":"5"
+    }
+],
+"chekar":[
+    {"name": "ALL",
+    "url":"1"
+    },
+    {"name": "Forward",
+    "url":"3"
+    },
+    {"name": "Pending",
+    "url":"6" 
+   },
+   {"name": "Revert",
+       "url":"4" 
+   },
+   {"name": "Reject",
+       "url":"5"
+   }
+],
+"vendor":[
+    {"name": "My Request",
+    "url":"/#/pending-payee"
+    }
+   
+    
+],
+"ddo":[
+    {"name": "ALL",
+    "url":"1"
+    },
+    {"name": "Approved",
+    "url":"2"
+    },
+    {"name": "Pending",
+    "url":"6" 
+   },
+   {"name": "Revert",
+       "url":"4" 
+   },
+   {"name": "Reject",
+       "url":"5"
+   }
+]
+}

@@ -1,0 +1,288 @@
+<div class="container-fluid breadcrums-bar-container">
+    <div class="d-flex align-items-center px-3 py-2 overflow-auto text-nowrap">
+        <div class="back-btn-container position-sticky start-0">
+            <div class="raised-btn-component d-flex align-items-center">
+                <button mat-raised-button class="d-md-none px-0 me-3"(click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+                                 
+                    <a [routerLink]="['/MyDashboard']"> <button mat-raised-button color="primary" class="big-btn-with-icon-padding">
+                        <mat-icon>chevron_left</mat-icon> Back </button>  </a>                
+            </div>
+        </div>
+        <div class="breadcrumbs-component ms-4" >
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#">Pensioner Self Service </a></li> 
+                    
+                    <!-- <li class="breadcrumb-item"><a href="#"> Library </a></li>
+                    
+                    <li class="breadcrumb-item active" aria-current="page">Data</li> -->
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div >
+    <mat-drawer-container class="ifms-sidebar-container" autosize >
+        <mat-drawer #drawer opened class="ifms-sidebar-sidenav" [mode]="isLargeScreen() ? 'side' : 'over'"[opened]="isLargeScreen()">
+            <div class="sidebar" id="side-bar">
+                <mat-card class="side_card mt-2">
+                    <mat-card-content *ngIf="!myDashboardShow">
+                        <div class="toggle-btn-container d-flex justify-content-between align-items-center">
+                            <p class="w-100 mat-h3 font-weight-600 font-18 mb-0 text-white text-center heading_with_bg"
+                                color="primary">My Request</p>
+                            <button class="toggler-button p-0 d-none d-md-block" mat-button (click)="toggle_sm(1);rotate()">
+                                <mat-icon>chevron_left</mat-icon>
+                            </button>
+                        </div>
+                        <div class="card-body px-0 min-height-2 mt-2">
+                            <mat-nav-list class="list_item font-14 mb-5 list_item_two">
+                                <mat-accordion class="side-bar side-bar-menu-hover">
+
+                                    <mat-expansion-panel (click)="toggle_menu($event)">
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                <img src="./assets/images/Management_icon.svg">
+                                                <span class="ms-3"> Request Management </span>                                               
+                                            </mat-panel-title>
+                                        </mat-expansion-panel-header>
+
+                                        <mat-panel-title class="m-3" *ngIf="isShowComm">
+                                            <img src="./assets/images/Management_icon.svg">
+                                            <span class="ms-3"><a class="nav-link" (click)="redirectUrl('CommutationRequests')" >Commutation Requests </a>  </span>                                                                                      
+                                        </mat-panel-title>
+                                        <!-- <mat-panel-title class="m-3" [hidden]='isHidden'>
+                                            <img src="./assets/images/Management_icon.svg">
+                                            <span class="ms-3"><a class="nav-link" (click)="redirectToMultipal(2)">Update Bank Details </a>  </span>                                                                                     
+                                        </mat-panel-title> -->
+                                        <!-- <mat-panel-title class="m-3">
+                                            <img src="./assets/images/Management_icon.svg">
+                                            <span class="ms-3"><a class="nav-link" (click)="redirectToMultipal(3)">Update Address Details </a>  </span>                                               
+                                        </mat-panel-title> -->
+                                        <!-- <mat-panel-title class="m-3">
+                                            <img src="./assets/images/Management_icon.svg">
+                                            <span class="ms-3"><a class="nav-link" (click)="redirectToMultipal(1)">Change Monthly Treasury </a>  </span>  
+                                        </mat-panel-title> -->
+                                        <!-- <mat-panel-title class="m-3">
+                                            <img src="./assets/images/Management_icon.svg">
+                                            <span class="ms-3"><a class="nav-link" (click)="comingSoonData()">Change Profile Details </a> </span> 
+                                                                              
+                                        </mat-panel-title> -->
+                                        <!-- <mat-panel-title class="m-3" [hidden]='isHidden'>
+                                            <img src="./assets/images/Management_icon.svg">
+                                            <span class="ms-3"><a class="nav-link" (click)="redirectToMultipal(5)">Change Family Details </a> </span>                                                                              
+                                        </mat-panel-title> -->
+                                      
+                                    </mat-expansion-panel>
+
+
+
+
+                                  
+                                    <!-- <mat-expansion-panel (click)="toggle_menu($event)">
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                <img src="./assets/images/Management_icon.svg">
+                                                <span class="ms-3"> Upcoming Page Name </span>
+                                                
+                                            </mat-panel-title>
+                                        </mat-expansion-panel-header>
+                                    </mat-expansion-panel>
+                                    <mat-expansion-panel (click)="toggle_menu($event)">
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                <img src="./assets/images/Management_icon.svg">
+                                                <span class="ms-3"> Upcoming Page Name </span>
+                                               
+                                            </mat-panel-title>
+                                        </mat-expansion-panel-header>
+                                    </mat-expansion-panel> -->
+                                    <!-- <mat-expansion-panel (click)="toggle_menu($event)">
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                <img src="./assets/images/Management_icon.svg">
+                                                <span class="ms-3"> Upcoming Page Name </span>                                               
+                                            </mat-panel-title>
+                                        </mat-expansion-panel-header>
+
+                                        <mat-panel-title class="m-3">
+                                            <img src="./assets/images/Management_icon.svg">
+                                            <span class="ms-3"> Upcoming Page Name </span>                                               
+                                        </mat-panel-title>
+
+                                    </mat-expansion-panel> -->
+                                    <!-- <mat-expansion-panel (click)="toggle_menu($event)">
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                <img src="./assets/images/Management_icon.svg">
+                                                <span class="ms-3"> Upcoming Page Name </span>
+                                              
+                                            </mat-panel-title>
+                                        </mat-expansion-panel-header>
+                                    </mat-expansion-panel> -->
+                                </mat-accordion>
+                            </mat-nav-list>
+                        </div>
+
+                         <div class="card help border-0 mb-0 mt-5 p-0 pdf-review"  (click)="getPensionKitDetails()">
+                            <!-- (click)="previewFiles()" -->
+                                <img src="assets/images/side_f.png">                              
+                            </div>
+
+                             
+
+
+                        <div class="card help border-0">
+                            <div class="card-header border-bottom-0 bg-transparent d-flex justify-content-between">
+                                <h3>Need Help ?</h3> <img src="./assets/images/support.svg" class="helpimg" />
+                            </div>
+
+                           
+
+                            <div class="card-body">
+                                <p>Have questions or concerns regarding your profile? Our experts are here to help!</p>
+                                <!-- <button class="btn btn-primary">Chat with Us</button> -->
+                                <p class="w-100 mat-h3 font-weight-600 font-18 mb-0 text-white text-center heading_with_bg"
+                                color="primary">Chat with Us</p>
+                            </div>
+                        </div>
+                    </mat-card-content>
+
+                    <div *ngIf="myDashboardShow" > 
+                    <mat-card-content   >
+                        <!-- *ngFor="let profile of profileDetails "  -->
+                        <div class="toggle-btn-container d-flex justify-content-between align-items-center" >
+                            <p class="w-100 mat-h3 font-weight-600 font-18 mb-0 text-white text-center heading_with_bg" color="primary">Hi,{{profileDetails?.pensionerName}}</p>
+                             <!-- {{userDetails?.nameEn}} -->
+                            
+                            <button class="toggler-button p-0 d-none d-md-block" mat-button (click)="toggle_sm(1);rotate()">
+                                <mat-icon>chevron_left</mat-icon>
+                            </button>
+                        </div>
+                        <div class="card-body px-0 min-height-2 mt-2">
+                            <mat-nav-list class="list_item font-14 mb-5 list_item_two">
+                                <mat-accordion class="side-bar side-bar-menu-hover">
+                                
+            <div class="d-flex justify-content-between p_details">
+              <div class="user">
+                <img src="assets/images/profile.png" class="w-100">
+              </div>
+  
+              <div class="userdetails pt-4" >
+                <label >PPO No. : <span>{{profileDetails?.ppoNo}}</span></label>
+                
+                <label>Category. : <span>{{profileDetails?.pensionerCategory}}</span></label>
+              </div>
+            </div>  
+            <div class="d-flex justify-content-between p_details">
+              <div class="userdetails">
+                <label>Pensioner Details : <span>{{profileDetails?.categoryOfPension}} </span> </label>
+                <label>Name :<span>{{profileDetails?.pensionerName}} </span></label>                
+                <label>Retirement Date :<span>{{profileDetails?.DateOfRetirement}}</span></label>                
+              </div>
+            </div>  
+
+            <div class="alerts d-flex justify-content-between">
+              <div class="email" (click)="redirectToInbox()">
+                
+                <img src="assets/images/envelope.png">
+                <p class="f-12 mb-0">inbox</p>
+                </div>
+              <div class="chat"> 
+                
+                <img src="assets/images/comment.png">
+                <p class="f-12 mb-0">My Task</p>
+                </div>
+            </div>
+                                </mat-accordion>
+                            </mat-nav-list>
+                        </div>
+     
+
+                        <div class="card-body" [routerLink]="['/user-manuals']">
+                            <p class="w-100 mat-h3 font-weight-600 font-18 mb-0 text-white text-center heading_with_bg"
+                            color="primary">User Manuals</p>
+                        </div>
+
+                        <div *ngIf="showPensionerIdCardButton">
+                            <div class="card-body my-3 d-flex justify-content-between w-100 downlaod_btn" [routerLink]="['/pensioneridcard']" style="background-color: #D2D4FF !important;">
+                              <p class="mat-h3 mb-0 font-weight-600 font-18 mt-1" color="primary">Get Pensioner ID Card</p>
+                              <div class="icon_one" style="background: #8259DA;">
+                                <mat-icon>credit_card</mat-icon>
+                              </div>
+                            </div>
+                          </div>
+
+
+                        <div class="card-body my-3 d-flex justify-content-between w-100 downlaod_btn" (click)="getPensionKitDetails()" style="background-color: #D6EDDA !important;">
+                            <p class="mat-h3 mb-0 font-weight-600 font-18 mt-1" color="primary">Get Pension Kit</p> 
+                            <div class="icon_one" style="background: #388E3C;">
+                                <mat-icon> insert_drive_file</mat-icon>
+                            </div>                            
+                        </div>
+                        <div class="card-body my-3 d-flex justify-content-between w-100 downlaod_btn"  style="background-color: #D6EDDA !important;" [routerLink]="['/psn-self-service/fileStatus']">
+                            <p class="mat-h3 mb-0 font-weight-600 font-18 mt-1" color="primary">Get Pension Request Status</p> 
+                            <div class="icon_one" style="background: #388E3C;">
+                                <mat-icon> insert_drive_file</mat-icon>
+                            </div>                            
+                        </div>
+
+                        <div class="card-body my-3 d-flex justify-content-between w-100 downlaod_btn" [routerLink]="['/pension-ess/payslip']" style="background-color: #E5EEFF !important;">
+                            <p class="mat-h3 mb-0 font-weight-600 font-18 mt-1" color="primary">Get Pension Slip</p> 
+                            <div class="icon_one" style="background: #2947CE;">
+                                <mat-icon>file_copy</mat-icon>
+                            </div>                            
+                        </div>
+
+                        <!-- <div class="card-body my-3 d-flex justify-content-between w-100 downlaod_btn" [routerLink]="['/pension-ess/pensionerStatement']" style="background-color: #FFEEE7 !important;" *ngIf="commonService.isDev" > -->
+                        <div class="card-body my-3 d-flex justify-content-between w-100 downlaod_btn" [routerLink]="['/pension-ess/pensionerStatement']" style="background-color: #FFEEE7 !important;">
+                            <p class="mat-h3 mb-0 font-weight-600 font-18 mt-1" color="primary">Get Pension Statment</p> 
+                            <div class="icon_one" style="background: #EFA831;">
+                                <mat-icon>calendar_today</mat-icon>
+                            </div>                            
+                        </div>
+                        <div class="card-body my-3 d-flex justify-content-between w-100 downlaod_btn" (click)="redirectToMultipal(6)" style="background-color: #FFEEE7 !important;" *ngIf="isLocal && profileDetails?.isEligibleForLifeCertiGen==1">
+                            <p class="mat-h3 mb-0 font-weight-600 font-18 mt-1" color="primary">Generate Life Certificate</p> 
+                            <div class="icon_one" style="background: #EFA831;">
+                                <mat-icon>calendar_today</mat-icon>
+                            </div>                            
+                        </div>
+                      
+                        <!-- <div class="card help border-0 mb-0 mt-5 p-0 pdf-review" [routerLink]="['/pensioneridcard']"> 
+                            <img src="assets/images/side_f_updated.png">
+                        </div>
+
+                         <div class="card help border-0 mb-0 mt-5 p-0 pdf-review"  (click)="getPensionKitDetails()" >                           
+                            <img src="assets/images/side_f.png">                              
+                         </div>  -->
+
+                         <!-- <div class="card help border-0 mb-0 mt-5 p-0 pdf-review" [routerLink]="['/pensioneridcard']">  -->
+                         <!-- <div class="card help border-0 mb-0 mt-5 p-0 pdf-review" (click)="pensionerSlipPopUp()"> 
+                            <img src="assets/images/side_f_updated.png"> 
+                             <span>Pensioner's Slip</span>
+                        </div> -->
+                         
+
+                        <div class="card help border-0">
+                            <div class="card-header border-bottom-0 bg-transparent d-flex justify-content-between">
+                                <h3>Need Help ?</h3> <img src="./assets/images/support.svg" class="helpimg" />
+                            </div>                           
+                            
+                            
+                            <div class="card-body">
+                                <p>Have questions or concerns regarding your profile? Our experts are here to help!</p>
+                                <!-- <button class="btn btn-primary">Chat with Us</button> -->
+                                <p class="w-100 mat-h3 font-weight-600 font-18 mb-0 text-white text-center heading_with_bg"
+                                color="primary">Chat with Us</p>
+                            </div>
+                        </div>
+                    </mat-card-content>   
+                </div>  
+
+                </mat-card>
+            </div>
+        </mat-drawer>
+        <div class="ifms-sidebar-sidenav-content" style="background-color: #edf0f2;">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-container>
+</div>
+</div>

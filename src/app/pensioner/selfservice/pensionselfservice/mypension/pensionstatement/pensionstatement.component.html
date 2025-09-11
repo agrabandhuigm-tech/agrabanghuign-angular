@@ -1,0 +1,194 @@
+<div class="container-fluid" style="background-color: #fafafa;">
+    <div class="row">
+<!-- Said bar start  -->
+        <!-- <div class="col-lg-2 pt-1">         
+            <div class="card">          
+            <div class="card help border-0 mb-0 mt-1 p-0">
+                <button mat-flat-button color="primary">Life Certificate</button>
+            </div>
+            
+            <div class="card help border-0 mb-0 mt-3 p-0">
+                <button mat-flat-button >Overview ></button>
+            </div> 
+            <div class="card help border-0 mb-0 mt-3 p-0">
+                <button mat-flat-button >Pension Pay Slip ></button>
+            </div> 
+            <div class="card help border-0 mb-0 mt-3 p-0">
+                <button mat-flat-button >Pension Statement ></button>
+            </div> 
+            <div class="card help border-0 mb-0 mt-3 p-0">
+                <button mat-flat-button >Pension Calculator ></button>
+            </div> 
+            <div class="card help border-0 mb-0 mt-3 p-0">
+                <button mat-flat-button >Pension Status ></button>
+            </div> 
+
+            <div class="alerts d-flex justify-content-between">
+            
+            </div>
+            
+            <div class="card help border-0 mb-0 mt-5 p-0" >
+                
+                <img src="assets/images/side_f.png">
+                
+            </div>
+
+            <div class="card help border-0 mb-0 mt-5 p-0">
+                <button mat-flat-button color="primary">Need Help? Chat with Us</button>
+            </div>
+            </div>
+        </div> -->
+<!-- Said bar End   -->
+
+
+
+        <div class="col-lg-12 mb-5">
+            <div class="registration-card">
+                <div class="heading-2 bodytext-color d-flex align-items-center mt-1 px-4 py-2 wbg stepper-title">
+                 Pension Statement
+                    <mat-icon class="primary ms-2">info</mat-icon>
+                </div>
+                <div>
+                    <form  >
+                        <!-- [formGroup]="searchEmployeeForm" -->
+                        <div class="tab-container mt-4">
+                            <div class="container-fluid">
+                                <mat-card class="mt-3">
+                                    <!-- <mat-label class="font-12 d-block fw-bold mb-2">Pension Statement</mat-label> -->
+                                    <!-- <mat-label class="font-12 d-block fw-bold mb-3">Monthly Passbook (As per Financial year)</mat-label> -->
+                                    <div class="row">                                        
+                                        <div class="col-lg-4">
+                                            <mat-label class="font-12 d-block">Select </mat-label>
+                                            <mat-form-field  appearance="outline" class="example-full-width form-control" class="w-100 py-2">
+                                                <!-- <input matInput class=""  placeholder="Enter Year" >    -->
+                                                <select matNativeControl required >
+                                                    <option value="Monthly">Monthly</option>
+                                                    <option value="Quarterly">Quarterly</option>
+                                                    <option value="Half Yearly ">Half Yearly</option>
+                                                    <option value="Annually">Annually</option>
+                                                </select>                                                                                            
+                                            </mat-form-field>
+
+
+                                        </div>
+                                        <!-- <div class="col-lg-4">
+                                            <mat-label class="font-12 d-block">Month</mat-label>
+                                            <mat-form-field appearance="outline" class="example-full-width form-control" class="w-100">
+                                                <input matInput  class="" formControlName="Month" placeholder="Enter Month" >
+                                            </mat-form-field>   
+                                        </div> -->
+
+                                        <div class="col-lg-4">
+                                            <mat-label class="font-12 d-block">&nbsp;</mat-label>
+                                            <button class="btn btn-cls mt-1" mat-raised-button color="primary"
+                                               >Search</button>
+                                               <!-- (click)="searchEmpBasiceDetailsApi(searechEmpFormControl.empCode.value)" -->
+                                        </div>
+                                    </div>
+                                </mat-card>
+
+                                <mat-card class="mt-3" > 
+                                    <!-- *ngIf="resultEmpData && resultServiceData && !loading" -->
+                                    <div class="row">
+                                        <h4 class="fs-5">Sh.brij Mohan Shukla </h4>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                            <div>
+                                              <span><b>PPO No.</b></span>  &nbsp;
+                                              <label>441246</label>
+                                              <!-- <label>{{searechEmpFormControl.empCode.value}}</label> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                            <div>
+                                              <span><b>TAN No.</b></span>  &nbsp;
+                                              <label>AHIRPSS783N</label>
+                                              <!-- <label>{{resultEmpData.employeeId}}</label> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                            <div>
+                                              <span><b>DOB.</b></span>  &nbsp;
+                                              <label>13-06-1947</label>
+                                              <!-- <label>{{resultEmpData.pan}}</label> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                            <div>
+                                              <span><b>TREASURY</b></span>  &nbsp;
+                                              <label>Jaipur </label>
+                                              <!-- <label>{{resultServiceData.currentDesignation}}</label> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                            <div>
+                                              <span><b>Month</b></span>  &nbsp;
+                                              <label>May-2023 </label>
+                                              <!-- <label>{{resultServiceData.parentDepartment}}</label> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                            <div>
+                                              <span><b>Bank</b></span>  &nbsp;
+                                              <label>UCO Bank </label>
+                                              <!-- <label>{{resultEmpData.firstName}}</label> -->
+                                            </div>
+                                        </div> 
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                            <div>
+                                              <span><b>A/C No.</b></span>  &nbsp;
+                                              <label>XXXXXXXXXX54 </label>
+                                              <!-- <label>{{resultEmpData.fatherName}}</label> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                            <div>
+                                              <span><b> BRANCH</b></span>  &nbsp;
+                                              <label>JOHRI BAZAR </label>
+                                              <!-- <label>{{resultEmpData.dateOfRetirement | date: 'yyyy-MM-dd'}}</label> -->
+                                            </div>
+                                        </div>
+
+    
+                                    </div>
+                                </mat-card>
+
+                                <mat-card class="mt-3 card">
+                                    <div class="">
+                                        <table class="table" style="margin: 0; padding: 0; overflow: hidden;">
+                                            <thead class="thead-light">
+                                              <tr>                                               
+                                                <th scope="col">Month-Year</th>                                                
+                                                <th scope="col">Basic (B)</th>
+                                                <th scope="col">Commute (C)</th>
+                                                <th scope="col">Red Pension (B-C)</th>
+                                                <th scope="col">DA</th>
+                                                <th scope="col">IR</th>                                                
+                                                <th scope="col" >Additional</th>  
+                                                <th scope="col" >Medical Allw.</th>  
+                                                <th scope="col" >DH Allw.</th>  
+                                                <th scope="col" >Other Allw.</th>  
+                                                <th scope="col" >Arrear</th>  
+                                                <th scope="col" >TDS</th>  
+                                                <th scope="col" >Recovery</th>  
+                                                <th scope="col" >Total Allowance (TA)</th>                                                 
+                                              </tr>
+                                            </thead>                                            
+                                          </table>  
+                                    </div>                                    
+                                </mat-card>
+
+                                <!-- <mat-card class="mt-3" *ngIf="loading">
+                                    <mat-spinner class="myspinner m-auto"></mat-spinner>
+                                </mat-card>                              -->
+                               
+                            </div>
+                        </div>
+                    <!-- </form> -->
+                    
+                </form>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                

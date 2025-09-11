@@ -1,0 +1,208 @@
+<div class="container" style="min-height: 70vh;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                            <div class="col-lg-12 col-12">
+                                  <div class="row mb-3">
+                                    <h3>Pension Pay Slip</h3>
+                                    <div class="col-lg-4 month-dropdown" >
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Select Year</mat-label>
+                                            <mat-select [(ngModel)]="reportYear" (selectionChange)="getMonthFromYear()">
+                                                <mat-option *ngFor="let item of yearList" [value]="item.psnYear">{{item.psnYear}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-4 month-dropdown" >
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Select Month</mat-label>
+                                            <mat-select [(ngModel)]="reportMonth">
+                                            
+                                            <mat-option *ngFor="let item of monthList" [value]="item.psnMonthNumber">{{item.psnMonth}}</mat-option>
+                                            
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <button mat-raised-button color="primary" class="btn custom-btn mt-1" (click)="getPensionSlipDetails()">Search</button>
+                                    </div>
+                                  </div>
+
+                                  <div class="mt-4 py-4 border border-secondary rounded" >
+                                    <!-- <div class="px-2" #MonthlyPensionSlipToExport>
+                                        <h2 class="text-center">Government of Rajasthan</h2>
+                                        <h4 class="text-center">Directorate of Pension and Pensioners Welfare</h4>
+                                        <h4 class="text-center">Jyoti Nagar, Jaipur, Rajasthan 302005</h4>
+                                        <div class="table-responsive">
+                                            <table class="table align-middle table-nowrap table-centered mb-4 basic-detail-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th colspan="4">PENSION SLIP OF {{pensionSlipData?.['billMonthName']}}-{{pensionSlipData?.['billYear']}} </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th colspan="2">
+                                                            <p>Name: {{pensionSlipData?.['Name']}}</p>
+                                                            <p>DOB:  {{pensionSlipData?.['dob']}}</p>
+                                                            </th> 
+                                                        <th>PPONo</th>
+                                                        <th>{{pensionSlipData?.['ppoNo']}}</th>
+                                                    </tr>
+                                                    <tr rowspan="2">
+                                                  
+                                                        <th>Month</th>
+                                                        <th>{{pensionSlipData?.['billMonthName']}}-{{pensionSlipData?.['billYear']}}</th>
+                                                       <th colspan="2">
+                                                        <p>UTRNo: {{pensionSlipData?.['utrNo']}}</p>
+                                                        <p>TANNo: -</p>
+                                                       </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Treasury</th> 
+                                                        <td>{{pensionSlipData?.['treasuryName']}}</td>
+                                                        <th>BANK</th>
+                                                        <td>{{pensionSlipData?.['bankName']}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>A/c No</th> 
+                                                      
+                                                        <td>{{ maskAccountNumber(pensionSlipData?.['AcNo']) }}</td>
+                                                        <th>BRANCH </th>
+                                                        <td>{{pensionSlipData?.['bankBranch']}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <table class="table align-middle table-nowrap table-centered pay-slip-table">
+                                                <tbody>
+                                                    <tr scope="row">
+                                                        <th colspan="2">Basic(B)</th>
+                                                        <th>{{pensionSlipData?.['penAmt']}}</th>
+                                                        <td colspan="2"></td>
+                                                    </tr>
+                                                    <tr scope="row">
+                                                        <th colspan="2">Commutation(C)</th>
+                                                        <th>{{pensionSlipData?.['commutAmt']}}</th>
+                                                        <td colspan="2">
+                                                           
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Reduce Pension(B-C)</td>
+                                                        <td>{{pensionSlipData?.['RedAmt']}}</td>
+                                                        <td>TDS</td>
+                                                        <td>{{pensionSlipData?.['itTax']}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>DA</td>
+                                                        <td>{{pensionSlipData?.['drPen']}}</td>
+                                                        <td>Recovery</td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>IR</td>
+                                                        <td>{{pensionSlipData?.['ir']}}</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>Additional Pension</td>
+                                                        <td>{{pensionSlipData?.['adlPen']}}</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>5</td>
+                                                        <td>FMA(Medical)</td>
+                                                        <td>{{pensionSlipData?.['medAlw']}}</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>6</td>
+                                                        <td>DH Allowance</td>
+                                                        <td>{{pensionSlipData?.['dhaAlw']}}</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>7</td>
+                                                        <td>Other Allowance</td>
+                                                        <td>{{pensionSlipData?.['otheAlw']}}</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>8</td>
+                                                        <td>Arrear</td>
+                                                        <td>{{pensionSlipData?.['arrearAmt']}}</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>9</td>
+                                                            <td>
+                                                                <div class="additinal-text">
+                                                                    <div class="table-cell">
+                                                                        Additinal Allowance(10%)
+                                                                    </div>
+                                                                    <div  class="table-cell">
+                                                                        <span class="text-danger">Age - 75</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        <td>{{pensionSlipData?.['adlAlw']}}</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10</td>
+                                                        <th>Total Allowance(TA)</th>
+                                                        <td>{{pensionSlipData?.['grossAmt']}}</td>
+                                                        <th>Total Deduction(TD)</th>
+                                                        <td>{{pensionSlipData?.['deduction']}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <th>Net Amount (TA-TD)</th>
+                                                        <th class="text-green" colspan="3">{{pensionSlipData?.['netAmt']}}</th>
+                                                    </tr> 
+                                                  
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6"><span>https://www.pension.rajasthan.gov.in/</span></div>
+                                            <div class="col-6 text-end"><span>{{pensionSlipData?.['billDate']}}</span></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 text-end"><span>NIC-Pension, Jaipur, Rajasthan</span></div>
+                                        </div>
+                                  </div>
+                                  <div class="px-2 mt-4 text-center">
+                                    <button type="button" class="btn custom-btn" mat-raised-button (click)="openMonthlyPensionPDF()">Download Pension Slip</button>
+                                  </div>
+                                </div>
+                                
+
+                                <div class="text-center border border-primary mt-4" *ngIf="Object.keys(pensionSlipData).length == 0 && isError">
+                                    <div class="py-4">
+                                        <span class="text-primary">No Record Available</span>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <iframe id="ifrm" style="width:100%; min-height:875px;"></iframe>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

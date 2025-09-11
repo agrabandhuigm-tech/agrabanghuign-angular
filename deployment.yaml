@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ifmspssmanager
+  namespace: default
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ifmspssmanager
+  namespace: default
+  labels:
+    app: ifmspssmanager
+    service: ifmspssmanager
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  selector:
+    app: ifmspssmanager
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ifmspssmanager
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ifmspssmanager
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: ifmspssmanager
+        version: v1
+    spec:
+      serviceAccountName: ifmspssmanager
+      containers:
+      - image: IMAGE
+        imagePullPolicy: Always
+        name: ifmspssmanager
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+        - name: docker-registry-creds
+---
+

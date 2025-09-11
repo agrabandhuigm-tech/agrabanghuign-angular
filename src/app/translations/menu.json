@@ -1,0 +1,239 @@
+{
+  "admin": [{
+      "name": "Dashboard",
+      "url": "/dashboard"
+    },
+    {
+      "name": "Vendor/Organization",
+      "sub": [{
+          "name": "Vendor/Org-Registration",
+          "url": "/registration"
+        },
+        {
+          "name": "Pending Payee",
+          "url": "/pending-payee"
+        },
+        {
+          "name": "Map to Scheme",
+          "url": "/maptoscheme"
+        },
+        {
+          "name": "Map to Office",
+          "url": "/maptooffice"
+        }
+      ]
+    },
+    {
+      "name": "Bill Generation",
+      "sub": [{
+        "name": "Payment Sanction Request",
+        "url": "/giapaymentsanction"
+      }]
+    },
+
+    {
+      "name": "Payment Approval",
+      "url": "/payment-approval"
+    },
+    {
+      "name": "Search Payee",
+      "url": "search"
+    },
+    {
+      "name": "Profile",
+      "url": "/profile"
+    },
+    {
+      "name": "Admin",
+      "sub": [{
+          "name": "Menu",
+          "url": "/admin/menu"
+        },
+        {
+          "name": "Add User Role",
+          "url": "/admin/user-role"
+        }
+
+      ]
+    },
+    {
+      "name": "User Role",
+      "url": "/landing-page"
+    }
+
+
+  ],
+  "maker": [{
+      "name": "Dashboard",
+      "url": "/dashboard"
+    },
+    {
+      "name": "Vendor/Organization",
+      "sub": [{
+          "name": "Vendor/Org-Registration",
+          "url": "/pssregistration"
+        }
+
+      ]
+    },
+    {
+      "name": "Payee Search",
+      "url": "/payee-search"
+    },
+    {
+      "name": "Vendor Search",
+      "url": "/vendor-search"
+    },
+    {
+      "name": "Bill Generation",
+      "sub": [{
+          "name": "Payment Sanction Request",
+          "url": "/giapaymentsanction"
+        },
+        {
+          "name": "Pending Payment Sanction",
+          "url": "/dashboard"
+        },
+        {
+          "name": "Bill Process",
+          "url": "/paymentsanctionbill"
+        }
+      ]
+    },
+    {
+      "name": "My Profile",
+      "url": "/profile"
+    },
+    {
+      "name": "Reports",
+      "url": ""
+    }
+
+  ],
+  "approver": [{
+      "name": "Dashboard",
+      "url": "/dashboard"
+    },
+    {
+      "name": "Payee Search",
+      "url": "/payee-search"
+    },
+    {
+      "name": "Bill Generation",
+      "sub": [{
+          "name": "Pending Payment Sanction",
+          "url": "/dashboard"
+        },
+        {
+          "name": "Bill Process",
+          "url": "/paymentsanctionbill"
+        },
+        {
+          "name": "Pending E-Sign Payment Sanction",
+          "url": "/pendingesignps"
+        }
+      ]
+    },
+
+    {
+      "name": "My Profile",
+      "url": "/profile"
+    },
+    {
+      "name": "Reports",
+      "url": ""
+    },
+
+    {
+      "name": "Help & Support",
+      "url": ""
+    }
+  ],
+  "chekar": [{
+      "name": "Dashboard",
+      "url": "/dashboard"
+    },
+    {
+      "name": "Bill Generation",
+      "sub": [{
+          "name": "Pending Payment Sanction",
+          "url": "/dashboard"
+        },
+        {
+          "name": "Bill Process",
+          "url": "/paymentsanctionbill"
+        }
+
+      ]
+    },
+
+    {
+      "name": "Search Payee",
+      "url": "search"
+    }
+  ],
+  "vendor": [{
+      "name": "Dashboard",
+      "url": "/dashboard"
+    },
+    {
+      "name": "My Profile",
+      "url": "/profile"
+    },
+    {
+      "name": "My Requests",
+      "url": "/pending-payee"
+    },
+
+    {
+      "name": "My Work Orders",
+      "url": ""
+    },
+    {
+      "name": "Self-Registration",
+      "url": "/registration"
+    },
+    {
+      "name": "E-Invoices",
+      "url": ""
+    },
+    {
+      "name": "Payment & Refunds",
+      "url": ""
+    },
+    {
+      "name": "Reports",
+      "url": ""
+    },
+    {
+      "name": "Help & Support",
+      "url": ""
+    }
+
+
+
+  ],
+  "ddo": [{
+      "name": "Payee Management",
+      "url": ""
+    },
+    {
+      "name": "Employee Management",
+      "url": ""
+    },
+    {
+      "name": "Pension Management",
+      "url": ""
+    },
+
+
+    {
+      "name": "Treasury",
+      "url": ""
+    },
+    {
+      "name": "WAM",
+      "url": ""
+    }
+  ]
+}

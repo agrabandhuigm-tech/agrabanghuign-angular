@@ -1,0 +1,904 @@
+<!-- generic no record found modal starts-->
+
+
+<div class="first-payment-modal" *ngIf="id=='no-record-found'">
+  <div class="d-flex justify-content-end mb-3">
+    <div mat-dialog-close>
+      <img src="./assets/images/cross.svg" alt="image">
+    </div>
+  </div>
+  <div class="stop-reason-content text-center">
+    <div class="modal-icon-image-box">
+
+    </div>
+    <div class="modeal-text-container text-align-center">
+      <p style="font-size: 18px;">No record found!</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- generic no record found modal ends-->
+
+<!-- Request Submitted Already -->
+<div class="first-payment-modal" *ngIf="id=='reject'">
+  <div class="text-end" mat-dialog-close>
+    <img src="./assets/images/cancel.svg" alt="">
+  </div>
+  <div class="stop-reason-content text-center">
+    <div class="modal-iocn-image-box">
+      <img src="./assets/images/reject.svg" alt="icon">
+    </div>
+    <div class="modeal-text-container mt-2">
+      <p class="text-align-center m-0 bodytext-color reject mt-3">Request Submitted Already</p>
+      <p class="text-align-center m-0 bodytext-color success_subtext mt-4">Your request for a change has been
+        submitted already.</p>
+      <p class="text-align-center m-0 bodytext-color success_subtext">Your request ID is:</p>
+      <span class="text-align-center m-0 bodytext-color success_subtext">01246</span>
+    </div>
+    <div class="mt-4">
+      <button mat-raised-button color="primary" class="px-5" mat-dialog-close>Ok</button>
+    </div>
+  </div>
+</div>
+
+<!-- verify OTP -->
+<div class="modal-sm verify-otp-modal">
+  <div class="" *ngIf="id=='otp'">
+    <div class="row align-items-center">
+      <div class="col-6">
+        <p class="heading-1 bodytext-color m-0">Verify OTP</p>
+      </div>
+      <div class="col-6">
+        <img class="float-end" src="./assets/images/cross.svg" alt="closeIcon" (click)="submit()">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="mobile-text">Sent to <span>{{ maskedPhoneNo }}</span></p>
+      </div>
+    </div>
+    <div class="row">
+      <form [formGroup]="otpForm">
+
+        <div class="col">
+          <p class="mobile-text f-12 m-0">Enter your OTP<span class="mendetory-class">*</span></p>
+          <div class="input-otp-group">
+            <mat-form-field class="otp-width me-2" appearance="outline">
+              <input numberOnly matInput formControlName="otpInput1" #otpInput1 maxlength="1"
+                (keyup)="onOtpKeyUp($event, otpInput2, null, 1)">
+            </mat-form-field>
+            <mat-form-field class="otp-width me-2" appearance="outline">
+              <input numberOnly matInput formControlName="otpInput2" #otpInput2 maxlength="1"
+                (keyup)="onOtpKeyUp($event, otpInput3, otpInput1, 1)">
+            </mat-form-field>
+            <mat-form-field class="otp-width me-2" appearance="outline">
+              <input numberOnly matInput formControlName="otpInput3" #otpInput3 maxlength="1"
+                (keyup)="onOtpKeyUp($event, otpInput4, otpInput2, 1)">
+            </mat-form-field>
+            <mat-form-field class="otp-width me-2" appearance="outline">
+              <input numberOnly matInput formControlName="otpInput4" #otpInput4 maxlength="1"
+                (keyup)="onOtpKeyUp($event, otpInput5, otpInput3, 1)">
+            </mat-form-field>
+            <mat-form-field class="otp-width me-2" appearance="outline">
+              <input numberOnly matInput formControlName="otpInput5" #otpInput5 maxlength="1"
+                (keyup)="onOtpKeyUp($event, otpInput6, otpInput4, 1)">
+            </mat-form-field>
+            <mat-form-field class="otp-width me-2" appearance="outline">
+              <input numberOnly matInput formControlName="otpInput6" #otpInput6 maxlength="1"
+                (keyup)="onOtpKeyUp($event, null, otpInput5, 1)">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p class="blink  medium-font bodytext-color" *ngIf="resendClickCounter > 3">You have exceded the maximum
+              limit to resend OTP.</p>
+            <p class="medium-font bodytext-color" *ngIf="resendClickCounter <= 3">Resend OTP in <span>{{
+                remainingMinutes | number: '2.0' }}:{{
+                remainingSeconds | number: '2.0' }}</span></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <!-- <button class="proceed-otp" [disabled]="otpForm.invalid" mat-raised-button color="primary"
+              type="submit">Proceed</button> -->
+            <button class="proceed-otp" [disabled]="otpForm.invalid" mat-raised-button color="primary" type="button"
+              (click)="referData('verify-otp')">Proceed</button>
+            <button class="proceed-otp ms-2" mat-raised-button color="primary" type=""
+              *ngIf="showResendButton && resendClickCounter <= 3" (click)="resendOtp()">Resend OTP</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Verify OTP End-->
+
+<div class="first-payment-modal" *ngIf="id=='approve'">
+  <div class="stop-reason-content text-center">
+    <div class="modal-iocn-image-box">
+      <mat-icon style="font-size: 70px;
+          text-align: center;
+          color: #2ab581;
+          width: 100%;">check_circle_outline</mat-icon>
+    </div>
+    <div class="modeal-text-container text-align-center">
+      <h1 class="text-align-center m-0 bodytext-color text-success  mt-3 mb-3">
+        Approved
+      </h1>
+      <p style="font-size: 18px;">Relieving request has been successfully forwarded with reference number <span
+          style="color: rgb(23, 114, 250);">REL2345002435</span></p>
+    </div>
+
+  </div>
+</div>
+
+<div>
+  <div class="verify-otp-modal " *ngIf="id=='verify-undertaking'">
+    <div class="row align-items-center">
+      <div class="col-6">
+        <p class="heading-1 bodytext-color m-0">Verify Undertaking</p>
+      </div>
+      <div class="col-6">
+        <img class="float-end" src="./assets/images/cross.svg" alt="closeIcon" (click)="closeDialog()">
+      </div>
+    </div>
+    <div class="row my-5">
+      <div class="col">
+        <!-- <p class="m-0">To:</p>
+        <p>{{bankName}}</p>
+        <p class="my-3">Dear Service Provider,</p> -->
+
+        <!-- <p>I am ready to adopt the facilitation of earned salary from <strong>{{bankName}}</strong> under the Aegis of
+          <span class="bold-font fst-italic">{{fsProvider}}.</span> <br> <br>
+          I hereby undertake that, in the event of excess / unpaid advance / repayment so made shall be refunded
+          by myself to the service provider, either from my salary or otherwise
+          from my bank account by the service provider.
+        </p> -->
+
+
+        <ul>
+          <li class="p-2">
+            I <strong>{{empName}}</strong> hereby provide my consent for sharing of my personal information, including
+            my employee ID, pension details, and other relevant data, with Financial Institution /Service Provider for
+            availing earned advance pension facility under "Earned Pension Advance Drawals Access Scheme" launched by
+            Government of Rajasthan for pensioner of GoR/Undertaking.
+          </li>
+
+          <li class="p-2"> I also authorize Government of Rajasthan and/ or its Undertakings/ Instrumentalities to
+            deduct the recoverable of amount and charges. with applicable taxes from the net salary payable under
+            "Earned Pension Advance Drawls Access Scheme" for making repayment to
+            NBC of Service Provider/ Financial Institution.
+          </li>
+        </ul>
+
+
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col">
+        <p class="heading-2 primary">Pensioner Details <span>
+            <hr style="border-color: var(--primary);">
+          </span></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 col-lg-2">
+        <p class="text-center m-0">Pensioner Full Name</p>
+        <p class="subtitle-1 m-0 text-center mt-2">{{empName}}</p>
+      </div>
+      <div class="col-6 col-lg-2" *ngIf="data?.pension_2_0">
+        <p class="text-center m-0">Pensioner ID</p>
+        <p class="subtitle-1 m-0 text-center mt-2">{{data?.pensionerId}}</p>
+      </div>
+      <div class="col-6 col-lg-2">
+        <p class="text-center m-0">PPO NO</p>
+        <p class="subtitle-1 m-0 text-center mt-2">{{data?.ppoNo}}</p>
+      </div>
+      <div class="col-6 col-lg-2">
+        <p class="text-center m-0">Employee ID</p>
+        <p class="subtitle-1 m-0 text-center mt-2">{{employeeCode}}</p>
+      </div>
+   
+      <div class="col-6 col-lg-2 ">
+        <p class="text-center m-0">Mobile Number</p>
+        <p class="subtitle-1 m-0 text-center mt-2">{{phoneNo}}</p>
+      </div>
+      <!-- <div class="col-6 col-lg-2 mt-3 mt-lg-0">
+        <p class="text-center m-0">Date</p>
+        <p class="subtitle-1 m-0 text-center mt-2"></p>
+      </div> -->
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <!-- <button class="proceed-otp px-5 py-2 float-end" mat-raised-button color="primary" (click)="sendOtpData()">Verify -->
+        <button class="proceed-otp px-5 py-2 float-end" mat-raised-button color="primary"
+          (click)="referData('verify-via-otp')">Verify
+          via
+          OTP</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Successful -->
+<div>
+  <div class="first-payment-modal" *ngIf="id=='confirm-otp'">
+    <div class="text-end">
+      <div class="text-end" mat-dialog-close>
+        <img src="./assets/images/cross.svg" alt="">
+      </div>
+    </div>
+    <div class="stop-reason-content text-center">
+      <div class="modal-iocn-image-box">
+        <img src="./assets/images/green-right-check-icon.svg" alt="icon">
+      </div>
+      <div class="modeal-text-container mt-2">
+        <p class="text-align-center m-0 bodytext-color success mt-3" style="color: #fff;">Successful</p>
+        <p class="text-align-center m-0 bodytext-color success_subtext mt-3">The undertaking details are saved
+          successfully.
+        </p>
+      </div>
+      <div class="mt-5">
+        <button *ngIf="consentSource !== 'IFMS'" mat-raised-button color="primary" class="px-5"
+          mat-dialog-close>Ok</button>
+
+        <p class="text-center" *ngIf="consentSource === 'IFMS'">Please wait redirection for KYC is getting processed...
+        </p>
+        <p class="text-center" *ngIf="consentSource === 'IFMS'">Please do not refresh/close the window</p>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- withdrawal calculation start -->
+<div>
+  <div class="first-payment-modal" *ngIf="id=='withdrawal-calc'">
+    <div class="row align-items-center">
+      <div class="col-10">
+        <p class="heading-2 m-0">Here is how your withdrawal amount is calculated</p>
+      </div>
+      <div class="col-2">
+        <div class="close-iocn-container float-end" mat-dialog-close>
+          <img src="./assets/images/cross.svg" alt="icon">
+        </div>
+      </div>
+    </div>
+    <div class="quick-info-container p-2 mt-3">
+      <div class="info-icon-title-container d-flex align-items-center">
+        <mat-icon class="primary">info</mat-icon>
+        <p class="m-0 f-12 medium-font primary">Quick Info</p>
+      </div>
+      <div class="info-text-container p-2">
+        <p class="m-0 f-12">The Pension advance is based on the amount you have earned so far.</p>
+        <p class="m-0 mt-3 f-12">For instance:</p>
+        <ul>
+          <li class="f-12">Say your net pension is Rs 40,000.</li>
+          <li class="f-12">You apply on the 14th day of the month, but you have taken 2 days unpaid leave.</li>
+          <li class="f-12">Also, you have already taken 2 days of pension in advance this month.</li>
+        </ul>
+        <p class="m-0 f-12">You can receive an advance equivalent to 10 days worth of your net pension.</p>
+        <p class="m-0 mt-4 f-12">To receive your earned salary in advance, you need to submit an undertaking.</p>
+        <p class="m-0 f-12">This undertaking will share your information with the service provider you choose.</p>
+      </div>
+    </div>
+    <div class="monthly-salary-container d-flex align-items-center mt-4">
+      <div class="gross-salary me-4">
+        <p class="medium-font m-0 opacity-50 bodytext-color f-12">Monthly Gross Pension</p>
+        <p class="bold-font bodytext-color mt-2 m-0">40'000</p>
+      </div>
+      <div class="net-salary ms-4">
+        <p class="medium-font m-0 opacity-50 bodytext-color f-12">Monthly Net pension</p>
+        <p class="bold-font bodytext-color mt-2 m-0">40'000</p>
+      </div>
+    </div>
+    <div class="limit-pending-payment-container d-flex align-items-center mt-4">
+      <div class="daily-transection-limit me-4">
+        <p class="medium-font m-0 opacity-50 bodytext-color f-12">Daily transaction limit</p>
+        <p class="bold-font bodytext-color mt-1 m-0">20'000</p>
+      </div>
+      <div class="payment-pending ms-4">
+        <p class="medium-font m-0 opacity-50 bodytext-color f-12">Payment pending to service provider</p>
+        <p class="bold-font bodytext-color mt-1 m-0">20'000</p>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-lg-4">
+        <div class="eligible-days-container rounded p-2">
+          <p class="m-0">No. of days eligible for advance</p>
+          <p class="m-0 mt-2">7</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="earned-advance-salary-container rounded p-2 mt-2 mt-lg-0">
+          <p class="m-0">Earned advance pension as on date</p>
+          <p class="m-0 mt-2">Rs 730</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="amount-repaid-container rounded p-2 mt-2 mt-lg-0">
+          <p class="m-0">Amount repaid</p>
+          <p class="m-0 mt-2">Rs 40</p>
+        </div>
+      </div>
+    </div>
+    <div class="need-help-section rounded p-3 mt-4">
+      <div class="row align-items-center px-3">
+        <div class="col-8">
+          <p class="m-0 heading-2 bodytext-color">Need Help ?</p>
+          <p class="m-0 f-12 medium-font mt-2">Have questions or concerns regarding your profile? Our experts are here
+            to help!</p>
+          <button class="px-5 mt-4" mat-raised-button color="primary">Contact us</button>
+        </div>
+        <div class="col-4">
+          <div class="img-container text-end">
+            <img src="./assets/images/contact-us-big-img.svg" alt="img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- withdrawal calculation end -->
+
+
+<!-- service-provider-redirection-callback WTH Success Start-->
+<div class="first-payment-modal" *ngIf="id=='service-provider-redirection-callback-wth-success'">
+  <div class="text-end">
+    <div class="text-end" mat-dialog-close>
+      <img src="./assets/images/cross.svg" alt="">
+    </div>
+  </div>
+  <div class="stop-reason-content text-center">
+    <div class="modal-iocn-image-box">
+      <img src="./assets/images/green-right-check-icon.svg" alt="icon">
+    </div>
+    <div class="modeal-text-container mt-2">
+      <p class="text-align-center m-0 bodytext-color success mt-3 font-class" >Successfull</p>
+      <p class="mb-2 text-align-center m-0 bodytext-color success_subtext mt-3 line-height-30">Your request ID {{
+        referenceId }} has been received and the amount will be credited to your bank account shortly.</p>
+      <mat-hint>For any concerns or clarifications, kindly contact the respective service provider.</mat-hint>
+    </div>
+    <div class="mt-5">
+      <button mat-raised-button color="primary" class="px-5" mat-dialog-close (click)="goToDashboard()">Go to
+        Dashboard</button>
+    </div>
+  </div>
+</div>
+<!-- service-provider-redirection-callback WTH Success End-->
+<!-- aa -->
+<!-- service-provider-redirection-callback WTH Failed Start-->
+<div class="first-payment-modal" *ngIf="id=='service-provider-redirection-callback-wth-failed'">
+  <div class="text-end">
+    <div class="text-end" mat-dialog-close>
+      <img src="./assets/images/cross.svg" alt="">
+    </div>
+  </div>
+  <div class="stop-reason-content text-center">
+    <div class="modal-iocn-image-box">
+      <img class="failed_img" src="./assets/images/failed.png" alt="icon">
+    </div>
+    <div class="modeal-text-container mt-2">
+      <p class="text-align-center m-0 bodytext-color text-danger mt-3">Failed!</p>
+      <p class="mb-2 text-align-center m-0 bodytext-color success_subtext mt-3 line-height-30">Your transaction is
+        failed at service provider's end. Please try after some time.</p>
+      <mat-hint>For any concerns or clarifications, kindly contact the respective service provider.</mat-hint>
+    </div>
+    <div class="mt-5">
+      <button mat-raised-button color="primary" class="px-5" mat-dialog-close (click)="goToDashboard()">Go to
+        Dashboard</button>
+    </div>
+  </div>
+</div>
+<!-- service-provider-redirection-callback WTH Failed End-->
+
+
+<!-- service-provider-redirection-callback KYC Success Start-->
+<div class="first-payment-modal" *ngIf="id=='service-provider-redirection-callback-kyc-success'">
+  <div class="text-end">
+    <div class="text-end" mat-dialog-close>
+      <img src="./assets/images/cross.svg" alt="">
+    </div>
+  </div>
+  <div class="stop-reason-content text-center">
+    <div class="modal-iocn-image-box">
+      <img src="./assets/images/green-right-check-icon.svg" alt="icon">
+    </div>
+    <div class="modeal-text-container mt-2">
+      <p class="text-align-center m-0 bodytext-color success mt-3 font-class" >Successfull</p>
+      <p class="mb-2 text-align-center m-0 bodytext-color success_subtext mt-3 line-height-30">You have successfully
+        completed the KYC process. You can proceed with Earned Advance Salary Withdrawal.</p>
+      <mat-hint>For any concerns or clarifications, kindly contact the respective service provider.</mat-hint>
+    </div>
+    <div class="mt-5">
+      <button mat-raised-button color="primary" class="px-5" mat-dialog-close (click)="goToDashboard()">Go to
+        Dashboard</button>
+    </div>
+  </div>
+</div>
+<!-- service-provider-redirection-callback KYC Success End-->
+
+<!-- service-provider-redirection-callback KYC Failed Start-->
+<div class="first-payment-modal" *ngIf="id=='service-provider-redirection-callback-kyc-failed'">
+  <div class="text-end">
+    <div class="text-end" mat-dialog-close>
+      <img src="./assets/images/cross.svg" alt="">
+    </div>
+  </div>
+  <div class="stop-reason-content text-center">
+    <div class="modal-iocn-image-box">
+      <img class="failed_img" src="./assets/images/failed.png" alt="icon">
+    </div>
+    <div class="modeal-text-container mt-2">
+      <p class="text-align-center m-0 bodytext-color text-danger mt-3">Failed!</p>
+      <p class="mb-2 text-align-center m-0 bodytext-color success_subtext mt-3 line-height-30">Your KYC is failed at
+        service provider's end. Please try after some time.</p>
+      <mat-hint>For any concerns or clarifications, kindly contact the respective service provider.</mat-hint>
+    </div>
+    <div class="mt-5">
+      <button mat-raised-button color="primary" class="px-5" mat-dialog-close (click)="goToDashboard()">Go to
+        Dashboard</button>
+    </div>
+  </div>
+</div>
+<!-- service-provider-redirection-callback KYC Failed End-->
+
+
+<!-- Advance Salary Withdrawal Proceed -->
+<div class="verify-otp-modal " *ngIf="id=='proceed-adv-salary-withdrawal'">
+  <div class="row align-items-center">
+    <div class="col-6">
+      <p class="heading-1 bodytext-color m-0">Confirm</p>
+    </div>
+    <div class="col-6">
+      <img class="float-end" src="./assets/images/cross.svg" alt="closeIcon" (click)="closeDialog()">
+    </div>
+  </div>
+
+
+  <div class="row mt-4">
+    <div class="col">
+      <p class="subtitle-1 primary">Earned Pension Advance Details<span>
+          <hr style="border-color: var(--primary);">
+        </span></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 col-lg-4">
+      <p class="m-0">Amount To Be Withdrawn</p>
+
+    </div>
+    <div class="col-6 col-lg-4">
+
+      <p class="m-0">Transaction Fees<span class="f-12">(inclusive of GST.)</span></p>
+
+
+    </div>
+    <div class="col-6 col-lg-4 mt-3 mt-lg-0">
+      <p class="m-0">Net Amount</p>
+
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-6 col-lg-4">
+
+      <p class="subtitle-1 m-0 mt-2">₹ {{currentAvailableSalarydata.wAmt}}</p>
+    </div>
+    <div class="col-6 col-lg-4">
+
+
+      <p class="subtitle-1 m-0 mt-2">₹ {{currentAvailableSalarydata.amt}}</p>
+
+    </div>
+    <div class="col-6 col-lg-4 mt-3 mt-lg-0">
+
+      <p class="subtitle-1 m-0 mt-2">₹ {{getAmount(currentAvailableSalarydata.wAmt,currentAvailableSalarydata.amt)}}</p>
+    </div>
+  </div>
+
+
+  <!-- <div class="row my-5">
+    <div class="col">
+      <p class="m-0">To:</p>
+      <p>{{bankName}}</p>
+      <p class="my-3">Dear Service Provider,</p>
+      <p>I am ready to adopt the facilitation of earned salary from {{bankName}} under the Aegis of
+        <span class="bold-font fst-italic">{{fsProvider}}.</span> <br> <br>
+        I hereby undertake that, in the event of excess / unpaid advance / repayment so made shall be refunded
+        <br><br>
+        by myself to the service provider, either from my salary or otherwise
+        from my bank account by the service provider.
+      </p>
+    </div>
+  </div> -->
+  <hr style="border-color: var(--primary);">
+  <div class="d-flex">
+    <mat-checkbox (change)="onCheck($event);" class="me-2" color="primary"></mat-checkbox>
+    <p class="mb-0">I confirm that I have verified the details mentioned above and agree to proceed with the
+      transaction.</p>
+  </div>
+
+  <div class="mt-2" *ngIf="checkboxError"><mat-error>Please tick the check box to confirm</mat-error></div>
+  <div class="row mt-5">
+    <div class="col-12">
+      <button *ngIf="!showRedirectionMsg" class="proceed-otp float-end" mat-raised-button color="primary"
+        (click)="proceedToWithdraw()">Accept and Submit</button>
+      <p class="text-center" *ngIf="showRedirectionMsg">Please wait transaction is getting processed...</p>
+      <p class="text-center" *ngIf="showRedirectionMsg">Please do not refresh/close the window</p>
+    </div>
+  </div>
+</div>
+<!-- Advance Slaray Withdrawal Proceed End -->
+
+
+<!-- Confirm discontinue advance salary starts -->
+
+<div class="first-payment-modal" *ngIf="id=='discontinue'">
+  <!-- <div class="text-end">
+      <img src="./assets/images/cancel.svg" alt="">
+  </div> -->
+  <div class="d-flex justify-content-end mb-3">
+    <div mat-dialog-close>
+      <img src="./assets/images/cross.svg" alt="image">
+    </div>
+  </div>
+
+  <div class="stop-reason-content text-center">
+    <!--  <div class="modal-iocn-image-box">
+          <img src="./assets/images/green-right-check-icon.svg" alt="icon">
+      </div> -->
+    <div class="modeal-text-container mt-2">
+      <!-- <p class="text-align-center m-0 bodytext-color success mt-3">Successful</p> -->
+      <p class="text-align-center m-0 bodytext-color success_subtext mt-3">
+        <b>Submit Request?</b>
+      </p>
+      <p class="text-align-center m-0 bodytext-color success_subtext mt-3">
+        <b> Are you sure want to discontinue<br>your subscription to an advance salary service<br>provider? </b>
+      </p>
+
+
+      <!-- <p class="text-align-center m-0 bodytext-color success_subtext mt-3">
+              The changes are saved successfully and submitted for approval.
+          </p> -->
+    </div>
+    <div class="mt-5">
+      <button mat-stroked-button color="primary" class="px-5 me-2" (click)="check('N')">No</button>
+      <button mat-raised-button color="primary" class="px-5" (click)="check('Y')">Yes</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm discontinue advance salary ends-->
+
+
+<!-- Successfully discontinued advance salary provider subscription starts-->
+
+
+<div class="first-payment-modal" *ngIf="id=='successfull'">
+  <div class="d-flex justify-content-end mb-3">
+    <div mat-dialog-close>
+      <img src="./assets/images/cross.svg" alt="image">
+    </div>
+  </div>
+  <div class="stop-reason-content text-center">
+    <div class="modal-icon">
+      <mat-icon style="font-size: 70px;
+          text-align: center;
+          color: #2ab581;
+          width: 100%;">check_circle_outline</mat-icon>
+    </div>
+    <div class="modeal-text-container text-align-center">
+      <h1 class="text-align-center m-0 bodytext-color text-success  mt-3 mb-3">
+        Successfull
+      </h1>
+      <p style="font-size: 18px;">The request ID <span style="color: rgb(23, 114, 250);">---------</span>has been
+        successfully submitted</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Successfully discontinued advance salary provider subscription ends-->
+
+<!-- Amount due pending starts-->
+
+
+<div class="first-payment-modal" *ngIf="id=='cant-discontinue'">
+  <div class="d-flex justify-content-end mb-3">
+    <div mat-dialog-close>
+      <img src="./assets/images/cross.svg" alt="image">
+    </div>
+  </div>
+  <div class="stop-reason-content text-center">
+    <div class="modal-icon-image-box">
+      <img src="./assets/images/access_denied.svg" alt="image">
+    </div>
+    <div class="modeal-text-container text-align-center">
+      <h2 class="text-align-center m-0 bodytext-color warn mt-3 mb-3">
+        Alert!
+      </h2>
+      <p style="font-size: 18px;">Please clear your dues before discontinuing the service.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Amount due pending ends-->
+
+
+<!-- Service provider consent starts-->
+
+
+<div class="verify-otp-modal " *ngIf="id=='svcPrvdr'">
+  <div class="row align-items-center">
+    <div class="col-6">
+      <p class="heading-1 bodytext-color m-0">Consent From Service Provider</p>
+    </div>
+    <div class="col-6">
+      <img class="float-end" src="./assets/images/cross.svg" alt="closeIcon" (click)="closeDialog()">
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col">
+      <p class="heading-2 primary">Consent provided to service provider <span>
+          <hr style="border-color: var(--primary);">
+        </span></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 col-lg-3">
+      <p class="text-center m-0">Employee ID</p>
+      <p class="subtitle-1 m-0 text-center mt-2">{{employeeId}}</p>
+    </div>
+    <div class="col-6 col-lg-3">
+      <p class="text-center m-0">Employee Name</p>
+      <p class="subtitle-1 m-0 text-center mt-2">{{empName}}</p>
+    </div>
+    <div class="col-6 col-lg-3 mt-3 mt-lg-0">
+      <p class="text-center m-0">Phone Number</p>
+      <p class="subtitle-1 m-0 text-center mt-2">{{phoneNo}}</p>
+    </div>
+    <div class="col-6 col-lg-3 mt-3 mt-lg-0">
+      <p class="text-center m-0">Service Provider</p>
+      <p class="subtitle-1 m-0 text-center mt-2">{{agentName}}</p>
+    </div>
+
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <!-- <button class="proceed-otp px-5 py-2 float-end" mat-raised-button color="primary" (click)="sendOtpData()">Verify -->
+      <button class="proceed-otp px-5 py-2 float-end" mat-raised-button color="primary"
+        (click)="referData('verify-via-otp')">Verify
+        via
+        OTP</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Service provider consent ends-->
+
+
+
+
+
+<!-- Transaction Charges Table Start -->
+<div>
+  <div class="first-payment-modal" *ngIf="id=='trnsctionChargeDetails'">
+    <div class="row align-items-center">
+      <div class="col-10">
+        <p class="heading-2 m-0">Transaction Charges</p>
+      </div>
+      <div class="col-2">
+        <div class="close-iocn-container float-end">
+          <img src="./assets/images/cross.svg" alt="icon" mat-dialog-close>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="transaction-charges-table-container mb-4 mt-2">
+      <table mat-table [dataSource]="transactionDataSource" class="w-100">
+
+        <ng-container matColumnDef="amount_given">
+          <th mat-header-cell *matHeaderCellDef class="table-col-padding"><strong>Advance Amount</strong>
+          </th>
+          <td mat-cell *matCellDef="let element" class="table-col-padding">
+            <p class="m-0">{{element.amount_given}}{{element.amntRange}}</p>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="transaction_fee">
+          <th mat-header-cell *matHeaderCellDef class="table-col-padding"><strong>Transaction Fees(Including
+              GST)</strong>
+          </th>
+          <td mat-cell *matCellDef="let element" class="table-col-padding">
+            <p class="m-0">₹ {{element.transFees}}</p>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsTransactionFee;sticky: true"></tr>
+        <tr mat-row *matRowDef="let row;columns: displayedColumnsTransactionFee"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="8">No Data</td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Transaction Charges Table End -->
+
+
+
+<!-- coming soon Start-->
+<div>
+  <div class="first-payment-modal" *ngIf="id=='coming-soon'">
+    <div class="d-flex justify-content-end gap-2 my-2 cp">
+      <!-- <h2 class="">Coming Soon</h2> -->
+      <div mat-dialog-close><img src="./assets/images/cross.svg" alt="image"></div>
+    </div>
+    <div class="text-center coming-soon-image">
+      <img src="./assets/images/comingsoon - Copy.svg" alt="image">
+    </div>
+  </div>
+</div>
+<!-- coming soon End-->
+
+<!-- Chief Minister Message-->
+<!-- <div>
+  <div class="first-payment-modal" *ngIf="id=='cmMessage'">
+    <div mat-dialog-close class="text-end">
+      <img src="./assets/images/cross.svg" alt="image">
+    </div>
+    <div class="text-center my-2 cp">
+      <div class="coming-soon-image text-center ">
+        <img class="text-center" src="./assets/images/cm.jpeg" alt="image">
+      </div>
+      <h2 class="mt-2">CM Name</h2>
+    </div>
+    <div>
+      <p style="text-align: justify;">Hon'ble Chief Minister, Government of Rajasthan would like to facilitate Government employees through Earned
+        Salary Advance Access to draw advance against their earned salary. Employees may avail this facility from June
+        01, 2023.</p>
+    </div>
+  </div>
+</div> -->
+<!-- Chief Minister Message ends-->
+
+<!-- Successfully forwarded starts-->
+
+<div>
+  <div class="first-payment-modal" (click)="redirectHome()" *ngIf="id=='successfulFrwrd'">
+    <div class="text-end">
+      <div class="text-end" mat-dialog-close>
+        <img src="./assets/images/cross.svg" alt="">
+      </div>
+    </div>
+    <div class="stop-reason-content text-center">
+      <div class="modal-iocn-image-box">
+        <img src="./assets/images/green-right-check-icon.svg" alt="icon">
+      </div>
+      <div class="modeal-text-container mt-2">
+        <p class="text-align-center m-0 bodytext-color success mt-3">Successful</p>
+        <p class="text-align-center m-0 bodytext-color success_subtext mt-3">{{dialogText}}
+        </p>
+      </div>
+      <div class="mt-5">
+        <button (click)="redirectHome()" mat-raised-button color="primary" class="px-5"
+          mat-dialog-close>Ok</button>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Successfully forwarded ends-->
+
+<!-- Action Failed starts-->
+
+
+  <div class="first-payment-modal" *ngIf="id=='actionFailed'">
+    <div class="text-end">
+      <div class="text-end" mat-dialog-close>
+        <img src="./assets/images/cross.svg" alt="">
+      </div>
+    </div>
+    <div class="stop-reason-content text-center">
+      <div class="modal-iocn-image-box">
+        <img class="failed_img" src="./assets/images/failed.png" alt="icon">
+      </div>
+      <div class="modeal-text-container mt-2">
+        <p class="text-align-center m-0 bodytext-color text-danger mt-3">Failed</p>
+        <p class="text-align-center m-0 bodytext-color success_subtext mt-3">{{dialogText}}
+        </p>
+      </div>
+      <div class="mt-5">
+        <button (click)="redirectHome()" mat-raised-button color="primary" class="px-5"
+            mat-dialog-close>Ok</button>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- Action Failed ends-->
+
+
+<!-- Preview image-->
+
+<div>
+  <div class="first-payment-modal" *ngIf="id=='imagePreview'">
+    <div class="text-end">
+      <div class="text-end" mat-dialog-close>
+        <img src="./assets/images/cross.svg" alt="">
+      </div>
+    </div>
+    <div class="stop-reason-content text-center">
+      <div  class="modeal-text-container mt-2">
+        <img *ngIf="['png','jpg','jpeg'].includes(imageData?.docName?.substr(imageData?.docName?.lastIndexOf('.')+ 1))" [src]="'data:image/jpeg;base64,'+imageData.imageData" style=" height: 100%;  width: auto;" />
+        <p *ngIf="!['png','jpg','jpeg'].includes(imageData?.docName?.substr(imageData?.docName?.lastIndexOf('.')+ 1))">Preview not available</p>
+      </div>
+
+      <div class="mt-5">
+        <button mat-raised-button color="default" class="px-5" mat-dialog-close>Close</button>
+        <button (click)="downloadFromBase64()" mat-raised-button color="primary" class="px-5" >Download</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SPreview image ends-->
+
+
+<!-- Redirect to kyc when kyc is pending and consent is successfull at IFMS starts-->
+<div class="first-payment-modal" *ngIf="id=='kyc-pending'">
+
+  <div class="stop-reason-content text-center">
+    <div class="modal-iocn-image-box">
+      <img src="./assets/images/kyc-pending.svg" alt="icon" width="30%">
+    </div>
+    <div class="modeal-text-container">
+      <h2 class="m-0 bodytext-color mt-3 bold-font">KYC Pending</h2>
+      <p class="m-0 bodytext-color mt-3">You have KYC pending at Service provider End </p>
+      <mat-hint class="f-12">Click on Complete KYC button to complete your KYC.</mat-hint>
+    </div>
+    <div class="mt-4 text-center">
+
+      <button mat-stroked-button color="primary"  mat-dialog-close (click)="redirectDashboard()">Go To Dashboard</button>
+      <button mat-raised-button color="primary" class="ms-3" mat-dialog-close (click)="completeKYC()">Complete KYC</button>
+    </div>
+  </div>
+</div>
+<!-- Redirect to kyc when kyc is pending and consent is successfull at IFMS End-->
+
+<!-- Stop withdrawal after 20th of month starts-->
+<div class="first-payment-modal" *ngIf="id=='stop-withdrawal'">
+
+  <div class="stop-reason-content text-center">
+    <div class="modal-iocn-image-box">
+      <img src="./assets/images/access_denied.svg" alt="icon" width="30%">
+    </div>
+    <div class="modeal-text-container">
+      <h2 class="m-0 bodytext-color mt-3 bold-font">Withdrawal not allowed</h2>
+      <p class="m-0 bodytext-color mt-3">{{reason}} </p>
+      <mat-hint class="f-12">Click on Go To Dashboard button to return.</mat-hint>
+    </div>
+    <div class="my-4 text-center">
+      <button mat-raised-button color="primary" class="px-5" mat-dialog-close (click)="redirectDashboard()">Go To Dashboard</button>
+    </div>
+  </div>
+</div>
+<!-- Stop withdrawal after 20th of month ends-->

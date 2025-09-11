@@ -1,0 +1,66 @@
+.banner-img-container {
+    // background: #fff url('../../../assets/images/66115.png') no-repeat center/cover;
+    background: #fff url('../../../assets/images/Mask\ Group\ 66115.png') no-repeat center/cover; 
+    height: 410px;
+
+    .heading-1 {
+        font-size: 35px !important;
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.counter-card-bg {
+    background-color: #F5F5F5;
+    padding: 50px 0;
+
+    .counter_column {
+        border-right: 2px solid #70707028;
+
+        &:last-child {
+            border: none;
+        }
+
+        p {
+            color: #003EA2;
+            padding-bottom: 20px;
+        }
+    }
+}
+.download-icon img{
+    width: 20px;
+}
+.contact-container {
+    background: #fff url('../../../assets/images/Group\ 68115@2x.png') no-repeat center/cover;
+    height: 300px;
+
+.search-container {
+        .input-group>.form-control,
+        .input-group-text {
+            box-shadow: #90909048 0 3px 20px;
+        }
+
+        .input-group>.form-control {
+            background-color: #3b61a0;
+            border: #3b61a0;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .input-group-text {
+            background-color: #6483b7;
+            border: #6483b7;
+            border-radius: 0 5px 5px 0;
+        }
+
+        input::placeholder {
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .mat-raised-button {
+            min-width: 160px !important;
+        }
+    }
+}

@@ -1,0 +1,150 @@
+<mat-card class="p-0 mb-5 mt-1 shadow-none">
+    <div class="row bg-light-blue  align-items-center">
+        <div class="col-lg-9 col-sm-9">
+          <h3 class="w-100 text-left p-2 m-0">Authorized Pension Kit</h3>
+        </div>
+        <div class=" col-lg-3 col-sm-3 text-end">
+          <button mat-icon-button (click)="onClose()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </div>
+    
+    <mat-card-header>
+        
+        <mat-card-title></mat-card-title>
+        <!-- <button mat-icon-button (click)="onClose()">
+          <mat-icon>close</mat-icon>
+        </button> -->
+    </mat-card-header>
+    <mat-card-content>
+        <div class="content-wrapper w-100 p-0 shadow-none">
+            <!-- <div class="container-fluid scroll-container align-items-left table-responsive" ngClass="example-container">
+                <table mat-table [dataSource]="dataSource" matSort class="w-100 custome_table">
+                    <ng-container matColumnDef="sNo">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sr. No.</th>
+                        <td mat-cell *matCellDef="let row">
+                            <a>{{row?.sNo}}</a>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="caseType">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Document Type Name</th>
+                        <td mat-cell *matCellDef="let row">
+                            <a>{{row?.docTypeName}}</a>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="modifiedDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Issued Date</th>
+                        <td mat-cell *matCellDef="let row">
+                            <a>{{row?.createdDate}}</a>
+                        </td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="PPO">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>PPO Amount</th>
+                        <td mat-cell *matCellDef="let row">
+                            <a>{{row?.ppoAmount}}</a>
+                        </td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="GPO">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>GPO Amount</th>
+                        <td mat-cell *matCellDef="let row">
+                            <a>{{row?.gpoAmount}}</a>
+                        </td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="CPO">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>CPO Amount</th>
+                        <td mat-cell *matCellDef="let row">
+                            <a>{{row?.cpoAmount}}</a>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="docId">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header >Document</th>
+                        <td mat-cell *matCellDef="let row">
+                            <span [hidden]="!row.dmsDocId" class="d-flex justify-content-center align-items-center">
+                                <mat-icon style="color: rgb(58, 137, 240);"
+                                    (click)="Previewbydocid(row?.dmsDocId);">remove_red_eye</mat-icon>
+                            </span>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    <tr class="mat-row" *matNoDataRow>
+                         <td class="mat-cell" colspan="4">No record found "{{input.value}}"</td> 
+                    </tr>
+                </table>
+                 <mat-paginator [pageSizeOptions]="[10, 25, 100,150]" aria-label="Select page of users"
+                showFirstLastButtons></mat-paginator> 
+            </div> -->
+
+<!-- Table 1: Pension Kit List -->
+
+<table class="table" style="margin: 0; padding: 0; overflow: hidden; border: 0;" *ngIf="pensionKitList.length > 0">
+    <thead>
+      <tr>
+        <th>Pensioner Id</th>
+        <th>Pension Kit</th>
+        <th>Created Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let field of pensionKitList; let i = index">
+        <td class="pt-4">{{field.pensionerId}}</td>
+        <td class="pt-4">
+          <mat-icon style="color: rgb(139, 185, 245);" (click)="Previewbydocid(field?.dmsDocId);" *ngIf="field?.dmsDocId > 0">
+            remove_red_eye
+          </mat-icon>
+        </td>
+        <td class="pt-4">{{field.createdDate}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Table 2: Pension Kit History List -->
+  <table class="table" style="margin: 0; padding: 0; overflow: hidden; border: 0;" *ngIf="pensionKitHStList.length > 0">
+    <hr>
+    <thead>
+      <tr>
+        <th>sNo</th>
+        <th>PPO Amount</th>
+        <th>DOC TypeName</th>
+        <th>Pension Kit</th>
+        <th>GPO Amount</th>
+        <th>CPO Amount</th>
+        <th>Created Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let field of pensionKitHStList; let i = index">
+        <td class="pt-4">{{i + 1}}</td> <!-- Assuming sNo is an index -->
+        <td class="pt-4">{{field.ppoAmount}}</td>
+        <td class="pt-4">{{field.docTypeName}}</td>
+        <td class="pt-4">
+          <mat-icon style="color: rgb(139, 185, 245);" (click)="Previewbydocid(field?.dmsDocId);" *ngIf="field?.dmsDocId > 0">
+            remove_red_eye
+          </mat-icon>
+        </td>
+        <td class="pt-4">{{field.gpoAmount}}</td>
+        <td class="pt-4">{{field.cpoAmount}}</td>
+        <td class="pt-4">{{field.createdDate}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+<div class="no-data-message" *ngIf="pensionKitList.length === 0 && pensionKitHStList.length === 0">
+  <p>No Pension Authority Issued Yet...</p>
+</div>
+
+        </div>
+    </mat-card-content>
+
+
+</mat-card>

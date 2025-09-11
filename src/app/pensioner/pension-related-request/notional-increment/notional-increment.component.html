@@ -1,0 +1,195 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="notionalIncrement" >
+                    <div class="row">
+                        
+                            <div class="col-lg-12 col-12">
+                                  <div class="row mb-3">
+                                    <h3>Notional Increment</h3>
+                                    <div class="col-lg-4 month-dropdown" >
+                                        <mat-label> Pay Commission</mat-label>
+                                        <mat-form-field class="w-100"  appearance="outline">                                            
+                                            <mat-select   formControlName="payCommission"  (selectionChange)="payScale()" placeholder="--Select--" >
+                                              <mat-option *ngFor="let mst of payCommissionlist" [value]="mst.payCommisionId">
+                                                {{mst.payCommNameEn}}
+                                              </mat-option>
+                                            </mat-select>
+                                            <!-- <mat-error *ngIf="notionalIncrement.controls.payCommission.errors?.required">
+                                                pay Commission is required.
+                                             </mat-error> -->
+                                          </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-4 month-dropdown" >
+                                        <mat-label>Pay Scale</mat-label>
+                                        <mat-form-field class="w-100" appearance="outline">                                            
+                                            <mat-select  formControlName="payScale"  (selectionChange)="basicpay()" placeholder="--Select--">
+                                                <mat-option *ngFor="let mst of payScalelist" [value]="mst.payScaleId">
+                                                    {{mst.payScaleName}}
+                                                  </mat-option>
+                                            </mat-select>
+                                            <!-- <mat-error *ngIf="notionalIncrement.controls.payScale.errors?.required">
+                                                Pay Scale is required.
+                                             </mat-error> -->
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-4 month-dropdown" >
+                                        <mat-label>Basic Pay</mat-label>
+                                        <mat-form-field class="w-100" appearance="outline">                                            
+                                            <mat-select  formControlName="basicpay" (selectionChange)="changebasicpay()">                
+                                                <mat-option *ngFor="let mst of basicPaylist" [value]="mst.basicPayId">
+                                                    {{mst.basicPay}}
+                                                  </mat-option>                                            
+                                            </mat-select>
+                                            <!-- <mat-error *ngIf="notionalIncrement.controls.basicpay.errors?.required">
+                                                Basic Pay is required.
+                                             </mat-error> -->
+                                        </mat-form-field>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4 month-dropdown" >
+                                            <mat-label>Special Pay(Max:2000)</mat-label>
+                                            <mat-form-field class="w-100" appearance="outline">                                                
+                                                  <input matInput formControlName="specialPay" numberOnly [maxlength]="2000" (change)="spDocument()">
+                                                  
+                                                <!-- <mat-error *ngIf="notionalIncrement.controls.basicpay.errors?.required">
+                                                    Basic Pay is required.
+                                                 </mat-error> -->
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-lg-4 month-dropdown" *ngIf="isnpa">
+                                            <mat-label>NPA(Max:{{maxnpa}})</mat-label>
+                                            <mat-form-field class="w-100" appearance="outline">                                                
+                                                  <input matInput formControlName="npa" numberOnly [maxlength]="75000" (change)="npaDocument()" >
+                                                  
+                                                
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-lg-4 month-dropdown"  *ngIf="!isnpa">
+                                            <mat-label>NPA:0</mat-label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <h3 class="my-3">Upload Document</h3>
+                                    </div>
+                                    <div class="row mb-3">
+                                     <div class="col-md-4" *ngIf="!documentId">
+                                        <h4>Notional Increment Document</h4>
+                                            <div class="file-uploder-container d-flex flex-column mt-2 mb-3" >
+                                                <label *ngIf="!nfilename" for="inputGroupFile1" class="upload-lable-text btn py-3">Drag & drop or <span class="file-browse"> browse </span></label>                 
+                                                <label *ngIf="nfilename" for="inputGroupFile1" class="upload-lable-text btn py-3">{{nfilename}}</label>                 
+                                                <div class="input-group custom-file-button">                     
+                                                    <input type="file" formControlName="attachDocument" #uploadFile
+                                                    id="attachDocument" multiple  class="form-control file-upload-input hidden" (change)="selectFile($event,'ndoc')" id="inputGroupFile1" hidden>                 
+                                                </div>     
+                                                <span class="text-primary display_block mb-1 pb-1" >
+                                                    {{this.nfile?this.nfile.name:""}}
+                                                 </span>          
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 col-3" *ngIf="documentId">
+                                            <h4>Notional Increment Document</h4>
+                                            <h3>View </h3>
+                                            <mat-icon style="color: rgb(139, 185, 245);" (click)="cs.Previewbydocid(documentId,'pension/vrs/request-vrs-list');">remove_red_eye</mat-icon>
+                                            <mat-icon style="color: rgb(238, 8, 8);margin-left: 20px;" (click)="deletedocument()">delete</mat-icon>
+                                            <mat-spinner [diameter]="30" *ngIf="isLoading"></mat-spinner>
+                                        </div>
+                                        
+                                   
+                                
+                                        
+
+                                 
+                                    
+                            
+                                    <div class="col-md-4" *ngIf="this.specialPay" >
+                                        <ng-container >
+
+                                       <h4>Special Pay Document</h4>
+                                           <div class="file-uploder-container d-flex flex-column mt-2 mb-3 w-100" *ngIf="!spdocumentId ">
+                                               <label *ngIf="!spfileName" for="inputGroupFile" class="upload-lable-text btn py-3">Drag & drop or <span class="file-browse"> browse </span></label>                 
+                                               <label *ngIf="spfileName" for="inputGroupFile" class="upload-lable-text btn py-3">{{spfileName}}</label>                 
+                                               <div class="input-group custom-file-button">                     
+                                                   <input type="file" formControlName="attachDocumentsp" #uploadFile
+                                                   id="attachDocumentsp" multiple  class="form-control file-upload-input hidden" (change)="selectfilesp($event,'spdoc')" id="inputGroupFile" hidden>                 
+                                               </div>     
+                                               <span class="text-primary display_block mb-1 pb-1" >
+                                                   {{this.spfile?this.spfile.name:""}}
+                                                </span>          
+
+                                                <mat-spinner [diameter]="30" *ngIf="isLoading"></mat-spinner>
+                                           </div>
+
+                                       
+                                       <div class="col-md-3 col-3" *ngIf="spdocumentId">
+                                           <h3>View </h3>
+                                           <mat-icon style="color: rgb(139, 185, 245);" (click)="cs.Previewbydocid(spdocumentId,'');">remove_red_eye</mat-icon>
+                                           <mat-icon style="color: rgb(238, 8, 8);margin-left: 20px;" (click)="deletedocument()">delete</mat-icon>
+                                       </div>
+                                    </ng-container>
+                                </div>
+                                  
+                            
+                              <div class="col-md-4" *ngIf="this.npa>0 && isNpaDoc" >
+                                    <ng-container >
+                                   <h4>NPA Document</h4>
+                                       <div class="file-uploder-container d-flex flex-column mt-2 mb-3" *ngIf="!npadocumentId" >
+                                           <label *ngIf="!npafileName" for="inputGroupFile2" class="upload-lable-text btn py-3">Drag & drop or <span class="file-browse"> browse </span></label>                 
+                                           <label *ngIf="npafileName" for="inputGroupFile2" class="upload-lable-text btn py-3">{{npafileName}}</label>                 
+                                           <div class="input-group custom-file-button">                     
+                                               <input type="file" formControlName="attachDocumentnpaw" #uploadFile
+                                               id="attachDocumentnpaw" multiple  class="form-control file-upload-input hidden" (change)="selectfilenpa($event,'npadoc')" id="inputGroupFile2" hidden>                 
+                                           </div>     
+                                           <span class="text-primary display_block mb-1 pb-1" >
+                                               {{this.npafile?this.npafile.name:""}}
+                                            </span>
+                                            
+                                            <mat-spinner [diameter]="30" *ngIf="isLoading"></mat-spinner>
+
+                                       </div>
+                                    </ng-container>
+                                 <div class="col-md-3 col-3" *ngIf="npadocumentId">                                    
+                                       <h3>View </h3>
+                                       <mat-icon style="color: rgb(139, 185, 245);" (click)="cs.Previewbydocid(npadocumentId,'');">remove_red_eye</mat-icon>
+
+                                       <mat-icon style="color: rgb(238, 8, 8);margin-left: 20px;" (click)="deletedocument()">delete</mat-icon>
+                                   </div>
+                                   
+                                  </div> 
+                           
+                                   
+
+                               <div class="col-lg-12 text-end MY-3 ">
+                                   <button mat-raised-button color="primary" class="btn custom-btn mt-1" (click)="getNotionalIncrement()">Submit</button>
+                               </div>
+                               
+                           </div>
+                            
+                                  </div>
+
+ 
+                            </div>
+                        <!-- <div class="col-lg-4 col-12">
+                            <div class="card mx-4 life-certificate-card">
+                                <div class="card-body">
+                                    <h2 class="text-center">Life Certificate: <span class="text-green">Yes</span></h2>
+                                    <div class="row">
+                                        <div class="col-12 fw-bold"><span>Submitted On</span> <span class="fw-bold float-end">:10-11-2023</span></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 fw-bold"><span>Valid Upto</span> <span class="fw-bold float-end">:30-11-2024</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

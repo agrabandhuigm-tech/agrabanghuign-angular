@@ -1,0 +1,417 @@
+<meta name="viewport"
+  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<div class="container-fluid pb-5">
+  <mat-card class="p-4">
+    <ng-container class="EarnedSalary">
+      <h2 class="mb-3" *ngIf="notification || !showSalaryDetails ">Earned Pension Advance </h2>
+      <!-- <small>An initiative of Rajasthan Financial Services Delivery Limited (RFSDL)</small> -->
+      <div *ngIf="pension_2_0">
+        <ng-container>
+          <div class="row">
+
+            <div class="col-lg-4 my-3">
+              <mat-form-field class="example-full-width w-100" appearance="outline">
+                <input matInput type="text" [(ngModel)]='ppoNo' placeholder="Enter Pension 2.0 PPO Number">
+
+
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4 my-3">
+              <mat-form-field class="example-full-width w-100" appearance="outline">
+                <input matInput placeholder="Enter Last Four Digit Account No." [(ngModel)]='accountNo' minlength="4"
+                  maxlength="4">
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4 my-3">
+              <button class="mx-2" mat-raised-button color="primary" (click)="onSearch()">Search</button>
+              <button mat-raised-button color="primary" (click)="onReset()">Reset</button>
+            </div>
+
+          </div>
+          <mat-card class="notification" *ngIf="pension_2_0_data">
+            <div class="row">
+              <div class="col-3">
+                <mat-label><strong>Name</strong></mat-label><br>
+                <span>{{pension_2_0_data?.fname}}</span>
+              </div>
+
+              <!-- <div class="col-3">
+              <mat-label><strong>Services Category</strong></mat-label><br>
+              <span>{{pension_2_0_data?.servicescategory}}</span>
+            </div>
+            <div class="col-3">
+              <mat-label><strong>Service Sub category</strong></mat-label><br>
+              <span>{{pension_2_0_data?.servicesubcategory}}</span>
+            </div> -->
+              <!-- <div class="col-3">
+              <mat-label><strong>pe</strong></mat-label><br>
+              <span>{{pension_2_0_data?.statusname}}</span>
+            </div> -->
+              <div class="col-3">
+                <mat-label><strong>Mobile No</strong></mat-label><br>
+                <span>{{pension_2_0_data?.mobno}}</span>
+              </div>
+              <div class="col-3">
+                <mat-label><strong>Office Name</strong></mat-label><br>
+                <span>{{pension_2_0_data?.officenameen}}</span>
+              </div>
+              <div class="col-3">
+                <mat-label><strong>DOJ</strong></mat-label><br>
+                <span>{{pension_2_0_data?.dateofjoining |date}}</span>
+              </div>
+              <div class="col-3">
+                <mat-label><strong>DOR</strong></mat-label><br>
+                <span>{{pension_2_0_data?.dateofretirement |date}}</span>
+              </div>
+
+
+              <!-- <div class="col-3">
+              <mat-label><strong>Service Cat Name</strong></mat-label><br>
+              <span>{{pension_2_0_data?.srvccatnameen}}</span>
+            </div>
+            <div class="col-3">
+              <mat-label><strong>Sub Service Cat Name</strong></mat-label><br>
+              <span>{{pension_2_0_data?.subsrvcatname}}</span>
+            </div>
+            <div class="col-3">
+              <mat-label><strong>PAN</strong></mat-label><br>
+              <span>{{pension_2_0_data?.pan}}</span>
+            </div> -->
+              <!-- <div class="col-3">
+              <mat-label><strong>Employee Code</strong></mat-label><br>
+              <span>{{pension_2_0_data?.emcode}}</span>
+            </div> -->
+              <div class="col-3">
+                <mat-label><strong>Employee ID</strong></mat-label><br>
+                <span>{{pension_2_0_data?.employeeid}}</span>
+              </div>
+              <div class="col-3">
+                <mat-label><strong>E-Mail</strong></mat-label><br>
+                <span>{{pension_2_0_data?.email}}</span>
+              </div>
+              <div class="col-3">
+                <mat-label><strong>Designation</strong></mat-label><br>
+                <span>{{pension_2_0_data?.desgdesname}}</span>
+              </div>
+
+            </div>
+          </mat-card>
+
+        </ng-container>
+      </div>
+      <div class="notification mt-2" *ngIf="notification">
+        <div class="d-flex">
+          <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+            <mat-icon>info</mat-icon>
+          </button>
+          <div>
+            <p class="q_info mb-2">Quick Info</p>
+            <p><strong class="fst-italic">"Earned Pension Advance Drawal Access"</strong> is an initiative of
+              <strong>Government of Rajasthan</strong>, facilitated by <strong>Rajasthan Financial Services Delivery
+                Limited (RFSDL)</strong>, which provides immediate liquidity to the pensioners upto fifty percent of the
+              net payable pension as an advance. Transaction charges +GST will be payable on advance amount.</p>
+            <p>An equal amount of advance will be deducted from the current month pension of pensioner payable in the
+              subsequent month. The pensioner can: </p>
+            <ul>
+              <li style="margin-left: -15px;">Sign up for this facility at IFMS/ Service Provider</li>
+              <li style="margin-left: -15px;">Complete the KYC</li>
+              <li style="margin-left: -15px;">Avail the facility of <strong class="fst-italic">Earned Pension Advance
+                  Drawal Access</strong></li>
+            </ul>
+
+
+
+
+
+            <p class="mb-0"><small class="blink primary"><b>* Trusted, RBI-approved.</b></small></p>
+            <!-- <span>For instance:</span>
+            <ul>
+
+
+
+
+              <li style="margin-left: -15px;">If an employee's net salary is Rs 40,000.</li>
+              <li style="margin-left: -15px;">If he/she applies for the advance on 14th day of the month, but he/she has
+                taken unpaid leaves 2 days.</li>
+              <li style="margin-left: -15px;">Also, he/she has already taken 2 days of salary in advance in that
+                particular month.
+              </li>
+              <p style="margin-left: -30px;">In this case, he/she will be eligible to receive an advance equivalent
+                to a certain percentage of 10 days worth of his/her net salary.</p>
+            </ul>
+            <span>To receive your earned salary in advance, you need to submit an undertaking. </span> <br>
+            <span> This undertaking will share your information with the service provider you choose.</span> -->
+          </div>
+
+        </div>
+      </div>
+      <div class="bg-light-blue p-3 my-2" *ngIf="notification">
+        <div class="two-cards">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5 min-height-100 mt-2" *ngIf="!fromServiceProvider">
+              <mat-card class="p-3">
+                <h2 class="mb-3">Choose a service provider</h2>
+                <span class="square-dots"><img src="./assets/images/squre_circle.svg"></span>
+                <button mat-stroked-button class="btn btn-sm" color="primary" (click)="chooseService()">Proceed</button>
+              </mat-card>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-7 min-height-100 mt-2">
+              <mat-card class="p-3">
+                <!-- Old Text -->
+                <!-- <h2 class="mb-3">Have you already applied through a service provider?</h2> -->
+                <!-- New Text -->
+                <h2 class="mb-3">To proceed with service provider, give your OTP consent here</h2>
+                <span class="square-dots"><img src="./assets/images/squre_circle.svg"></span>
+                <button mat-stroked-button class="btn btn-sm" color="primary" (click)="checkExternalconsent()">Verify
+                  with OTP</button>
+              </mat-card>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div *ngIf="showSalaryDetails ">
+        <div class="panel">
+          <h3 class="mb-0">Undertaking Status</h3>
+        </div>
+        <div class="row ms-1 mt-2">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+            <label for="">Request Id</label>
+            <p>{{this.empConsentDetails.consentDtl.reqId}}</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+            <label>Request Status at IFMS</label>
+            <span class="d-block status-button-active">{{this.empConsentDetails?.consentDtl?.reqId}}</span>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+            <label>KYC Status at Service Provider</label>
+            <span class="d-block status-button-active">{{this.empConsentDetails.consentDtl.agencyKycStatus}}</span>
+          </div>
+        </div>
+        <div class="row ms-1 mt-2">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+            <label for="">Undertaking ID</label>
+            <p>-</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+            <label>Undertaking Status</label>
+            <!-- <span class="d-block status-button-active">-</span> -->
+            <span class="d-block ">-</span>
+
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+            <label>Consent Verification Status</label>
+            <!-- <span class="d-block status-button-active">-</span> -->
+            <span class="d-block ">-</span>
+          </div>
+        </div>
+        <div class="row ms-1 mt-2">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+            <label>Mobile Number</label>
+            <p>{{this.empConsentDetails.psndtl.phoneNo}}</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+            <label>Mobile Verifcation Status</label>
+            <!-- <span class="d-block status-button-active">-</span> -->
+            <span class="d-block ">-</span>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row ms-3 my-3" *ngIf="notification">
+                <label>Would you like to undertake this facilitation?</label>
+                <mat-slide-toggle color="primary" (click)="toggleSalaryDetails()"></mat-slide-toggle>
+            </div> -->
+
+
+      <!-- <div *ngIf="!showSalaryDetails "> -->
+      <!-- <div>
+                <div class="panel">
+                    <h3 class="mb-0">Undertaking Status</h3>
+                </div>
+                <div class="row ms-1 mt-2">
+                    <div class="col-lg-2">
+                        <label for="">Monthly Gross salary</label>
+                        <p>{{lastSalaryDetails.grossAmount}}</p>
+                    </div>
+                    <div class="col-lg-2">
+                        <label>Monthly Net salary</label>
+                        <p>{{lastSalaryDetails.netAmount}}</p>
+                    </div>
+                </div>
+                <div class="panel pt-2" *ngIf="chooseProvider">
+                    <h3 class="mb-0">Chosen service provider</h3>
+                    <p>{{bankName}}</p>
+                </div>
+                <div class=" ms-1 mt-2" *ngIf="chooseProvider">
+                    <label></label>
+                    <div class="row pb-3">
+                        <div class="col-lg-12">
+                            <button class="btn btn-primary float-end" (click)="esignRequest()">Verify Undertaking</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pb-3" *ngIf="!selectedProvider && hideSelectBtn">
+                    <div class="col-lg-12">
+                        <button class="btn btn-primary float-end" (click)="selectProvider()" [disabled]="isProviderSelected">Select Service
+                            Provider</button>
+                    </div>
+                </div>
+            </div> -->
+
+
+    </ng-container>
+    <div class="svcProvider">
+      <div class="container-fluid pt-2">
+
+        <div *ngIf="selectedProvider">
+          <div class="row">
+            <!-- <div class="d-flex" (click)="checkBoxSelection()">
+              <input type="checkbox" name="" id="" [checked]="isCheckboxSelected"> -->
+            <div>
+              <h2 class="mb-3" for="checkbox">Choose a Service Provider</h2>
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-12 col-xl-12 col-xxl-12">
+              <div class="service-provider-heading-container">
+                <p class="m-0 py-2 px-4 subtitle-1 text-center">Facilitated By {{earnedSalaryDetails.fsProvider}}
+                </p>
+              </div>
+            </div>
+            <!-- <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 col-xxl-2">
+              <button mat-raised-button color="primary" *ngIf="isProviderSelected" (click)="selectAdvance()">Confirm
+                Undertaking</button>
+            </div> -->
+          </div>
+          <div class="row mt-3">
+            <div class="col-sm-4 col-lg-4 col-xl-3 col-xxl-2">
+              <div class="card-heading-container d-flex flex-column mt-5">
+                <p class="medium-font bodytext-color">Service Providers:</p>
+                <p class="medium-font bodytext-color" *ngFor="let items of paramsDetail">{{items.name}}</p>
+              </div>
+            </div>
+            <div class="col-sm-8 col-lg-12 col-xl-9 col-xxl-10">
+
+              <owl-carousel-o [options]="customOptions">
+                <ng-template carouselSlide *ngFor="let earnedSalary of providersArray">
+                  <div [class.card-selected]="earnedSalary.selected" class="card-select me-3"
+                    (click)="toggleSelected(earnedSalary,earnedSalary.name)">
+                    <small class="blue-bar-bg text-white text-end pe-2">Select</small>
+                    <div class="card-border p-3 ">
+                      <div class="text-center d-flex flex-column gap-3 align-items-center">
+                        <div class="d-flex gap-2 align-items-center">
+
+                          <span><img [src]="getSafeImageUrl(earnedSalary.iconBase64)" alt="Icon"></span>
+                          <h3 class="m-0">{{earnedSalary.name}} </h3>
+                        </div>
+
+                        <div *ngFor="let params of earnedSalary.param; let index ">
+                          <p *ngIf="params.index!==3" class="label m-1"><small>Upto</small></p>
+                          <h3 *ngIf="params.index!==3" class="value">{{params.value}}</h3>
+                          <a *ngIf="params.index==3" (click)="tnc(earnedSalary.agentsrvcId)">View</a>
+                        </div>
+                        <button *ngIf="!earnedSalary.selected || earnedSalary.name !== viewClicked" mat-raised-button
+                          color="primary" class="w-100"
+                          (click)="isViewClicked(earnedSalary.name);toggleViewMore(earnedSalary.name)">View
+                          More</button>
+                        <button *ngIf="earnedSalary.selected && earnedSalary.name === viewClicked" mat-raised-button
+                          color="primary" class="w-100" (click)="verifyUndertaking(earnedSalary.agentsrvcId)">Verify
+                          Undertaking</button>
+                      </div>
+                      <ng-container *ngIf="earnedSalary.name === showdetails">
+                        <div class="what-include-container">
+                          <!-- <h3 class="mt-4 mb-2" >Transaction Fee</h3>
+                        <ul >
+                          <li class="mb-3 d-flex" *ngFor="let addtlDetail of sortTermsCondition(earnedSalary.addtlDetails); let i=index">
+                            <h4  class="m-0">{{addtlDetail.name}}</h4>
+                            <small >{{addtlDetail.value}}</small>
+                          </li>
+
+                        </ul> -->
+                          <h3 class="mt-4 mb-2">Terms and Conditions</h3>
+                          <ul>
+                            <li class="mb-3 d-flex"
+                              *ngFor="let addtlDetail of sortTermsCondition(earnedSalary.addtlDetails); let i=index">
+                              <h4 class="m-0">{{addtlDetail.name}}</h4>
+                              <small>{{addtlDetail.value}}</small>
+                            </li>
+
+                          </ul>
+
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                </ng-template>
+              </owl-carousel-o>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- <div class="row pb-3">
+                <div class="col-lg-12">
+                    <button class="btn btn-primary float-end" (click)="selectAdvance()">Select advance</button>
+                </div>
+            </div> -->
+
+
+
+    </div>
+
+
+
+    <div *ngIf="changeServiceProvider">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="panel">
+            <h3 class="mb-0">How much can you avail currently</h3>
+          </div>
+          <div class="row ms-1 mt-2">
+            <div class="col-lg-6">
+              <label for="">Monthly Gross Pension</label>
+              <p>{{lastSalaryDetails.grossAmount}}</p>
+            </div>
+            <div class="col-lg-6">
+              <label>Monthly Net Pension</label>
+              <p>{{lastSalaryDetails.netAmount}}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="panel pt-2">
+            <h3 class="mb-0">Chosen service provider</h3>
+          </div>
+          <div class="row">
+            <p *ngIf="changeServiceProvider" class="pt-3">Bank Of Maharastra</p>
+            <p *ngIf="bankName">{{bankName}}</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel py-2">
+            <h3 class="mb-0">Chosen service provider</h3>
+          </div>
+          <div class="mt-3">
+            <img src="./assets/images/banner.png" alt="">
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="float-end">
+
+            <button class="btn btn-primary me-2" (click)="changeService()"><a
+                style="color: #fff; text-decoration: none;">Change Service Provider </a></button>
+            <button class="btn btn-primary "><a href="https://refyne.co.in/salary-on-demand.html"
+                style="color: #fff; text-decoration: none;">Proceed to service provider’s website</a></button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </mat-card>
+</div>

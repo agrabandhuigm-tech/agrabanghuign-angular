@@ -1,0 +1,1289 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// @deprecated renamed to $dark-primary-text.
+// @breaking-change 8.0.0
+$black-87-opacity: rgba(black, 0.87);
+// @deprecated renamed to $light-primary-text.
+// @breaking-change 8.0.0
+$white-87-opacity: rgba(white, 0.87);
+// @deprecated use $dark-[secondary-text,disabled-text,dividers,focused] instead.
+// @breaking-change 8.0.0
+$black-12-opacity: rgba(black, 0.12);
+// @deprecated use $light-[secondary-text,disabled-text,dividers,focused] instead.
+// @breaking-change 8.0.0
+$white-12-opacity: rgba(white, 0.12);
+// @deprecated use $dark-[secondary-text,disabled-text,dividers,focused] instead.
+// @breaking-change 8.0.0
+$black-6-opacity: rgba(black, 0.06);
+// @deprecated use $light-[secondary-text,disabled-text,dividers,focused] instead.
+// @breaking-change 8.0.0
+$white-6-opacity: rgba(white, 0.06);
+
+$dark-primary-text: rgba(black, 0.87);
+$dark-secondary-text: rgba(black, 0.54);
+$dark-disabled-text: rgba(black, 0.38);
+$dark-dividers: rgba(black, 0.12);
+$dark-focused: rgba(black, 0.12);
+$light-primary-text: white;
+$light-secondary-text: rgba(white, 0.7);
+$light-disabled-text: rgba(white, 0.5);
+$light-dividers: rgba(white, 0.12);
+$light-focused: rgba(white, 0.12);
+
+$ds-blue-palette: (
+  50: #e3f1ff,
+  100: #bbdbfe,
+  200: #8fc6ff,
+  300: #62affe,
+  400: #419efe,
+  500: #278dfc,
+  600: #2a7fed,
+  700: #2a6dd9,
+  800: #295cc6,
+  900: #263ca7,
+  contrast: (50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+  )
+);
+
+$ds-secondary-palette: (
+  50: #e9e9fa,
+  100: #c7c7f1,
+  200: #a1a3e8,
+  300: #7a7fdf,
+  400: #5d61d8,
+  500: #4043cf,
+  600: #3b3bc4,
+  700: #3230b8,
+  800: #2924ad,
+  900: #1e0a95,
+  contrast: (50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+  )
+);
+
+$ds-warn-palette: (
+  50: #ffebee,
+  100: #ffced2,
+  200: #f89c99,
+  300: #f17471,
+  400: #fd534c,
+  500: #ff422e,
+  600: #f3382f,
+  700: #e12d29,
+  800: #d42422,
+  900: #c61313,
+  contrast: (50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+  )
+);
+
+$ds-success-palette: (
+  50: #e7f6e6,
+  100: #c5e8c1,
+  200: #9fd999,
+  300: #75cb6f,
+  400: #53c04e,
+  500: #2cb428,
+  600: #20a51f,
+  700: #099310,
+  800: #008200,
+  900: #006300,
+  contrast: (50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+  )
+);
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$my-palette: $ds-blue-palette;
+$my-primary: mat.define-palette($ds-blue-palette, 700);
+$my-accent: mat.define-palette($ds-success-palette, 700);
+$my-success: mat.define-palette($ds-success-palette, 700);
+// The "warn" palette is optional and defaults to red if not specified.
+$my-warn: mat.define-palette($ds-warn-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$my-theme: mat.define-light-theme((color: (primary: $my-primary,
+        accent: $my-success,
+        warn: $my-warn,
+        success: $my-success )));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($my-theme);
+
+/* You can add global styles to this file, and also import other style files */
+//@import url(bootstrap.min.css);
+
+
+// -------------------------------------------------
+//! ---------- HTML Root Element--------------------
+// -------------------------------------------------
+
+html{
+  font-size: 62.5%; /* 62.5% of 16px = 10px */
+}
+
+@media screen and (max-width: 1399px){
+  html{
+    font-size: 58%; /* 58% of 16px = 9.28px */
+  }
+}
+
+@media screen and (max-width: 991px){
+  html{
+    font-size: 56%; /* 56% of 16px = 8.96px */
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background-color: #edf0f2 !important;
+}
+
+* {
+  font-family: 'Poppins-r';
+}
+
+// :not(.mat-icon) {
+//   font-family: 'Poppins-r' !important;
+// }
+
+
+// Poppins font
+@font-face {
+  font-family: 'Poppins-r';
+  src: url(../src/assets/fonts/Poppins-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Poppins-m';
+  src: url(../src/assets/fonts/Poppins-Medium.ttf);
+}
+
+@font-face {
+  font-family: 'Poppins-b';
+  src: url(../src/assets/fonts/Poppins-Bold.ttf);
+}
+
+/* -----------------------
+---color variables---
+----------------------- */
+:root {
+  --primary: #2A6DD9;
+  --secondary: #5D62D8;
+  --tertiary: #7CACF8;
+  --pending: #FFEA4D;
+  --success: #09930F;
+  --warn: #C61313;
+  --disable: #BABDC3;
+  --common-grey-color: #EDEDED;
+   font-family: 'Poppins-r';
+
+  // gradient var
+  --megentagradient: linear-gradient(-154deg, #96FFFA, #2FAAA5, #027670);
+}
+
+/* -----------------------
+---color style class---
+----------------------- */
+.primary {
+  color: #2A6DD9;
+}
+
+.secondary {
+  color: #5D62D8;
+}
+
+.tertiary {
+  color: #7CACF8;
+}
+
+.pending {
+  color: #FFEA4D;
+}
+
+.success {
+  color: #09930F;
+}
+
+.warn {
+  color: #C61313;
+}
+
+.disable {
+  color: #BABDC3;
+}
+
+.bodytext-color {
+  color: #414141;
+}
+
+.bg-panel {
+  background-color: #f0f0f0;
+}
+
+.bg-grid{
+  background-color: #EEF5FF66;
+}
+.bg-dark-grid{
+  background-color: #eef5ff;
+}
+.common-grey-color{
+  color: #EDEDED;
+}
+
+
+
+/* -----------------------
+---Fonts Style Class---
+----------------------- */
+p, li, td, th, a,span,label{
+  font-size: 1.4rem;
+}
+
+.mat-table{
+  td,p,a,span{
+     font-size: 1.4rem !important;
+   }
+ }
+ small {
+  font-weight: 700;
+  color: #555B62;
+  font-size: 1.225rem;
+}
+ 
+.heading-1,
+h1 {
+  font-size: 2.4rem !important;
+  font-weight: 700 !important;
+}
+
+.heading-2,
+h2 {
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+}
+
+.subtitle-1,
+h3 {
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+}
+
+.subtitle-2,
+h4 {
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+}
+
+.bodytext-1 {
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+}
+
+.f-10 {
+  font-size: 1rem;
+}
+.f-12 {
+  font-size: 1.2rem;
+}
+
+.f-14 {
+  font-size: 1.4rem;
+}
+
+.f-16 {
+  font-size: 1.6rem;
+}
+
+.f-18 {
+  font-size: 1.8rem;
+}
+
+.f-20 {
+  font-size: 2.0rem;
+}
+
+.medium-font {
+  font-family: 'Poppins-m' !important;
+}
+
+.bold-font {
+  font-family: 'Poppins-b' !important;
+}
+
+/* ----------------------------------------------
+---Components Border Styling Class---
+---------------------------------------------- */
+.mat-radio-outer-circle,
+.mat-checkbox-frame,
+.mat-checkbox-layout>.mat-checkbox-inner-container>.mat-checkbox-background {
+  border-color: #BFCCE2 !important;
+}
+
+.mat-radio-checked {
+  .mat-radio-outer-circle {
+    border-color: var(--primary) !important;
+  }
+}
+
+.mat-slide-toggle-bar {
+  background-color: #BFCCE2;
+}
+
+.mat-radio-checked {
+  font-weight: 600;
+}
+.mat-radio-label-content {
+  color: #414141;
+}
+
+.mat-checkbox-disabled {
+  cursor: not-allowed !important;
+  .mat-checkbox-frame {
+    border-color: #dce0e77a !important;
+  }
+}
+
+/* ----------------------------------------------
+---Checkbox Component Styling Class---
+---------------------------------------------- */
+.checkbox-radius-4>.mat-checkbox-layout>.mat-checkbox-inner-container>.mat-checkbox-frame,
+.checkbox-radius-4>.mat-checkbox-layout>.mat-checkbox-inner-container>.mat-checkbox-background,
+.checkbox-radius-4>.mat-checkbox-layout>.mat-checkbox-inner-container>.mat-checkbox-background {
+  border-radius: 0.25rem;
+}
+
+.checkbox-radius-50>.mat-checkbox-layout>.mat-checkbox-inner-container>.mat-checkbox-frame,
+.checkbox-radius-50>.mat-checkbox-layout>.mat-checkbox-inner-container>.mat-checkbox-background,
+.checkbox-radius-50>.mat-checkbox-layout>.mat-checkbox-inner-container>.mat-checkbox-background {
+  border-radius: 50%;
+}
+
+.mat-checkbox-inner-container {
+  height: 2rem !important;
+  width: 2rem !important;
+}
+
+.mat-checkbox-checkmark {
+  padding: 0.2rem;
+}
+
+/* ----------------------------------------------
+---Breadcrumbs Styling Class---
+---------------------------------------------- */
+.breadcrumb-item {
+  font-size: 1.4rem;
+  font-family: 'Poppins-m';
+}
+
+/* ----------------------------------------------
+---Button Styling Class---
+---------------------------------------------- */
+.big-btn-padding {
+  padding: 0rem 2rem !important;
+}
+
+.big-btn-with-icon-padding {
+  padding: 0rem 1.6rem !important;
+}
+
+.mat-stroked-button.mat-primary,
+.mat-stroked-button.mat-warn {
+  border: 0.2rem solid !important;
+}
+
+.border-btn-component>.mat-stroked-button.mat-primary:hover,
+.border-btn-component>.mat-stroked-button.mat-primary:active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.border-btn-component>.mat-stroked-button.mat-warn:hover,
+.border-btn-component>.mat-stroked-button.mat-warn:active {
+  background-color: var(--warn);
+  color: white;
+}
+
+.raised-btn-component>.mat-raised-button.mat-primary:hover,
+.raised-btn-component>.mat-raised-button.mat-primary:active {
+  background-color: #0D52BF;
+}
+
+.raised-btn-component>.mat-raised-button.mat-warn:hover,
+.raised-btn-component>.mat-raised-button.mat-warn:active {
+  background-color: #C61313;
+}
+
+.mat-stroked-button.mat-success {
+  border: 0.2rem solid !important;
+  color: var(--success);
+}
+
+.mat-stroked-button.mat-success:hover,
+.mat-stroked-button.mat-success:active {
+  background-color: var(--success);
+  color: white;
+}
+
+.mat-raised-button.mat-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.mat-raised-button.mat-success:hover,
+.mat-raised-button.mat-success:active {
+  background-color: #057a0b;
+}
+
+
+/* ----------------------------------------------
+---Stepper Styling Class---
+---------------------------------------------- */
+.mat-step-icon.mat-success {
+  background-color: #057a0b !important;
+  // border-radius: 50% !important;
+  padding: 0.2rem;
+}
+
+.mat-horizontal-stepper-header-container {
+  margin-bottom: 20px;
+  background-color: #ffffff !important;
+  width: 75%;
+  border-radius: 0rem 0rem 1.08rem 1.08rem;
+  box-shadow: 0rem 1.36rem 1.6rem -1.6rem #74799326 !important;
+}
+
+.mat-horizontal-stepper-header::before,
+.mat-horizontal-stepper-header::after,
+.mat-stepper-horizontal-line {
+  border: 1px solid rgba(191, 204, 226, 0.349);
+}
+
+.mat-step-header.mat-accent {
+
+  .mat-step-icon:not(.mat-step-icon-selected, .mat-step-icon-state-number) {
+    background-color: #52BB9C !important;
+    box-shadow: 0rem 0.308rem 1rem #A0D9C8;
+  }
+
+  .mat-step-icon-selected {
+    background-color: white;
+    box-shadow: 0rem 0.308rem 1rem #A0D9C8;
+
+    .mat-step-icon-content {
+      height: 0.8rem;
+      width: 0.8rem;
+      background-color: #52BB9C;
+      border-radius: 50%;
+    }
+
+    .mat-step-icon-content>span {
+      display: none;
+    }
+  }
+
+  .mat-step-icon-state-number:not(.mat-step-icon-selected) {
+    background-color: white;
+    border: 1px solid var(--disable);
+  }
+
+  .mat-step-icon-state-edit>.mat-step-icon-content>.mat-icon {
+    //   font-size: 0.875rem !important;
+    font-weight: 600;
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+}
+
+.mat-horizontal-content-container {
+  padding: 0px !important;
+}
+
+.mat-step-header.mat-accent:hover {
+  background-color: white !important;
+}
+
+
+// Primary Stepper Code
+.primary-label-right-stepper-container{
+  .mat-step-icon {
+    padding: 0.2rem;
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .mat-step-icon-state-edit>.mat-step-icon-content>.mat-icon {
+    //   font-size: 0.875rem !important;
+    font-weight: 600;
+  }
+  
+  .mat-horizontal-stepper-header-container {
+    background: rgba(240, 242, 244, .5) !important;
+    width: 100%;
+    border-radius: 1.08rem;
+    box-shadow: none !important;
+
+    .mat-horizontal-stepper-header{
+      height: 61px !important;
+    }
+  }
+
+  .mat-step-header.cdk-program-focused{
+    background-color: rgba(255, 255, 255, 0);
+  }
+  
+  .mat-step-header.mat-primary {
+
+    .mat-step-label-selected{
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .mat-step-icon:not(.mat-step-icon-selected, .mat-step-icon-state-number) {
+      background-color: var(--primary) !important;
+      box-shadow: 0rem 0.308rem 1rem #bbdbfe;
+    }
+  
+    .mat-step-icon-selected {
+      background-color: white;
+      box-shadow: 0rem 0.308rem 0.9rem #bbdbfe;
+  
+      .mat-step-icon-content {
+        height: 0.8rem;
+        width: 0.8rem;
+        background-color: var(--primary);
+        border-radius: 50%;
+      }
+  
+      .mat-step-icon-content>span {
+        display: none;
+      }
+    }
+  
+    .mat-step-icon-state-number:not(.mat-step-icon-selected) {
+      background-color: white;
+      border: 1px solid var(--disable);
+    }
+  }
+}
+
+/* ----------------------------------------------
+---Expension Styling---
+---------------------------------------------- */
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: 0rem 0.308rem 2rem #74799326 !important;
+}
+
+.mat-expansion-panel:not(.mat-expanded):hover {
+  background-color: transparent !important;
+
+  .material-icons {
+    color: var(--primary) !important;
+    font-weight: 900;
+  }
+}
+
+.custom-icon {
+  .mat-expansion-indicator {
+    display: none;
+  }
+
+  .mat-expansion-panel:not([class*=mat-elevation-z]) {
+    .accordion-remove {
+      display: none;
+    }
+  }
+
+  .mat-expansion-panel:not([class*=mat-elevation-z]):hover {
+    .mat-icon {
+      color: var(--primary);
+    }
+  }
+
+  .mat-expansion-panel-header.mat-expanded {
+    .mat-expansion-panel-header-title {
+      font-family: 'Poppins-m' !important;
+      font-size: 1.6rem;
+    }
+
+    .accordion-add {
+      display: none;
+    }
+
+    .accordion-remove {
+      display: inline;
+    }
+  }
+}
+
+/* ----------------------------------------------
+---common custom accordian -- expansion panels---
+---------------------------------------------- */
+.common-custom-expansion {
+  .mat-expansion-panel:not([class*="mat-elevation-z"]) {
+      box-shadow: none !important;
+      margin-bottom: 10px;
+  }
+
+  .mat-expansion-panel-header,.mat-expanded {
+      background: #f0f0f0 !important;
+  }
+
+  .mat-expansion-panel:hover {
+      background: #f0f0f0;
+  }
+
+  .mat-expansion-panel-body {
+      background-color: #fff;
+      padding-top: 10px;
+  }
+  .mat-expansion-panel-header.mat-expanded {
+      height: 40px;
+  }
+}
+
+/* ----------------------------------------------
+---Button Toggle Styling Class---
+---------------------------------------------- */
+.mat-button-toggle-group-appearance-standard {
+  border: 0.2rem solid var(--primary);
+}
+
+.mat-button-toggle-group-appearance-standard .mat-button-toggle+.mat-button-toggle {
+  border-left: 0.2rem solid var(--primary);
+}
+
+.mat-button-toggle:not(.mat-button-toggle-checked){
+  :hover{
+    background-color: #EEF5FF;
+  }
+}
+
+.mat-button-toggle-checked {
+  background-color: var(--primary);
+  color: white !important;
+}
+
+/* ----------------------------------------------
+---Card Styling Class---
+---------------------------------------------- */
+.card-shadow {
+  box-shadow: 0rem 0.308rem 2rem #74799326 !important;
+}
+
+.mat-card-small-image {
+  height: 4.4rem;
+  width: 4.4rem;
+}
+
+.card-text-background {
+  background-color: #f4f4ff;
+  padding: 1.2rem;
+}
+
+.mat-card {
+    color: rgba(0, 0, 0, 0.95);
+}
+
+/* ----------------------------------------------
+---Input Field Styling-------------------------
+---------------------------------------------- */
+
+.mat-form-field {
+  font-size: 1.4rem;
+  line-height: 1.178;
+}
+
+.mat-select-panel {
+  margin-top: 30px !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #D0D9E5;
+}
+
+.mat-form-field.mat-form-field-appearance-outline>div.mat-form-field-wrapper>div.mat-form-field-flex>div.mat-form-field-infix {
+  padding: 1.32rem 0px;
+  border-top: 0.4em solid transparent;
+}
+
+.mat-form-field.mat-form-field-appearance-outline.mat-form-field-has-label.mat-form-field-should-float > div.mat-form-field-wrapper > div.mat-form-field-flex > div.mat-form-field-infix {
+  padding: 1.5rem 0px;
+  border-top: 0.1em solid transparent;
+}
+.mat-form-field.mat-form-field-appearance-outline.mat-form-field-has-label .mat-form-field-label {
+  font-size: 1.5rem;
+  color: #141414; 
+}
+
+.mat-form-field.mat-form-field-appearance-outline>div.mat-form-field-wrapper {
+  padding: 0px;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  transform: translateY(-1.2em) scale(.75);
+  width: 133.33333%;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-prefix,
+.mat-form-field-appearance-outline .mat-form-field-suffix {
+  top: 0.8rem;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.mat-form-field.mat-focused {
+  .mat-form-field-label {
+      color: var(--primary) !important;
+  }
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label,
+.mat-form-field.mat-form-field-appearance-outline.mat-form-field-has-label .mat-form-field-label {
+  font-size: 1.5rem;
+  color: #141414;
+}
+
+.mat-form-field-appearance-legacy {
+  .mat-form-field-infix {
+    padding-bottom: 8px;
+    padding-top: 10px;
+    input {
+      font-family: 'Poppins-m' !important;
+      font-size: 1.5rem !important;
+      letter-spacing: 0.25px;
+      color: #414141;
+    }
+  }
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix input{
+  font-family: 'Poppins-m' !important;
+  font-size: 1.5rem;
+  letter-spacing: 0.25px;
+  color: #414141;
+}
+
+.mat-form-field-appearance-legacy .mat-select-min-line,
+.mat-form-field-appearance-outline .mat-select-min-line {
+  font-family: 'Poppins-m' !important;
+  font-size: 1.5rem !important;
+  letter-spacing: 0.25px;
+  color: #414141;
+}
+
+.mat-form-field-appearance-legacy,.mat-form-field-appearance-outline {
+  &.mat-form-field-should-float, &.mat-form-field-has-label.mat-form-field-should-float {
+    .mat-form-field-label {
+      font-size: 1.7rem !important;
+      text-transform: capitalize;
+      letter-spacing: 0.5px;
+      color: #000000;
+    }
+  }
+}
+
+@mixin floating-label-styles($bg-color: #fff) {
+  .mat-form-field-outline-start {
+     min-width: 9px;
+  }
+  mat-label {
+    background-color: $bg-color;
+    padding: 0 5px 0 2px;
+  }
+}
+
+.mat-form-field-appearance-outline.mat-form-field-has-label.mat-form-field-should-float {
+  @include floating-label-styles;
+}
+
+.bg-dark-grid .mat-form-field-appearance-outline.mat-form-field-has-label.mat-form-field-should-float {
+  @include floating-label-styles(#eef5ff);
+}
+
+
+/* ----------------------------------------------
+---Tabs Styling---------------------------------
+---------------------------------------------- */
+.mat-tab-group.mat-primary {
+  .mat-tab-label-content {
+    font-size: 1.44rem;
+  }
+}
+
+.mat-tab-label-active{
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.mat-tab-label{
+  opacity: 1 !important;
+}
+
+/* ----------------------------------------------
+---Scrollbar Styling Class---
+---------------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 20px;
+  height: 20px;
+}
+
+::-webkit-scrollbar-track:vertical {
+  background: #E4EAF2;
+  border-left: 9px solid white;
+  border-right: 9px solid white;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  background: #B6C8DE;
+  border-left: 8px solid white;
+  border-right: 8px solid white;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-track:horizontal {
+  background: #E4EAF2;
+  border-top: 9px solid white;
+  border-bottom: 9px solid white;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background: #B6C8DE;
+  border-top: 8px solid white;
+  border-bottom: 8px solid white;
+  border-radius: 8px;
+}
+
+/* ----------------------------------------------
+-----------Mat Dialog Class---------------------
+---------------------------------------------- */
+.small-dialog {
+  width: 40%;
+}
+
+.medium-dialog {
+  width: 55%;
+}
+
+.large-dialog {
+  width: 70%;
+}
+@media screen and (min-width:991px) and (max-width:1400px) {
+
+  .small-dialog,
+  .medium-dialog,
+  .large-dialog {
+    width: 60%;
+  }
+}
+@media screen and (max-width:991px) {
+
+  .small-dialog,
+  .medium-dialog,
+  .large-dialog {
+    width: 100%;
+  }
+
+  .w-md-100 {
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width:991px) {
+  .w-lg-50 {
+    width: 50% !important;
+  }
+}
+
+.mat-dialog-container
+{
+  z-index: 2021;
+}
+
+/* ----------------------------------------------
+-----------Mat Table Class---------------------
+---------------------------------------------- */
+
+.mat-header-cell {
+  border-bottom: 1px solid #5a9cff !important;
+  font-size: 1.4rem;
+  font-weight: 600 !important;
+  color: #414141;
+  font-family: "Poppins-m";
+  background-color: #eef5ff !important;
+}
+
+.mat-footer-cell {
+  font-size: 1.4rem;
+  font-weight: 600 !important;
+  color: #414141;
+  font-family: "Poppins-m";
+  background-color: #eff5ffcf;
+}
+
+.mat-header-cell,
+.mat-cell,
+.mat-footer-cell {
+  padding: 8px 10px !important;
+}
+
+.mat-sort-header-content{
+  text-align: left !important;
+}
+
+.action-icon{
+  width: 30px !important;
+  cursor: pointer;
+}
+
+@media screen and (992px <= width <= 1399px){
+    .mat-header-cell,
+    .mat-cell,
+    .mat-footer-cell {
+      padding: 5px 7px !important;
+    }
+}
+
+/* ----------------------------------------------
+--Mat Table Last Column (Action) Sticky Class----
+---------------------------------------------- */
+
+@media screen and (min-width:576px){
+  .sticky-column-condition {
+    position: sticky;
+    right: -2px;
+    text-align: center !important;
+  }
+  td:last-child:not(.mat-calendar-body-cell-container):has(img, a, button) {
+    @extend .sticky-column-condition; 
+    background-color: #fff;
+    box-shadow: 21px 0 7px -24px inset;
+    cursor: pointer;
+  }
+  // td:last-child:has(.unsticky-action-column) { 
+  //   @extend .sticky-column-condition; 
+  //   background-color: transparent !important;
+  //   box-shadow: none !important;
+  //   cursor: initial !important;
+  // }
+  
+   th.sticky-action-column {
+    @extend .sticky-column-condition; 
+  }
+}
+
+/* ----------------------------------------------y
+---File Browser---
+---------------------------------------------- */
+
+.file-uploder-container {
+
+  .upload-lable-text {
+      background-color: #2A6DD90F;
+      border: 1px dashed #006FE1;
+  }
+
+  .file-browse {
+      color: var(--primary);
+      text-decoration: underline;
+      cursor: pointer;
+  }
+}
+
+// -------------------------------------------------
+// ----------Tool Tip Styling-----------------------
+// -------------------------------------------------
+.info-icon {
+  position: relative;
+}
+
+.info-icon:hover {
+  .tooltipcontent-component {
+    display: block;
+  }
+}
+
+.tooltipcontent-component {
+  display: none;
+  background-color: #fff;
+  color: #000;
+  padding: 5px 0;
+  border-radius: 6px;
+  text-align: left;
+  max-width: 300px;
+  min-width: 200px;
+  min-height: 10px;
+  padding: 10px 12px;
+  z-index: 99999;
+  box-shadow: 0 0px 16px rgba(0, 0, 0, 0.09), 0 0px 28px rgba(0, 0, 0, 0.09);
+  border: 1px solid rgb(224, 224, 224);
+
+  &.left {
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: transparent;
+      border-left: 0;
+    }
+
+    /* Stroke */
+    &:before {
+      top: 15px;
+      left: -12px;
+      /* If 1px darken stroke slightly */
+      border-right-color: rgb(224, 224, 224);
+      border-width: 12px;
+    }
+
+    /* Fill */
+    &:after {
+      top: 15px;
+      left: -11px;
+      border-right-color: #fff;
+      border-width: 12px;
+    }
+  }
+}
+
+// --------------------------------------------
+// ----------snackbar styling------------------
+// --------------------------------------------
+@mixin snackbarStyle($color, $bg-color) {
+  background: $bg-color;
+  color: $color;
+}
+
+.blue-snackbar {
+  @include snackbarStyle(#fff, var(--primary));
+}
+
+.yellow-snackbar {
+  @include snackbarStyle(var(--bodytext-color), var(--pending));
+}
+
+.red-snackbar {
+  @include snackbarStyle(#fff, var(--warn));
+}
+
+.green-snackbar {
+  @include snackbarStyle(#fff, var(--success));
+}
+
+// --------------------------------------------
+// ----- Loader spinner overlay start -----
+// --------------------------------------------
+ 
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing.dark-backdrop {
+  background: #000;
+  opacity: 0.25 !important;
+}
+// Loader spinner overlay end
+.mat-list-base
+{
+  padding-top: 0px!important;
+}
+
+
+// --------------------------------------------
+// ----- Mat Select and DatePicker Styling -----
+// --------------------------------------------
+.mat-select-arrow-wrapper{
+  height: 0 !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-suffix {
+  top: 0.624rem !important;
+}
+
+// --------------------------------------------
+// ----------Status Styling------------------
+// --------------------------------------------
+
+@mixin statusStyle($bgColor, $color) {
+  background: $bgColor;
+  color: $color;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+
+.status-approved{
+  @include statusStyle(#EAF8F5,#52BB9C)
+}
+.status-pending{
+  @include statusStyle(#FFF4DE,#EFA831)
+}
+.status-rejected{
+  @include statusStyle(#FFEDEE,#E54849)
+}
+
+// --------------------------------------------
+// ------ NGX MATERIAL TIMEPICKER @5.5.3 STYLING -
+// --------------------------------------------
+.timepicker-overlay {
+  z-index: 2022 !important;
+
+  .timepicker {
+    .timepicker__header {
+      background-color: var(--primary) !important;
+    }
+
+    .timepicker-button {
+      color: var(--primary) !important;
+      border: 1px solid var(--primary) !important;
+      line-height: 32px !important;
+      margin-left: 10px !important;
+      border-radius: 5px !important;
+
+      &:hover {
+        background-color: #dbdbdb38 !important;
+      }
+    }
+
+    .clock-face__clock-hand,
+    .clock-face__number>span.active,
+    .clock-face__clock-hand {
+      background-color: var(--primary) !important;
+    }
+
+    .clock-face__clock-hand_minute:before {
+      border-color: var(--primary) !important;
+    }
+
+    .timepicker-dial__control:focus-visible {
+      outline: 1px solid #fff !important;
+    }
+  }
+}
+
+
+// --------------------------------------------
+// ---------- NG5 Range Slider@1.2.6 STYLING --
+// --------------------------------------------
+.ng5-range-slider{
+.ng5-slider {
+  margin: 0;
+  .ng5-slider-bar {
+    height: 6px;
+    background: #EAF3FF;
+    border-radius: 5px;
+  }
+  .ng5-slider-selection {
+    background: var(--primary);
+  }
+  .ng5-slider-pointer {
+    width: 19px;
+    height: 19px;
+    top: -8px;
+    background-color: var(--primary);
+    &:focus-visible {
+      outline: none;
+    }
+  }
+  .ng5-slider-pointer:after {
+    display: none;
+  }
+  .ng5-slider-bubble {
+    top: 15px;
+    bottom: 0;
+    color: #747474;
+    font-size: 1.4rem;
+  }
+}
+}
+
+/* ----------------------------------------------
+---Additional Styling---
+---------------------------------------------- */
+.cursor-pointer{
+  cursor: pointer;
+}
+.cursor-default{
+  cursor:default
+}
+.cursor-not-allowed{
+  cursor: not-allowed !important;
+}
+.search-icon-color{
+  color: #b5bfcf;
+}
+.watch-icon-color{
+  color: #c9c9c9;
+}
+.inner-scroll {
+  max-height: 70vh !important;
+  overflow: auto;
+}
+.table-inner-scroll {
+  max-height: 56vh !important;
+  overflow-y: auto;
+}
+.table-vertical-scroll {
+  max-height: 43vh !important;
+  overflow: auto;
+}
+.drop-icon-color{
+  color: #b0b0b0;
+}
+.empty-state-container{
+  height: 450px;
+}
+.middle-menu-border-style{
+  border-right: 2px solid #d4d4d4;
+}

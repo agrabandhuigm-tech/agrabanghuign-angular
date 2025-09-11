@@ -1,0 +1,167 @@
+<div class="container-fluid" style="background-color: #edf0f2;">
+    <div class="row">
+        <div class="col-12">
+            <div class="registration-card">
+                <div class="heading-2 bodytext-color d-flex align-items-center mt-1 px-4 py-2 wbg stepper-title">
+                    Pensioner Updated Info
+                    <mat-icon class="primary ms-2" matTooltip="Please use next Fill form carefully.">info</mat-icon>
+                </div>
+
+            <div class="bg-white mb-3">
+                <mat-card class="w-100 mb-1" >
+                    <div class="d-flex">
+                        <section class="example-section">
+                            <mat-checkbox  color="primary" [(ngModel)]="checkbox1" (change)="changeValue('basicDetails', $event)" ><b>Basic Details</b>
+                            </mat-checkbox>
+                        </section>
+
+                        <section class="example-section mx-3">
+                            <mat-checkbox  color="primary" [(ngModel)]="checkbox2" (change)="changeValue('address', $event)"><b>Address Details</b>
+                                
+                            </mat-checkbox>
+                        </section>
+
+                        <section class="example-section">
+                            <mat-checkbox  color="primary" [(ngModel)]="checkbox3" (change)="changeValue('bankDetails', $event)"><b>Bank Details</b>
+                            </mat-checkbox>
+                        </section>
+                    </div>
+                </mat-card>
+            </div>
+
+
+                <!-- <mat-stepper labelPosition="bottom" style="background-color: #edf0f2;" color="accent" #stepper
+                (selectionChange)="onStepChange(stepper)"
+                    [ngClass]="{'stepper-lock-true': isMakercss, 'stepper-lock-false': !isMakercss}"> -->
+
+                   <mat-card>
+
+                    <!-- <mat-step label="Basic Details"> -->
+                    <div label="Basic Details"  *ngIf="checkbox1">
+                        <div class="stepper_content p-4 bg-white" >
+
+                            <!-- ////////////////////////////////////////// -->
+                            <!-- <app-personal-details [EmpDetails]="employee.employeePersonalDetail" (EmpData)="getData($event)" (persoData)="saveOffline($event)"
+                                (JanaadhaarUser)="getJanaadharuser($event)" (dateOfBirth)="getDob($event)" [picData]="picData"
+                                [config]="config" [userAction]="actionList" [personal]="personal"></app-personal-details> -->
+                                <!-- ///////////////////////////////////////////// -->
+              
+                             <!-- <app-profile  [personal]="personal"  (persoData)="saveOffline($event)"    (EmpData)="getData($event)">
+                            </app-profile>
+
+                           
+                -->
+
+                       <app-basic-details [personal]="basicDetails" [masterData]="masterDataReportApiData" (BasicDetailsUser)="getBasicDetailsuser($event)" (EmpData)="getData($event)">
+                                
+                            </app-basic-details>
+
+
+                            <div class="d-flex justify-content-end">
+                            
+                              <!-- <button type="button" class="btn btn-primary  ms-2" mat-raised-button color="primary"
+                              (click)="savedata1(1)" >Next</button> -->
+                            </div>
+                          </div>
+                    </div>
+                    <!-- </mat-step>  -->
+
+
+                    <!-- <mat-step label="Service Details">
+                        <div class="stepper_content p-4 bg-white" >
+
+                      <app-service-details  [personal]="service"    (ServiceUser)="getServiceuser($event)" (EmpData)="getData($event)">
+                    </app-service-details>
+                    <div class="d-flex justify-content-end">
+                       
+                        <button type="button" class="btn btn-primary  ms-2" mat-raised-button color="primary"
+                        (click)="savedata1(2)" >Next</button>
+                      </div>
+                    </div>
+                    </mat-step> -->
+                     <!-- <mat-step label="Address Details"> -->
+                     <div label="Address Details" *ngIf="checkbox2">
+                        <div class="stepper_content p-4 bg-white" >
+                     
+                            <app-address-details [personal]="address"  (AddressUser)="getAddressuser($event)" (EmpData)="getData($event)">
+
+                            </app-address-details>
+
+                            <!-- <app-address-details>
+                                
+                            </app-address-details> -->
+                     
+                    <div class="d-flex justify-content-end">
+                        
+                        <!-- <button type="button" class="btn btn-primary  ms-2" mat-raised-button color="primary"
+                        (click)="savedata1(2)" >Next</button> -->
+                      </div>
+                    </div>
+                     </div>
+                    <!-- </mat-step>  -->
+
+                     <!-- <mat-step label="Bank Details" > -->
+                     <div label="Bank Details" *ngIf="checkbox3">
+                        <div class="stepper_content p-4 bg-white" >
+
+                           
+                            <!-- <app-bank-details [personal]="bankDeta"  (BankUser)="getBankuser($event)" (EmpData)="getData($event)">
+
+                            </app-bank-details> -->
+
+                            <app-bank-details [personal]="bankDetails"  [masterData]="masterDataReportApiData"  (BankDetailsUser)="getBankDetailsuser($event)" (EmpData)="getData($event)" >
+                                
+                            </app-bank-details>
+  
+                            <div class="d-flex justify-content-end">
+                               
+                                <!-- <button type="button" class="btn btn-primary  ms-2" mat-raised-button color="primary"
+                                (click)="savedata1(3)" >Next</button> -->
+                               
+                              </div>
+                            </div>
+                     </div>
+                    <!-- </mat-step>  -->
+
+                    
+                    <button mat-raised-button color="primary" class="mt-4 mx-2"
+                    (click)="savedata()" *ngIf="checkbox1 || checkbox2 || checkbox3">Apply</button>
+
+                    <!-- (click)="updatedFormList()" -->
+                
+                             <!-- <button type="button" class="btn btn-primary  ms-2" mat-raised-button color="primary"
+                                (click)="savedata()" >Submit</button> -->
+
+                    
+                </mat-card>
+                <!-- </mat-stepper> -->
+            </div>
+
+        </div>
+
+
+  <!-- prograss bar -->
+  <!-- <div class="progress-abs col-12">
+    <mat-card>
+        <span class="heading-2">Complete the steps</span>
+
+        <div class="mt-3">
+            <app-progress-comp [progress1]="progress1" [id]="1"></app-progress-comp>
+        </div>
+        <div class="d-flex justify-content-start mt-2">
+            <h3 class="prograss-bar-text m-0">{{Complete}}%</h3>
+
+        </div>
+        <div class="d-flex justify-content-end mt-1">
+            <button class="d-flex align-items-centent px-3 py-1 prograss-bar-btn">
+                <mat-icon>arrow_right_alt</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+</div> -->
+
+
+    </div>
+</div>
+
+

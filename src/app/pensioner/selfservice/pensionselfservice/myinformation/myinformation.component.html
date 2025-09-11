@@ -1,0 +1,1116 @@
+<div class="container-fluid" style="background-color: #edf0f2;">
+  <div class="row">
+    <div class="col-12">
+      <div class="registration-card">
+        <div class="heading-2 bodytext-color d-flex align-items-center mt-1 px-4 py-2 wbg stepper-title">
+          First Pension Process
+          <mat-icon class="primary ms-2" matTooltip="Fill form carefully.">info</mat-icon>
+        </div>
+        <mat-stepper labelPosition="bottom" style="background-color: #edf0f2;" color="accent" #stepper      (selectionChange)="onStepChange(stepper)">
+          <mat-step label="Profile">
+            <mat-card>
+              <mat-tab-group animationDuration="0ms" color="primary" class="big-btn-padding">
+                <mat-tab label="Personal Details">
+                  <div class="tab-container mt-4">
+                    <div class="container-fluid">
+                      <div class="row">
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div class="avatar-upload">
+                            <span>Joint Photograph</span>
+
+                            <!-- <div class="avatar-edit">
+                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                                  (change)="uploadFile($event)" />
+                              </div> -->
+
+                            <div class="avatar-preview">
+                              <div id="imagePreview" [style.backgroundImage]="'url('+ jointImageUrl +')'"> <i
+                                  class="fa fa-edit"></i>
+                              </div>
+                            </div>
+                            
+                            <label for="imageUpload" class="upload-lable-text btn py-1">Drag & drop or
+                              <span class="file-browse"  #fileInput > browse </span> 
+                              <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                              (change)="uploadFile($event)"  hidden/>
+                            </label>                           
+                          <!-- <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg,.pdf" #fileInput (change)="uploadFile($event)"  >  -->
+                          <button mat-raised-button color="primary" (click)="updateJointPhoto()" class="mt-2">Update Photo</button>
+
+                          </div>
+
+                                                    <!-- <input type="file" (change)="onFileSelected($event)">
+                              <button (click)="uploadImage()">Upload</button> -->
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div class="avatar-upload">
+                            <span>Employee Photograph</span>
+
+                            <!-- <div class="avatar-edit">
+                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                                  (change)="uploadFile($event)" />
+                              </div> -->
+                            <div class="avatar-preview">
+                              <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+                                <!-- *ngIf="picData==''" -->
+                                <i class="fa fa-edit"></i>
+                              </div>
+                              <img [src]="picData" style=" width: auto;  height: 100%;" />
+                            </div>
+
+                          </div>    
+                          </div>
+                          <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div class="avatar-upload">
+                              <span>Update Joint Photograph</span>
+                              <div class="avatar-edit">
+                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" />
+                              </div>
+                              <div class="avatar-preview">                              
+                                <div id="imagePreview" [style.backgroundImage]="'url('+ jointImageUrl +')'"> <i
+                                    class="fa fa-edit"></i>
+                                </div>
+                              </div>                              
+                            </div>
+                          </div> -->
+      
+
+                            <!-- <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg,.pdf" #fileInput (change)="uploadFile($event)"  > -->
+
+                          </div>
+                        </div>
+                        <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div class="avatar-upload">
+                              <span>Update Joint Photograph</span>
+                              <div class="avatar-edit">
+                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" />
+                              </div>
+                              <div class="avatar-preview">                              
+                                <div id="imagePreview" [style.backgroundImage]="'url('+ jointImageUrl +')'"> <i
+                                    class="fa fa-edit"></i>
+                                </div>
+                              </div>                              
+                            </div>
+                          </div> -->
+
+                      </div>
+                      <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Janadhaar Number</span>
+                            {{Personaldetail?Personaldetail.janAdharId :"N/A" }}
+                          </div>
+
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Employee Name</span>
+                            <label>{{Personaldetail?Personaldetail.employeeName:"N/A"}}</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Employee ID</span>
+                            <label>{{Personaldetail?Personaldetail.employeeId:"N/A"}}</label>
+                          </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>SSO ID </span>
+                            <label>{{Personaldetail?Personaldetail.ssoId:"N/A"}}</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Gender</span>
+                            <label>{{Personaldetail?Personaldetail.gender:"N/A"}}</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Date of Birth</span>
+                            <label>{{Personaldetail?Personaldetail.dateOfBirth:"N/A"}}</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Height</span>
+                            <label>{{Personaldetail?Personaldetail.height:"N/A"}}</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Identification Mark</span>
+                            <label>{{Personaldetail?Personaldetail.identificationMarks:"N/A"}}</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Father's Name</span>
+                            <label>{{Personaldetail?Personaldetail.fatherName:""}}</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Mother's Name</span>
+                            <label>{{Personaldetail?Personaldetail?.motherName:""}}</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <!-- *ngIf="userDetails.roleid!=='1'" -->
+                          <div>
+                            <span>Martial Status</span>
+                            <label>{{Personaldetail?Personaldetail?.maritalStatus:""}}
+                            </label>
+                          </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Spouse name</span>
+                            <label>{{Personaldetail?Personaldetail.spouseName:""}}</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <!-- *ngIf="userDetails.roleid!=='1'" -->
+                          <div>
+                            <span>Disabled</span>
+                            <label>{{(Personaldetail?.disable=='0' ||Personaldetail?.disable=='N') ?'No':'Yes'}}
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Type of Disability</span>
+                            <label>{{Personaldetail?Personaldetail.disable:""}}</label>
+                          </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Percentage of Disability</span>
+                            <label>{{Personaldetail?Personaldetail?.percentageOfDisability:""}}</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Blood Group</span>
+                            <label>{{Personaldetail?Personaldetail?.bloodGroup:""}}</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Email Id</span>
+                            <label>{{Personaldetail?Personaldetail.email:""}}</label>
+                          </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+
+                          <div>
+                            <span>Mobile No</span>
+                            <label>{{Personaldetail?Personaldetail?.mobileNumber:""}}</label>
+                          </div>
+
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Nationality</span>
+                            <label>{{Personaldetail?Personaldetail.nationality:""}}</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Religion</span>
+                            <label>{{Personaldetail?Personaldetail.religion:""}}</label>
+                          </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Pan Number</span>
+                            <label>{{Personaldetail?Personaldetail.pan:""}}</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                            <span>Adhaar Number</span>
+                            <label>{{Personaldetail?Personaldetail.janAdharId:""}}</label>
+
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="d-flex justify-content-end">
+                        <button mat-raised-button tabindex="-1" type="button" color="primary"
+                          class="btn btn-primary  ms-2" (click)='moveToSelectedTab("Service Details")'>Next</button>
+
+                      </div>
+
+                
+                
+                </mat-tab>
+                <mat-tab label="Service Details">
+                  <div class="tab-container container-fluid mt-4">
+                    <div class="row">
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>Service Category </span>
+                          <label>{{Personaldetail?Personaldetail.categoryOfPension:""}}</label>
+                          <!-- <label>{{ServiceDetails?.serviceCatName}}</label> -->
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>Category of Pension </span>
+                          <label>{{Personaldetail?Personaldetail.categoryOfPension:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>Office Name </span>
+                          <label>{{Personaldetail?Personaldetail.officeId:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>Gazetted</span>
+                          <label>{{Personaldetail?Personaldetail.gazetted:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>Admin Department</span>
+                          <label>{{Personaldetail?Personaldetail.parentDepartment:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>Current Department</span>
+                          <label>{{Personaldetail?Personaldetail.currentDepartment:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>Current Designation</span>
+                          <label>{{Personaldetail?Personaldetail.currentDesignation:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>Current Office Address</span>
+                          <label>{{Personaldetail?Personaldetail.currentOfficeAddress:""}}</label>
+                          <!-- <div  *ngFor="let field of officeArray">
+                              <label> {{field.officeNameEn+','+field.officeId+','+field.officeNameEn}}</label>
+                            </div> -->
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>Appointment Order No </span>
+                          <label>{{Personaldetail?Personaldetail.appoinmentOrderNO:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>Appointment Order Date </span>
+                          <label>{{Personaldetail?Personaldetail.appoinmentOrderDate:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>Order Issuing Authority/Office </span>
+                          <label>{{Personaldetail?Personaldetail.orderIssueAuthorityOffice:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>Appointment Authority </span>
+                          <label>{{Personaldetail?Personaldetail.appoinmentAuthority:""}}</label>
+                          <!-- <label>{{Personaldetail?.appointAuthority}}</label> -->
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <!-- New changes -->
+                          <span>Date of Joining Regular Service </span>
+                          <label>{{Personaldetail?Personaldetail.dateOfJoining:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <!-- New changes -->
+                          <span>Date of Joining Current Designation</span>
+                          <label>{{Personaldetail?Personaldetail.dateOfCurrentDesignation:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <!-- New changes -->
+                          <span>Date of Joining Present DDO</span>
+                          <label>{{Personaldetail?Personaldetail.dateOfJoiningPresentddo:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <!-- New changes -->
+                          <span>Joining Date</span>
+                          <label>{{Personaldetail?Personaldetail.dateOfJoining:""}}</label>
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>Date of Retirement</span>
+                          <label>{{Personaldetail?Personaldetail.dateOfRetirement:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <!-- *ngIf="userDetails.roleid!=='1'" -->
+                        <div>
+                          <span>Retirement Order, Sanction</span>
+                          <label>{{Personaldetail?Personaldetail.dateOfRetirement:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <!-- *ngIf="userDetails.roleid==='1'" -->
+                        <!-- <div>
+                            <span>Retirement Order, Sanction</span>
+                            <label>{{Personaldetail?.disable}}
+                              <div *ngFor="let file of document_id">
+                                <a *ngIf="file.id==15" matTooltip="Download" href="JavaScript:Void(0);"
+                                  (click)="get_Detail_Document('Retirement_Certificate',15)">download certificate</a>
+                              </div>
+                              <div  *ngIf="userDetails.roleid==='1'">
+                              
+                                <div class="uploaddoc" *ngIf="!Retirementfile && !isRe" >
+                                  
+                                  <input type="file" id="fileDropRef" class="inputd" #Rfile (change)="onRetirement(Rfile)" />
+                                  <input type="file" id="fileDropRef" accept=".pdf" class="inputd"
+                                    (change)="onRetirement($event)">
+                                  <label for="fileDropRef">
+                                    <a matTooltip="View Details" href="JavaScript:Void(0);" >
+                                      Upload certificate</a>
+                                  </label>
+                                </div>
+                                <div class="uploaddoc" *ngIf="isRe">
+                                   
+                                  
+                                  <label for="fileDropRef">
+  
+  
+                                    <a matTooltip="View Details" href="JavaScript:Void(0);" (click)="previewFiles2('Retirement Order Sanction')">
+                                      Download certificate</a>
+                                  </label>
+                                  <mat-icon (click)="removeUploadDoc2('Retirement Order Sanction')">delete</mat-icon>
+                                </div>
+                             
+  
+                              </div>
+                            </label>
+                          </div> -->
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>PRAN No.</span>
+                          <label>{{Personaldetail?Personaldetail.pran:""}}</label>
+
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>GPF No.</span>
+                          <label>{{Personaldetail?Personaldetail.gpfNo:""}}</label>
+
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>State Insurance Number</span>
+                          <label>{{Personaldetail?Personaldetail.gpfNo:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>I.A.S CPNF Number</span>
+                          <label>{{Personaldetail?Personaldetail.lascpnfNo:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <!-- New Changes -->
+                          <span>PPO Number</span>
+                          <label>{{Personaldetail?.ppoNo=='null'?'':Personaldetail?.ppoNo}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>Foreign Services</span>
+                          <label>{{Personaldetail?Personaldetail.lascpnfNo:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>Foreign Empolyer</span>
+                          <label>{{Personaldetail?Personaldetail.foreignEmployeer:""}}</label>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <span>Foreign Services From-To Date</span>
+                          <label>{{Personaldetail?.from_Date}} - {{Personaldetail?.to_Date}}</label>
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <!-- *ngIf="userDetails.roleid!='1'" -->
+                        <div>
+
+                          <span>Opt for Commutation</span>
+                          <label>{{Personaldetail?Personaldetail.optForCommutation:""}}</label>
+                        </div>
+                      </div>
+                      <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3"*ngIf="userDetails.roleid=='1'" >
+                           
+                          <span>Opt for Commutation</span>
+                          <div appearance="outline" class="border border-radius-5 p-2 rounded">                          
+                            <mat-select panelClass="myPanelClass" [(ngModel)]="ServiceDetails.optForCommutation" (selectionChange)="value()">
+                              <mat-option  value="Yes">Yes</mat-option>
+                              <mat-option  value="No">No</mat-option>
+                          </mat-select>                     
+  
+                         
+                          </div>
+                        </div> -->
+
+
+                      <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3" *ngIf="ServiceDetails.optForCommutation=='Yes' && userDetails.roleid=='1'" >
+                          
+                          <span>Commutation Precentage</span>
+                          <div class="border border-radius-5 p-2 rounded">
+                           
+                            
+                           
+                            <input matInput type="number" placeholder="Commutation Precentage" min="0" oninput="this.value = Math.abs(this.value)"  [(ngModel)]="ServiceDetails.commuationPercentage" (change)="numberValidation()">
+                          </div>
+                        </div> -->
+                      <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3" *ngIf="ServiceDetails.optForCommutation=='Yes' && userDetails.roleid!='1'" >
+                           
+                          <span>Commutation Precentage</span>
+                          <label>{{ServiceDetails?.commuationPercentage}}</label>
+                        </div> -->
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <!-- *ngIf="ServiceDetails.optForCommutation=='No'" -->
+                        <div>
+                          <!-- New changes -->
+                          <span>Commutation Precentage</span>
+                          <label>{{Personaldetail?Personaldetail.commutationPercentage:""}}</label>
+
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                        <div>
+                          <!-- New changes -->
+                          <span>Income Tax Regime</span>
+                          <label>{{Personaldetail?Personaldetail.IncomeTaxRegime:""}}</label>
+                        </div>
+                      </div>
+                      <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                             New Changes
+                            <span>Are you A Ex-Service Man ?</span>
+                             <label>{{Personaldetail?.exService}}</label> 
+                            <label>No</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                             New Changes 
+                            <span>Are You Getting Pension From The Previous Military
+                              Service?</span>
+                            <label>No</label>
+                             <label>{{Personaldetail?.previousAsignee}}</label> 
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                          <div>
+                             New Changes 
+                            <span>Are You Getting Civil Service Pension?</span>
+                             <label>{{Personaldetail?.previousAsignee}}</label> 
+                            <label>No</label>
+                          </div>
+                        </div>-->
+                    </div>
+                    <div class="d-flex justify-content-end">
+                      <button mat-stroked-button tabindex="-1" type="button" class="btn btn-outline-cancel me-2"
+                        (click)='moveToSelectedTab("Personal Details")'>Previous</button>
+                      <button mat-raised-button tabindex="-1" type="button" color="primary"
+                        class="btn btn-primary  ms-2" (click)='moveToSelectedTab("Address Details")'>Next</button>
+
+                    </div>
+                  </div>
+
+                </mat-tab>
+                <mat-tab label="Address Details">
+                  <div class="tab-container mt-4">
+                    <div class="container-fluid ">
+                      <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mt-3 allRadious">
+                          <!-- *ngFor="let field of Personaldetail" -->
+                          <mat-card class="p-0 lh-lg">
+                            <mat-card-content class="p-3">
+                              <div class="address-card">
+                                <!-- <mat-icon>{{iconCA}}</mat-icon> -->
+                                <mat-icon>person_pin_circle</mat-icon>
+                              </div>
+                              <span>Current Address</span>
+                              <p style="max-width: 100%;">
+                                {{Personaldetail?Personaldetail.currentAddress:""}}
+                                <!-- {{field.houseAddress+','+field.homeTown +','+field.districtNameEn+','+field.stateNameEn+','+field.pinCode+','+field.officeNameEn}} -->
+                              </p>
+                            </mat-card-content>
+                          </mat-card>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mt-3 allRadious">
+                          <!-- *ngFor="let field of DepartmentAddress" -->
+                          <mat-card class="p-0 lh-lg">
+                            <mat-card-content class="p-3">
+                              <div class="address-card">
+                                <span class="material-symbols-outlined">
+                                  <!-- <mat-icon>{{iconPA}}</mat-icon> -->
+                                  <mat-icon>account_box</mat-icon>
+                                </span>
+                              </div>
+                              <span>Permanent Address</span>
+                              <!-- <p style="max-width: 100%;">{{field.houseAddress+','+field.homeTown +','+field.districtNameEn+','+field.stateNameEn+','+field.pinCode+','+field.officeNameEn}}</p> -->
+                              <p style="max-width: 100%;">{{Personaldetail?Personaldetail.currentAddress:""}}</p>
+                            </mat-card-content>
+                          </mat-card>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mt-3 allRadious">
+
+                          <!-- *ngFor="let field of officeArray" -->
+                          <mat-card class="p-0 lh-lg">
+                            <mat-card-content class="p-3">
+                              <div class="address-card">
+                                <!-- <mat-icon>{{iconOA}}</mat-icon> -->
+                                <mat-icon>apartment</mat-icon>
+                              </div>
+                              <span>Office Address</span>
+                              <p style="max-width: 100%;">
+                                {{Personaldetail?Personaldetail.currentOfficeAddress:""}}
+                                <!-- {{field.officeNameEn+','+field.officeId+','+field.officeNameEn}} -->
+                              </p>
+                            </mat-card-content>
+                          </mat-card>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                      <button mat-stroked-button tabindex="-1" type="button" class="btn btn-outline-cancel me-2"
+                        (click)='moveToSelectedTab("Service Details")'>Previous</button>
+                      <button class="btn btn-primary ms-2" color="primary" mat-raised-button mat-button matStepperNext
+                        (click)="nextStepc(1)">Next</button>
+                    </div>
+                  </div>
+                </mat-tab>
+              </mat-tab-group>
+
+            </mat-card>
+          </mat-step>
+
+          <mat-step>
+            <ng-template matStepLabel>Family Details</ng-template>
+            <mat-card>
+              <mat-tab-group animationDuration="0ms" color="primary" class="big-btn-padding">
+                <mat-tab label="Family details View">
+                  <div class="tab-container mt-4">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 allRadious mt-4"
+                          *ngFor="let field of FamilydetailsView;let i=index">
+                          <!-- *ngFor="let field of familyDetails"                           -->
+                          <!-- *ngFor="let field of familyDetails" -->
+                          <div class="family-details-card-container">
+                            <div class="family-card-header m-1 p-2 d-flex justify-content-between align-items-center">
+                              <div class="member-base-details d-flex justify-content-start align-items-center">
+                                <div class="member-image">
+                                  <img src="./assets/images/sonImg.jfif" alt="member-image">
+                                </div>
+                                <div class="member-name heading-2 ms-2 mt-2">{{field.familyMemberName}}</div>
+                                <!-- {{field.nameEn}} -->
+                              </div>
+                              <div class="name-birth-details ms-1">
+                                <span class="relation-tag py-1 px-2">{{field.relation}}</span>
+                                <!-- {{field.relationshipTypeEn}} -->
+                              </div>
+                            </div>
+                            <div class="family-card-body">
+                              <div class="d-flex justify-content-between align-items-center mt-4 mx-3">
+                                <div class="pan-number-box me-5 fw-bold">
+                                  <p class="m-0 f-12">Gender</p>
+                                  <p class="subtitle-2">{{field.gender}}</p>
+                                  <!-- {{field.genderEn}} -->
+                                </div>
+                                <div class="aadhar-number-box fw-bold">
+                                  <p class="m-0 f-12">Date Of Birth</p>
+                                  <p class="subtitle-2">{{field.dateOfBirth}}</p>
+                                  <!-- {{field.dob}} -->
+                                </div>
+                                <div class="aadhar-number-box ms-4 fw-bold">
+                                  <p class="m-0 f-12">Marital Status</p>
+                                  <p class="subtitle-2">{{field.maritalStatus}}</p>
+                                  <!-- {{field.maritalStatusName}} -->
+                                </div>
+                              </div>
+                              <div
+                                class="pan-aadhar-number-container d-flex justify-content-start align-items-center  mx-3">
+                                <div class="pan-number-box me-5 fw-bold">
+                                  <p class="m-0 f-12">PanCard Number</p>
+                                  <p class="subtitle-2">{{field.pan}} </p>
+                                </div>
+                                <div class="aadhar-number-box ms-4 fw-bold">
+                                  <p class="m-0 f-12">Aadhaar Number</p>
+                                  <p class="subtitle-2">{{field.adharNo}} </p>
+                                </div>
+                                <!-- <div class="aadhar-number-box ms-5">
+                                    <p class="m-0 f-12">Aadhaar Number</p>
+                                    <p class="subtitle-2">{{field.adharNo}} </p>
+                                   
+                                  </div> -->
+                              </div>
+                            </div>
+                            <div class="row">
+
+                              <div class="action-textd-d-flex mt-3 justify-content-end align-item-center me-2">
+                                <a href="javascript:void(0)"
+                                  class="subtitle-2 view-details-btn d-flex justify-content-end align-item-center">
+                                  <!-- (click)="openDialog(field)" -->
+                                  <p class="m-0" (click)="viewDetails(i)">View All Details </p>
+                                  <span><mat-icon>arrow_right_alt</mat-icon></span>
+                                </a>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="d-flex justify-content-end mt-3">
+                        <button mat-stroked-button matStepperPrevious
+                          class="btn btn-outline-cancel me-2">Previous</button>
+                        <button mat-raised-button tabindex="-1" type="button" color="primary"
+                          class="btn btn-primary  ms-2" (click)='moveToSelectedTab("Nomination")'>Next</button>
+
+                      </div>
+                    </div>
+                  </div>
+                </mat-tab>
+
+              </mat-tab-group>
+            </mat-card>
+          </mat-step>
+
+          <mat-step>
+            <ng-template matStepLabel>Nomination</ng-template>
+            <mat-card>
+              <mat-tab-group animationDuration="0ms" color="primary" class="big-btn-padding">
+                <mat-tab label="Nomination For Arrears (Form A&5)">
+                  <div class="tab-container mt-4">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <strong>Nomination For Arrears (Form A&5)</strong>
+                       
+                        <div class="col-lg-12 mt-3 datatable">
+                          <table mat-table class="table text-nowrap"  [dataSource]="arrear_Arr">
+                            <ng-container matColumnDef="nomineeName">
+                              <th mat-header-cell *matHeaderCellDef> Name </th>
+                              <td mat-cell *matCellDef="let element"> {{ element.nomineeName }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="relation">
+                              <th mat-header-cell *matHeaderCellDef> RELATION </th>
+                              <td mat-cell *matCellDef="let element"> {{ element.relation }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="percentShare">
+                              <th mat-header-cell *matHeaderCellDef> MAIN NOMINEE SHARE </th>
+                              <td mat-cell *matCellDef="let element"> <input id="altNomiShare"  [(ngModel)]="element.percentShare" style="border: none;"> </td>
+                            </ng-container>
+                            <ng-container matColumnDef="altPrecentShare">                        
+                             <!-- <td mat-cell *matCellDef="let element"> <input  [(ngModel)]="element.altPrecentShare" *ngIf="element.isEditing"  [(ngModel)]="element.altPrecentShare"  (blur)="onCellBlur(element)"></td> -->
+
+                              <th mat-header-cell *matHeaderCellDef> ALTERNATE NOMINEE SHARE </th>
+                              <td mat-cell *matCellDef="let element"> <input id="altNomiShare" *ngIf="element.isEditing"  [(ngModel)]="element.altPrecentShare" style="border: none;" > </td>
+                            </ng-container>
+                            <ng-container matColumnDef="Action">
+                              <th mat-header-cell *matHeaderCellDef> Action </th>
+                              <td mat-cell *matCellDef="let element"> <button mat-stroked-button class="mx-2 life_con_btn" >Edit</button> </td>
+                            </ng-container>
+
+                            <!-- <thead class="thead-light">
+                              <tr>
+                                <th scope="col">NAME</th>
+                                <th scope="col">RELATION</th>
+                                <th scope="col">MAIN NOMINEE SHARE</th>
+                                <th scope="col">ALTERNATE NOMINEE SHARE</th>
+                                <th scope="col">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody *ngFor="let member of arrear_Arr">
+                              <tr>
+                                <td>{{member.nomineeName}}</td>
+                                <td>{{member.relation}}</td>
+                                <td>{{member.percentShare?member.percentShare:'0'}} %</td>
+                                <td>{{member.altPrecentShare?member.altPrecentShare:'0'}} %</td>
+                                <td>
+                                  <button>edit</button>
+                                </td>
+                              </tr>
+                            </tbody> -->
+                            <tr mat-header-row *matHeaderRowDef="['nomineeName','relation','percentShare','altPrecentShare','Action']"></tr>
+                            <tr mat-row *matRowDef="let row; columns: ['nomineeName','relation','percentShare','altPrecentShare','Action'];"></tr>
+                          </table>
+                        </div>
+                      </div>
+
+
+                    </div>
+                    <div class="d-flex justify-content-end">
+                      <button class="btn btn-outline-cancel ms-2" mat-stroked-button
+                        (click)='moveToSelectedTab("Family Details")'>Previous</button>
+                      <button class="btn btn-primary ms-2" color="primary" mat-raised-button mat-button
+                        matStepperNext>Next</button>
+                    </div>
+                  </div>
+
+                </mat-tab>
+
+                <mat-tab label="Commutation (Form A&5)">
+                  <div class="tab-container mt-4">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <strong>Commutation (Form A&5)</strong>
+                        
+<!-- 
+                        <ng-container matColumnDef="column1">                  
+                            <th scope="col">NAME</th>
+                            <th scope="col">RELATION</th>
+                            <th scope="col">MAIN NOMINEE SHARE</th>
+                            <th scope="col">ALTERNATE NOMINEE SHARE</th>                    
+                        </ng-container> -->
+                        <div class="col-lg-12 mt-3 datatable">
+                          <table mat-table class="table text-nowrap"  [dataSource]="commutation_Arr">
+                            <ng-container matColumnDef="nomineeName">
+                              <th mat-header-cell *matHeaderCellDef> Name </th>
+                              <td mat-cell *matCellDef="let element"> {{ element.nomineeName }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="relation">
+                              <th mat-header-cell *matHeaderCellDef> RELATION </th>
+                              <td mat-cell *matCellDef="let element"> {{ element.relation }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="percentShare">
+                              <th mat-header-cell *matHeaderCellDef> MAIN NOMINEE SHARE </th>
+                              <td mat-cell *matCellDef="let element"> {{ element.percentShare }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="altPrecentShare">
+                              <th mat-header-cell *matHeaderCellDef> ALTERNATE NOMINEE SHARE </th>
+                              <td mat-cell *matCellDef="let element"> {{ element.altPrecentShare }} </td>
+                            </ng-container>
+                            <!-- <thead class="thead-light">
+                              <tr>
+                                <th scope="col">NAME</th>
+                             
+                                <th scope="col">RELATION</th>
+                                <th scope="col">MAIN NOMINEE SHARE</th>
+                                <th scope="col">ALTERNATE NOMINEE SHARE</th>
+                              </tr>
+                            </thead>
+                            <tbody *ngFor="let member of commutation_Arr">
+                              <tr>                           
+                                <td>{{member.nomineeName}}</td>
+                                <td>{{member.relation}}</td>
+                                <td>{{member.percentShare?member.percentShare:'0'}} %</td>
+                                <td>{{member.altPrecentShare?member.altPrecentShare:'0'}} %</td>
+                            >
+                              </tr>
+                            </tbody> -->
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                          </table>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="d-flex justify-content-end">
+                      <button class="btn btn-outline-cancel ms-2" mat-stroked-button
+                        (click)='moveToSelectedTab("Family Details")'>Previous</button>
+                      <button class="btn btn-primary ms-2" color="primary" mat-raised-button mat-button
+                        matStepperNext>Next</button>
+                    </div>
+                  </div>
+
+                </mat-tab>
+
+                <mat-tab label="Gratuity (Form 1 or 2)">
+                  <div class="tab-container mt-4">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <strong>Gratuity (Form 1 or 2)</strong>
+                      
+                        <div class="col-lg-12 mt-3 datatable">
+                          <table mat-table class="table text-nowrap" [dataSource]="gratuity_Arr">
+
+                            <ng-container matColumnDef="nomineeName" class="thead-light">
+                              <th mat-header-cell *matHeaderCellDef> Name </th>
+                              <td mat-cell *matCellDef="let element"> {{ element.nomineeName }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="relation">
+                              <th mat-header-cell *matHeaderCellDef> RELATION </th>
+                              <td mat-cell *matCellDef="let element"> {{ element.relation }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="percentShare">
+                              <th mat-header-cell *matHeaderCellDef> MAIN NOMINEE SHARE </th>
+                              <td mat-cell *matCellDef="let element"> {{ element.percentShare }} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="altPrecentShare">
+                              <th mat-header-cell *matHeaderCellDef> ALTERNATE NOMINEE SHARE </th>
+                              <td mat-cell *matCellDef="let element"> {{ element.altPrecentShare }} </td>
+                            </ng-container>
+                            <!-- <thead class="thead-light">
+                              <tr>
+                                <th scope="col">NAME</th>
+                                <th scope="col">RELATION</th>
+                                <th scope="col">MAIN NOMINEE SHARE</th>
+                                <th scope="col">ALTERNATE NOMINEE SHARE</th>
+                              </tr>
+                            </thead>
+                            <tbody *ngFor="let member of gratuity_Arr">
+                              <tr>
+                                <td>{{member.nomineeName}}</td>
+                                <td>{{member.relation}}</td>
+                                <td>{{member.percentShare?member.percentShare:'0'}} %</td>
+                                <td>{{member.altPrecentShare?member.altPrecentShare:'0'}} %</td>
+                                <td>{{member.alternatePercentageShare?member.alternatePercentageShare:"0"}} %</td> 
+                              </tr>
+                            </tbody> -->
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                      <button class="btn btn-outline-cancel ms-2" mat-stroked-button
+                        (click)='moveToSelectedTab("Family Details")'>Previous</button>
+                      <button class="btn btn-primary ms-2" color="primary" mat-raised-button mat-button
+                        matStepperNext>Next</button>
+                    </div>
+                  </div>
+
+                </mat-tab>
+              </mat-tab-group>
+            </mat-card>
+          </mat-step>
+
+
+  
+          <mat-step label="Service Records">
+            <mat-card>
+              <mat-tab-group animationDuration="0ms" color="primary" class="big-btn-padding">
+                <mat-tab label="Service Records">
+                <form >
+                  <div class="tab-container container-fluid mt-4" style="margin: 0; padding: 0; overflow: hidden;">
+                    <div class="mt-3 datatable">
+                      <table class="table" style="margin: 0; padding: 0; overflow: hidden;">
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col">Total Service Length</th>
+                            <th scope="col">Non-Qualifying Service</th>
+                            <th scope="col">Total Qualifying Service</th>
+                            <th scope="col">DE Status</th>
+                            <th scope="col" >Type of DE</th>                             
+                            <th scope="col">No DE Certificate</th>
+                            <!-- <th scope="col">Action</th> -->
+                      
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let obj of serviceDtls">
+
+                            <td>{{obj?.serviceLength}}</td>                              
+                            <td>{{obj?.nonQualifyingService}}</td>
+                            <td>{{obj?.qualifyingService}}</td>
+                            <td>{{obj?.deStatus}}</td>
+                            <td >{{obj?.serviceLength}}</td> 
+                            <td>    </td> 
+
+                          
+                            <!-- <td>                            
+                              <div>
+                               <div class="uploaddoc" >                                 
+                                  <input type="file" id="fileDropRef" accept=".pdf" class="inputd">                                   
+                                  <label for="fileDropRef">
+                                    <a matTooltip="View Details" href="JavaScript:Void(0);">
+                                      Upload certificate</a>
+                                  </label>
+                                </div>
+                                <div class="uploaddoc" >                          
+                                  <label for="fileDropRef">
+                                    <a matTooltip="View Details" href="JavaScript:Void(0);" (click)="previewFiles2('No DE Certificate')">
+                                      Download certificate</a>
+                                  </label>
+                                  <mat-icon >delete</mat-icon>                                   
+                                </div>
+                              
+                              </div>
+                            </td>
+                            <td >
+                              
+                              <a href="JavaScript:Void(0);" >                               
+                                <mat-icon>edit_square</mat-icon></a>
+                            </td> -->
+                          </tr>
+                        </tbody>
+                      </table>                                     
+                    </div>
+                    <div class="d-flex justify-content-end">
+                      <button mat-stroked-button matStepperPrevious class="btn btn-outline-cancel me-2">Previous</button>
+                      <button class="btn btn-primary ms-2" color="primary" mat-raised-button mat-button matStepperNext  (click)="nextStepc(3)">Next</button>
+                    </div>
+                  </div>
+                </form>
+                </mat-tab>
+              </mat-tab-group>
+            </mat-card>
+          </mat-step>
+          
+
+          <mat-step label="Bank Details">
+            <mat-card>
+              <mat-tab-group animationDuration="0ms" color="primary" class="big-btn-padding">
+                <mat-tab label="Bank Details">
+                  <div class="tab-container mt-4">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-lg-12 mt-3">
+                          <form [formGroup]="bankForm" >
+                            <div class="row">                             
+
+                               <div class="row">
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                  <mat-form-field class="w-100">                                       
+                                    <input matInput placeholder="Account Type" formControlName="accountType" >
+                                  </mat-form-field>           
+                                 
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3"  >  
+                                  <mat-form-field class="w-100">                                       
+                                    <input matInput placeholder="Account Number" formControlName="accountNo" >
+                                  </mat-form-field>                     
+                                
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                  <mat-form-field class="w-100">                                       
+                                    <input matInput placeholder="IFSC Code" formControlName="ifscCode" (keyup)="bankdetailsbyifsc()" (paste)="false" maxlength="11">
+                                  </mat-form-field>
+                               
+                                </div>  
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                  <mat-form-field class="w-100">                                       
+                                    <input matInput placeholder="Bank Name" formControlName="bankName" >  
+                                  </mat-form-field>
+                                
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                               
+                                <mat-form-field class="w-100">                                       
+                                  <input matInput placeholder="Branch Name" formControlName="bankBranchName"  inputmode="false">  
+                                </mat-form-field>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3"  >
+                                  <!-- *ngIf="userDetails.roleid!='1'" -->
+                                  <mat-form-field class="w-100">                                       
+                                    <input matInput placeholder="Document Type" formControlName="documentType" >    
+                                </mat-form-field>
+                                </div>   
+
+                              </div>
+                            </div>
+                          </form>
+
+                        </div>
+                      </div>
+                     
+                      <div class="d-flex justify-content-end">
+                        <button mat-stroked-button matStepperPrevious  class="btn btn-outline-cancel me-2">Previous</button>
+                        <button class="btn btn-primary btn-cls" mat-raised-button color="primary" (click)="FinalFormSubmit()" >  <!-- (click)="makerProcessSubmit(addAllowance, stepper)" -->                         
+                        Update Bank Details 
+                        </button>  
+                        <!-- Process                       -->
+                        <!-- <button type="submit"  mat-raised-button color="primary" class="mt-5">  Verify & Save' : 'Save as Draft'                          </button> -->
+
+
+                      </div>
+
+                    </div>
+                  </div>
+                </mat-tab>
+              </mat-tab-group>
+            </mat-card>
+          </mat-step>
+          <ng-template matStepperIcon="edit">
+            <mat-icon>check</mat-icon>
+          </ng-template>
+          <ng-template matStepperIcon="chat">
+            <mat-icon>forum</mat-icon>
+          </ng-template>
+        </mat-stepper>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="modal-content">
+    <ng-template #addAllowance let-c="close" let-d="dismiss">
+      <div class="modal-body">
+        <form >
+          <!-- [formGroup]="Request_Confirmation" -->
+          <div class="row">
+            <div class="align-item-center mb-4">
+
+              <h2>Request Confirmation</h2>
+            </div>
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Remarks</mat-label>
+              <textarea matInput placeholder="Type your comments here" rows="6" 
+                ></textarea>
+                <!-- formControlName="Remarks" -->
+            </mat-form-field>
+
+            <div>
+              <!-- <section class="example-section">
+                <mat-chip-list class="example-chip">
+                  <mat-chip class="example-box" *ngFor="let suggested_Remark of Remark_Details let i=index" (click)="selectRemark(suggested_Remark)">
+                    {{suggested_Remark.remarks}}
+                  </mat-chip>
+                </mat-chip-list>
+              </section> -->
+            </div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </form>
+      </div>
+    </ng-template>
+  </div>
+</div>
