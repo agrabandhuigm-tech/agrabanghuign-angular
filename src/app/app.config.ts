@@ -124,14 +124,14 @@ getUserDetails()
     }
     return dyuser;
   }
-  jWtencrypt(text: any){
-    const sign = require('jwt-encode');
-    const secret = 'secret';
-    try{
-      return sign(text, secret);
-    }catch(Error){
-      return null
-    }
-  }
+  // jWtencrypt(text: any){
+  //   const sign = require('jwt-encode');
+  //   const secret = 'secret';
+  //   try{
+  //     return sign(text, secret);
+  //   }catch(Error){
+  //     return null
+  //   }
+  // }
 
 }

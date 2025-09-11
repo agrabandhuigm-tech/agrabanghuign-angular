@@ -1,0 +1,111 @@
+
+<div class="container">
+    <div class="row d-flex align-item-center">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+              <ol _ngcontent-usv-c162="" class="breadcrumb">
+                  <li _ngcontent-usv-c162="" class="breadcrumb-item"><a _ngcontent-usv-c162="" routerlink="/login" ng-reflect-router-link="/login" href="/">ADMIN</a> 
+                  </li>
+                  <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+                      USER-ROLE-ASSIGN
+                  </li>
+              </ol>
+          </nav>
+      </div>
+    </div>
+
+    <div class="row d-flex align-items-center">
+        <!-- <div class="row">
+            <div class="col-7 mt-4"><h3></h3></div>
+            <div class="col-5">
+                <div class="row">
+                  <div class="col-9">
+                    <mat-form-field appearance="outline" class="w-100">
+                      <mat-label>Search by SSO ID</mat-label>
+                      <input matInput placeholder="Search by SSO ID" #ssoid id="ssoid">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-3">
+                      <button class="btn btn-primary mt-3" mat-raised-button color="primary"  type="submit" (click)="searchBySSOId(ssoid.value)">Search</button>
+                  </div>
+                </div>
+              </div>
+        </div> -->
+    </div>
+    
+      <div class="card">
+        <div class="row d-flex align-items-center">
+            <div class="col-9"><h3>User Role</h3></div>
+          
+                <div class="col-3 custome_input">                    
+                    <mat-form-field appearance="outline" class="w-100">
+                        <input matInput placeholder="Search" #input id="input" (keyup)="applyFilter(input.value)">
+                      <mat-icon matPrefix>search</mat-icon>
+                    </mat-form-field>
+                  </div>
+                </div>
+        <table mat-table [dataSource]="dataSource" matSort class="w-100">
+               
+        <ng-container matColumnDef="officeName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Officer name(Eng.) </th>
+            <td mat-cell *matCellDef="let item"> {{item.displayName}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="mobileNo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile No. </th>
+            <td mat-cell *matCellDef="let item"> {{item.mobileNo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="level">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Level </th>
+            <td mat-cell *matCellDef="let item"> {{item.level}} </td>
+        </ng-container>
+        <ng-container matColumnDef="workScope">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Work scope </th>
+            <td mat-cell *matCellDef="let item"> {{item.workSpace}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="office">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Office </th>
+            <td mat-cell *matCellDef="let item"> {{item.officeName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="designation">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Designation </th>
+            <td mat-cell *matCellDef="let item"> {{item.designation}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="role">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
+            <td mat-cell *matCellDef="let item"> {{item.roleNameEn}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="post">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Post </th>
+            <td mat-cell *matCellDef="let item"> {{item.post}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="mainCharge">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Main charge </th>
+            <td mat-cell *matCellDef="let item"> <mat-slide-toggle color="primary"></mat-slide-toggle> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="showRole">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Show role </th>
+            <td mat-cell *matCellDef="let item">
+                <button class="btn btn-primary" mat-raised-button color="primary"  type="submit" (click)="openRoleDialog(item)"><img src="assets/images/UserRoleW.svg" style="width:30px;"></button>
+            </td>
+        </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+    
+        <!-- Pagination -->
+        <mat-paginator #paginatorRef [pageSizeOptions]="[5,10, 20,50, 100,500,1000]" showFirstLastButtons></mat-paginator>
+      </div>
+  </div>

@@ -9,7 +9,7 @@ import { NgOtpInputModule } from 'ng-otp-input';
 
 /* Extra */
 import { LoaderInterceptor } from '../interceptors/loader.interceptor.spec';
-import { CarouselModule } from 'ngx-owl-carousel-o';
+
 /* Angular Material Imports */
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
@@ -40,6 +40,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
 import { MatChipsModule } from '@angular/material/chips';
 
+/* Other Module Imports */
 
 import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
 import { MomentDateModule } from '@angular/material-moment-adapter';
@@ -73,7 +74,6 @@ const Mat = [
   MatStepperModule,
   MatSidenavModule,
   MatMenuModule,
-  CarouselModule,
   MatSortModule,
   MatPaginatorModule,
   MatFormFieldModule,
@@ -136,7 +136,6 @@ const Mat = [
     NgOtpInputModule,
     ReactiveFormsModule,
     FormsModule,
-    
     MomentDateModule,
     TranslateModule.forRoot(),
     Mat

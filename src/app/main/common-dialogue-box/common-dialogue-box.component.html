@@ -1,0 +1,244 @@
+<!-- Life Certificates -->
+<div class="popup" *ngIf="isVisible" >
+    <div class="popup-content">
+      <div class="success-icon">
+        <img src="assets/images/successful_icon.svg">
+      
+      </div>
+      <h2>Successful</h2>
+      <p>Your Life Certificated is successfully uploaded and sent for review.</p>      
+      <button mat-raised-button #btn id="btn" class="mat-focus-indicator big-btn-with-icon-padding mat-raised-button mat-button-base mat-primary my-3" color="primary" (click)="okButton('ok')">Ok</button>
+       <!-- <button mat-raised-button color="primary" class="my-3" (click)="okButton('ok')" >Ok</button> -->
+    </div>
+</div>
+
+<!-- 17/07/2023 New Add  Family Details -->
+<div class="popup"  *ngIf="isFamilyDetails">
+  <div class="popup-content text-start w-75">
+    <button type="button" class="btn-close d-inline float-end" aria-label="Close"  (click)="onClose()" ></button> 
+    <div class="success-icon">
+      <h2>Family Member Details</h2>      
+    </div>
+  <div >
+    <div class="familymamber pb-3" >
+        <div class="familymamber_header p-2" >
+          <div class="row" >
+            <div class="col-lg-2"></div>
+            <div class="col-lg-10">
+              <div class="row"  >
+                <div class="col-lg-8">
+                  <p class="mb-0 mt-2 fs-7">Name of the family member</p>
+                  <h4>{{userData.familyMemberName}}</h4>
+                </div>
+                <div class="col-lg-4 text-end px-4">
+                  <button mat-raised-button #btn id="btn" class="mat-focus-indicator big-btn-with-icon-padding mat-raised-button mat-button-base my-3" color="primary">{{userData.relation}}</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <form [formGroup]="familyDtlForm" >
+        <div class="row mt-4">
+          <div class="col-lg-2 text-center"> <img src="assets/images/family_user.png" style="margin-top: -80px;"> </div>
+            <div class="col-lg-10">
+              <div class="row fs-7 px-3">
+                <div class="col-lg-3 my-3">
+                  <mat-form-field class="w-100">                                       
+                    <input matInput placeholder="Gender" formControlName="gender" >
+                  </mat-form-field>    
+                </div>   
+                <div class="col-lg-3 my-3">
+                  <mat-form-field class="w-100">                                       
+                    <input matInput placeholder="Relation" formControlName="relation" >
+                  </mat-form-field>   
+                  <!-- <strong class="d-block">Relation</strong>
+                  <span>{{userData.relation}}</span> -->
+                </div>
+                <div class="col-lg-3 my-3">
+                  <mat-form-field class="w-100">                                       
+                    <input matInput placeholder="Date Of Birth" formControlName="dateOfBirth" >
+                  </mat-form-field>   
+                  <!-- <strong class="d-block">Date of birth</strong>
+                  <span>{{userData.dateOfBirth}}</span> -->
+                </div>
+                <div class="col-lg-3 my-3">
+                  <mat-form-field class="w-100">                                       
+                    <input matInput placeholder="Marital Status" formControlName="maritalStatus" >
+                  </mat-form-field>   
+
+                  <!-- <strong class="d-block">Marital Status</strong>
+                  <span>{{userData.maritalStatus}}</span> -->
+                </div>  
+                <div class="col-lg-3 my-3">
+                  <mat-form-field class="w-100">                                       
+                    <input matInput placeholder="PAN Number" formControlName="pan" >
+                  </mat-form-field>   
+                  <!-- <strong class="d-block">PAN Number</strong>
+                  <span>{{userData.pan}}</span> -->
+                </div>
+                <div class="col-lg-3 my-3">
+                  <mat-form-field class="w-100">                                       
+                    <input matInput placeholder="Aadhaar Number" formControlName="adharNo" readonly="">
+                  </mat-form-field>  
+                </div>
+                <div class="col-lg-3 my-3">
+                  <mat-form-field class="w-100">                                       
+                    <input matInput placeholder="Janadhar Number" formControlName="janAdharId" readonly="">
+                  </mat-form-field> 
+                  <!-- <strong class="d-block">Janadhar Number</strong>
+                  <span>{{userData.janAdharId}}</span> -->
+                </div>
+                <div class="col-lg-3 my-3">
+                  <mat-form-field class="w-100">                                       
+                    <input matInput placeholder="Mobile Number" formControlName="mobNo" readonly=""  >
+                  </mat-form-field> 
+
+                  <!-- <strong class="d-block">Mobile Number</strong>
+                  <span>{{userData.mobNo}}</span> -->
+                </div>
+                <div class="col-lg-3 my-3">
+                  <mat-form-field class="w-100">                                       
+                    <input matInput placeholder="Empolyed" formControlName="employeed" >
+                  </mat-form-field> 
+
+                  <!-- <strong class="d-block">Empolyed</strong>
+                  <span>{{userData.employeed}}</span> -->
+                </div>
+                <div class="col-lg-3 my-3">
+                  <mat-form-field class="w-100">                                       
+                    <input matInput placeholder="Is Disabled ?" formControlName="disable" >
+                  </mat-form-field>
+                  <!-- <strong class="d-block">Is Disabled ?</strong>
+                  <span>{{userData.disable}}</span> -->
+                </div>
+                <div class="col-lg-3 my-3">
+                  <mat-form-field class="w-100">                                       
+                    <input matInput placeholder="Percentage Of Disability" formControlName="disabilityPercentage" >
+                  </mat-form-field>
+                  <!-- <strong class="d-block">Percentage Of Disability</strong>
+                  <span>{{userData.disabilityPercentage}}</span> -->
+                </div>
+                 <div class="col-lg-3 my-3">
+                  <mat-form-field class="w-100">                                       
+                    <input matInput placeholder="SSO ID" formControlName="ssoId" readonly="">
+                  </mat-form-field>
+                  <!-- <strong class="d-block">SSO ID</strong>
+                  <span>{{userData.ssoId}}</span> -->
+                </div>
+                <div class="col-lg-3 my-3">
+                  <mat-form-field class="w-100">                                       
+                    <input matInput placeholder="Address" formControlName="address" readonly="">
+                  </mat-form-field>
+
+                  <!-- <strong class="d-block">Address</strong>
+                  <span>{{userData.address}}</span> -->
+                </div>
+                <div class="col-lg-3 my-3">
+                  <mat-form-field class="w-100">                                       
+                    <input matInput placeholder="Nationality" formControlName="nationality" readonly="" >
+                  </mat-form-field>
+                  <!-- <strong class="d-block">Nationality</strong>
+                  <span>{{userData.nationality}}</span> -->
+                </div>  
+                <div class="col-lg-12">
+                  <div class="row">
+                    <div class="col-lg-3">
+                      <div class="avatar-upload">
+                        <span>Income Certificate</span>                   
+                        <!-- <div class="avatar-preview">
+                          <div id="imagePreview" [style.backgroundImage]=""> <i class="fa fa-edit"></i>
+                          </div>
+                        </div> -->
+                        
+                        <label for="imageUpload" class="upload-lable-text btn py-1">Drag & drop or
+                        <span class="file-browse"  #fileInput > browse </span> 
+                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput  hidden/>
+                        <!-- (change)="uploadFile($event)"  -->
+                      </label>                    
+                     
+                      <!-- <button mat-raised-button color="primary" class="mt-2">Update Photo</button> -->
+                      <!-- (click)="updateJointPhoto()"  -->
+                      </div>
+    
+                   
+                    </div>
+                    <div class="col-lg-9">
+                      <label>Photo Path </label> <br>    <label> working on Certificate </label> 
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="col-lg-12 text-end px-2">
+                  <button mat-raised-button color="primary" class="mt-2" (click)="SubmitCertificateDetails()">Update Certificate / Details </button>
+                </div>
+              </div>
+            </div>
+        </div>
+</form>
+        
+    </div>
+   </div>
+  </div>
+</div>
+
+<!-- verify OTP -->
+<div class="first-payment-modal" *ngIf="id=='otp' || isOtpVer" >
+  <button type="button" class="btn-close d-inline float-end veryfyotpmodal" aria-label="Close" (click)="onClose()"></button>
+  <div class="stop-reason-content text-center">
+      <div class="modeal-text-container text-align-center">
+          <p class="text-align-center m-0 bodytext-color success_subtext mt-2">
+              <b>Verify OTP</b>
+          </p>
+            <mat-form-field class="w-80 mx-2 mt-3" appearance="outline">
+              <input matInput  placeholder="Enter OTP"  [(ngModel)]="otp" (change)="otpChange()" >
+            </mat-form-field>
+      </div>
+      <div class="mt-1">
+          <button mat-raised-button color="primary" class="px-5" (click)="checkOtp('Y')">Verify</button>
+      </div>
+  </div>
+</div>
+<!-- verify OTP ENd  -->
+<!-- Coming Soon Pop Up Start  -->
+<div class="popup" *ngIf="DataSoonPopUp" >
+  <div class="popup-content w-25">
+    <button type="button" class="btn-close d-inline float-end" aria-label="Close" (click)="onClose()"></button>
+    <div class="success-icon my-3 mt-4">
+      <img src="assets/images/successful_icon.svg">    
+    </div>
+    <h2>Coming Soon</h2> 
+  </div>
+</div>
+<!-- Coming Soon Pop Up End   -->
+
+<div class="popup" *ngIf="isImageshow"> 
+ 
+  <div class="popup-content" style="width:50%; max-width: 800px; overflow-y: auto; height: 80vh;">
+    <button type="button" class="btn-close d-inline float-end" aria-label="Close" (click)="onClose()"></button>
+    <!-- <button printSectionId="print-section"  class="btn-close d-inline float-end" ngxPrint></button> -->
+    <div class="overflow-auto mt-4">
+      <div class="imgpreview" id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'"> <i
+          class="fa fa-edit"></i>
+      </div>
+    </div>
+    <!-- <img src="+ imageUrl +" alt="" width="100%"> -->
+  </div>
+</div>
+
+<!--  Start Save Data Success -->
+<div class="popup" *ngIf="CommutationSuccess" >
+  <div class="popup-content w-25">
+    <button type="button" class="btn-close d-inline float-end" aria-label="Close" (click)="onClose()"></button>
+    <div class="success-icon my-3 mt-4">
+      <img src="assets/images/successful_icon.svg">    
+    </div>
+    <h2> {{resData1.data[0].Message}}  {{resData2.data[0]?.requestId!=0?'Request_Id  : '+ resData2.data[0].requestId:""}}</h2> 
+
+    <button mat-raised-button #btn id="btn" class="mat-focus-indicator big-btn-with-icon-padding mat-raised-button mat-button-base mat-primary my-3" color="primary">      
+      <a class="nav-link active" aria-current="page" [routerLink]="['/MyDashboard']" (click)="onClose()">OK</a></button>
+
+  </div>
+</div>
+<!-- Coming Soon Pop Up End   -->
+

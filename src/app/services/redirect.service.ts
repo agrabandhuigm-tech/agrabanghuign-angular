@@ -1,7 +1,5 @@
 import { DOCUMENT } from "@angular/common";
 import { Inject, Injectable } from "@angular/core";
-import { ApiService } from "./api.service";
-import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root"
@@ -9,7 +7,7 @@ import { environment } from "src/environments/environment";
 export class RedirectService {
   constructor(
     @Inject(DOCUMENT)
-    private document: Document,
+    private document: Document
   ) {}
 
   public postRedirect(params: any) {
@@ -18,7 +16,8 @@ export class RedirectService {
     console.log('....params',params);
     form.method = "POST";
     form.target = "_top";
-    form.action = environment.redirectUrl;
+    form.action = "https://122.187.9.65:9006/esign/2.1/signdoc/";
+    // form.action = "https://esign.rajasthan.gov.in/esign/2.1/signdoc/";
     form.enctype="multipart/form-data";
     const input = this.document.createElement("input");
       input.type = "hidden";

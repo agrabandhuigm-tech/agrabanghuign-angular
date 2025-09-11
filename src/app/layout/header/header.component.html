@@ -88,7 +88,6 @@
 								<li><a class="nav-link scrollto active" href="home.html">Home</a></li>
 								<li><a class="nav-link scrollto" href="manual.html">Manual</a></li>
 								<li><a class="nav-link scrollto" href="faq.html"> FAQ</a></li>
-								
 								<li><a class="nav-link scrollto" href="helpdesk.html"> Helpdesk </a></li>                            
 						</div>
 						<small class="date_time w-100 ps-4 pb-2 primary-bg">9/21/2022  |  12:13:29 PM</small>
@@ -144,12 +143,9 @@
 							</div> 
 								<mat-menu #dd="matMenu"  class="matmenucontant">
 									<div class="dropdown text-center">
-									<!-- <a mat-button class="d-block w-100 text-start"  href="">My Account</a>
-									<a mat-button class="d-block w-100 text-start"  href="">Setting</a> -->
-									<button mat-button class="d-block w-100 text-start logout-button" (click)="backToSpace()"><mat-icon class="f-20">group_work</mat-icon> Back To Space</button>
-									<!-- <button mat-button class="d-block w-100 text-start logout-button" (click)="changeDeskAndRole()"><mat-icon class="f-20">supervised_user_circle</mat-icon> Change Desk & Role</button> -->
-									
-									<a mat-button class="d-block w-100 text-start"  (click)="onLogout()"><mat-icon class="f-20 mx-1">power_settings_new</mat-icon> Logout</a>
+									<a mat-button class="d-block w-100 text-start"  href="">My Account</a>
+									<a mat-button class="d-block w-100 text-start"  href="">Setting</a>
+									<a mat-button class="d-block w-100 text-start"  (click)="onLogout()"> Logout</a>
 									
 								</div>
 								</mat-menu>
@@ -246,19 +242,21 @@
 				<div class="collapse navbar-collapse justify-content-around" id="navbarNav">
 					<ul class="navbar-nav menu-options">
 						<li class="nav-item"> <a class="nav-link active" aria-current="page" [routerLink]="['/MyDashboard']">My Dashboard</a> </li>
-
 						<!-- <li class="nav-item"> <a class="nav-link" [routerLink]="['/MyInformation']" >My Information</a> </li> -->
 						<li class="nav-item"> <a class="nav-link" (click)="comingSoonData()" >My Information</a> </li>
-
 						<!-- <li class="nav-item"> <a class="nav-link" href="#">My Pension</a> </li> -->
 						<li>
 							<div class="menu-options">
 								<div class="dropdown">
 									<a href="javascript:void(0)" class="text-white dropdown-toggle selfservice"> My Pension </a>
 									<ul class="dropdown-content">
-										<li><a  class="dropdown-item" (click)="gotoUrl('/pension-ess/payslip')">Pension Pay Slip</a></li>
-										<li><a class="dropdown-item" (click)="gotoUrl('/pension-ess/pensionerStatement')">Pension Statement</a></li>
-										<!-- <li><a  class="dropdown-item" (click)="comingSoonData()">Pension Calculator</a></li> -->
+										<li><a  class="dropdown-item" (click)="comingSoonData()">Pension Pay Slip</a></li>
+										<li><a class="dropdown-item" (click)="comingSoonData()">Pension Statement</a></li>
+										<li><a  class="dropdown-item" (click)="comingSoonData()">Pension Calculator</a></li>
+										
+										<!-- <li><a [routerLink]="['/PensionPaySlip']" class="dropdown-item">Pension Pay Slip</a></li>
+										<li><a [routerLink]="['/PensionStatement']"class="dropdown-item">Pension Statement</a></li>
+										<li><a [routerLink]="['/PensionCalculator']" class="dropdown-item">Pension Calculator</a></li> -->
 									</ul>
 								</div>
 							</div>
@@ -270,15 +268,11 @@
 						<!-- <li class="nav-item"> <a >Ess Related</a> </li> -->
 
 						<!-- <li class="nav-item"> <a class="nav-link" [routerLink]="['/MyRequests']">My Request</a> </li> -->
-						<li class="nav-item"> <a class="nav-link" (click)="redirectToInbox()">My Request</a> </li>
-					    <!-- <li class="nav-item"> <a class="nav-link" [routerLink]="['/Status']"  >Life & Other Certificates</a> </li> 
-						<li class="nav-item"> <a class="nav-link" [routerLink]="['/EssRelatedReports']" >Pss Profile Preview</a> </li>  -->
+						<li class="nav-item"> <a class="nav-link" (click)="comingSoonData()">My Request</a> </li>
+					    <!-- <li class="nav-item"> <a class="nav-link" [routerLink]="['/Status']"  >Life & Other Certificates</a> </li>  -->
 						
-						<!-- <li class="nav-item"> <a class="nav-link" (click)="redirectToRequestLC()"  >Request Life-Certificates</a> </li>  -->
-						<li class="nav-item"> <a class="nav-link" (click)="comingSoonData()" >Pss Profile Preview</a> </li>
-
 						<li class="nav-item"> <a class="nav-link" (click)="comingSoonData()">Ess Related</a> </li> 	
-						<!-- <li class="nav-item"> <a class="nav-link" (click)="redirecttopensioEss()">Revise/Correction Request</a> </li> 				 -->
+						<!-- <li class="nav-item"> <a class="nav-link" (click)="redirecttopensioEss()">Ess Related</a> </li> 				 -->
 
 						
 						<!-- <li class="nav-item"> <a class="nav-link" href="#">Taxes</a> </li> -->
@@ -290,12 +284,10 @@
 										<!-- <li><a [routerLink]="['/IncomeTaxDeclaration']" class="dropdown-item">Income Tax Declaration</a></li>
 										<li><a [routerLink]="['/IncomeTaxCalculator']" class="dropdown-item">Income Tax Calculator</a></li>
 										<li><a [routerLink]="['/NewVsOldTaxRegime']"  class="dropdown-item">New vs Old Tax Regime</a></li> -->
-										
-										<li><a href="javascript:void(0)"  class="dropdown-item menu-item" 
-											(click)="comingSoonData()"
-											
-											>R-ITMS</a></li>
-										
+
+										<li><a  class="dropdown-item" (click)="comingSoonData()">Income Tax Declaration</a></li>
+										<li><a  class="dropdown-item" (click)="comingSoonData()">Income Tax Calculator</a></li>
+										<li><a   class="dropdown-item" (click)="comingSoonData()">New vs Old Tax Regime</a></li>
 									</ul>
 								</div>
 							</div>

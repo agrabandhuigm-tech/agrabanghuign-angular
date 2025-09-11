@@ -233,7 +233,7 @@ export class NewheaderComponent implements OnInit {
   //       "userAssignmentDtlsId":+this.empinfo.aid
   //   }
   //   this._Service.postRequestpension(data, 'getAdditionalEmployeeDetails').subscribe({
-  //     next: (res:any) => {
+  //     next: (res) => {
   //       if ((res.status = 200)) {
   //         this.userEmp_Details = res.data;
   //         // localStorage.setItem('treasury_name',res.data.TREAS_NAME_EN?res.data.TREAS_NAME_EN:"");

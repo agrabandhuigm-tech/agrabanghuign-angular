@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from './user';
+
 import { BehaviorSubject } from 'rxjs';
-import { ApiUrlService } from '../services/api-url.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class AuthService {
   get isLoggedIn(){
     return this.loggedIn.asObservable();
   }
-  constructor(private router: Router, private apiUrl: ApiUrlService) {}
+  constructor(private router: Router) {}
 
   login(token:any){
     if(token != ''){
@@ -23,22 +25,15 @@ export class AuthService {
   }
 
   logout(){
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('current_user');
+    this.loggedIn.next(false);
     // window.open("http://localhost:4200/#/MyDashboard?id=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzc29JZCI6IlNBUkRBUktIQU4xOTYzIn0.cnkz6dZAtMz_AtOGGQDU8KCMGSpqBLGiVgByyTup0c8", '_blank')
       // window.location.href= "http://localhost:4200/#/MyDashboard?id=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzc29JZCI6IlNBUkRBUktIQU4xOTYzIn0.cnkz6dZAtMz_AtOGGQDU8KCMGSpqBLGiVgByyTup0c8"
     // this.router.navigate([environment.homePagesso]);
-
-    // localStorage.removeItem('access_token');
-    // localStorage.removeItem('current_user');
-    // this.loggedIn.next(false);
-    // let purl: string = this.router['location']._platformLocation.location.origin;
-    // window.location.href=purl+"/ifmssso/";
-
-
-      this.loggedIn.next(false);
-      sessionStorage.clear();
-      localStorage.clear();
-      const redirectionUrl = `${this.apiUrl.redirectionUrl}`;
-      window.location.href = redirectionUrl;
+    let purl: string = this.router['location']._platformLocation.location.origin;
+   
+      window.location.href=purl+"/ifmssso/"
 
   }
 }

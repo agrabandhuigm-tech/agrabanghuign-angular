@@ -14,6 +14,7 @@ export class ApiEssService {
   private menuConfig = new BehaviorSubject({ url: 'Inbox' });
   private pensionUrl=environment.pensionUrl;
   private intregationUrl=environment.intregationUrl;
+  private oracalUrl=environment.oracalUrl;
   private empUrl=environment.empUrl;
   private mdmurl=environment.mdmurl;
   private pensionWF=environment.pensionWF;
@@ -21,13 +22,9 @@ export class ApiEssService {
   private employeeV2=environment.employeeV2;
   private pensionMain=environment.pensionMain;
   private lmdmurl=environment.lmdmurl;
-  private home=environment.home;
-  private paymanagerUrl="http://172.22.32.203:9030/payManagerUtil/v1.0/";
   config:AppConfig=new AppConfig();
     ssoId:any;
-
     url:any;
-  
      headers = new HttpHeaders();
     constructor(private http: HttpClient,private _errService:ErrorHandler) {  this.configMenu={isload:true} }
     set configMenu(value) {
@@ -91,21 +88,13 @@ export class ApiEssService {
           withCredentials: true 
      });
     }
-    homePost(url: any,data: any): Observable<any> {
-      this.createAuthorizationHeader(this.headers);
-      this.headers = new HttpHeaders().append("contentType", "text/xml");
-      //this.headers = new HttpHeaders().append("Content-Type", "application/x-www-form-urlencoded");
-      return this.http.post(`${this.home}${url}`, data, {
-        headers: this.headers,
-        withCredentials: true
-      });
-    }
+    
   postOr(url: any,data: any)
   {
     this.createAuthorizationHeader(this.headers);
       this.headers = new HttpHeaders().append("contentType", "text/xml");
       //this.headers = new HttpHeaders().append("Content-Type", "application/x-www-form-urlencoded");
-      return this.http.post(`${this.intregationUrl}${url}`, data, {
+      return this.http.post(`${this.oracalUrl}${url}`, data, {
         headers: this.headers
       });
   }
@@ -137,7 +126,7 @@ export class ApiEssService {
        this.createAuthorizationHeader(this.headers);
          this.headers = new HttpHeaders().append("contentType", "text/xml");
          //this.headers = new HttpHeaders().append("Content-Type", "application/x-www-form-urlencoded");
-         return this.http.post(`${this.intregationUrl}${url}`, data, {
+         return this.http.post(`${this.oracalUrl}${url}`, data, {
            headers: this.headers
          });
      }
@@ -194,10 +183,6 @@ export class ApiEssService {
       if (token !== null) {
         return this.config.getDecodedAccessToken(token);
       }
-    }
-    paymanager(url: any,data: any): Observable<any> {
-      this.createAuthorizationHeader(this.headers);    
-      return this.http.post<any>(`${this.paymanagerUrl}${url}`, data, {headers: this.headers});
     }
   }
   

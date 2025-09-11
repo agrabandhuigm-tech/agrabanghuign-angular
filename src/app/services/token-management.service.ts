@@ -7,9 +7,7 @@ import jwt_decode from 'jwt-decode';
 })
 export class TokenManagementService {
 
-  constructor() {this.getDecodedAccessToken() ;
-    this.getDecodedJWTToken();
-  }
+  constructor() {this.getDecodedAccessToken() }
   disableConsoleInProduction(): void {
     if (environment.production) {
       console.warn(`Console output is disabled on production!`);
@@ -21,7 +19,6 @@ export class TokenManagementService {
   }
 
   empinfoService:any;
-  empinfoJWTService:any;
   getDecodedAccessToken(): any {
     let makerToken:any = sessionStorage.getItem('MpJwtToken');
  
@@ -31,20 +28,6 @@ export class TokenManagementService {
       
       
       this.empinfoService=mytoken;
-    }
-    catch (Error) {
-      return null;
-    }
-  }
-  getDecodedJWTToken(): any {
-    let makerToken:any = sessionStorage.getItem('jwt_token');
- 
-    // console.log(makerToken);
-    try {
-      let mytoken = jwt_decode(makerToken);
-      
-      
-      this.empinfoJWTService=mytoken;
     }
     catch (Error) {
       return null;

@@ -13,8 +13,6 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule } from '@angular/material/button';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CommonSharedModule } from '../common/common.module';
-import { PensionkitissueddialogComponent } from './sidebar/pensionkitissueddialog/pensionkitissueddialog.component';
-import { ChatbotFaqComponent } from './chatbot-faq/chatbot-faq.component';
 
 
 // import { NewfooterComponent } from './newfooter/newfooter.component';
@@ -28,9 +26,8 @@ import { ChatbotFaqComponent } from './chatbot-faq/chatbot-faq.component';
     HeaderComponent,
     FooterComponent,
     ContentComponent,
-    SidebarComponent,
-    PensionkitissueddialogComponent,
-    ChatbotFaqComponent
+    SidebarComponent
+    
   ],
   imports: [
     CommonModule,
