@@ -1,359 +1,45 @@
-<section class="w3l-top-header">
-	<div class="container-fluid">
-		<div class="row d-flex align-items-center">
-			<div class="top-headers top-headers_l col-8 col-md-3 p-0">
-				<!-- <ul class="p-0">
-					<li> <a href="#">राजस्थान सरकार</a> </li>
-					<li> <a href="#">GOVERNMENT OF RAJASTHAN</a> </li>
-				</ul> -->
-			</div>
-			<div class="top-headers col-4 col-md-9 p-0 top-headers-2 d-none d-md-block">
-                <div class="float-end">
-				<ul class="mb-0">
-					<li class="" ><a href="#">Skip to main content</a></li>
-					
-					<li><a href="javascript:;" class="changer text-black" title="Decrease Text" id="text_resize_decrease"><sup>-</sup>A</a></li>
-					<li><a href="javascript:;" class="changer text-black" id="text_resize_reset" title="Reset Text">A</a></li>
-					<li><a href="javascript:;" class="changer text-black" id="text_resize_increase" title="Increase Text"><sup>+</sup>A</a></li>
-					<li><span><i class="fa-solid fa-wheelchair"></i></span></li>
-					
-					<!-- //search button -->
-					<li style="width:60px;">
-						<div class="dropdown"> <span>English</span>
-							<div class="dropdown-content p-1">
-								<p class="border-bottom m-0"><a class="text-black" (click)="commonService.languageHindiChange()">Hindi</a>
-								</p>
-								<p class="m-0"><a class="text-black" (click)="commonService.languageEngChange()">English</a></p>
-							</div>
-						</div>
-					</li>
-				
-				</ul>
-            </div>
-			</div>
-		</div>
-	</div>
-</section>
+<mat-toolbar color="primary" class="header-toolbar">
+  <!-- Left logo -->
+  <img src="assets/images/logo.png" alt="Logo" class="logo">
 
-<div class="hero header" id="myHeader">
-	<div class="bg-white middle_header">	
-	<div class="container-fluid">
-<!-- ======= Header ======= -->
-	
-		<div class="row" id="navigation">
-			<div class="d-flex align-items-center">
-				<div  class="col-1 col-md-1 col-sm-1 col-lg-0 col-xl-0 d-block d-lg-none">
-					<button (click)="openMenu()"  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-						<mat-icon [ngStyle]="{'color':'white'}">menu</mat-icon>
-					</button>
-				</div>
-				<app-sidemenu [ngStyle]="{'background-color':'white'}"  class="d-block d-lg-none"></app-sidemenu>
+  <!-- Title -->
+  <span class="title">AGRABANDHU SAMAJ INDRA GANDHI NAGAR, JAIPUR</span>
 
-				<div class="col-8 col-md-4 p-2">
-					<div class="logo">
-						<h1 class="d-flex mb-0">
-							<span class="logo-sz"><img src="assets/images/emblem.svg" alt="" class="img-fluid"></span>
-							<div class="logo_con">
-								<span class="font-17 color_one d-block">DEPARTMENT OF FINANCE</span>
-								<span class="font-10 color_two d-block">GOVERNMENT OF RAJASTHAN</span>
-								<span class="font-10 color_two font-weight-600 d-block">Integrated Financial Management System</span>
-							</div>
+  <!-- Spacer -->
+  <span class="spacer"></span>
 
-							<div class="logo_pss" >
-								<span class="font-48 color_one d-block font-weight-600 line-h-40">PSS</span>
-								<span class="font-10 color_two d-block font-weight-600">Pensioner Self Service</span>
-							</div>
+  <!-- Top-right info -->
+  <div class="top-right">
+    <a href="mailto:info@agrasensamaj.org">agrabandhuigm@gmail.com</a>
+    <button mat-icon-button>
+      <!-- <mat-icon fontSet="fa" fontIcon="fa-facebook"></mat-icon> -->
+    </button>
+    <button mat-icon-button>
+      <!-- <mat-icon fontSet="fa" fontIcon="fa-twitter"></mat-icon> -->
+    </button>
+  </div>
+</mat-toolbar>
 
-						</h1>
+<!-- Navigation bar -->
+<mat-toolbar color="warn" class="nav-toolbar">
+  <a mat-button routerLink="/">Home</a>
+  <a mat-button [matMenuTriggerFor]="aboutMenu">About Us</a>
+  <a mat-button routerLink="/gotra">Gotra</a>
+  <a mat-button routerLink="/activities">Activities</a>
+  <a mat-button routerLink="/helpline">Helpline</a>
+  <a mat-button routerLink="/members">Members</a>
+  <a mat-button [matMenuTriggerFor]="execMenu">Executive Committee</a>
+  <a mat-button routerLink="/personalities">Agarwal Personalities</a>
+  <a mat-button routerLink="/contact">Contact Us</a>
+</mat-toolbar>
 
-					</div>
-					
-				</div>
-				<div class="col-md-4 p-0 d-none d-md-block">
-					
-				</div>
-				<div class="col-3 col-sm-3 col-md-3 col-lg-4 col-xl-4 p-0">
-					
-					<div id="mySidenav" class="sidenav d-block d-md-none"> <a class="closebtn" onclick="closeNav()">&times;</a>
-						<div class="account-info d-flex px-3">
-							<div><img src="assets/images/avatar.svg"></div>
-							<div class="account-details ps-3">
-								<h3 class="m-0">Tushar Taneja</h3>
-								<small>Admin Deptartment</small><br>
-								<small>Indra Gandhi Nahar Department</small>
-								<a class="btn btn-outline-white mt-2" role="button" title="Logout">Logout</a>
-							</div>
-						</div>
-						<div class="p-3 sidenav-link">                       
-								<li><a class="nav-link scrollto active" href="home.html">Home</a></li>
-								<li><a class="nav-link scrollto" href="manual.html">Manual</a></li>
-								<li><a class="nav-link scrollto" href="faq.html"> FAQ</a></li>
-								<li><a class="nav-link scrollto" href="helpdesk.html"> Helpdesk </a></li>                            
-						</div>
-						<small class="date_time w-100 ps-4 pb-2 primary-bg">9/21/2022  |  12:13:29 PM</small>
-					</div>
-					<nav id="navbar" class="navbar float-end" *ngIf="headershow">
-						<ul>
-						
-							<li class="d-none d-lg-block mx-1" >
-								<!-- <mat-label>Search Something</mat-label> -->
-								<mat-form-field appearance="fill" class="font-12 font-weight-600 text-dark my-2 w-100 mb-0" appearance="outline">
-									<input type="text" matInput placeholder="Type something..">
-									<mat-icon matSuffix>search</mat-icon>
-								</mat-form-field>
-							</li>
-							<!-- <li class="d-none d-lg-block mx-1" >   
-								<button #ddTrigger="matMenuTrigger" mat-button [matMenuTriggerFor]="one" class="font-14 mt-0"><mat-icon color="primary" >supervised_user_circle</mat-icon> Roles</button>
-								<mat-menu #one="matMenu" [overlapTrigger]="false" class="matmenucontant">
-									<label class="px-3 py-2 text-white sky-bg font-14 d-block">Select Roles</label>
-									<div class="dropdown text-center" >
-										<button mat-button class="d-block w-100 text-start" >Admin</button>
-										
-									</div>
-								</mat-menu>
-							</li> -->
-							<li class=" mx-1">
-								<div matBadge="4" matBadgeOverlap="false" class="demo-section">
-									<span class="bell-icon">
-										<mat-icon>notifications_none</mat-icon>
-									</span>
-								</div>
-							</li>
-							<li class=" mx-1">						
+<!-- Example dropdown menus -->
+<mat-menu #aboutMenu="matMenu">
+  <button mat-menu-item routerLink="/about/history">History</button>
+  <button mat-menu-item routerLink="/about/vision">Vision</button>
+</mat-menu>
 
-								<!-- <img src="assets/images/user_img.png" alt="" class="img-fluid"> -->
-
-								<div class="user_icon_work mt-2">
-									<div id="content">
-									<div id="main-content" class="d-flex align-items-center" >
-									<a #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd">
-										<div class="user">
-											<img src="assets/images/profile.png" alt="" class="img-fluid">
-										</div>
-								</a>
-								<span>
-									<div class="name_id ms-2">
-										<h6 class="mb-0">{{pensionerInfoResult?.pensionerName}}</h6>
-										<small class="f-12">SSO ID :{{pensionerInfoResult?.ssoId}}</small>
-									</div>
-			
-								  </span>
-								</div>
-							</div>
-							</div> 
-								<mat-menu #dd="matMenu"  class="matmenucontant">
-									<div class="dropdown text-center">
-									<a mat-button class="d-block w-100 text-start"  href="">My Account</a>
-									<a mat-button class="d-block w-100 text-start"  href="">Setting</a>
-									<a mat-button class="d-block w-100 text-start"  (click)="onLogout()"> Logout</a>
-									
-								</div>
-								</mat-menu>
-							</li>
-
-						</ul>
-					</nav> 
-					<!-- <nav id="navbar" class="navbar float-end" *ngIf="!headershow">
-						<ul>
-							<li class="d-none d-lg-block mx-1" >
-								<mat-form-field appearance="fill" class="font-12 font-weight-600 text-dark my-2 w-100 mb-0" appearance="outline">
-									<input type="text" matInput placeholder="Type something..">
-									<mat-icon matSuffix>search</mat-icon>
-								</mat-form-field>
-							</li>
-						
-							<li class=" mx-1">
-								<div matBadge="4" matBadgeOverlap="false" class="demo-section">
-									<span class="bell-icon">
-										<mat-icon>notifications_none</mat-icon>
-									</span>
-								</div>
-							</li>
-							<li class=" mx-1">
-								<div class="user_icon_work mt-2">
-									<div id="content">
-									<div id="main-content" class="d-flex align-items-center" >
-									<a #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd">
-									<img src="{{ssoimg}}" alt="" class="img-fluid">
-								</a>
-								<span>
-									<div class="name_id ms-2">
-									</div>
-			
-								  </span>
-								</div>
-							</div>
-							</div> 
-								<mat-menu #dd="matMenu"  class="matmenucontant">
-									<div class="dropdown text-center">
-									<a mat-button class="d-block w-100 text-start"  href="">My Account</a>
-									<a mat-button class="d-block w-100 text-start"  href="">Setting</a>
-									<a mat-button class="d-block w-100 text-start"  href="http://ifmstest.rajasthan.gov.in/ifmssso"> Logout</a>
-									
-								</div>
-								</mat-menu>
-							</li>
-
-						</ul>
-					</nav>  -->
-					<span class="button-croce float-end" style="font-size:30px;cursor:pointer" onclick="openNav()"><mat-icon>more_vert</mat-icon></span>
-				</div>
-			</div>
-		</div>
-		<div style="clear:both;"></div>
-
-
-		<div class="col-12 px-0">
-			<div class="middle-header-container">
-				
-					<div class="row align-items-center">
-						<div class="col-8">
-							<div class="middle-header-box d-flex align-items-center">
-								<div class="text-box">
-									<p class="userinfo px-3 f-12">{{userName}}</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="light_blue_bg justify-align-middle align-items-center align-self-center">
-							</div>
-						</div>
-					</div>
-				
-			</div>
-		</div>
-
-	</div>	
-</div>
-
-
-<div class="row menu-bar-container">
-	<div class="col-12">
-		<nav class="navbar navbar-expand-md">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#">
-					<img width="100px" src="assets/images/rajifms-logo.png">
-				</a>
-				<button class="navbar-toggler border-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<!-- <span class="navbar-toggler-icon"></span> -->
-					<img src="assets/images/navbar-icon.svg" alt="nav-icon">
-				</button>
-				<div class="collapse navbar-collapse justify-content-around" id="navbarNav">
-					<ul class="navbar-nav menu-options">
-						<li class="nav-item"> <a class="nav-link active" aria-current="page" [routerLink]="['/MyDashboard']">My Dashboard</a> </li>
-						<!-- <li class="nav-item"> <a class="nav-link" [routerLink]="['/MyInformation']" >My Information</a> </li> -->
-						<li class="nav-item"> <a class="nav-link" (click)="comingSoonData()" >My Information</a> </li>
-						<!-- <li class="nav-item"> <a class="nav-link" href="#">My Pension</a> </li> -->
-						<li>
-							<div class="menu-options">
-								<div class="dropdown">
-									<a href="javascript:void(0)" class="text-white dropdown-toggle selfservice"> My Pension </a>
-									<ul class="dropdown-content">
-										<li><a  class="dropdown-item" (click)="comingSoonData()">Pension Pay Slip</a></li>
-										<li><a class="dropdown-item" (click)="comingSoonData()">Pension Statement</a></li>
-										<li><a  class="dropdown-item" (click)="comingSoonData()">Pension Calculator</a></li>
-										
-										<!-- <li><a [routerLink]="['/PensionPaySlip']" class="dropdown-item">Pension Pay Slip</a></li>
-										<li><a [routerLink]="['/PensionStatement']"class="dropdown-item">Pension Statement</a></li>
-										<li><a [routerLink]="['/PensionCalculator']" class="dropdown-item">Pension Calculator</a></li> -->
-									</ul>
-								</div>
-							</div>
-						</li>
-
-						<!-- <li class="nav-item"> <a >My Request</a> </li>
-					    <li class="nav-item" > <a >Life & Other Certificates</a> </li>  -->
-						
-						<!-- <li class="nav-item"> <a >Ess Related</a> </li> -->
-
-						<!-- <li class="nav-item"> <a class="nav-link" [routerLink]="['/MyRequests']">My Request</a> </li> -->
-						<li class="nav-item"> <a class="nav-link" (click)="comingSoonData()">My Request</a> </li>
-					    <!-- <li class="nav-item"> <a class="nav-link" [routerLink]="['/Status']"  >Life & Other Certificates</a> </li>  -->
-						
-						<li class="nav-item"> <a class="nav-link" (click)="comingSoonData()">Ess Related</a> </li> 	
-						<!-- <li class="nav-item"> <a class="nav-link" (click)="redirecttopensioEss()">Ess Related</a> </li> 				 -->
-
-						
-						<!-- <li class="nav-item"> <a class="nav-link" href="#">Taxes</a> </li> -->
-						<li>
-							<div class="menu-options">
-								<div class="dropdown">
-									<a href="javascript:void(0)" class="text-blue dropdown-toggle selfservice"> Taxes </a>
-									<ul class="dropdown-content">
-										<!-- <li><a [routerLink]="['/IncomeTaxDeclaration']" class="dropdown-item">Income Tax Declaration</a></li>
-										<li><a [routerLink]="['/IncomeTaxCalculator']" class="dropdown-item">Income Tax Calculator</a></li>
-										<li><a [routerLink]="['/NewVsOldTaxRegime']"  class="dropdown-item">New vs Old Tax Regime</a></li> -->
-
-										<li><a  class="dropdown-item" (click)="comingSoonData()">Income Tax Declaration</a></li>
-										<li><a  class="dropdown-item" (click)="comingSoonData()">Income Tax Calculator</a></li>
-										<li><a   class="dropdown-item" (click)="comingSoonData()">New vs Old Tax Regime</a></li>
-									</ul>
-								</div>
-							</div>
-						</li>
-						<li class="nav-item"> <a class="nav-link" (click)="comingSoonData()">Help & Support</a> </li>   
-						<!-- <li class="nav-item"> <a [routerLink]="['/Help&Support']" class="nav-link" (click)="comingSoonData()">Help & Support</a> </li>  -->
-						
-						
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</div>
-</div>
-<!-- End Header -->
-			<!-- <app-user-info-header [officeName]="officeName" [role]="currentRole" [userName]="loggedInUserName">
-			</app-user-info-header> -->
-
-			<!-- <div class="container-fluid">
-			<div class="row new_navbar" id="navigation" >
-				<div class="d-flex align-items-center">		
-				
-
-
-							<div id="navbar" class="navbar justify-content-start"  >
-								<div *ngFor="let item of menuList;let i=index">
-									<div *ngIf="!isSub[i]">
-								<button mat-button class="text-white font-weight-500 font-16" (click)="menuItemClick(i,item)">{{item.name}}</button>
-							</div>
-							<div *ngIf="isSub[i]">
-								<button mat-button class="text-white font-weight-500 font-16" [matMenuTriggerFor]="belowMenu" >{{item.name}}</button>
-								<mat-menu #belowMenu="matMenu" yPosition="below">
-									<div *ngFor="let item2 of subMenu[i];let j=index">
-									<button mat-menu-item (click)="SubmenuItemClick(j,item2,i)">{{item2.name}}</button>
-								</div>
-								</mat-menu>
-							</div> 
-							
-					</div>
-				</div>
-			</div>		
-		</div>
-	
-</div> -->
-
-
-
-<!-- sidebar  menu -->
-
-<script>
-    function openNav() {
-      document.getElementById("mySidenav").style.width = "285px";
-    }
-
-    function closeNav() {
-      document.getElementById("mySidenav").style.width = "0";
-    }
-  </script>
-  <script>
-    function openMenu() {
-      
-    }
-
-    function closeMenu() {
-      document.getElementById("Sidenav").style.width = "0";
-    }
-  </script>
-
-  <!-- end sidbar menu -->
+<mat-menu #execMenu="matMenu">
+  <button mat-menu-item routerLink="/executive/president">President</button>
+  <button mat-menu-item routerLink="/executive/members">Members</button>
+</mat-menu>
