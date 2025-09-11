@@ -5,35 +5,50 @@
   <!-- Title -->
   <span class="title">AGRABANDHU SAMAJ INDRA GANDHI NAGAR, JAIPUR</span>
 
-  <!-- Spacer -->
   <span class="spacer"></span>
 
-  <!-- Top-right info -->
-  <div class="top-right">
-    <a href="mailto:info@agrasensamaj.org">agrabandhuigm@gmail.com</a>
-    <button mat-icon-button>
-      <!-- <mat-icon fontSet="fa" fontIcon="fa-facebook"></mat-icon> -->
-    </button>
-    <button mat-icon-button>
-      <!-- <mat-icon fontSet="fa" fontIcon="fa-twitter"></mat-icon> -->
-    </button>
+  <!-- Desktop menu -->
+  <div class="desktop-menu">
+    <a mat-button routerLink="/">Home</a>
+    <a mat-button [matMenuTriggerFor]="aboutMenu">About Us</a>
+    <a mat-button routerLink="/gotra">Gotra</a>
+    <a mat-button routerLink="/activities">Activities</a>
+    <a mat-button routerLink="/helpline">Helpline</a>
+    <a mat-button routerLink="/members">Members</a>
+    <a mat-button [matMenuTriggerFor]="execMenu">Executive Committee</a>
+    <a mat-button routerLink="/personalities">Agarwal Personalities</a>
+    <a mat-button routerLink="/contact">Contact Us</a>
   </div>
+
+  <!-- Mobile menu button -->
+  <button mat-icon-button class="mobile-menu-btn" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
 </mat-toolbar>
 
-<!-- Navigation bar -->
-<mat-toolbar color="warn" class="nav-toolbar">
-  <a mat-button routerLink="/">Home</a>
-  <a mat-button [matMenuTriggerFor]="aboutMenu">About Us</a>
-  <a mat-button routerLink="/gotra">Gotra</a>
-  <a mat-button routerLink="/activities">Activities</a>
-  <a mat-button routerLink="/helpline">Helpline</a>
-  <a mat-button routerLink="/members">Members</a>
-  <a mat-button [matMenuTriggerFor]="execMenu">Executive Committee</a>
-  <a mat-button routerLink="/personalities">Agarwal Personalities</a>
-  <a mat-button routerLink="/contact">Contact Us</a>
-</mat-toolbar>
+<!-- Side Nav for Mobile -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="over" class="sidenav">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/" (click)="sidenav.close()">Home</a>
+      <a mat-list-item routerLink="/about" (click)="sidenav.close()">About Us</a>
+      <a mat-list-item routerLink="/gotra" (click)="sidenav.close()">Gotra</a>
+      <a mat-list-item routerLink="/activities" (click)="sidenav.close()">Activities</a>
+      <a mat-list-item routerLink="/helpline" (click)="sidenav.close()">Helpline</a>
+      <a mat-list-item routerLink="/members" (click)="sidenav.close()">Members</a>
+      <a mat-list-item routerLink="/executive" (click)="sidenav.close()">Executive Committee</a>
+      <a mat-list-item routerLink="/personalities" (click)="sidenav.close()">Agarwal Personalities</a>
+      <a mat-list-item routerLink="/contact" (click)="sidenav.close()">Contact Us</a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-<!-- Example dropdown menus -->
+  <mat-sidenav-content>
+    <!-- Page content goes here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- Dropdown Menus -->
 <mat-menu #aboutMenu="matMenu">
   <button mat-menu-item routerLink="/about/history">History</button>
   <button mat-menu-item routerLink="/about/vision">Vision</button>

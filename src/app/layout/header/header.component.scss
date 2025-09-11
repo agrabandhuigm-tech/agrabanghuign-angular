@@ -1,8 +1,9 @@
 .header-toolbar {
   background: #f5e0c0; /* beige */
-  color: #d32f2f; /* red text */
+  color: #d32f2f;
   display: flex;
   align-items: center;
+  padding: 0 10px;
 
   .logo {
     height: 60px;
@@ -12,31 +13,59 @@
   .title {
     font-size: 22px;
     font-weight: bold;
+    flex: 1;
+    white-space: nowrap;
   }
 
   .spacer {
     flex: 1 1 auto;
   }
 
-  .top-right {
+  .desktop-menu {
     display: flex;
-    align-items: center;
-
     a {
-      margin-right: 10px;
-      text-decoration: none;
-      color: inherit;
-      font-weight: 500;
+      color: #050404;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin: 0 5px;
     }
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    color: #d32f2f;
   }
 }
 
-.nav-toolbar {
-  background: #d32f2f; /* red */
-  a {
-    color: white;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin: 0 5px;
+/* Side nav */
+.sidenav-container {
+  height: calc(100vh - 64px);
+}
+
+.sidenav {
+  width: 250px;
+}
+
+mat-sidenav-content {
+  padding: 10px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .desktop-menu {
+    display: none !important;
+  }
+  .mobile-menu-btn {
+    display: inline-flex !important;
+  }
+
+  .title {
+    font-size: 18px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .logo {
+    height: 50px;
   }
 }

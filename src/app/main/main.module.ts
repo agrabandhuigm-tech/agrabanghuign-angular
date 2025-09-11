@@ -27,6 +27,7 @@ import { CommonDialogueBoxComponent } from './common-dialogue-box/common-dialogu
 
 
 
+
 const routes: Routes = [
 
     {
@@ -47,18 +48,17 @@ const routes: Routes = [
     ],
 
     imports: [
-
         RouterModule.forChild(routes),
         MatOptionModule,
         MatFormFieldModule,
         MatAutocompleteModule,
-
         FormsModule,
         ReactiveFormsModule,
         MatSliderModule,
         CommonModule,
         CommonSharedModule,
-        SharedModule
+        SharedModule,
+
     ],
     providers: [
         DatePipe
