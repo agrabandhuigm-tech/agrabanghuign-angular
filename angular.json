@@ -6,7 +6,7 @@
 	"version": 1,
 	"newProjectRoot": "projects",
 	"projects": {
-		"ifmspss": {
+		"agrabandhu": {
 			"projectType": "application",
 			"schematics": {
 				"@schematics/angular:application": {
@@ -23,7 +23,7 @@
 				"build": {
 					"builder": "@angular-devkit/build-angular:browser",
 					"options": {
-						"outputPath": "dist/ifmspss",
+						"outputPath": "dist",
 						"index": "src/index.html",
 						"main": "src/main.ts",
 						"polyfills": "src/polyfills.ts",
@@ -38,7 +38,10 @@
 							"node_modules/bootstrap/dist/css/bootstrap.min.css",
 							"node_modules/@fortawesome/fontawesome-free/css/all.css",
 							"src/styles.scss",
-							"node_modules/material-icons-font/material-icons-font.css"
+							"node_modules/material-icons-font/material-icons-font.css",
+							 "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+  							"node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css"
+
 						],
 						"scripts": [
 							"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
@@ -112,13 +115,13 @@
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"browserTarget": "ifmspss:build:production"
+							"browserTarget": "agrabandhu:build:production"
 						},
 						"development": {
-							"browserTarget": "ifmspss:build:development"
+							"browserTarget": "agrabandhu:build:development"
 						},
 						"uat": {
-							"browserTarget": "ifmspss:build:uat"
+							"browserTarget": "agrabandhu:build:uat"
 						  }
 					},
 					"defaultConfiguration": "development"
@@ -126,7 +129,7 @@
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
 					"options": {
-						"browserTarget": "ifmspss:build"
+						"browserTarget": "agrabandhu:build"
 					}
 				},
 				"test": {
@@ -261,5 +264,5 @@
 			}
 		}
 	},
-	"defaultProject": "ifmspss"
+	"defaultProject": "agrabandhu"
 }
