@@ -1,19 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges, AfterViewInit } from '@angular/core';
-import { log } from 'console';
-
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-
-import { CommonModule } from '@angular/common';
-import { AppConfig } from 'src/app/app.config';
-import { ApiService } from 'src/app/services/api.service';
-import { ApiUrlService } from 'src/app/services/api-url.service';
-import { AuthService } from 'src/app/auth/auth.service';
-import { CommonService } from 'src/app/services/common.service';
-import { DashboardService } from 'src/app/services/dashboard.service';
-import { PdfpreviewComponent } from '../pdfpreview/pdfpreview.component';
-import { CommonDialogueBoxComponent } from '../common-dialogue-box/common-dialogue-box.component';
-
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 
 @Component({
@@ -44,19 +30,58 @@ export class MydashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
   }
   slides = [
-    { img: "assets/images/slide1.jpg", title: "Annual Function" },
-    { img: "assets/images/slide2.jpg", title: "Medical Camp" },
-    { img: "assets/images/slide3.jpg", title: "Cultural Program" }
+    { img: 'assets/images/slide1.jpg', title: 'Welcome to Agarwal Samaj' },
+    { img: 'assets/images/slide2.jpg', title: 'Community Events' },
+    { img: 'assets/images/slide3.jpg', title: 'Our Leaders' }
   ];
+  // customOptions: OwlOptions = {
+  //   loop: true,
+  //   margin: 10,
+  //   mouseDrag: true,
+  //   touchDrag: true,
+  //   pullDrag: false,
+  //   dots: false,
+  //   navSpeed: 700,
+  //   navText: ['', ''],
+  //   responsive: {
+  //     0: {
+  //       items: 1,
+  //     },
+  //     320: {
+  //       items: 1.5,
+  //     },
+  //     400: {
+  //       items: 2.7,
+  //     },
+  //     500: {
+  //       items: 3.2,
+  //     },
+  //     740: {
+  //       items: 3,
+  //     },
+  //     880: {
+  //       items: 3.2,
+  //     },
 
-  slideConfig = {
-    slidesToShow: 1,
-    slidesToScroll: 1,
+  //     940: {
+  //       items: 4,
+  //     },
+  //   },
+  //   nav: true,
+  // };
+  customOptions: OwlOptions = {
+    loop: true,
     autoplay: true,
-    autoplaySpeed: 2500,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
     dots: true,
-    arrows: true,
-    infinite: true
+    nav: true,
+    navText: ['‹', '›'],
+    responsive: {
+      0: { items: 1 },
+      600: { items: 1 },
+      1000: { items: 1 }
+    }
   };
 }
 
