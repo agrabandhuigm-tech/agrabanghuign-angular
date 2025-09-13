@@ -15,7 +15,7 @@ export class MydashboardComponent {
   customOptions: OwlOptions = {
     loop: true,
     autoplay: true,
-    autoplayTimeout: 1000,
+    autoplayTimeout: 3000,
     autoplayHoverPause: true,
     dots: true,
      animateIn: 'fadeIn',  
