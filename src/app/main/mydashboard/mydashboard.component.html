@@ -1,4 +1,5 @@
  <div class="container-fluid">
+  <div class="desktop"> 
 <div class="carousel-wrapper">
   <owl-carousel-o [options]="customOptions">
     <ng-template carouselSlide *ngFor="let slide of slides">
@@ -10,17 +11,76 @@
   </owl-carousel-o>
 </div>
 
-<!-- <div class="row mt-4 ">
+ <div class="row mt-4 ">
 
  <div class="col-12">
-<mat-card>
-  <mat-card-header>
-    EVENTS
-  </mat-card-header>
-  <mat-card-content>
-    
-  </mat-card-content>
-</mat-card>
+<div class="maharaja-card mat-elevation-z2">
+  <div class="maharaja-image">
+    <img [src]="'./assets/images/maharaja.png'" alt="Shri Maharaja Agrasen">
   </div>
-</div> -->
+
+  <div class="maharaja-content">
+    <h2 class="title">SHRI MAHARAJA <span>AGRASEN</span></h2>
+    <p class="description">
+      The icon of non-violence, messenger of Peace, Emperor Agrasen was the eldest son of 
+      King Ballabh of Pratapnagar. King Ballabh was a Suryavamshi (lineage from the Sun). 
+      According to the Mahalakshmi Vrath, the age then was the last stages of Dvaapar Yug. 
+      The birth of Maharaj Agrasen took place about 5185 years ago according to the current calendar. 
+      Even when he was very young, Prince Agrasen was well known for his compassion. 
+      He never discriminated against anyone and the subjects were very pleased with the way he conducted himself.
+    </p>
+    <button mat-raised-button color="accent" class="read-more-btn">
+      READ MORE
+    </button>
+  </div>
+</div>
+
+  </div>
+</div> 
+ </div>
+ <div class="mobile"> 
+<div class="carousel-wrapper">
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let slide of slides">
+      <div class="slide-card">
+        <img [src]="slide.img" [alt]="slide.title" class="slide-img">
+        <!-- <div class="caption">{{ slide.title }}</div> -->
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+</div>
+
+<div class="row mt-4 ">
+
+ <div class="col-12">
+<div class="agr-card">
+  <!-- Top Image -->
+  <div class="agr-card-img">
+    <img src="assets/images/maharaja.png" alt="Shri Maharaja Agrasen">
+  </div>
+
+  <!-- Content -->
+  <div class="agr-card-body">
+    <h2 class="agr-card-title">
+      SHRI MAHARAJA <span>AGRASEN</span>
+    </h2>
+    <p class="agr-card-text">
+      The icon of non-violence, messenger of Peace, Emperor Agrasen was the eldest son of
+      King Ballabh of Pratapnagar. King Ballabh was a Suryavamshi (lineage from the Sun).
+      According to the Mahalakshmi Vrath, the age then was the last stages of Dvaapar Yug.
+      The birth of Maharaj Agrasen took place about 5185 years ago according to the current calendar.
+      Even when he was very young, Prince Agrasen was well known for his compassion.
+      He never discriminated against anyone and the subjects were very pleased with the way he conducted himself.
+    </p>
+
+    <!-- Action Button -->
+    <div class="agr-card-actions">
+      <button class="agr-btn">READ MORE</button>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div> 
+ </div>
 </div> 
