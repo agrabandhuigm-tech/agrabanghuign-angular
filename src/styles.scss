@@ -1496,3 +1496,16 @@ label{color: rgb(115 115 115);}
 /*--------------- for steping section --------*/
 
 .mat-drawer-content{ min-height: 69vh !important;}
+body {
+  overflow-y: scroll; /* ensures layout doesn’t shift */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* hides scrollbar */
+}
+
+/* Works for Firefox */
+body {
+  scrollbar-width: none; /* hides scrollbar */
+  -ms-overflow-style: none; /* IE/Edge */
+}
