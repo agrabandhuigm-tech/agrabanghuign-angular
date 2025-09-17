@@ -4,7 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MatComponentsModule } from '../modules/mat-module.module';
 import { LayoutComponent } from './layout.component';
 import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+
 
 import { RouterModule } from '@angular/router';
 
@@ -18,7 +18,7 @@ import { CommonSharedModule } from '../common/common.module';
   declarations: [
     LayoutComponent,
     HeaderComponent,
-    FooterComponent,
+   
     SidebarComponent
 
   ],
@@ -33,7 +33,6 @@ import { CommonSharedModule } from '../common/common.module';
   exports: [
     LayoutComponent,
     HeaderComponent,
-    FooterComponent,
     SidebarComponent
 
   ]

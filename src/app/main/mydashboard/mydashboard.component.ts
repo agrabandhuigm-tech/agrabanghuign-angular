@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
@@ -11,7 +12,11 @@ export class MydashboardComponent {
     { img: './assets/images/slide1.jpg', title: 'Welcome to Agarwal Samaj' },
     { img: './assets/images/slide2.jpg', title: 'Community Events' }
   ];
-
+    events = [
+    { img: './assets/images/event1.jpg', title: 'Agrasen Jayanti(22 Sep. 2025)' },
+    { img: './assets/images/slide2.jpg', title: 'Other' }
+  ];
+constructor(private router:Router){}
   customOptions: OwlOptions = {
     loop: true,
     autoplay: true,
@@ -26,4 +31,8 @@ export class MydashboardComponent {
       1000: { items: 1 }
     }
   };
+  onRouting(url:string)
+  {
+    this.router.navigateByUrl(url)
+  }
 }

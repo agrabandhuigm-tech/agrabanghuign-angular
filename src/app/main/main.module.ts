@@ -20,6 +20,8 @@ import { DatePipe } from '@angular/common';
 import { MydashboardComponent } from './mydashboard/mydashboard.component';
 import { PdfpreviewComponent } from './pdfpreview/pdfpreview.component';
 import { CommonDialogueBoxComponent } from './common-dialogue-box/common-dialogue-box.component';
+import { AboutMaharajComponent } from './about-maharaj/about-maharaj.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -32,11 +34,12 @@ const routes: Routes = [
 
     {
         path: '',
-        redirectTo: 'MyDashboard',
+        redirectTo: 'Dashboard',
         pathMatch: 'full'
     },
 
-    { path: 'MyDashboard', component: MydashboardComponent }
+    { path: 'Dashboard', component: MydashboardComponent },
+      { path: 'about-maharaj', component: AboutMaharajComponent }
 ]
 
 @NgModule({
@@ -44,7 +47,9 @@ const routes: Routes = [
     declarations: [
         MydashboardComponent,
         PdfpreviewComponent,
-        CommonDialogueBoxComponent
+        CommonDialogueBoxComponent,
+        AboutMaharajComponent,
+        FooterComponent
     ],
 
     imports: [
