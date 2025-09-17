@@ -4,7 +4,7 @@
   <owl-carousel-o [options]="customOptions">
     <ng-template carouselSlide *ngFor="let slide of slides">
       <div class="slide-card">
-        <img [src]="slide.img" [alt]="slide.title" class="slide-img">
+        <img [src]="slide.img" [alt]="slide.title" class="slide-img" (click)="ImagePreview(slide.img)">
         <!-- <div class="caption">{{ slide.title }}</div> -->
       </div>
     </ng-template>
@@ -16,7 +16,7 @@
  <div class="col-12">
 <div class="maharaja-card mat-elevation-z2">
   <div class="maharaja-image">
-    <img [src]="'./assets/images/maharaja.png'" alt="Shri Maharaja Agrasen">
+    <img [src]="'./assets/images/maharaja.png'" alt="Shri Maharaja Agrasen" (click)="ImagePreview('./assets/images/maharaja.png')">
   </div>
 
   <div class="maharaja-content">
@@ -58,7 +58,7 @@
     <ng-template carouselSlide *ngFor="let slide of events">
       <div class="slide-card">
          <div class="event-title">{{slide.title}}</div>
-        <img [src]="slide.img" [alt]="slide.title" class="slide-img">
+        <img [src]="slide.img" [alt]="slide.title" class="slide-img" (click)="ImagePreview(slide.img)">
        
       </div>
     </ng-template>
@@ -126,7 +126,7 @@
     <ng-template carouselSlide *ngFor="let slide of events">
       <div class="slide-card">
          <div class="event-title">{{slide.title}}</div>
-        <img [src]="slide.img" [alt]="slide.title" class="slide-img">
+        <img [src]="slide.img" [alt]="slide.title" class="slide-img" (click)="ImagePreview(slide.img)">
        
       </div>
     </ng-template>

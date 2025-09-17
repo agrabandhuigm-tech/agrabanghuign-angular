@@ -22,6 +22,7 @@ import { PdfpreviewComponent } from './pdfpreview/pdfpreview.component';
 import { CommonDialogueBoxComponent } from './common-dialogue-box/common-dialogue-box.component';
 import { AboutMaharajComponent } from './about-maharaj/about-maharaj.component';
 import { FooterComponent } from './footer/footer.component';
+import { ImagePreviewComponent } from './image-preview/image-preview.component';
 
 
 
@@ -39,7 +40,8 @@ const routes: Routes = [
     },
 
     { path: 'Dashboard', component: MydashboardComponent },
-      { path: 'about-maharaj', component: AboutMaharajComponent }
+      { path: 'about-maharaj', component: AboutMaharajComponent },
+         { path: 'preview', component: ImagePreviewComponent }
 ]
 
 @NgModule({
@@ -49,7 +51,8 @@ const routes: Routes = [
         PdfpreviewComponent,
         CommonDialogueBoxComponent,
         AboutMaharajComponent,
-        FooterComponent
+        FooterComponent,
+        ImagePreviewComponent
     ],
 
     imports: [

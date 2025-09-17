@@ -35,4 +35,8 @@ constructor(private router:Router){}
   {
     this.router.navigateByUrl(url)
   }
+  ImagePreview(url:any)
+  {
+    this.router.navigateByUrl('preview')
+  }
 }
