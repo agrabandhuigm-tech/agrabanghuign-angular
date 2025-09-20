@@ -4,8 +4,9 @@
   <owl-carousel-o [options]="customOptions">
     <ng-template carouselSlide *ngFor="let slide of slides">
       <div class="slide-card">
+         <div class="event-title">{{slide.title}}</div>
         <img [src]="slide.img" [alt]="slide.title" class="slide-img" (click)="ImagePreview(slide.img)">
-        <!-- <div class="caption">{{ slide.title }}</div> -->
+        
       </div>
     </ng-template>
   </owl-carousel-o>
@@ -60,6 +61,34 @@
          <div class="event-title">{{slide.title}}</div>
         <img [src]="slide.img" [alt]="slide.title" class="slide-img" (click)="ImagePreview(slide.img)">
        
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+</div>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="row mt-4 ">
+  <mat-card class="event-heading">
+    <div class="event-text">
+ <span class="">Executive Committee</span>
+    </div>
+
+  </mat-card>
+ 
+
+</div>
+<div class="row mt-4 ">
+  <mat-card>
+
+    <mat-card-content>
+     <div class="carousel-wrapper">
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let slide of Committee">
+      <div class="slide-card">
+         <div class="event-title">{{slide.name}}</div>
+        <img [src]="slide.img" [alt]="slide.name" class="slide-img" (click)="ImagePreview(slide.img)">
+         <div class="event-title">{{slide.post}}</div>
       </div>
     </ng-template>
   </owl-carousel-o>
@@ -128,6 +157,34 @@
          <div class="event-title">{{slide.title}}</div>
         <img [src]="slide.img" [alt]="slide.title" class="slide-img" (click)="ImagePreview(slide.img)">
        
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+</div>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="row mt-4 ">
+  <mat-card class="event-heading">
+    <div class="event-text">
+ <span class="">Executive Committee</span>
+    </div>
+
+  </mat-card>
+ 
+
+</div>
+<div class="row mt-4 ">
+  <mat-card>
+
+    <mat-card-content>
+     <div class="carousel-wrapper">
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let slide of Committee">
+      <div class="slide-card">
+         <div class="event-title">{{slide.name}}</div>
+        <img [src]="slide.img" [alt]="slide.name" class="slide-img" (click)="ImagePreview(slide.img)">
+         <div class="event-title">{{slide.post}}</div>
       </div>
     </ng-template>
   </owl-carousel-o>
