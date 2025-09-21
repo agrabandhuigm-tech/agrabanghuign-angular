@@ -102,8 +102,9 @@
   <owl-carousel-o [options]="customOptions">
     <ng-template carouselSlide *ngFor="let slide of slides">
       <div class="slide-card">
+         
         <img [src]="slide.img" [alt]="slide.title" class="slide-img">
-        <!-- <div class="caption">{{ slide.title }}</div> -->
+        <div class="event-title">{{slide.title}}</div>
       </div>
     </ng-template>
   </owl-carousel-o>
@@ -136,7 +137,7 @@
 </div> 
 <div class="row mt-4 ">
   <mat-card class="event-heading">
-    <div class="event-text">
+    <div class="event-text-m">
  <span class="">EVENTS</span>
     </div>
 
@@ -166,7 +167,7 @@
 </div>
 <div class="row mt-4 ">
   <mat-card class="event-heading">
-    <div class="event-text">
+    <div class="event-text-m">
  <span class="">Executive Committee</span>
     </div>
 
