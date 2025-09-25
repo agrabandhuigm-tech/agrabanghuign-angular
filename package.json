@@ -44,7 +44,7 @@
     "ngx-extended-pdf-viewer": "^16.2.14",
     "ngx-owl-carousel-o": "^7.0.4",
     "ngx-slick-carousel": "^0.6.0",
-    "pdfjs-dist": "^2.14.305",
+    "pdfjs-dist": "^2.16.105",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",
