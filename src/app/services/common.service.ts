@@ -102,26 +102,21 @@ export class CommonService {
     }
   }
 
-  updateDocIdnew(data: any) {
-    this.apiService.requestApplication2(data, 'updatephotoid').subscribe((res: any) => {
-      console.log("res", res)
-      if (res.status == 'SUCCESS' && res.data.status == "Success") {
-        // if(res.data.status=="Success"){
-        // return res.data.msg;
-        if ((res.data.msg == 'Data Save Successfully') == true) {
-          alert("Data Save Successfully")
-          let data1 = res;
-          data1["id"] = "SUCCESS";
+fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
 
-          this.dialog.open(CommonDialogueBoxComponent, { data: data1, disableClose: false });
+    reader.onload = () => {
+      resolve(reader.result as string);
+    };
 
+    reader.onerror = (error) => {
+      reject(error);
+    };
 
-        }
-        //alert(res.data.msg=='Data Save Successfully')
-      }
-    });
-  }
-
+    reader.readAsDataURL(file); // returns Base64 string
+  });
+}
 
 
 

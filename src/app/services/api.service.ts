@@ -11,17 +11,8 @@ import { AppConfig } from '../app.config';
 })
 export class ApiService {
 private menuConfig = new BehaviorSubject({ url: 'Inbox' });
-private pensionUrl=environment.pensionUrl;
-private intregationUrl=environment.intregationUrl;
-private oracalUrl=environment.oracalUrl;
-private empUrl=environment.empUrl;
-private mdmurl=environment.mdmurl;
-private pensionWF=environment.pensionWF;
-private employeeWF=environment.employeeWF;
-private employeeV2=environment.employeeV2;
-private pensionMain=environment.pensionMain;
-private lmdmurl=environment.lmdmurl;
-private esignUrlNew=environment.esignUrlNew;
+private mainUrl=environment.pensionUrl;
+
 config:AppConfig=new AppConfig();
   ssoId:any;
   url:any;
@@ -49,139 +40,9 @@ config:AppConfig=new AppConfig();
     headers.append("Access-Control-Allow-Credentials", "true");
   }
 
-  postpension(url: any,data: any): Observable<any> {
-    this.createAuthorizationHeader(this.headers);    
-    return this.http.post<any>(`${this.pensionUrl}${url}`, data, {headers: this.headers});
-  }
-  postEmployeeMDM(url: any,data: any): Observable<any> {
-    this.createAuthorizationHeader(this.headers);
-    this.headers = new HttpHeaders().append("contentType", "text/xml");
-    //this.headers = new HttpHeaders().append("Content-Type", "application/x-www-form-urlencoded");
-    return this.http.post(`${this.mdmurl}${url}`, data, {
-      headers: this.headers,     
-      withCredentials: true      
-    });
-  }
   post(url: any,data: any): Observable<any> {
-    this.createAuthorizationHeader(this.headers);
-    this.headers = new HttpHeaders().append("contentType", "text/xml");
-    //this.headers = new HttpHeaders().append("Content-Type", "application/x-www-form-urlencoded");
-    return this.http.post(`${this.pensionWF}${url}`, data, {
-      headers: this.headers,     
-      withCredentials: true      
-    });
-  }
-  postEmployee(url: any,data: any): Observable<any> {
-    this.createAuthorizationHeader(this.headers);
-    this.headers = new HttpHeaders().append("contentType", "text/xml");
-    //this.headers = new HttpHeaders().append("Content-Type", "application/x-www-form-urlencoded");
-    return this.http.post(`${this.employeeWF}${url}`, data, {
-      headers: this.headers,     
-      withCredentials: true      
-    });
-  }
-  pension(data:any,ACTION:string)
-  {
-    ACTION = `${this.pensionMain}` + ACTION;
-    return this.http.post<any>(ACTION, data,{
-     headers: this.headers,
-        withCredentials: true 
-   });
-  }
-  postNewEsign(url: any,data: any): Observable<any> {
-    this.createAuthorizationHeader(this.headers);
-    this.headers = new HttpHeaders().append("contentType", "text/xml");
-    //this.headers = new HttpHeaders().append("Content-Type", "application/x-www-form-urlencoded");
-    return this.http.post(`${this.esignUrlNew}${url}`, data, {
-      headers: this.headers,
-      withCredentials: true ,
-      responseType: "text",
-    });
-  }
-  postEmployeeLmdm(url: any,data: any): Observable<any> {
-    this.createAuthorizationHeader(this.headers);
-    this.headers = new HttpHeaders().append("contentType", "text/xml");
-    //this.headers = new HttpHeaders().append("Content-Type", "application/x-www-form-urlencoded");
-    return this.http.post(`${this.lmdmurl}${url}`, data, {
-      headers: this.headers,     
-      withCredentials: true      
-    });
-  }
-  postNewEmployee(url: any,data: any): Observable<any> {
-    this.createAuthorizationHeader(this.headers);
-    this.headers = new HttpHeaders().append("contentType", "text/xml");
-    //this.headers = new HttpHeaders().append("Content-Type", "application/x-www-form-urlencoded");
-    return this.http.post(`${this.employeeV2}${url}`, data, {
-      headers: this.headers,     
-      withCredentials: true      
-    });
-  }
-  postIntegration(url: any,data: any): Observable<any> {
     this.createAuthorizationHeader(this.headers);    
-    return this.http.post<any>(`${this.intregationUrl}${url}`, data, {headers: this.headers});
+    return this.http.post<any>(`${this.mainUrl}${url}`, data, {headers: this.headers});
   }
-
-  postOr(url: any,data: any)
-   {
-     this.createAuthorizationHeader(this.headers);
-       this.headers = new HttpHeaders().append("contentType", "text/xml");
-       //this.headers = new HttpHeaders().append("Content-Type", "application/x-www-form-urlencoded");
-       return this.http.post(`${this.oracalUrl}${url}`, data, {
-         headers: this.headers
-       });
-   }
-
-  private handleError(error: HttpErrorResponse) {
-    return throwError(() => error.error);
-  }
-
-  requestApplication(data:any,ACTION:string)
-  {
-   // this.url= "https://ifms.rajasthan.gov.in/pension/wf/v1.0/";
-   //this.url="http://ifmstest.rajasthan.gov.in/pension/wf/v1.0/";
-    ACTION =  (this.url) + ACTION;
-    return this.http.post<any>(ACTION, data,{
-     headers: this.headers,
-        withCredentials: true 
-   });
-  }
-
-
-  requestApplication2(data:any,ACTION:string)
-  {
-  //this.url="http://ifmstest.rajasthan.gov.in/pension/wf/v1.0/";
-    ACTION =  (this.url) + ACTION;
-    return this.http.post<any>(ACTION, data,{
-     headers: this.headers,
-        withCredentials: true 
-   });
-  }
-
-
-  // requestApplication(url: any,data: any)
-  // {
-  //   alert("update life certificate service calling")
-  //   url = url + data;
-  //   return this.http.post<any>(url, data,{
-  //    headers: this.headers,
-  //       withCredentials: true 
-  //  });
-  // }
-  postIfms(endpoint: string, data: any): Observable<any> {
-    return this.http.post<any>(this.oracalUrl + endpoint, data)
-      .pipe(catchError(this.handleError));
-  }
-  
-  empServicese(url: any,data: any): Observable<any> {
-    this.createAuthorizationHeader(this.headers);    
-    return this.http.post<any>(`${this.empUrl}${url}`, data, {headers: this.headers});
-  }
-  userInfo(): any {
-    let token: any;
-    const IsEss = sessionStorage.getItem('landtoken');
-    token = IsEss === '0' ? sessionStorage.getItem('MpJwtToken') : sessionStorage.getItem('jwt_token');
-    if (token !== null) {
-      return this.config.getDecodedAccessToken(token);
-    }
-  }
+ 
 }

@@ -23,6 +23,8 @@ import { CommonDialogueBoxComponent } from './common-dialogue-box/common-dialogu
 import { AboutMaharajComponent } from './about-maharaj/about-maharaj.component';
 import { FooterComponent } from './footer/footer.component';
 import { ImagePreviewComponent } from './image-preview/image-preview.component';
+import { UploadBiodataComponent } from './upload-biodata/upload-biodata.component';
+import { MarriageBiodataListComponent } from '../marriage-biodata-list/marriage-biodata-list.component';
 
 
 
@@ -40,8 +42,10 @@ const routes: Routes = [
     },
 
     { path: 'Dashboard', component: MydashboardComponent },
-      { path: 'about-maharaj', component: AboutMaharajComponent },
-         { path: 'preview', component: ImagePreviewComponent }
+    { path: 'about-maharaj', component: AboutMaharajComponent },
+    { path: 'preview', component: ImagePreviewComponent },
+    { path: 'upload-biodata', component: UploadBiodataComponent },
+     { path: 'marriage-bio-list', component: MarriageBiodataListComponent },
 ]
 
 @NgModule({
@@ -52,7 +56,9 @@ const routes: Routes = [
         CommonDialogueBoxComponent,
         AboutMaharajComponent,
         FooterComponent,
-        ImagePreviewComponent
+        ImagePreviewComponent,
+        UploadBiodataComponent,
+        MarriageBiodataListComponent
     ],
 
     imports: [

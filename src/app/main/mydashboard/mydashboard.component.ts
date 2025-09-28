@@ -22,7 +22,7 @@ export class MydashboardComponent {
     { img: './assets/images/c2.jpg', name: 'महेश चंद गुप्ता',post:"सचिव अग्रबंधु कल्याण समिति इंदिरा गांधी नगर जयपुर" },
       { img: './assets/images/c33.jpg', name: 'कपिल टिक्कीवाल',post:"कोषाध्यक्ष अग्रबंधु कल्याण समिति इंदिरा गांधी नगर जयपुर" }
   ];
-constructor(private router:Router,private pdfCheck: PdfCheckService){ this.checkPdf()}
+constructor(private router:Router,private pdfCheck: PdfCheckService){ }
   customOptions: OwlOptions = {
     loop: true,
     autoplay: true,
@@ -47,8 +47,5 @@ constructor(private router:Router,private pdfCheck: PdfCheckService){ this.check
   {
     // this.router.navigateByUrl('preview')
   }
-   async checkPdf() {
-    let result = await this.pdfCheck.containsText(this.base64Pdf, 'RJJP198618016767');
-    console.log('result',result)
-  }
+  
 }

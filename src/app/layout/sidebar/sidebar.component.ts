@@ -198,65 +198,8 @@ export class SidebarComponent implements OnInit {
 
   }
 
-  previewFiles() {
-
-    // alert("Response Data Is Blank that's why here don't get Doc ID .")
-    // console.log(item);
-
-    console.log(this.profileDetails.pensionKit)
 
 
-    if (!this.profileDetails.pensionKit || this.profileDetails.pensionKit == 'N/A') {
-      alert("Preview Not Available")
-      return
-    }
-    let dmsDocId = this.profileDetails.pensionKit;
-    if (dmsDocId = this.profileDetails.pensionKit) {
-      let data = {
-        "type": "pension",
-        "sourceId": 2,
-        "docs": [
-          {
-            "docId": this.profileDetails.pensionKit
-          }
-        ]
-      }
-      console.log("single report data", data)
-      this.api.postIntegration("wcc/getfiles", data).subscribe((res: any) => {
-        console.log("res", res);
-        if (res.data.document[0].content) {
-          let data = {
-            "base64Pdf": res.data.document[0].content,
-            "redirectUrl": "pensioner/selfservice/pensionselfservice/MyDashboard"
-            //"redirectUrl":"pensioner/pssdashboard"
-          }
-          console.log("data", data);
-          this.dialog.open(PdfpreviewComponent, { width: '70%', data: { message: data }, disableClose: false });
-
-        }
-      })
-    } else {
-      alert("Preview Not Available")
-    }
-  }
-  isShowComm: boolean = false
-  showCommutation() {
-    let payloadData = {
-      "inMstType": 29,
-      "inValue": 0,
-      "inValue2": 0,
-      "inValue3": this.profileDetails.employeeCode
-    }
-    this.apiService.post('allmstdata', payloadData).subscribe((res: any) => {
-      this.resData = JSON.parse(res.data)
-      console.log(this.resData)
-      console.log(this.resData[0].vInIsAutoapprove)
-
-      if (this.resData[0].vInIsAutoapprove == 1) {
-        this.isShowComm = true
-      }
-    })
-  }
 
   resData: any
   redirectUrl(path: any) {

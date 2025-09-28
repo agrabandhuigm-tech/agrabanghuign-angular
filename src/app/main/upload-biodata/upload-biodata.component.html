@@ -1,0 +1,51 @@
+<mat-card class="biodata-card">
+  <mat-card-title>Marriage Biodata Upload</mat-card-title>
+  <mat-divider></mat-divider>
+  <form [formGroup]="biodataForm" (ngSubmit)="submit()" class="biodata-form">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Father's Name</mat-label>
+      <input matInput formControlName="fatherName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Age</mat-label>
+      <input matInput type="number" formControlName="age">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Occupation</mat-label>
+      <input matInput formControlName="occupation">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Contact</mat-label>
+      <input matInput type="tel" formControlName="contact">
+    </mat-form-field>
+  <mat-form-field appearance="outline">
+      <mat-label>Pass Key</mat-label>
+      <input matInput type="number" formControlName="passKey">
+    </mat-form-field>
+ <div class="upload-field">
+  <button mat-raised-button color="primary" (click)="profileInput.click()">Upload Profile Image</button>
+  <span *ngIf="profileImage">{{ profileImage.name }}</span>
+  <input #profileInput type="file" hidden accept="image/*" (change)="onProfileImageSelected($event)">
+</div>
+
+<!-- Biodata PDF -->
+<div class="upload-field">
+  <button mat-raised-button color="accent" (click)="pdfInput.click()">Upload Biodata PDF</button>
+  <span *ngIf="biodataFile">{{ biodataFile.name }}</span>
+  <input #pdfInput type="file" hidden accept="application/pdf" (change)="onBiodataFileSelected($event)">
+</div>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="biodataForm.invalid">
+      Submit
+    </button>
+  </form>
+</mat-card>

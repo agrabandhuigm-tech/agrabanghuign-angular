@@ -1,0 +1,56 @@
+BEGIN
+    -- Declare variables
+    DECLARE v_inType INT;
+    DECLARE v_name VARCHAR(100);
+    DECLARE v_fatherName VARCHAR(100);
+    DECLARE v_age INT;
+    DECLARE v_occupation VARCHAR(100);
+    DECLARE v_image_filename VARCHAR(255);
+    DECLARE v_image_base64 LONGTEXT;
+    DECLARE v_pdf_filename VARCHAR(255);
+    DECLARE v_pdf_base64 LONGTEXT;
+    DECLARE v_contact VARCHAR(20);
+    DECLARE v_pass_key INT;
+
+    -- Extract inType
+    SET v_inType = JSON_UNQUOTE(JSON_EXTRACT(inJson, '$.inType'));
+
+    IF v_inType = 1 THEN
+        -- Get all biodata
+        SELECT * FROM marriage_biodata;
+
+    ELSEIF v_inType = 2 THEN
+        -- Extract fields from JSON
+        SET v_name       = JSON_UNQUOTE(JSON_EXTRACT(inJson, '$.name'));
+        SET v_fatherName = JSON_UNQUOTE(JSON_EXTRACT(inJson, '$.fatherName'));
+        SET v_age        = JSON_UNQUOTE(JSON_EXTRACT(inJson, '$.age'));
+        SET v_occupation = JSON_UNQUOTE(JSON_EXTRACT(inJson, '$.occupation'));
+        SET v_contact    = JSON_UNQUOTE(JSON_EXTRACT(inJson, '$.contact'));
+        SET v_pass_key   = JSON_UNQUOTE(JSON_EXTRACT(inJson, '$.passKey'));
+
+        -- Extract first file (image)
+        SET v_image_filename = JSON_UNQUOTE(JSON_EXTRACT(inJson, '$.files[0].filename'));
+        SET v_image_base64   = JSON_UNQUOTE(JSON_EXTRACT(inJson, '$.files[0].filedata'));
+
+        -- Extract second file (PDF)
+        SET v_pdf_filename = JSON_UNQUOTE(JSON_EXTRACT(inJson, '$.files[1].filename'));
+        SET v_pdf_base64   = JSON_UNQUOTE(JSON_EXTRACT(inJson, '$.files[1].filedata'));
+
+        -- Insert into marriage_biodata
+        INSERT INTO marriage_biodata 
+            (name, father_name, age, occupation, images, contact, pdf_biodata, pass_key)
+        VALUES 
+            (v_name, v_fatherName, v_age, v_occupation, v_image_filename, v_contact, v_pdf_filename, v_pass_key);
+
+        -- Insert files into uploaded_files table
+        INSERT INTO uploaded_files (filename, filetype, filedata)
+        VALUES 
+            (v_image_filename, 'image', v_image_base64),
+            (v_pdf_filename,   'application/pdf', v_pdf_base64);
+
+        SELECT 'Record and files inserted successfully' AS message;
+
+    ELSE
+        SELECT 'Invalid inType' AS message;
+    END IF;
+END

@@ -19,9 +19,9 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
-     const authToken:any= sessionStorage.getItem('jwt_token');
+     const authToken:any= sessionStorage.getItem('');
         const modifiedReq = request.clone({
-          setHeaders: {Authorization: `Bearer ${authToken.replace(/^["'](.+(?=["']$))["']$/, '$1')}`}
+          setHeaders: {Authorization: ``}
         });
                 return next.handle(modifiedReq);        
   }
