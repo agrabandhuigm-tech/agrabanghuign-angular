@@ -13,9 +13,9 @@
         <div>
           <a mat-button routerLink="/">Home</a>
           <a mat-button [matMenuTriggerFor]="aboutMenu">About Us</a>
-          <a mat-button routerLink="/upload-biodata">Marriage Biodata</a>
+          <a mat-button routerLink="/marriage-bio-list">Marriage Biodata</a>
           <a mat-button routerLink="/activities">Activities</a>
-        
+
           <a mat-button routerLink="/members">Members</a>
           <a mat-button [matMenuTriggerFor]="execMenu">Executive Committee</a>
           <!-- <a mat-button routerLink="/personalities">Agarwal Personalities</a> -->
@@ -47,8 +47,8 @@
   <mat-sidenav #sidenav mode="over" class="sidenav ">
     <mat-nav-list>
       <a mat-list-item routerLink="/" (click)="sidenav.close()">Home</a>
-      <a mat-list-item routerLink="/about" (click)="sidenav.close()">About Us</a>      
-       <a mat-list-item routerLink="/upload-biodata" (click)="sidenav.close()">Marriage Biodata</a>  
+      <a mat-list-item routerLink="/about" (click)="sidenav.close()">About Us</a>
+      <a mat-list-item routerLink="/marriage-bio-list" (click)="sidenav.close()">Marriage Biodata</a>
       <a mat-list-item routerLink="/activities" (click)="sidenav.close()">Activities</a>
       <!-- <a mat-list-item routerLink="/members" (click)="sidenav.close()">Members</a>
       <a mat-list-item routerLink="/executive" (click)="sidenav.close()">Executive Committee</a>   
