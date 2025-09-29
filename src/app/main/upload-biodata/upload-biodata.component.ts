@@ -10,17 +10,17 @@ import { CommonService } from 'src/app/services/common.service';
   templateUrl: './upload-biodata.component.html',
   styleUrls: ['./upload-biodata.component.scss']
 })
-export class UploadBiodataComponent  {
+export class UploadBiodataComponent {
   biodataForm: FormGroup;
   profileImage: File | null = null;
   biodataFile: File | null = null;
-
+  profile: string = "assets/images/user.png";
 
 
   constructor(private fb: FormBuilder,
-    private apiService:ApiService,
-  public common:CommonService,
-private router:Router) {
+    private apiService: ApiService,
+    public common: CommonService,
+    private router: Router) {
     this.biodataForm = this.fb.group({
       name: ['', Validators.required],
       fatherName: ['', Validators.required],
@@ -38,11 +38,11 @@ private router:Router) {
       this.profileImage = event.target.files[0];
       this.biodataForm.patchValue({ profileImage: this.profileImage });
       if (this.profileImage) {
-    this.common.fileToBase64(this.profileImage).then(base64 => {
-      console.log('Base64:', base64);
-      this.base64String.push({"filename":this.profileImage?.name,"filedata":base64,"type":"image"})
-    }).catch(err => console.error(err));
-  }
+        this.common.fileToBase64(this.profileImage).then(base64 => {
+          console.log('Base64:', base64);
+          this.base64String.push({ "filename": this.profileImage?.name, "filedata": base64, "type": "image" })
+        }).catch(err => console.error(err));
+      }
     }
   }
 
@@ -51,43 +51,42 @@ private router:Router) {
       this.biodataFile = event.target.files[0];
       this.biodataForm.patchValue({ biodataPdf: this.biodataFile });
       if (this.biodataFile) {
-    this.common.fileToBase64(this.biodataFile).then(base64 => {
-      console.log('Base64:', base64);
-      this.base64String.push({"filename":this.biodataFile?.name,"filedata":base64,"type":"resume"})
-    }).catch(err => console.error(err));
-  }
+        this.common.fileToBase64(this.biodataFile).then(base64 => {
+          console.log('Base64:', base64);
+          this.base64String.push({ "filename": this.biodataFile?.name, "filedata": base64, "type": "resume" })
+        }).catch(err => console.error(err));
+      }
     }
   }
-  base64String:any[]=[];
+  base64String: any[] = [];
   submit() {
     if (this.biodataForm.invalid) return;
 
-let submitData={
-  "requestJson": {
-    "inType": 1,
-    "name": this.biodataForm.value.name,
-    "fatherName": this.biodataForm.value.fatherName,
-    "age": this.biodataForm.value.age,
-    "occupation": this.biodataForm.value.occupation,
-    "image": this.profileImage?.name,
-     "passKey": this.biodataForm.value.passKey,
-    "contact": this.biodataForm.value.contact,
-    "biodata":this.biodataFile?.name,
-    "files":this.base64String
-  }
-}
-console.log("submitData",submitData)
-this.apiService.post("marriageBiodata",submitData).subscribe((res:any)=>{
-  console.log(res);
-  if(res.data[0].message=="Record and files inserted successfully")
-  {
-    alert("Biodata Insert Successfully")
-    this.router.navigate(['marriage-bio-list'])
-  }else{
-    alert("Issue in Insert")
-  }
+    let submitData = {
+      "requestJson": {
+        "inType": 1,
+        "name": this.biodataForm.value.name,
+        "fatherName": this.biodataForm.value.fatherName,
+        "age": this.biodataForm.value.age,
+        "occupation": this.biodataForm.value.occupation,
+        "image": this.profileImage?.name,
+        "passKey": this.biodataForm.value.passKey,
+        "contact": this.biodataForm.value.contact,
+        "biodata": this.biodataFile?.name,
+        "files": this.base64String
+      }
+    }
+    console.log("submitData", submitData)
+    this.apiService.post("marriageBiodata", submitData).subscribe((res: any) => {
+      console.log(res);
+      if (res.data[0].message == "Record and files inserted successfully") {
+        alert("Biodata Insert Successfully")
+        this.router.navigate(['marriage-bio-list'])
+      } else {
+        alert("Issue in Insert")
+      }
 
-})
-   
+    })
+
   }
 }

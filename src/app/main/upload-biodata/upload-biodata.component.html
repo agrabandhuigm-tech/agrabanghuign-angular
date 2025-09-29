@@ -1,8 +1,27 @@
 <mat-card class="biodata-card">
-  <mat-card-title>Marriage Biodata Upload</mat-card-title>
+  <mat-card-title>
+    <mat-card class="event-heading">
+      <div class="event-text">
+        <span class="">Marriage Biodata Upload</span>
+      </div>
+
+    </mat-card>
+  </mat-card-title>
   <mat-divider></mat-divider>
   <form [formGroup]="biodataForm" (ngSubmit)="submit()" class="biodata-form">
-
+    <div class="avatar-upload">
+      <span class="event-text2">Self Photograph</span>
+      <div class="avatar-edit">
+        <input type='file' id="imageUpload" #fileInput (change)="onProfileImageSelected($event)" accept="image/*" />
+      </div>
+      <div class="avatar-preview">
+        <div id="imagePreview"
+          [style.backgroundImage]="'url(' + (base64String[0]?.filedata ? base64String[0]?.filedata : profile) + ')'"
+          (click)="fileInput.click()">
+          <i class="fa fa-edit"></i>
+        </div>
+      </div>
+    </div>
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
       <input matInput formControlName="name">
@@ -27,24 +46,18 @@
       <mat-label>Contact</mat-label>
       <input matInput type="tel" formControlName="contact">
     </mat-form-field>
-  <mat-form-field appearance="outline">
-      <mat-label>Pass Key</mat-label>
+    <mat-form-field appearance="outline">
+      <mat-label>Pass Key(Remember For Future Update)</mat-label>
       <input matInput type="number" formControlName="passKey">
     </mat-form-field>
- <div class="upload-field">
-  <button mat-raised-button color="primary" (click)="profileInput.click()">Upload Profile Image</button>
-  <span *ngIf="profileImage">{{ profileImage.name }}</span>
-  <input #profileInput type="file" hidden accept="image/*" (change)="onProfileImageSelected($event)">
-</div>
 
-<!-- Biodata PDF -->
-<div class="upload-field">
-  <button mat-raised-button color="accent" (click)="pdfInput.click()">Upload Biodata PDF</button>
-  <span *ngIf="biodataFile">{{ biodataFile.name }}</span>
-  <input #pdfInput type="file" hidden accept="application/pdf" (change)="onBiodataFileSelected($event)">
-</div>
+    <div class="upload-field">
+      <button mat-raised-button class="upload-button" (click)="pdfInput.click()">Upload Biodata PDF</button>
+      <span *ngIf="biodataFile">{{ biodataFile.name }}</span>
+      <input #pdfInput type="file" hidden accept="application/pdf" (change)="onBiodataFileSelected($event)">
+    </div>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="biodataForm.invalid">
+    <button mat-raised-button class="" type="submit" [disabled]="biodataForm.invalid">
       Submit
     </button>
   </form>
