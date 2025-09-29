@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/services/api.service';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-gallery-update',
@@ -12,7 +14,9 @@ export class GalleryUpdateComponent {
   previewUrls: string[] = [];
   editId: number | null = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+    private apiService: ApiService,
+    public common: CommonService) {
     this.galleryForm = this.fb.group({
       name: ['', Validators.required]
     });
@@ -38,6 +42,20 @@ export class GalleryUpdateComponent {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.images.push({ file, url: e.target.result });
+        let uploadfiledata = {
+          "inType": 1,
+          "filename": file.name,
+          "filetype": "image",
+          "filedata": e.target.result
+        }
+        this.apiService.post("uploadFiles", uploadfiledata).subscribe((res: any) => {
+          console.log(res);
+          if (res.status) {
+
+          } else {
+
+          }
+        })
       };
       reader.readAsDataURL(file);
     }
