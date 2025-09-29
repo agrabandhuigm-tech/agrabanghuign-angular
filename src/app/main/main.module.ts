@@ -25,6 +25,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ImagePreviewComponent } from './image-preview/image-preview.component';
 import { UploadBiodataComponent } from './upload-biodata/upload-biodata.component';
 import { MarriageBiodataListComponent } from '../marriage-biodata-list/marriage-biodata-list.component';
+import { GalleryUpdateComponent } from './gallery-update/gallery-update.component';
 
 
 
@@ -46,6 +47,7 @@ const routes: Routes = [
     { path: 'preview', component: ImagePreviewComponent },
     { path: 'upload-biodata', component: UploadBiodataComponent },
      { path: 'marriage-bio-list', component: MarriageBiodataListComponent },
+    { path: 'gallery-update', component: GalleryUpdateComponent },
 ]
 
 @NgModule({
@@ -58,7 +60,8 @@ const routes: Routes = [
         FooterComponent,
         ImagePreviewComponent,
         UploadBiodataComponent,
-        MarriageBiodataListComponent
+        MarriageBiodataListComponent,
+        GalleryUpdateComponent
     ],
 
     imports: [
