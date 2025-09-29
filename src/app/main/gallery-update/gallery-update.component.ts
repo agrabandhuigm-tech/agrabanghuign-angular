@@ -26,15 +26,20 @@ export class GalleryUpdateComponent {
 
   onSubmit() {
     if (this.galleryForm.invalid) return;
-
-
-
+    let submitData = {
+      "requestJson": {
+        "inType": 1,
+        "gName": this.galleryForm.value.name,
+        "images": this.docList
+      }
+    };
 
   }
 
 
 
   images: { file: File, url: string }[] = [];
+  docList: any[] = [];
   onFilesSelected(event: any) {
     const files: FileList = event.target.files;
     for (let i = 0; i < files.length; i++) {
@@ -43,15 +48,17 @@ export class GalleryUpdateComponent {
       reader.onload = (e: any) => {
         this.images.push({ file, url: e.target.result });
         let uploadfiledata = {
-          "inType": 1,
-          "filename": file.name,
-          "filetype": "image",
-          "filedata": e.target.result
+          "requestJson": {
+            "inType": 1,
+            "filename": file.name,
+            "filetype": "image",
+            "filedata": e.target.result
+          }
         }
         this.apiService.post("uploadFiles", uploadfiledata).subscribe((res: any) => {
           console.log(res);
-          if (res.status) {
-
+          if (res.data.message > 0) {
+            this.docList.push({ docId: res.data.message, docName: file.name });
           } else {
 
           }
