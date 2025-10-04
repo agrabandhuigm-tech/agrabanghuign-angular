@@ -12,6 +12,7 @@ import { NumberOnlyDirective } from './directives/common.directive';
 import { AuthInterceptorInterceptor } from './interceptor/auth-interceptor.interceptor';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
+
 const routes: Routes = [
 
   { path: 'MatAutocomplete', component: MatAutocompleteModule },

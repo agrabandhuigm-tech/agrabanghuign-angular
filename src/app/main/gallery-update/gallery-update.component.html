@@ -1,5 +1,5 @@
 <mat-card class="p-4 shadow-md rounded-xl max-w-lg mx-auto">
-  <mat-card-title>
+
 
     <mat-card class="event-heading">
       <div class="event-text">
@@ -7,10 +7,10 @@
       </div>
 
     </mat-card>
-  </mat-card-title>
+ 
 
-  <mat-card-content>
-    <form [formGroup]="galleryForm" (ngSubmit)="onSubmit()">
+  <mat-card-content class="mt-4">
+    <form [formGroup]="galleryForm" >
 
       <mat-form-field appearance="outline" class="w-100 mb-3">
         <mat-label>Gallery Name</mat-label>
@@ -40,7 +40,7 @@
       </div>
 
 
-      <button mat-raised-button color="primary" type="submit" *ngIf="images.length > 0" class="mt-4">
+      <button mat-raised-button color="primary" (click)="onSubmit()" *ngIf="images.length > 0" class="mt-4">
         {{ editId ? 'Update' : 'Save' }}
       </button>
     </form>

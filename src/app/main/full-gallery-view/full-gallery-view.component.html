@@ -1,0 +1,5 @@
+<div class="gallery-container">
+  <mat-card *ngFor="let img of images; let i = index" class="gallery-card" (click)="openViewer(i)">
+    <img mat-card-image [src]="img" alt="Image {{i}}">
+  </mat-card>
+</div>

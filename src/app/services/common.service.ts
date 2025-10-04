@@ -12,7 +12,11 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class CommonService {
-
+  private Details = new BehaviorSubject('');
+  public DetailsCast = this.Details.asObservable();
+  setDetails(data: any) {
+    this.Details.next(data);
+  }
   LanType: any = "EN";
   Lang: boolean = true;
   personalProfileDetails: BehaviorSubject<any> = new BehaviorSubject(null)
