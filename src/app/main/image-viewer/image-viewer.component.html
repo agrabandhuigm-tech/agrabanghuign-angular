@@ -7,7 +7,7 @@
     <mat-icon>chevron_left</mat-icon>
   </button>
 
-  <img [src]="data.images[currentIndex]" class="viewer-image" alt="Image Viewer">
+  <img [src]="data.images[currentIndex]?.filedata" class="viewer-image" alt="Image Viewer">
 
   <button mat-icon-button class="nav-btn right" (click)="next()">
     <mat-icon>chevron_right</mat-icon>

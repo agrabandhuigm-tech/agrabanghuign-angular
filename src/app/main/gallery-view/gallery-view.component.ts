@@ -69,7 +69,7 @@ getbase64()
 }
 viewGallary(data:any)
 {
-  this.common.setDetails(data);
+  this.common.setDetails(data?.images);
 this.router.navigate(['full-gallery-view'])
 }
 

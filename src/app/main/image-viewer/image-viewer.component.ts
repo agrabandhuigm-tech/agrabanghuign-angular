@@ -11,7 +11,7 @@ export class ImageViewerComponent {
    currentIndex: number;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { images: string[], index: number },
+    @Inject(MAT_DIALOG_DATA) public data: { images: any[], index: number },
     private dialogRef: MatDialogRef<ImageViewerComponent>
   ) {
     this.currentIndex = data.index;

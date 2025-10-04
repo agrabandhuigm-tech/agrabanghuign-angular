@@ -16,11 +16,12 @@ import { AboutMaharajComponent } from './about-maharaj/about-maharaj.component';
 import { FooterComponent } from './footer/footer.component';
 import { ImagePreviewComponent } from './image-preview/image-preview.component';
 import { UploadBiodataComponent } from './upload-biodata/upload-biodata.component';
-import { MarriageBiodataListComponent } from './marriage-biodata-list/marriage-biodata-list.component';
+
 import { GalleryUpdateComponent } from './gallery-update/gallery-update.component';
 import { GalleryViewComponent } from './gallery-view/gallery-view.component';
 import { FullGalleryViewComponent } from './full-gallery-view/full-gallery-view.component';
 import { ImageViewerComponent } from './image-viewer/image-viewer.component';
+import { MarriageBiodataListComponent } from '../marriage-biodata-list/marriage-biodata-list.component';
 
 const routes: Routes = [
   {

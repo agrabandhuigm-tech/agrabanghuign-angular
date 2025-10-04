@@ -16,8 +16,8 @@
 
     <ng-container matColumnDef="image">
       <th mat-header-cell *matHeaderCellDef> # </th>
-      <td mat-cell *matCellDef="let element">
-        <img [src]="element.image" alt="Image" width="80" *ngIf="element.image" />
+      <td mat-cell *matCellDef="let element;let i=index">
+        <img [src]="jsonData[i]?.imageBase64" alt="Image" width="80" *ngIf="jsonData[i]?.imageBase64" />
       </td>
     </ng-container>
 
@@ -54,9 +54,9 @@
 
     <ng-container matColumnDef="resume">
       <th mat-header-cell *matHeaderCellDef> Resume </th>
-      <td mat-cell *matCellDef="let element">
+      <td mat-cell *matCellDef="let element;let i=index">
         <!-- <button mat-button >Download PDF</button> -->
-        <mat-icon (click)="downloadResume(element.resume, element.name + '_resume.pdf')" class="download-icon">
+        <mat-icon (click)="downloadResume(jsonData[i]?.pdfBase64, element.name + '_resume.pdf')" class="download-icon">
           picture_as_pdf</mat-icon>
       </td>
     </ng-container>
