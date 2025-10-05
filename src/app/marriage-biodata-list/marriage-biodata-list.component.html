@@ -1,9 +1,9 @@
-<mat-card class="biodata-card">
+<mat-card class="biodata-card mobile">
   <mat-card-title>
     <mat-card class="event-heading">
       <div class="row event-text">
         <div class="col-8"> <span class="">Marriage Biodata List</span></div>
-        <div class="col-2 text-end" (click)="routeToUpload()"> <span class="text-end">Upload New Biodata<mat-icon>
+        <div class="col-2 text-end" (click)="routeToUpload()"> <span class="text-end d-flax"><span class="mobile">Upload New Biodata</span><mat-icon>
               cloud_upload
             </mat-icon></span></div>
       </div>
@@ -65,4 +65,50 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
   </table>
+</mat-card>
+
+
+
+<mat-card class="biodata-card-mobile desktop">
+  <mat-card-title>
+    <mat-card class="event-heading">
+      <div class="row event-text">
+        <div class="col-8"> <span class="">Marriage Biodata List</span></div>
+        <div class="col-2 text-end" (click)="routeToUpload()"> <span class="text-end"><mat-icon>
+              cloud_upload
+            </mat-icon></span></div>
+      </div>
+    </mat-card>
+  </mat-card-title>
+  <mat-divider></mat-divider>
+
+
+ <div class="gallery-container">
+  <mat-card *ngFor="let element of jsonData; let i = index" class="biodata-card-mobile">
+    <div class="card-header">
+      <img [src]="jsonData[i]?.imageBase64"
+           alt="{{ element.name }}"
+           class="profile-image"
+          />
+
+      <div class="card-info">
+        <h3>{{ element.name }}</h3><hr>
+        <p><strong>Father Name:</strong> {{ element.fatherName }}</p><hr>
+        <p><strong>Age:</strong> {{ element.age }}</p><hr>
+        <p><strong>Occupation:</strong> {{ element.occupation }}</p><hr>
+        <p><strong>Contact:</strong> {{ element.contact }}</p><hr>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="card-actions">
+      <button mat-raised-button color="primary"
+              (click)="downloadResume(jsonData[i]?.pdfBase64, element.name + '_resume.pdf')">
+        <mat-icon>picture_as_pdf</mat-icon> Download Resume
+      </button>
+    </div>
+  </mat-card>
+</div>
+
 </mat-card>
