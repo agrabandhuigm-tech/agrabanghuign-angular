@@ -26,6 +26,7 @@ import { ImagePreviewComponent } from './image-preview/image-preview.component';
 import { UploadBiodataComponent } from './upload-biodata/upload-biodata.component';
 import { MarriageBiodataListComponent } from '../marriage-biodata-list/marriage-biodata-list.component';
 import { GalleryUpdateComponent } from './gallery-update/gallery-update.component';
+import { MemberListComponent } from './member-list/member-list.component';
 
 
 
@@ -46,8 +47,9 @@ const routes: Routes = [
     { path: 'about-maharaj', component: AboutMaharajComponent },
     { path: 'preview', component: ImagePreviewComponent },
     { path: 'upload-biodata', component: UploadBiodataComponent },
-     { path: 'marriage-bio-list', component: MarriageBiodataListComponent },
+    { path: 'marriage-bio-list', component: MarriageBiodataListComponent },
     { path: 'gallery-update', component: GalleryUpdateComponent },
+    { path: 'members', component: MemberListComponent },
 ]
 
 @NgModule({
@@ -61,7 +63,8 @@ const routes: Routes = [
         ImagePreviewComponent,
         UploadBiodataComponent,
         MarriageBiodataListComponent,
-        GalleryUpdateComponent
+        GalleryUpdateComponent,
+        MemberListComponent
     ],
 
     imports: [

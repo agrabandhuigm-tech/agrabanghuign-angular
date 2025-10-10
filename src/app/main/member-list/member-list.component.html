@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" class="mb-3">
+  <span>सदस्यों की सूची (Members List)</span>
+</mat-toolbar>
+
+<div class="member-list">
+  <mat-card class="member-card" *ngFor="let member of members">
+    <div class="row">
+      <div class="col label">नाम:</div>
+      <div class="col value">{{ member.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col label">पता:</div>
+      <div class="col value">{{ member.address }}</div>
+    </div>
+    <div class="row">
+      <div class="col label">व्यवसाय:</div>
+      <div class="col value">{{ member.occupation }}</div>
+    </div>
+    <div class="row">
+      <div class="col label">मोबाइल:</div>
+      <div class="col value">{{ member.mobile }}</div>
+    </div>
+  </mat-card>
+</div>
