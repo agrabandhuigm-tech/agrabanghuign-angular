@@ -22,6 +22,7 @@ import { GalleryViewComponent } from './gallery-view/gallery-view.component';
 import { FullGalleryViewComponent } from './full-gallery-view/full-gallery-view.component';
 import { ImageViewerComponent } from './image-viewer/image-viewer.component';
 import { MarriageBiodataListComponent } from '../marriage-biodata-list/marriage-biodata-list.component';
+import { MemberListComponent } from './member-list/member-list.component';
 
 const routes: Routes = [
     {
@@ -38,6 +39,7 @@ const routes: Routes = [
     { path: 'gallery-update', component: GalleryUpdateComponent },
     { path: 'gallery-view', component: GalleryViewComponent },
     { path: 'full-gallery-view', component: FullGalleryViewComponent },
+    { path: 'members', component: MemberListComponent },
 ];
 
 @NgModule({
@@ -54,6 +56,7 @@ const routes: Routes = [
         GalleryViewComponent,
         FullGalleryViewComponent,
         ImageViewerComponent,
+        MemberListComponent
     ],
 
     imports: [
