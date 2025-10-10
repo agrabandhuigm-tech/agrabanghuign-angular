@@ -1,21 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-
-
-
-
-
-
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
-
 import { CommonSharedModule } from '../common/common.module';
-
 import { DatePipe } from '@angular/common';
 import { MydashboardComponent } from './mydashboard/mydashboard.component';
 import { PdfpreviewComponent } from './pdfpreview/pdfpreview.component';
@@ -24,23 +16,18 @@ import { AboutMaharajComponent } from './about-maharaj/about-maharaj.component';
 import { FooterComponent } from './footer/footer.component';
 import { ImagePreviewComponent } from './image-preview/image-preview.component';
 import { UploadBiodataComponent } from './upload-biodata/upload-biodata.component';
-import { MarriageBiodataListComponent } from '../marriage-biodata-list/marriage-biodata-list.component';
+
 import { GalleryUpdateComponent } from './gallery-update/gallery-update.component';
-import { MemberListComponent } from './member-list/member-list.component';
-
-
-
-
-
-
-
+import { GalleryViewComponent } from './gallery-view/gallery-view.component';
+import { FullGalleryViewComponent } from './full-gallery-view/full-gallery-view.component';
+import { ImageViewerComponent } from './image-viewer/image-viewer.component';
+import { MarriageBiodataListComponent } from '../marriage-biodata-list/marriage-biodata-list.component';
 
 const routes: Routes = [
-
     {
         path: '',
         redirectTo: 'Dashboard',
-        pathMatch: 'full'
+        pathMatch: 'full',
     },
 
     { path: 'Dashboard', component: MydashboardComponent },
@@ -49,11 +36,11 @@ const routes: Routes = [
     { path: 'upload-biodata', component: UploadBiodataComponent },
     { path: 'marriage-bio-list', component: MarriageBiodataListComponent },
     { path: 'gallery-update', component: GalleryUpdateComponent },
-    { path: 'members', component: MemberListComponent },
-]
+    { path: 'gallery-view', component: GalleryViewComponent },
+    { path: 'full-gallery-view', component: FullGalleryViewComponent },
+];
 
 @NgModule({
-
     declarations: [
         MydashboardComponent,
         PdfpreviewComponent,
@@ -64,7 +51,9 @@ const routes: Routes = [
         UploadBiodataComponent,
         MarriageBiodataListComponent,
         GalleryUpdateComponent,
-        MemberListComponent
+        GalleryViewComponent,
+        FullGalleryViewComponent,
+        ImageViewerComponent,
     ],
 
     imports: [
@@ -78,13 +67,7 @@ const routes: Routes = [
         CommonModule,
         CommonSharedModule,
         SharedModule,
-
     ],
-    providers: [
-        DatePipe
-    ]
-
+    providers: [DatePipe],
 })
-
-
 export class mainModule { }

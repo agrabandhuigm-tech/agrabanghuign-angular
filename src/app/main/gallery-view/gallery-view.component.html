@@ -1,0 +1,11 @@
+<div class="gallery-container">
+  <mat-card *ngFor="let item of galleryList; let i = index" class="gallery-card">
+    <div class="image-frame" (click)="viewGallary(item)">
+      <img mat-card-image [src]="base64Array[i].filedata" alt="{{ item.name }}">
+    </div>
+    <mat-card-content (click)="viewGallary(item)">
+      <span class="event-text">{{ item.name }}</span>
+    
+    </mat-card-content>
+  </mat-card>
+</div>
