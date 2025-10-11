@@ -1,24 +1,33 @@
-<mat-toolbar color="primary" class="mb-3">
-  <span>सदस्यों की सूची (Members List)</span>
-</mat-toolbar>
 
-<div class="member-list">
-  <mat-card class="member-card" *ngFor="let member of members">
-    <div class="row">
-      <div class="col label">नाम:</div>
-      <div class="col value">{{ member.name }}</div>
-    </div>
-    <div class="row">
-      <div class="col label">पता:</div>
-      <div class="col value">{{ member.address }}</div>
-    </div>
-    <div class="row">
-      <div class="col label">व्यवसाय:</div>
-      <div class="col value">{{ member.occupation }}</div>
-    </div>
-    <div class="row">
-      <div class="col label">मोबाइल:</div>
-      <div class="col value">{{ member.mobile }}</div>
+<div class="row mt-4 ">
+  <mat-card class="event-heading">
+    <div class="event-text">
+ <span class="">सदस्यों की सूची (Members List)</span>
     </div>
   </mat-card>
 </div>
+<div class="row mt-4">
+  <mat-card class="member-heading">
+    <div class="member-heading-text">
+      <table>
+        <tr class="table-header">
+          <th>#</th>
+          <th>नाम</th>
+          <th>पता</th>
+          <th>व्यवसाय</th>
+          <th>मोबाइल</th>
+        </tr>
+
+        <tr *ngFor="let m of members; let i = index" class="table-row">
+          <td>{{ i + 1 }}.</td>
+          <td>{{ m.name }}</td>
+          <td>{{ m.address }}</td>
+          <td>{{ m.occupation }}</td>
+          <td>{{ m.mobile }}</td>
+        </tr>
+      </table>
+    </div>
+  </mat-card>
+</div>
+
+
