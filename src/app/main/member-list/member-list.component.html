@@ -6,7 +6,7 @@
     </div>
   </mat-card>
 </div>
-<div class="row mt-4">
+<div class="row mt-4 desktop">
   <mat-card class="member-heading">
     <div class="member-heading-text">
       <table>
@@ -28,6 +28,17 @@
       </table>
     </div>
   </mat-card>
+</div>
+<div class="row mt-4 mobile">
+<mat-list>
+  <mat-list-item *ngFor="let m of members" class="mt-2">
+    <div mat-line ><b>{{ m.name }}</b></div>
+    <div mat-line><b>पता:</b> {{ m.address }}</div>
+    <div mat-line><b>व्यवसाय:</b>{{ m.occupation }}</div>
+    <div mat-line><b>मोबाइल:</b> {{ m.mobile }}</div>
+  </mat-list-item>
+</mat-list>
+
 </div>
 
 

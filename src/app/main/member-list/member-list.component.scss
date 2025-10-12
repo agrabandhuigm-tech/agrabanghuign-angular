@@ -72,7 +72,12 @@ th, td {
   background-color: rgba(218, 165, 32, 0.1);
   transition: background-color 0.3s;
 }
-
+.desktop{
+  display: block;
+}
+.mobile{
+  display: none;
+}
 @media (max-width: 768px) {
   table, tr, th, td {
     display: block;
@@ -92,4 +97,24 @@ th, td {
     padding-left: 8px;
     font-size: 0.9rem;
   }
+  .desktop{
+  display: none;
+}
+.mobile{
+  display: block;
+}
+}
+mat-list-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 12px;
+  background-color: rgba(216, 188, 116, 0.2);
+  border-radius: 12px; /* 👈 curved corners */
+  margin: 6px 0; /* adds space between items so the curve is visible */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+mat-list-item:hover {
+  background-color: rgba(218, 165, 32, 0.25);
+  transform: scale(1.02); /* slight pop-up on hover */
+  box-shadow: 0 2px 8px rgba(218, 165, 32, 0.2); /* subtle glow */
 }
