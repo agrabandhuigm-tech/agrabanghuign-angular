@@ -1,114 +1,51 @@
-<mat-card class="biodata-card mobile">
-  <mat-card-title>
-    <mat-card class="event-heading">
-      <div class="row event-text">
-        <div class="col-8"> <span class="">Marriage Biodata List</span></div>
-        <div class="col-2 text-end" (click)="routeToUpload()"> <span class="text-end d-flax"><span class="mobile">Upload New Biodata</span><mat-icon>
-              cloud_upload
-            </mat-icon></span></div>
-      </div>
-    </mat-card>
-  </mat-card-title>
-  <mat-divider></mat-divider>
-
-
-  <table mat-table [dataSource]="dataSource" style="width:100%">
-
-    <ng-container matColumnDef="image">
-      <th mat-header-cell *matHeaderCellDef> # </th>
-      <td mat-cell *matCellDef="let element;let i=index">
-        <img [src]="jsonData[i]?.imageBase64" alt="Image" width="80" *ngIf="jsonData[i]?.imageBase64" />
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-
-
-    <ng-container matColumnDef="fatherName">
-      <th mat-header-cell *matHeaderCellDef> Father Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.fatherName}} </td>
-    </ng-container>
-
-
-    <ng-container matColumnDef="age">
-      <th mat-header-cell *matHeaderCellDef> Age </th>
-      <td mat-cell *matCellDef="let element"> {{element.age}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="occupation">
-      <th mat-header-cell *matHeaderCellDef> Occupation </th>
-      <td mat-cell *matCellDef="let element"> {{element.occupation}} </td>
-    </ng-container>
-
-
-    <ng-container matColumnDef="contact">
-      <th mat-header-cell *matHeaderCellDef> Contact </th>
-      <td mat-cell *matCellDef="let element"> {{element.contact}} </td>
-    </ng-container>
-
-
-
-
-    <ng-container matColumnDef="resume">
-      <th mat-header-cell *matHeaderCellDef> Resume </th>
-      <td mat-cell *matCellDef="let element;let i=index">
-        <!-- <button mat-button >Download PDF</button> -->
-        <mat-icon (click)="downloadResume(jsonData[i]?.pdfBase64, element.name + '_resume.pdf')" class="download-icon">
-          picture_as_pdf</mat-icon>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-  </table>
-</mat-card>
-
-
-
-<mat-card class="biodata-card-mobile desktop">
-  <mat-card-title>
-    <mat-card class="event-heading">
-      <div class="row event-text">
-        <div class="col-8"> <span class="">Marriage Biodata List</span></div>
-        <div class="col-2 text-end" (click)="routeToUpload()"> <span class="text-end"><mat-icon>
-              cloud_upload
-            </mat-icon></span></div>
-      </div>
-    </mat-card>
-  </mat-card-title>
-  <mat-divider></mat-divider>
-
-
- <div class="gallery-container">
-  <mat-card *ngFor="let element of jsonData; let i = index" class="biodata-card-mobile">
-    <div class="card-header">
-      <img [src]="jsonData[i]?.imageBase64"
-           alt="{{ element.name }}"
-           class="profile-image"
-          />
-
-      <div class="card-info">
-        <h3>{{ element.name }}</h3><hr>
-        <p><strong>Father Name:</strong> {{ element.fatherName }}</p><hr>
-        <p><strong>Age:</strong> {{ element.age }}</p><hr>
-        <p><strong>Occupation:</strong> {{ element.occupation }}</p><hr>
-        <p><strong>Contact:</strong> {{ element.contact }}</p><hr>
-      </div>
-    </div>
-
-    <mat-divider></mat-divider>
-
-    <div class="card-actions">
-      <button mat-raised-button color="primary"
-              (click)="downloadResume(jsonData[i]?.pdfBase64, element.name + '_resume.pdf')">
-        <mat-icon>picture_as_pdf</mat-icon> Download Resume
+<div class="page-container">
+  <div class="page-header">
+    <div class="header-content">
+      <h1 class="page-title">Marriage Biodata List</h1>
+      <button mat-raised-button class="upload-btn" (click)="routeToUpload()">
+        <mat-icon>cloud_upload</mat-icon> Upload New Biodata
       </button>
     </div>
-  </mat-card>
-</div>
+  </div>
 
-</mat-card>
+  <div class="gallery-grid">
+    <div class="biodata-card" *ngFor="let element of jsonData; let i = index">
+      <div class="card-image-container">
+        <img [src]="jsonData[i]?.imageBase64 ? jsonData[i]?.imageBase64 : 'assets/images/user.png'"
+          (error)="jsonData[i].imageBase64 = 'assets/images/user.png'" alt="{{ element.name }}" class="profile-image" />
+        <div class="card-overlay">
+          <button mat-fab color="accent" class="download-fab"
+            (click)="downloadResume(jsonData[i]?.pdfBase64, element.name + '_resume.pdf')" matTooltip="Download Resume">
+            <mat-icon>file_download</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="card-content">
+        <h2 class="candidate-name">{{ element.name }}</h2>
+        <div class="candidate-details">
+          <div class="detail-row">
+            <mat-icon class="detail-icon">person</mat-icon>
+            <span class="detail-label">Father:</span>
+            <span class="detail-value">{{ element.fatherName }}</span>
+          </div>
+          <div class="detail-row">
+            <mat-icon class="detail-icon">cake</mat-icon>
+            <span class="detail-label">Age:</span>
+            <span class="detail-value">{{ element.age }} Years</span>
+          </div>
+          <div class="detail-row">
+            <mat-icon class="detail-icon">work</mat-icon>
+            <span class="detail-label">Job:</span>
+            <span class="detail-value">{{ element.occupation }}</span>
+          </div>
+          <div class="detail-row">
+            <mat-icon class="detail-icon">phone</mat-icon>
+            <span class="detail-label">Contact:</span>
+            <span class="detail-value">{{ element.contact }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

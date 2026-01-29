@@ -9,6 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { PensionkitissueddialogComponent } from './sidebar/pensionkitissueddialog/pensionkitissueddialog.component';
 import { CommonSharedModule } from '../common/common.module';
 
 
@@ -18,8 +19,8 @@ import { CommonSharedModule } from '../common/common.module';
   declarations: [
     LayoutComponent,
     HeaderComponent,
-   
-    SidebarComponent
+    SidebarComponent,
+    PensionkitissueddialogComponent
 
   ],
   imports: [

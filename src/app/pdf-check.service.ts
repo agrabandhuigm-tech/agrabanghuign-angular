@@ -1,7 +1,6 @@
 // pdf-check.service.ts
 import { Injectable } from '@angular/core';
 import * as pdfjsLib from 'pdfjs-dist';
-import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +8,7 @@ import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
 export class PdfCheckService {
 
   constructor() {
-    (pdfjsLib as any).GlobalWorkerOptions.workerSrc = pdfjsWorker;
+    (pdfjsLib as any).GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@latest/build/pdf.worker.min.js';
   }
 
   async containsText(base64: string, searchText: string): Promise<boolean> {

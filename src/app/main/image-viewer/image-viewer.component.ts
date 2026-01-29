@@ -4,11 +4,12 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-image-viewer',
   templateUrl: './image-viewer.component.html',
-  styleUrls: ['./image-viewer.component.scss']
+  styleUrls: ['./image-viewer.component.scss'],
+  standalone: false
 })
 export class ImageViewerComponent {
 
-   currentIndex: number;
+  currentIndex: number;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { images: any[], index: number },
@@ -16,7 +17,7 @@ export class ImageViewerComponent {
   ) {
     this.currentIndex = data.index;
   }
-next() {
+  next() {
     this.currentIndex = (this.currentIndex + 1) % this.data.images.length;
   }
 

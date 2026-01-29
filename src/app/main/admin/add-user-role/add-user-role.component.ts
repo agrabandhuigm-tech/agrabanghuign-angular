@@ -12,7 +12,8 @@ import { AppConfig } from 'src/app/app.config';
 @Component({
   selector: 'app-add-user-role',
   templateUrl: './add-user-role.component.html',
-  styleUrls: ['./add-user-role.component.scss']
+  styleUrls: ['./add-user-role.component.scss'],
+  standalone: false
 })
 
 export class AddUserRoleComponent implements OnInit, AfterViewInit {
@@ -101,7 +102,7 @@ export class AddUserRoleComponent implements OnInit, AfterViewInit {
 
   getwfprocess() {
     var url = this.apiurl.url.getwfprocess;
-    var data = { };
+    var data = {};
 
     // this.load.show();
     this.api.post(url, data).subscribe((res: any) => {

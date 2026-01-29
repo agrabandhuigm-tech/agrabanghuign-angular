@@ -1,19 +1,20 @@
 {
 	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
 	"cli": {
+		"packageManager": "npm",
 		"analytics": false
 	},
-	"version": 1,
 	"newProjectRoot": "projects",
 	"projects": {
 		"agrabandhu": {
 			"projectType": "application",
 			"schematics": {
-				"@schematics/angular:application": {
-					"strict": true
-				},
 				"@schematics/angular:component": {
 					"style": "scss"
+				},
+				"@schematics/angular:application": {
+					"strict": true
 				}
 			},
 			"root": "",
@@ -21,13 +22,16 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:browser",
+					"builder": "@angular/build:application",
 					"options": {
-						"outputPath": "dist",
+						"browser": "src/main.ts",
+						"outputPath": "dist/agrabandhu",
 						"index": "src/index.html",
-						"main": "src/main.ts",
-						"polyfills": "src/polyfills.ts",
 						"tsConfig": "tsconfig.app.json",
+						"polyfills": [
+							"zone.js",
+							"src/polyfills.ts"
+						],
 						"assets": [
 							"src/favicon.ico",
 							"src/assets"
@@ -39,14 +43,18 @@
 							"node_modules/@fortawesome/fontawesome-free/css/all.css",
 							"src/styles.scss",
 							"node_modules/material-icons-font/material-icons-font.css",
-							 "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
-  							"node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css"
-
+							"node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+							"node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css"
 						],
 						"scripts": [
 							"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
 							"src/assets/js/bootstrap.bundle.js"
-						]
+						],
+						"stylePreprocessorOptions": {
+							"includePaths": [
+								"src"
+							]
+						}
 					},
 					"configurations": {
 						"production": {
@@ -68,75 +76,72 @@
 									"with": "src/environments/environment.prod.ts"
 								}
 							],
-							"outputHashing": "all"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
+							"outputHashing": "all",
+							"optimization": true,
+							"sourceMap": false,
+							"extractLicenses": true
 						},
 						"uat": {
 							"fileReplacements": [
-									 {
-									   "replace": "src/environments/environment.ts",
-									   "with": "src/environments/environment.uat.ts"
-									 }
-								   ],
-								   "buildOptimizer": true,
-								   "optimization": true,
-								   "vendorChunk": false,
-								   "extractLicenses": true,
-								   "sourceMap": false,
-								   "namedChunks": false,
-								   "outputHashing": "all"
-							 },
-							 "dev": {
-								"fileReplacements": [
-										 {
-										   "replace": "src/environments/environment.ts",
-										   "with": "src/environments/environment.dev.ts"
-										 }
-									   ],
-									   "buildOptimizer": true,
-									   "optimization": true,
-									   "vendorChunk": false,
-									   "extractLicenses": true,
-									   "sourceMap": false,
-									   "namedChunks": false,
-									   "outputHashing": "all"
-								 }
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.uat.ts"
+								}
+							],
+							"optimization": true,
+							"sourceMap": false,
+							"extractLicenses": true,
+							"outputHashing": "all"
+						},
+						"dev": {
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.dev.ts"
+								}
+							],
+							"optimization": false,
+							"sourceMap": true,
+							"extractLicenses": false
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
 					},
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
+					"builder": "@angular/build:dev-server",
 					"configurations": {
 						"production": {
-							"browserTarget": "agrabandhu:build:production"
+							"buildTarget": "agrabandhu:build:production"
 						},
 						"development": {
-							"browserTarget": "agrabandhu:build:development"
+							"buildTarget": "agrabandhu:build:development"
 						},
 						"uat": {
-							"browserTarget": "agrabandhu:build:uat"
-						  }
+							"buildTarget": "agrabandhu:build:uat"
+						}
 					},
 					"defaultConfiguration": "development"
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
 					"options": {
-						"browserTarget": "agrabandhu:build"
+						"buildTarget": "agrabandhu:build"
 					}
 				},
 				"test": {
 					"builder": "@angular-devkit/build-angular:karma",
 					"options": {
 						"main": "src/test.ts",
-						"polyfills": "src/polyfills.ts",
+						"polyfills": [
+							"zone.js",
+							"src/polyfills.ts"
+						],
 						"tsConfig": "tsconfig.spec.json",
 						"karmaConfig": "karma.conf.js",
 						"assets": [
@@ -150,6 +155,15 @@
 						"scripts": [
 							"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
 							"src/assets/js/bootstrap.bundle.js"
+						]
+					}
+				},
+				"lint": {
+					"builder": "@angular-eslint/builder:lint",
+					"options": {
+						"lintFilePatterns": [
+							"src/**/*.ts",
+							"src/**/*.html"
 						]
 					}
 				}
@@ -167,13 +181,16 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:browser",
+					"builder": "@angular/build:application",
 					"options": {
+						"browser": "projects/footer/src/main.ts",
 						"outputPath": "dist/footer",
 						"index": "projects/footer/src/index.html",
-						"main": "projects/footer/src/main.ts",
-						"polyfills": "projects/footer/src/polyfills.ts",
 						"tsConfig": "projects/footer/tsconfig.app.json",
+						"polyfills": [
+							"zone.js",
+							"projects/footer/src/polyfills.ts"
+						],
 						"assets": [
 							"projects/footer/src/favicon.ico",
 							"projects/footer/src/assets"
@@ -203,42 +220,36 @@
 									"with": "projects/footer/src/environments/environment.prod.ts"
 								}
 							],
-							"outputHashing": "all"
+							"outputHashing": "all",
+							"optimization": true
 						},
 						"development": {
-							"buildOptimizer": false,
 							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
+							"sourceMap": true
 						}
 					},
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
+					"builder": "@angular/build:dev-server",
 					"configurations": {
 						"production": {
-							"browserTarget": "footer:build:production"
+							"buildTarget": "footer:build:production"
 						},
 						"development": {
-							"browserTarget": "footer:build:development"
+							"buildTarget": "footer:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
-				},
-				"extract-i18n": {
-					"builder": "@angular-devkit/build-angular:extract-i18n",
-					"options": {
-						"browserTarget": "footer:build"
-					}
 				},
 				"test": {
 					"builder": "@angular-devkit/build-angular:karma",
 					"options": {
 						"main": "projects/footer/src/test.ts",
-						"polyfills": "projects/footer/src/polyfills.ts",
+						"polyfills": [
+							"zone.js",
+							"projects/footer/src/polyfills.ts"
+						],
 						"tsConfig": "projects/footer/tsconfig.spec.json",
 						"karmaConfig": "projects/footer/karma.conf.js",
 						"assets": [
@@ -256,8 +267,8 @@
 					"options": {
 						"eslintConfig": ".eslintrc.json",
 						"lintFilePatterns": [
-							"**/*.spec.ts",
-							"**/*.html"
+							"projects/footer/**/*.ts",
+							"projects/footer/**/*.html"
 						]
 					}
 				}

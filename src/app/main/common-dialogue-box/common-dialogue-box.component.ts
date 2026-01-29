@@ -21,11 +21,12 @@ import { ApiUrlService } from 'src/app/services/api-url.service';
 @Component({
   selector: 'app-common-dialogue-box',
   templateUrl: './common-dialogue-box.component.html',
-  styleUrls: ['./common-dialogue-box.component.scss']
+  styleUrls: ['./common-dialogue-box.component.scss'],
+  standalone: false
 })
 
 export class CommonDialogueBoxComponent implements OnInit {
- 
+
 
   // isVisible:Boolean=false;
   constructor(
@@ -45,14 +46,14 @@ export class CommonDialogueBoxComponent implements OnInit {
 
   ) {
 
-    
+
   }
 
 
 
   ngOnInit(): void {
 
-   
+
   }
 
 

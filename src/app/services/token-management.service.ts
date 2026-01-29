@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 // import { environment } from 'src/environments/environment';
 import { environment } from 'src/environments/environment';
-import jwt_decode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
 export class TokenManagementService {
 
-  constructor() {this.getDecodedAccessToken() }
+  constructor() { this.getDecodedAccessToken() }
   disableConsoleInProduction(): void {
     if (environment.production) {
       console.warn(`Console output is disabled on production!`);
@@ -18,16 +18,16 @@ export class TokenManagementService {
     }
   }
 
-  empinfoService:any;
+  empinfoService: any;
   getDecodedAccessToken(): any {
-    let makerToken:any = sessionStorage.getItem('MpJwtToken');
- 
+    let makerToken: any = sessionStorage.getItem('MpJwtToken');
+
     // console.log(makerToken);
     try {
-      let mytoken = jwt_decode(makerToken);
-      
-      
-      this.empinfoService=mytoken;
+      const decodedToken: any = jwtDecode(makerToken);
+
+
+      this.empinfoService = decodedToken;
     }
     catch (Error) {
       return null;

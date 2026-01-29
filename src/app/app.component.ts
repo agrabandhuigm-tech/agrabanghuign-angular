@@ -7,13 +7,14 @@ import { AppConfig } from 'src/app/app.config';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  standalone: false
 })
 export class AppComponent implements OnInit {
   title = 'styleguide';
   config: AppConfig = new AppConfig();
 
-  constructor(public router:Router,private actRoute: ActivatedRoute,public dialog: MatDialog, private authService: AuthService){}
+  constructor(public router: Router, private actRoute: ActivatedRoute, public dialog: MatDialog, private authService: AuthService) { }
 
   ngOnInit(): void {
     //let ssoId = 'OM5108.DOIT';

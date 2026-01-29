@@ -8,7 +8,8 @@ import { CommonService } from 'src/app/services/common.service';
 @Component({
   selector: 'app-upload-biodata',
   templateUrl: './upload-biodata.component.html',
-  styleUrls: ['./upload-biodata.component.scss']
+  styleUrls: ['./upload-biodata.component.scss'],
+  standalone: false
 })
 export class UploadBiodataComponent {
   biodataForm: FormGroup;

@@ -1,30 +1,28 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "strictPropertyInitialization": false,
-    "sourceMap": true,
-    "declaration": false,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2017",
-    "module": "esnext",
-    "lib": [
-      "esnext",
-      "dom"
-    ]
+    "target": "ES2022",
+    "module": "preserve",
+    "baseUrl": "./",
+    "paths": {
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@environments/*": [
+        "src/environments/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -32,8 +30,13 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "typeRoots": [
-      "node_modules/@types",
-      "src/typings"
-    ]
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }

@@ -16,6 +16,7 @@ import { AboutMaharajComponent } from './about-maharaj/about-maharaj.component';
 import { FooterComponent } from './footer/footer.component';
 import { ImagePreviewComponent } from './image-preview/image-preview.component';
 import { UploadBiodataComponent } from './upload-biodata/upload-biodata.component';
+import { UnauthorizedUserDialogComponent } from './unauthorized-user-dialog/unauthorized-user-dialog.component';
 
 import { GalleryUpdateComponent } from './gallery-update/gallery-update.component';
 import { GalleryViewComponent } from './gallery-view/gallery-view.component';
@@ -56,7 +57,8 @@ const routes: Routes = [
         GalleryViewComponent,
         FullGalleryViewComponent,
         ImageViewerComponent,
-        MemberListComponent
+        MemberListComponent,
+        UnauthorizedUserDialogComponent
     ],
 
     imports: [

@@ -4,17 +4,19 @@ import { Subject } from 'rxjs';
 @Component({
   selector: 'app-loader',
   templateUrl: './loader.component.html',
-  styleUrls: ['./loader.component.css']
+  styleUrls: ['./loader.component.css'],
+  standalone: false
 })
 export class LoaderComponent implements OnInit {
- // isLoading:boolean=true;
+  // isLoading:boolean=true;
 
-  isLoading: Subject<boolean> = this.loaderService.isLoading;
+  isLoading: Subject<boolean>;
 
   constructor(private loaderService: LoaderService) {
-    console.log("loading",this.loaderService.isLoading);
-    
-   }
+    this.isLoading = this.loaderService.isLoading;
+    console.log("loading", this.loaderService.isLoading);
+
+  }
 
   ngOnInit(): void {
 

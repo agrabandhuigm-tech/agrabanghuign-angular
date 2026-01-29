@@ -21,7 +21,7 @@ export class NumberOnlyDirective {
 })
 export class AlphabetOnlyDirective {
   @HostListener('input', ['$event'])
-  onInputChange(event: KeyboardEvent) {
+  onInputChange(event: Event) {
     const input = event.target as HTMLInputElement;
     const sanitized = input.value.replace(/[^a-zA-Z, ]/, '');
     input.value = sanitized;

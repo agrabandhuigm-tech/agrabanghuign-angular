@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
 import { HttpClient, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import jwt_decode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 const key = CryptoJS.enc.Utf8.parse('7061737323313233');
 const iv = CryptoJS.enc.Utf8.parse('7061737323313233');
@@ -17,7 +17,7 @@ export class AppConfig {
     //localStorage.setItem('LanType', 'en');
   }
 
- 
+
   encrypt(text: any) {
     return CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(text), key,
       {
@@ -62,9 +62,9 @@ export class AppConfig {
       const current_user = JSON.parse(decryptuserinfo);
       if (current_user && current_user.Token) {
 
-            const headers = new HttpHeaders().set('Authorization', 'Bearer ' + current_user.Token);
-            return headers;
-        
+        const headers = new HttpHeaders().set('Authorization', 'Bearer ' + current_user.Token);
+        return headers;
+
       }
       else {
         const headers = new HttpHeaders().set('Authorization', 'Bearer 0');
@@ -77,50 +77,48 @@ export class AppConfig {
     }
 
   }
-  storeDetails(key:any,Details:any)
-  {
-    let enuser:any=this.encrypt(Details);
-    sessionStorage.setItem(key,enuser);
+  storeDetails(key: any, Details: any) {
+    let enuser: any = this.encrypt(Details);
+    sessionStorage.setItem(key, enuser);
   }
-  storeUserDetails(userDetails:any)
-{
-  let enuser:any=this.encrypt(JSON.stringify(userDetails));
-  sessionStorage.setItem('userDetails',enuser);
+  storeUserDetails(userDetails: any) {
+    let enuser: any = this.encrypt(JSON.stringify(userDetails));
+    sessionStorage.setItem('userDetails', enuser);
 
-}
+  }
 
 
-getUserDetails()
-{
-  var enuser:any=sessionStorage.getItem('userDetails');
-  if(enuser){
-  var dyuser:any=this.decrypt(enuser);
-  dyuser=JSON.parse(dyuser);
-}else{
-  dyuser={"role":"",
-  "roleid" :"",
-  "officeid":"",
-  "treasCode":"",
-  "treasName":"",
- "assignmentid":""};
-}
-  return dyuser;
+  getUserDetails() {
+    var enuser: any = sessionStorage.getItem('userDetails');
+    if (enuser) {
+      var dyuser: any = this.decrypt(enuser);
+      dyuser = JSON.parse(dyuser);
+    } else {
+      dyuser = {
+        "role": "",
+        "roleid": "",
+        "officeid": "",
+        "treasCode": "",
+        "treasName": "",
+        "assignmentid": ""
+      };
+    }
+    return dyuser;
 
-}
+  }
   getDecodedAccessToken(token: string): any {
     try {
-      return jwt_decode(token);
-    } catch(Error) {
+      return jwtDecode(token);
+    } catch (Error) {
       return null;
     }
   }
- 
-  getDetails(key:any)
-  {
-    var enData:any=sessionStorage.getItem(key);
-    if(enData){
-    var dyuser:any=this.decrypt(enData);
-   
+
+  getDetails(key: any) {
+    var enData: any = sessionStorage.getItem(key);
+    if (enData) {
+      var dyuser: any = this.decrypt(enData);
+
     }
     return dyuser;
   }

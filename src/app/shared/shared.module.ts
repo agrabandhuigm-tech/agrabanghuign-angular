@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from '@angular/common/http';
-import { OtpWindowComponent } from './otp-window/otp-window.component';
 import { MatComponentsModule } from '../modules/mat-module.module';
-import { NgOtpInputModule } from 'ng-otp-input';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-//import { CommonTableComponent } from './common-table/common-table.component';
+import { VendorSubmitDialogComponent } from './vendor-submit-dialog/vendor-submit-dialog.component';
+
 
 /* Extra */
-import { LoaderInterceptor } from '../interceptors/loader.interceptor.spec';
+import { LoaderInterceptor } from '../interceptors/loader.interceptor';
 
 /* Angular Material Imports */
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -50,7 +49,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader();
 }
 
 const Mat = [
@@ -127,13 +126,11 @@ const Mat = [
 @NgModule({
   declarations: [
 
-    OtpWindowComponent,
-
+    VendorSubmitDialogComponent,
   ],
   imports: [
     CommonModule,
     MatComponentsModule,
-    NgOtpInputModule,
     ReactiveFormsModule,
     FormsModule,
     MomentDateModule,
@@ -141,7 +138,7 @@ const Mat = [
     TranslateModule.forRoot(),
     Mat
   ],
-  exports: [Mat],
+  exports: [Mat, VendorSubmitDialogComponent],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: LoaderInterceptor,

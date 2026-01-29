@@ -3,7 +3,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { MatDrawer, } from '@angular/material/sidenav';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { log } from 'console';
+
 import { ApiUrlService } from 'src/app/services/api-url.service';
 import { ApiService } from 'src/app/services/api.service';
 import { AppConfig } from 'src/app/app.config';
@@ -20,7 +20,8 @@ import { PdfpreviewComponent } from 'src/app/main/pdfpreview/pdfpreview.componen
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
+  standalone: false
 })
 
 
@@ -120,7 +121,7 @@ export class SidebarComponent implements OnInit {
   }
 
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize')
   isLargeScreen() {
     this.myElement = document.getElementById('side-bar');
     this.getScreenWidth = window.innerWidth;

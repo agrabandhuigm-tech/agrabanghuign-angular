@@ -23,11 +23,11 @@ export class ItmsRedirectService {
     });
     console.log('ritms params:', params)
     this.apiService.postITMS('itms/externalRedirect', data).subscribe({
-      next: (res) => {
+      next: (res: any) => {
         const response = res.data;
         this.formSubmit(response.url, params);
       },
-      error: (res) => {
+      error: (res: any) => {
       }
     });
   }
